@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-## template-v2.1.0 - unreleased
+## template-v2.1.0 - 2026-11-09
 
 Probes that test theories and competing approaches, and the developer's craft skills. For a
 copy of template-v2.0.0, each line says what to port.
