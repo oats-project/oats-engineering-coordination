@@ -48,7 +48,8 @@ copy of template-v2.0.0, each line says what to port.
   acceptance tests stay unchanged. Code written before its test is tested and the test
   watched failing, not deleted.
 - `/diagnose-before-fixing`, added: a fast, deterministic command that shows the failure
-  before anything else (or say why there is none); reproduce, minimise, three to five ranked
+  before anything else (or say why there is none), a flaky one raised by load only in an
+  environment of your own, never on a shared host ("On the hosts you run on"); reproduce, minimise, three to five ranked
   falsifiable hypotheses tested cheapest first, debug lines tagged; a regression test at a
   real seam, the fix at the root, the confirmed hypothesis in the commit and the PR; three
   failed fixes means stop and tell the expert.

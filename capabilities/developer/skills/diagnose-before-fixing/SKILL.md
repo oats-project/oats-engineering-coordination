@@ -13,8 +13,9 @@ fixed: a failing test at whatever seam reaches it, a script against a running se
 command-line run diffed against known-good output, a captured request replayed. It shows the
 exact symptom reported, not a failure nearby; it gives the same verdict every run; it runs in
 seconds. Once you have it, make it faster and sharper. For a flaky bug, raise its
-reproduction rate (loop it, add load, pin the time and the seeds) until it is high enough to
-debug.
+reproduction rate (loop it, pin the time and the seeds) until it is high enough to debug.
+Add load only in an environment of your own, never on a shared host, within your briefing's
+host rules ("On the hosts you run on").
 
 Don't go on without one. If you can't build it, tell your expert what you tried and what
 would let you (an environment, a captured artifact, temporary instrumentation). Redact any
