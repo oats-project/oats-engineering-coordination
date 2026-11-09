@@ -7,7 +7,7 @@ import test from "node:test";
 import { fileURLToPath } from "node:url";
 
 const REPO = resolve(fileURLToPath(new URL("..", import.meta.url)));
-const OATS_URL = "https://github.com/awebai/oats.git";
+const OATS_URL = "https://github.com/oats-project/oats.git";
 // The floor every capability's oats.json declares (the validator checks they agree).
 const FLOOR = JSON.parse(readFileSync(join(REPO, "capabilities", "developer", "oats.json"), "utf8"))
   .compatibility.oats.replace(/^>=/, "");

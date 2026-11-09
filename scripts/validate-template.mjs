@@ -310,7 +310,7 @@ function reachableSkills(capabilityId) {
 }
 // These capabilities compose with any knowledge or messaging layer, or none, so their injects and
 // skills issue no layer's command (and the schema keeps layers out of `requires`). This is the
-// bounded rule awebai/oats checks on its mirrors, applied before release. Neutrality as a whole
+// bounded rule oats-project/oats checks on its mirrors, applied before release. Neutrality as a whole
 // is not machine-decidable: changes to these surfaces still need review.
 const layerCommands = [[/\baw\b/i, "the aweb CLI"], [/\boats okf\b/i, "the OKF layer"]];
 // The texts are neutral about the forge too: they say what the forge does, never its CLI.

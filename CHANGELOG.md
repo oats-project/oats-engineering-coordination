@@ -74,6 +74,13 @@ copy of template-v2.0.0, each line says what to port.
   points (parallel probes per decision; hooks for the quality floor).
 - Every capability's `version` is 2.1.0 and its release sentence names template-v2.1.0.
 
+### The repository
+- `package.json` is named `oats-engineering-coordination`.
+- The real-kernel test clones OATS from its canonical home, oats-project/oats, and
+  `schemas/README.md` names it.
+- CI's `actions/checkout` and `actions/setup-node` are pinned to commit SHAs (v4.4.0, the
+  release their `v4` tags pointed to), the version in a comment.
+
 ### What to do
 - Copying fresh: follow `ADAPTING.md`.
 - With a copy of template-v2.0.0: port the lines above. Copy the three new skill folders,
