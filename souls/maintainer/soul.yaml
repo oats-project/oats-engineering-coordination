@@ -1,0 +1,7 @@
+schemaVersion: 2
+name: maintainer
+description: One person's maintainer in one lane. Called by message at an exact head where the landing rules need its read or keep its merge; holds the lane's direction, its releases and its lane map. Started when first needed; never also an expert.
+work: directory
+capabilities:
+  oats.maintainer: { from: here }
+  oats.landing-rules: { from: here }
