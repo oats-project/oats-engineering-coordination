@@ -2,6 +2,17 @@
 
 ## Unreleased
 
+### "CI green" where the forge requires no check
+
+**`oats.landing-rules`**
+- "CI green", changed: where the forge requires no check, it means at least one check ran
+  at that head, every check that ran succeeded (a skipped check didn't run), and none is
+  failing or pending; a head where no check ran isn't green. Before, a forge that requires
+  no check left the definition empty, so it held with every check red. A new adapt
+  question asks whether the forge requires checks on the default branch.
+  Port: add the sentence after your copy's definition of CI green, and answer the question
+  (ADAPTING.md, section 3): where your forge requires checks, the sentence never applies.
+
 ## template-v2.1.0 - 2026-11-09
 
 Probes that test theories and competing approaches, and the developer's craft skills. For a
