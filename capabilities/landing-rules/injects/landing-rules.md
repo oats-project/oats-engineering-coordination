@@ -83,7 +83,3 @@ changes while work runs is kept where everyone reads and updates it live.
   empty when these rules are adapted, at: (its link). A maintainer adds its own entry;
 - a hold: marked on the PR it holds, or, for the default branch, one open record next to
   the lane map, each with its reason, its scope and who lifts it.
-
-**Template release.** Each capability copied from the engineering template records the
-release it came from in its `oats.json` description ("copied from the engineering
-template, template-v2.0.0"). A copy that takes up a later release updates that line.

@@ -1,6 +1,6 @@
 ---
 name: run-the-review-loop
-description: The developer's review loop - you, never your expert, iterate with fresh reviewers - a new code-reviewer instance each round, spawned as your OATS child (a native subagent only where your person asks for one or your harness's multi-agent workflow mode is in use) on a different model from yours where one is available, never the previous round's, briefed without your reasoning, until a round finds nothing to fix; retire each reviewer after its round; the same loop for fixes your expert returns and for bigger fixes on your PR; finish once your PR is merged or closed so your expert retires you. Use when a piece of work is complete and verified on your local branch, before presenting it to your expert and before any PR exists, when a fix on your PR needs a review, and when your PR is merged and green, or closed.
+description: The developer's review loop - you, never your expert, iterate with fresh reviewers - a new code-reviewer instance each round, spawned as your OATS child (a native subagent only where your person asks for one or your harness's multi-agent workflow mode is in use) on a different model from yours where one is available, never the previous round's, briefed without your reasoning, until a round finds nothing to fix; retire each reviewer once its findings are settled; the same loop for fixes your expert returns and for bigger fixes on your PR; finish once your PR is merged or closed so your expert retires you. Use when a piece of work is complete and verified on your local branch, before presenting it to your expert and before any PR exists, when a fix on your PR needs a review, and when your PR is merged and green, or closed.
 ---
 
 # Run the review loop
@@ -42,7 +42,7 @@ feature, leave `--same-work` out.
 
 ## Pick a different model
 A reviewer on your model shares your blind spots. Before spawning, compare:
-- yours: your `instance.json` → `launch.runtime` (the harness) and `launch.model`;
+- yours: your `instance.json` → `launch.harness` and `launch.model`;
 - the reviewer's: `oats spawn code-reviewer --preview --json` → `launch.declared` (the
   soul's default) and `launch.effective` (what this machine will launch; when
   `launch.from` is `local`, the machine's `oats-local.yaml` `souls.launch` entry named by
@@ -74,11 +74,15 @@ cases, tests; report findings with a verdict".
 
 ## Iterate, one fresh reviewer per round
 1. The round's reviewer reports findings with a verdict: `APPROVE`, `APPROVE WITH NITS` or
-   `CHANGES NEEDED`. Retire it (Close); a native reviewer ends with its report.
+   `CHANGES NEEDED`.
 2. Fix each finding, or dispute it with a concrete reason (a test, a contract, a spec
-   line). Skip none silently, and record each in your notes.
-3. Start the next round's fresh reviewer at the new head.
-4. Repeat until a round finds nothing to fix: `APPROVE` or `APPROVE WITH NITS`, or only
+   line). Skip none silently, and record each in your notes. A finding you can't place or
+   reproduce, ask that reviewer about while it still runs: a fact about its finding, never
+   a review of your fix.
+3. Once every finding is fixed or disputed, close the round and retire its reviewer
+   (Close); a native reviewer ends with its report.
+4. Start the next round's fresh reviewer at the new head.
+5. Repeat until a round finds nothing to fix: `APPROVE` or `APPROVE WITH NITS`, or only
    findings you already dispute with a concrete reason. Nits are yours to take or leave: a
    nit you take moves the head, and a moved head gets a fresh round, so leave the rest for
    the PR. Hand back only the head a clean round reviewed.
@@ -157,9 +161,10 @@ this one, retire the stalled one (`oats retire <name>`) and say so in your handb
   the branch is reviewed before a PR exists.
 - On the PR (`/work-the-reviews`), a fix bigger than a few lines gets a fresh round before
   you push it.
-- Retire each round's reviewer once it has reported, without asking anyone. With no
-  messaging layer, it printed its report as its final message and can't send a done line:
-  retire it once you have the report. Otherwise tell it the round is closed, and once it
+- Retire each round's reviewer once every finding of its round is fixed or disputed, before
+  the next round starts, without asking anyone. With no messaging layer, it printed its
+  report as its final message and can't send a done line or answer a question: retire it
+  once you have the report. Otherwise tell it the round is closed, and once it
   replies "done, harvested:
   <harvester>" or "done, no harvest duty" (after "done, harvest pending: <proposal>", wait
   for the first), check `oats retire <name> --plan`, run `oats retire <name>`, note it

@@ -62,6 +62,19 @@ kept from 1.x still say "human". They mean the same.
   4. Respawn the instances spawned from the package: their briefings are 1.x's, copied in
      at spawn.
 
+### Requirements
+
+- **OATS 0.30.0 or later,** as in 1.x: every capability's `oats.json` declares
+  `>=0.30.0`, and the tests load the souls in 0.30.0. Three steps use later kernel
+  features; each says what to do without one, so the floor stays where the souls load:
+  the checkpoints need `wake-hold` (OATS 0.69.7), and without it a waiter hands the wait
+  up; `--same-work` needs `instance-same-work` (OATS 0.69.2), and without it the flag is
+  left out; `oats soul launch` in "From v1.18.0" needs OATS 0.53.0, and on an older kernel
+  the `souls.launch` key is renamed by hand. OATS 0.69.7 or later runs every text as
+  written. The README says the same.
+- **A tasks layer,** or an answer to the landing rules' "where things are kept" marker:
+  the texts keep the effort records, the lane map and holds there.
+
 ### What changed, per skill
 
 For organisations that keep adapted copies, each line says what to port.
@@ -226,7 +239,8 @@ For organisations that keep adapted copies, each line says what to port.
   without the earlier rounds' findings, until a round finds nothing to fix (at most 4
   rounds, then the expert decides each open finding: one it overrules counts as disputed);
   a nit taken moves the head and gets a fresh round, and the hand-back is at the head a
-  clean round reviewed; each round's reviewer is retired once it reports; a
+  clean round reviewed; each round's reviewer is retired once every finding of its round
+  is fixed or disputed, so the developer can still ask it about one; a
   branch the expert returns, and a bigger fix on the PR, go through the loop again. "Iterate
   with the same instance" and "keep the reviewer while the change is open" are gone. The
   hand-back names what could not run. A reviewer with no messaging layer is retired once

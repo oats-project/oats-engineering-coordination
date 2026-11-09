@@ -131,7 +131,8 @@ release, port what fits (section 6) and update the sentence to that release.
 ## 5. The small-projects variant
 
 For one person or a small team, with no lane that needs a maintainer: no maintainer, and the
-developer merges once its review, CI and the lead's verification agree at one head.
+developer merges once its review, CI and the lead's verification agree at one head, on the
+lead's go at that head.
 
 **Drop:**
 - `capabilities/maintainer/` and `souls/maintainer/`. The lead then releases by the
@@ -158,8 +159,9 @@ developer merges once its review, CI and the lead's verification agree at one he
   review carries to a new head only through a rebase whose range-diff shows every commit
   unchanged, or an update from the default branch that leaves the PR's own diff unchanged;
   any other new head gets a fresh round, or a new review the developer asks the bot for. The
-  developer merges once all three hold at that head, and tells the lead in one line. A
-  lead's one-line docs fix, the lead merges."
+  developer merges once all three hold at that head and the lead, having checked them and
+  the holds, gives its go in one line at that head; the developer tells the lead once it
+  has merged. A lead's one-line docs fix, the lead merges."
 - "A maintainer's read, and releases", with its paragraph "A PR with no lead here": "No
   maintainer. A release's contents are the person's to approve; the lead plans, tags and
   publishes it on their yes. Its release prep (the version bump and the notes) is a change

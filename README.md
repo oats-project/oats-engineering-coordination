@@ -100,12 +100,30 @@ Every place where the template assumes something about an organisation carries o
 A messaging capability (for example `oats.aweb`) is strongly recommended: hand-offs are
 messages that wake their recipient. Without one, reports land in session transcripts.
 
+A tasks layer, or your own answer to the landing rules' "where things are kept" marker, is
+required. The texts keep each effort's record, the lane map and holds in "your tasks layer",
+live, because the rules themselves are copied into each instance at spawn and can't change
+while work runs. Without a tasks layer, name a place every instance reads and updates
+(ADAPTING.md, section 3).
+
 `npm test` checks the template itself: every capability's `oats.json` and every soul against
 the OATS schemas, the skills each inject names, the adapt markers and their list in
 ADAPTING.md, and that the souls load in real OATS kernels.
 
 ## Requirements
-OATS ≥ 0.30.0. Works with any harness OATS supports (pi, Claude Code, Codex). The
+OATS ≥ 0.30.0, the floor every capability's `oats.json` declares: the souls load there. A
+few steps use later kernel features. Each says what to do on a kernel without it, so the
+floor stays; run OATS 0.69.7 or later to use them all as written:
+- **Checkpoints,** the wake a developer, expert or maintainer sets before waiting on a
+  child, need the kernel feature `wake-hold` (OATS 0.69.7). Without it a waiter sets none
+  and hands the wait up; where no level can set one, that wait has no bound.
+- **A reviewer or probe on its spawner's work** (`--same-work`) needs `instance-same-work`
+  (OATS 0.69.2). Without it the flag is left out.
+- **`oats soul launch`,** which the move from v1.18.0 uses to rewrite `souls.launch`
+  (CHANGELOG.md, "From v1.18.0"), needs OATS 0.53.0. On an older kernel, rename the key in
+  `oats-local.yaml` by hand.
+
+Works with any harness OATS supports (pi, Claude Code, Codex). The
 `code-reviewer` soul prefers Codex with `gpt-6-astra` (`launch:` in its soul); a machine
 overrides it in `oats-local.yaml` `souls.launch`, and spawn flags win over both. Developers use
 your harness's workflow tool for parallel work; where it has none, its subagents in the same
