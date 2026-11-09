@@ -197,6 +197,10 @@ test("validator holds skill frontmatter to plain one-line values", (t) => {
     ["description: {text: [open} When", /SKILL\.md:3: a frontmatter value can't start with \{/],
     ["description: >\n  When", /SKILL\.md:3: a frontmatter value can't start with >/],
     ["description: Extra trees #1 When", /SKILL\.md:3: a plain YAML value can't contain " #"/],
+    ["description:When", /SKILL\.md:3: a frontmatter line must be `key: value` on one line, with a space after the colon/],
+    ["broken\ndescription: When", /SKILL\.md:3: a frontmatter line must be `key: value` on one line/],
+    ["name: other\ndescription: When", /SKILL\.md:3: frontmatter key name appears twice/],
+    ["description: 1. When", /SKILL\.md:3: a frontmatter value must read as text/],
   ];
   for (const [replacement, message] of cases) {
     const result = mutate(t, file, (text) => text.replace("description: When", replacement));
