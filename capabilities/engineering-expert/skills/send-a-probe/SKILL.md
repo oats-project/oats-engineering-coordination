@@ -1,6 +1,6 @@
 ---
 name: send-a-probe
-description: Send a probe - one child with one question (test an approach, test a use case, an adversarial review of a plan or a design, investigate an alternative, test a theory) - or one probe per approach when the plan can go more than one way, after checking it isn't already known, and never one that checks its own claim; as an OATS child, a fresh instance of whichever existing soul has what the question needs, on a different model from yours where one is available; a harness-native subagent only for a small task that directly helps you, where your person asks, or in a multi-agent workflow mode; brief it with the artefact at its exact version, take its report, and retire it on answer. The plan stays yours. Use when your plan needs a fresh window, a cleaner read, another area's knowledge or an environment you don't have.
+description: Send a probe - one child with one question (test an approach, test a use case, an adversarial review of a plan or a design, investigate an alternative, test a theory) - or one probe per approach when the plan can go more than one way, after checking it isn't already known, and never one that checks its own claim; as an OATS child, a fresh instance of whichever existing soul has what the question needs, on a different model from the work's author where one is available; a harness-native subagent only for a small task that directly helps you, where your person asks, or in a multi-agent workflow mode; brief it with the artefact at its exact version, take its report, and retire it on answer. The plan stays yours. Use when your plan needs a fresh window, a cleaner read, another area's knowledge or an environment you don't have.
 ---
 
 IMPORTANT: after a compaction, reload this skill before you continue the step.
@@ -49,8 +49,8 @@ At most 4 probes run in parallel for one decision.
 
 ## A probe never checks its own claim
 A claim the plan rests on, a probe's included, is checked by a different probe with fresh
-context, briefed to find its gaps and to check what it cites, on a different model where
-one is available. Where a mechanical check exists (a test, a type check, a benchmark), use
+context, briefed to find its gaps and to check what it cites, on a model other than the
+claim's author's where one is available (below). Where a mechanical check exists (a test, a type check, a benchmark), use
 it, with a statement you wrote or approved, never the probe. A check a probe can pass
 without being right (a leaky test, a judge on the same model) proves nothing.
 
@@ -77,17 +77,20 @@ knowledge and no testing capability (where something is defined, what a file say
 to a native subagent. So may any child your person asks to be one, and the agents of your
 harness's multi-agent workflow mode (Claude Code's ultracode, say) when it is in use.
 
-**On a different model from yours,** where the organisation has one: every kind of probe
-checks work or validates an idea, and agents of one model share blind spots, so their
-agreement is not independent. Preview the soul first (`oats spawn <soul> --preview
---json`) and compare its `launch.effective.model`, what this machine will launch (a
-`launch.from` of `local` is this machine's override of the soul's preference), with yours,
+**On a different model from the author's,** where the organisation has one: every kind of
+probe checks work or validates an idea, and agents of one model share blind spots, so their
+agreement is not independent. The author is whoever made the work or the idea being
+checked: you, for your plan, your design or your own idea; the probe that made it, for a
+probe's claim, whose model is `launch.model` in its `instance.json` (your model may then
+be the different one). Preview the soul first (`oats spawn <soul> --preview --json`) and
+compare its `launch.effective.model`, what this machine will launch (a `launch.from` of
+`local` is this machine's override of the soul's preference), with the author's: yours is
 `launch.model` in your `instance.json`. Compare the models, not the harnesses: a provider
 prefix names a route to a model, not another model, so `<provider>/<model>` and `<model>`
 are one. A model that is unknown (`null`, absent, or a harness's native
 default) proves nothing, so treat it as a match. When both are known and differ, spawn
 without `--harness`/`--model`, so the effective launch applies. When they match, spawn it
-on a model you know differs from the one you run (your harness reports yours: its status
+on a model you know differs from the author's (your harness reports your own: its status
 line, or its model command), with `--harness <h> --model <m>` or a launch configuration
 this host defines (`oats launch-config list`). If none is available, or you can't
 establish a difference, use the effective one and say so where you use its answer.

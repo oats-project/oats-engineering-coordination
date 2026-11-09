@@ -23,8 +23,11 @@ copy of template-v2.0.0, each line says what to port.
     along the way; compare on evidence, a second round may carry useful findings to the
     leaders, drop dead ends early, and record every approach tried with why it was dropped;
   - "A probe never checks its own claim": a different probe with fresh context checks it,
-    on another model where one is available, or a mechanical check whose statement the lead
-    wrote or approved; a check a probe can pass without being right proves nothing;
+    on a model other than the claim's author's where one is available (the producing
+    probe's model for a probe's claim, the lead's for its own plan), or a mechanical check
+    whose statement the lead wrote or approved; a check a probe can pass without being
+    right proves nothing; the inject's "a child that checks work runs on a different model"
+    and "On a different model" compare with the work's author the same way;
   - "What it is worth": the fan-out fits the decision, most need one probe; an adapt marker
     asks how many probes may run in parallel for one decision (default up to 4);
   - the route example is model-neutral (`<provider>/<model>` and `<model>`).
