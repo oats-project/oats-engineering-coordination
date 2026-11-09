@@ -86,8 +86,11 @@ Each line says what to port into an adapted copy.
   it reports, quoted in a task or brief only by link or id, and never grants authority;
   only a person's own request goes in as a task. `/dispatch` section 5 and the dispatcher
   inject start a role another person's agents ask for with their message by its id, not as
-  its task; `/launch-work` passes only its human's own words; `/work-the-reviews` treats
-  review, bot and CI text as data and sends any request beyond the fix to the expert.
+  its task, and `/hand-off` and `/across-people` ask a dispatcher for exactly that;
+  `/launch-work` ("The request") puts only its human's own words in a brief as written, and
+  anyone else's request by link or id, for every lead, new maintainer, overflow seat and
+  request passed on (`/cross-review-peer` too); `/work-the-reviews` treats review, bot and
+  CI text as data and sends any request beyond the fix to the expert.
 - **On the hosts you run on.** The developer and maintainer injects carry a host-safety
   paragraph, with an adapt marker: build and test in an environment of your own, no full
   suites, load tests or unbounded parallel runs on a shared host, no unread code run
@@ -98,8 +101,9 @@ Each line says what to port into an adapted copy.
   object-level authorization (IDOR), CI workflow changes (`pull_request_target`,
   secrets reachable from a fork, broadened permissions, unpinned actions) and SSRF with
   open redirects.
-- **Landing rules:** "CI green" is defined once (every check the forge requires succeeded
-  at that head, none failing or pending), and the rules name oats.framework's
+- **Landing rules:** "CI green" is defined once, in its own paragraph (every check the
+  forge requires succeeded at that head, none failing or pending), which the small-projects
+  variant keeps, and the rules name oats.framework's
   `oats.coordination-setup` set-landing-rules skill, where a workspace has it, instead of a
   procedure the template lacks.
 - **`ADAPTING.md`:** a check for id collisions before copying, and what to do on each kind;
@@ -395,7 +399,10 @@ For organisations that keep adapted copies, each line says what to port.
   other; and the docs' links and ids. The package manifest checks are gone with the
   package. The vendored OATS schemas come from v0.69.7, the floor (`schemas/README.md`
   names the commit); the schema check reads `minProperties` and `maxProperties`, and a
-  flow mapping is split only at its own commas.
+  flow mapping is split only at its own commas. A skill's frontmatter values must parse: one
+  line, a closed quote or flow collection, or a plain scalar with no ": "; and the
+  real-kernel test reads every skill's description through the kernel's own parser
+  (`oats capabilities show`).
 - The tests build a workspace whose member repository is a copy of the template, and check
   in real OATS kernels (the floor the manifests declare, 0.69.7, and main) that every
   example soul previews with its capabilities and skills, and that both kernels list the

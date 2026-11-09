@@ -20,11 +20,13 @@ compaction or not.
 - `main`: everything in this workspace's repositories, owned by the person who runs the
   workspace. It is also the release lane.
 
+**CI green,** wherever these rules or a skill say it, means every check the forge requires
+at a head has succeeded there: none failing, none pending.
+
 **What merges a change, and who merges it.**
 <!-- adapt: Per lane, which agreements must hold at a PR's head before it merges, and who merges it? -->
 In every lane, at one head: CI green; a review; and the lead's verification note,
-`VERIFIED at <head>`. CI green, wherever these rules or a skill say it, means every check
-the forge requires at that head has succeeded: none failing, none pending. The review is the forge's review bot's at that head where one runs,
+`VERIFIED at <head>`. The review is the forge's review bot's at that head where one runs,
 each of its findings fixed or answered (a decline with a concrete reason is answered);
 otherwise a round of the developer's review loop that found nothing to fix, with a fresh
 reviewer at that head. Either carries to a new head only through a rebase whose range-diff

@@ -173,8 +173,14 @@ function parseSkillFrontmatter(file) {
     const idx = raw.indexOf(":");
     if (idx < 0) continue;
     const value = raw.slice(idx + 1).trim();
-    // As in a soul: a plain scalar can't hold ": ", and the kernel's YAML parser would drop the skill.
-    if (!/^["'{>|]/.test(value) && /:(\s|$)/.test(value)) report(`${relative(repoRoot, file)}:${index + 2}`, "a plain YAML value can't contain \": \"; quote it or reword it");
+    const at = `${relative(repoRoot, file)}:${index + 2}`;
+    // The kernel parses this with a real YAML parser and drops a skill whose frontmatter fails,
+    // so hold each value to a grammar that always parses: one line, a closed quote or flow
+    // collection, or a plain scalar with no ": ".
+    const close = { '"': '"', "'": "'", "{": "}", "[": "]" }[value[0]];
+    if (close) { if (value.length < 2 || value[value.length - 1] !== close) report(at, `a YAML value that opens with ${value[0]} must close with ${close} on the same line`); }
+    else if (/^[|>]/.test(value)) report(at, "a block scalar isn't supported here; write the value on one line");
+    else if (/:(\s|$)/.test(value)) report(at, "a plain YAML value can't contain \": \"; quote it or reword it");
     fm[raw.slice(0, idx).trim()] = value.replace(/^['"]|['"]$/g, "");
   }
   return { text, frontmatter: fm };
