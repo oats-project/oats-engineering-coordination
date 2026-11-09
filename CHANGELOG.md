@@ -2,6 +2,18 @@
 
 ## Unreleased
 
+### One definition of "CI green"
+
+**`oats.landing-rules`**
+- "CI green", changed: at a head, at least one check ran, every check the forge requires
+  is among them, and every check that ran succeeded (a skipped check didn't run): none
+  failing, none pending. A head where no check ran isn't green. Before, it meant every
+  required check succeeded: on a forge that requires none it was empty and held with every
+  check red, and a check that ran but wasn't required could fail on a green head. A new
+  adapt question asks which checks the forge requires on the default branch.
+  Port: replace your copy's definition of CI green with the new one, and answer the
+  question (ADAPTING.md, section 3).
+
 ## template-v2.1.0 - 2026-11-09
 
 Probes that test theories and competing approaches, and the developer's craft skills. For a

@@ -20,8 +20,11 @@ compaction or not.
 - `main`: everything in this workspace's repositories, owned by the person who runs the
   workspace. It is also the release lane.
 
-**CI green,** wherever these rules or a skill say it, means every check the forge requires
-at a head has succeeded there: none failing, none pending.
+<!-- adapt: Which checks does the forge require on the default branch? -->
+**CI green,** wherever these rules or a skill say it, means at least one check ran at a
+head, every check the forge requires is among them, and every check that ran succeeded (a
+skipped check didn't run): none failing, none pending. A head where no check ran isn't
+green.
 
 **What merges a change, and who merges it.**
 <!-- adapt: Per lane, which agreements must hold at a PR's head before it merges, and who merges it? -->
