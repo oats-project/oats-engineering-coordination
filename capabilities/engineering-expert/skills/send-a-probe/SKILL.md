@@ -1,6 +1,6 @@
 ---
 name: send-a-probe
-description: Send a probe - one child with one question (test an approach, test a use case, an adversarial review of a plan or a design, investigate an alternative) - as an OATS child, a fresh instance of whichever existing soul has what the question needs, on a different model from yours where one is available; a harness-native subagent only for a small task that directly helps you, where your person asks, or in a multi-agent workflow mode; brief it with the artefact at its exact version, take its report, and retire it on answer. The plan stays yours. Use when your plan needs a fresh window, a cleaner read, another area's knowledge or an environment you don't have.
+description: Send a probe - one child with one question (test an approach, test a use case, an adversarial review of a plan or a design, investigate an alternative, test a theory) - or one probe per approach when the plan can go more than one way, after checking it isn't already known, and never one that checks its own claim; as an OATS child, a fresh instance of whichever existing soul has what the question needs, on a different model from yours where one is available; a harness-native subagent only for a small task that directly helps you, where your person asks, or in a multi-agent workflow mode; brief it with the artefact at its exact version, take its report, and retire it on answer. The plan stays yours. Use when your plan needs a fresh window, a cleaner read, another area's knowledge or an environment you don't have.
 ---
 
 IMPORTANT: after a compaction, reload this skill before you continue the step.
@@ -18,8 +18,46 @@ decision in it, stays yours.
   review: its developer iterates with its own fresh reviewers, and you verify the converged
   branch once (`/verify-developer-work`).
 - **Investigate an alternative:** what would the other way cost, and what would it give?
+- **Test a theory:** does a claim the plan rests on hold (a cause, how a library or a
+  service behaves, that a limit holds, that a fix removes the failure)? It tries the claim
+  on small, concrete cases or the smallest run first, tries as hard to break it as to
+  confirm it, and reports the cases it ran, each with its result.
 
 Two questions are two probes.
+
+## Already known?
+Before you send a build or a probe, and as every probe's first step: does it exist already,
+in the code, your knowledge layer, a library or the forge's history? Say where you looked. A
+search that finds nothing is recorded as such, in your instance state or the probe's
+report, so nobody runs it again.
+
+## Competing approaches
+When the plan can go more than one way and the choice matters, don't pick one and probe it:
+1. **List the approaches,** usually 2 to 4. Include the one you doubt, the opposite of what
+   you expect, and "this already exists".
+2. **Send one probe per approach, in parallel,** each with that approach as its one
+   question, varied by model where the organisation has more than one. Each builds the
+   smallest spike that shows whether its approach works, and reports what it found along
+   the way, not only a verdict.
+3. **Compare on the evidence.** A second round may carry the first round's useful findings
+   to the approaches still in the lead. Drop a dead end as soon as it is one.
+4. **Record every approach tried,** and why each was dropped, in your instance state: the
+   denominator, not just the winner.
+
+<!-- adapt: How many probes may a lead run in parallel for one decision? -->
+At most 4 probes run in parallel for one decision.
+
+## A probe never checks its own claim
+A claim the plan rests on, a probe's included, is checked by a different probe with fresh
+context, briefed to find its gaps and to check what it cites, on a different model where
+one is available. Where a mechanical check exists (a test, a type check, a benchmark), use
+it, with a statement you wrote or approved, never the probe. A check a probe can pass
+without being right (a leaky test, a judge on the same model) proves nothing.
+
+## What it is worth
+The fan-out fits what the decision is worth: most decisions need one probe, and a choice
+that is cheap to reverse needs none. Past the cap above, for one decision, ask your person
+first.
 
 ## Who answers it
 **An OATS child,** a fresh instance of whichever existing soul has what the question needs.

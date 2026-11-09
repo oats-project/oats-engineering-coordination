@@ -48,6 +48,11 @@ is already listed is a collision; settle it before you copy:
   - Rewrite each soul's `AGENTS.md` with what is specific to it; never restate the role.
 - **`LICENSE`:** the template is MIT. Keep its notice with what you copy, beside the copied
   folders or in the host repository's notices.
+- **`THIRD-PARTY-NOTICES.md`:** the developer's `test-first`, `diagnose-before-fixing`,
+  `design-while-writing` and `prove-it-works`, and its inject's quality floor, adapt rules
+  from MIT-licensed sources, and each of those skills ends by pointing to this file. Copy it
+  beside the copied capabilities whenever you keep any of them, and keep it while they
+  stay.
 - **Not copied:** this guide, `README.md`, `CHANGELOG.md`, `docs/`, `schemas/`, `scripts/`,
   `test/`, `package.json` and `.github/`. They belong to the template.
 
@@ -121,10 +126,14 @@ A copy is adapted when no marker is left; until then, the markers left are its o
 - **With more than one person, who owns which paths and lanes?** Assumes one person, who owns everything. With several, write one line per area: its paths and its owner. Default: one owner.
 - **Where are the effort records, the lane map and holds kept?** Assumes one item per effort in the tasks layer, and the lane map and the default branch's holds as records in the tasks layer, each linked from these rules. Never in the rules themselves: they are copied into each instance at spawn and can't change while work runs. Create the lane map's record now, empty, and write its link into the rules, so the first maintainer, started later, finds it there and adds its entry. Default: that.
 
+### `capabilities/engineering-expert/skills/send-a-probe/SKILL.md`
+- **How many probes may a lead run in parallel for one decision?** Assumes up to 4, one per competing approach. A probe costs a full instance's run, so name a lower cap where runs are expensive, or a higher one where decisions are worth it. Default: up to 4.
+
 ### `capabilities/engineering-expert/skills/coordinate-developers/SKILL.md`
 - **Which developer souls exist, and which environment does each provide?** Assumes one developer soul, `developer`. Default: that.
 
 ### `capabilities/developer/injects/developer.md`
+- **Does the organisation enforce the quality floor with its runtime's hooks, and with which checks?** Assumes the floor is written only, and agents keep it. Where the runtime has hooks (Claude Code's tool hooks, a pre-commit hook, CI), name the check that enforces each rule (new suppressions, skipped or weakened tests, stubs, empty catches) and where it is installed. Default: written only.
 - **Where may agents build and run tests, which hosts are shared, and which are read-only?** Assumes agents build and test in their own worktree or a scratch directory, on hosts that may be shared, and never change a customer's or a production host. Name the shared hosts, any host agents may only read, and any limit on parallel or long runs. Default: as written.
 
 ### `capabilities/developer/skills/execution-strategy/SKILL.md`
@@ -144,7 +153,7 @@ A copy is adapted when no marker is left; until then, the markers left are its o
 
 Every copied capability records the template release it came from, in its `oats.json`
 description. The template's descriptions already end with that sentence:
-"Copied from the engineering template, template-v2.0.0." Keep it as it is when you copy,
+"Copied from the engineering template, template-v2.1.0." Keep it as it is when you copy,
 and set `version` to the copy's own numbering from then on. The template's own validator,
 which requires `version` to be the template release, stays with the template (section 1):
 nothing in the copy checks it.
@@ -153,7 +162,7 @@ Souls carry no such record, so write one for the whole copy, in the host reposit
 `capabilities/TEMPLATE-RELEASE` (a plain file, which OATS ignores):
 ```
 template: oats-project/oats-engineering-coordination
-release: template-v2.0.0
+release: template-v2.1.0
 commit: <the full commit SHA that tag points to>
 capabilities: <the ids you copied>
 souls: <the souls you copied, under their names in the copy>

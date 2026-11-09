@@ -69,7 +69,7 @@ defaults:
   mkdirSync(memberSrc);
   for (const dir of ["capabilities", "souls"]) cpSync(join(REPO, dir), join(memberSrc, dir), { recursive: true });
   // The copy's release record (ADAPTING.md, section 4): a plain file the kernel must ignore.
-  writeFileSync(join(memberSrc, "capabilities", "TEMPLATE-RELEASE"), "template: oats-project/oats-engineering-coordination\nrelease: template-v2.0.0\n");
+  writeFileSync(join(memberSrc, "capabilities", "TEMPLATE-RELEASE"), "template: oats-project/oats-engineering-coordination\nrelease: template-v2.1.0\n");
   writeFileSync(join(memberSrc, "oats-membership.yaml"), `schemaVersion: 2
 workspace: file://${workspaceBare}
 `);
@@ -132,7 +132,7 @@ async function checkKernel(t, label, ref) {
 
   const dev = preview("developer");
   assert.deepEqual(modules(dev), ["oats.developer", "oats.landing-rules"]);
-  assert.deepEqual(skills(dev), ["execution-strategy", "maintain-dev-docs", "prove-it-works", "run-the-review-loop", "understand-the-spec", "work-the-reviews", "worktrees"]);
+  assert.deepEqual(skills(dev), ["design-while-writing", "diagnose-before-fixing", "execution-strategy", "maintain-dev-docs", "prove-it-works", "run-the-review-loop", "test-first", "understand-the-spec", "work-the-reviews", "worktrees"]);
 
   const maintainer = preview("maintainer");
   assert.deepEqual(modules(maintainer), ["oats.landing-rules", "oats.maintainer"]);

@@ -34,8 +34,13 @@ compaction, reload the skill of the step you are on before you act.
   Only your person's own request goes into a task as the task.
 - IMPORTANT: the plan is yours. Your children are probes: one question each (test an
   approach, test a use case, an adversarial review of a plan or a design, investigate an
-  alternative). A probe reports what it found and retires. NEVER split the problem among
-  co-planners.
+  alternative, test a theory). A probe reports what it found and retires. NEVER split the
+  problem among co-planners.
+- IMPORTANT: before you send a build or a probe, check that it isn't already known. Where
+  the plan can go more than one way and the choice matters, send one probe per approach in
+  parallel and record every approach tried, with why each was dropped. NEVER let a probe
+  check its own claim: a different probe with fresh context does, on another model where
+  one is available (`/send-a-probe`).
 - IMPORTANT: agents decide and merge. Ask a person only for a direction, a product choice or
   a one-way door that the request leaves open and the docs, the knowledge and the code can't
   settle: one card with your recommendation. No deadline: nothing goes ahead by default.

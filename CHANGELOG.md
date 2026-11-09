@@ -2,6 +2,85 @@
 
 ## Unreleased
 
+## template-v2.1.0 - unreleased
+
+Probes that test theories and competing approaches, and the developer's craft skills. For a
+copy of template-v2.0.0, each line says what to port.
+
+### Probes that test theories and approaches
+
+**`oats.engineering-expert`**
+- `/send-a-probe`, changed:
+  - a fifth kind of question, "Test a theory": a claim the plan rests on, tried on small,
+    concrete cases or the smallest run first, as hard to break as to confirm, reported case
+    by case;
+  - "Already known?": before a build or a probe, and as every probe's first step, check the
+    code, the knowledge layer, libraries and the forge's history, and record a search that
+    finds nothing;
+  - "Competing approaches": where the plan can go more than one way and the choice matters,
+    list 2 to 4 approaches (the doubted one, the opposite, "this already exists"), one probe
+    per approach in parallel, varied by model, each a smallest spike reporting what it found
+    along the way; compare on evidence, a second round may carry useful findings to the
+    leaders, drop dead ends early, and record every approach tried with why it was dropped;
+  - "A probe never checks its own claim": a different probe with fresh context checks it,
+    on another model where one is available, or a mechanical check whose statement the lead
+    wrote or approved; a check a probe can pass without being right proves nothing;
+  - "What it is worth": the fan-out fits the decision, most need one probe; an adapt marker
+    asks how many probes may run in parallel for one decision (default up to 4).
+- `/plan-and-spec`, changed: "the riskiest assumption first" names a theory probe, a spike
+  or a real run, or one probe per competing approach.
+- inject, changed: "test a theory" among the probes' questions; check that work isn't
+  already known; competing approaches in parallel, every one recorded; a probe never checks
+  its own claim.
+
+### The developer's craft skills
+
+**`oats.developer`**
+- `/test-first`, added: find and run the existing tests the change touches first; one
+  vertical slice at a time, each with a test watched failing for the expected reason; tests
+  through public interfaces, expected values from an independent source, mocks only at
+  system boundaries, one behaviour per test. The repository's conventions win; the spec's
+  acceptance tests stay unchanged. Code written before its test is tested and the test
+  watched failing, not deleted.
+- `/diagnose-before-fixing`, added: a fast, deterministic command that shows the failure
+  before anything else (or say why there is none); reproduce, minimise, three to five ranked
+  falsifiable hypotheses tested cheapest first, debug lines tagged; a regression test at a
+  real seam, the fix at the root, the confirmed hypothesis in the commit and the PR; three
+  failed fixes means stop and tell the expert.
+- `/design-while-writing`, added, applied on every slice: deep modules behind small
+  interfaces, the deletion test, no seam with a single adapter, an interface designed twice;
+  the contract first and additive changes for what another surface uses; thin slices that
+  touch only what the spec needs, about 100 untested lines as the sign to stop and test,
+  and structural and behavioural changes in separate commits.
+- inject, changed: names when to load each of the three; carries the quality floor (no new
+  suppressions, no skipped, deleted or weakened tests, no stubs, no empty catches;
+  tightening is silent, loosening is loud, in the hand-back; the warning signs that mean
+  stop and tell the expert), with an adapt marker for enforcing it with the runtime's hooks.
+- `/prove-it-works`, changed: step 6, each claim in the hand-back names its command and
+  output at that head; a subagent's or workflow agent's success report is rerun, not
+  trusted.
+- `/work-the-reviews`, changed: each finding is verified against the code before acting;
+  agreement only with what was checked, saying what was checked; a YAGNI check on a finding
+  that adds an abstraction, an option or a test for a case that can't happen.
+- `/run-the-review-loop`, changed: step 2 verifies each finding against the code and
+  applies the same YAGNI check.
+- `oats.json`: the three skills are listed, and its description says so.
+
+### Notices and adaptation
+- `THIRD-PARTY-NOTICES.md`, added at the root: each MIT source's copyright notice and
+  licence, with the commit read and the template text it fed. Each adapted skill ends
+  "Adapted from sources listed in THIRD-PARTY-NOTICES.md".
+- `ADAPTING.md`: copy `THIRD-PARTY-NOTICES.md` with any of those skills; two new adaptation
+  points (parallel probes per decision; hooks for the quality floor).
+- Every capability's `version` is 2.1.0 and its release sentence names template-v2.1.0.
+
+### What to do
+- Copying fresh: follow `ADAPTING.md`.
+- With a copy of template-v2.0.0: port the lines above. Copy the three new skill folders,
+  add them to your developer `oats.json` and its inject, copy `THIRD-PARTY-NOTICES.md`,
+  answer the two new adapt markers, then update the release sentence in each capability you
+  ported and `capabilities/TEMPLATE-RELEASE`.
+
 ## template-v2.0.0 - 2026-11-09
 
 The first template release, in its own repository,

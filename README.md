@@ -67,7 +67,8 @@ cases around it.
     `/coordinate-developers`, `/verify-developer-work`, `/ask-a-person`,
     `/land-on-agreement`, `/find-the-maintainer`, `/across-people`, `/findings-and-blocks`.
   - `oats.developer`: `/understand-the-spec`, `/execution-strategy`, `/worktrees`,
-    `/prove-it-works`, `/run-the-review-loop`, `/work-the-reviews`, `/maintain-dev-docs`.
+    `/test-first`, `/diagnose-before-fixing`, `/design-while-writing`, `/prove-it-works`,
+    `/run-the-review-loop`, `/work-the-reviews`, `/maintain-dev-docs`.
   - `oats.code-review`: `/adversarial-review`, `/security-review`,
     `/simplification-review`, `/review-dev-docs`.
   - `oats.maintainer`: `/maintainer-intake`, `/launch-work`, `/direction-gate`,
@@ -139,4 +140,5 @@ and the concurrent-subagent limit. Claude Code's `workflowSizeGuideline` default
 ([Claude Code workflows](https://code.claude.com/docs/en/workflows.md)).
 
 ## License
-MIT
+MIT. Some of the developer's skills adapt rules from MIT-licensed sources; their notices are
+in [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
