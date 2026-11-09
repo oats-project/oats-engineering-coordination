@@ -1,6 +1,6 @@
 ---
 name: work-the-reviews
-description: Open and own your PR once your expert has verified the branch and the lane's green light is given - watch it for reviews and CI with what your harness offers, never a busy loop; answer every review-bot, reviewer and CI finding (fix it or say why not) in one fix commit per round; rebase when the default branch moves; raise to your expert only what needs product or architecture direction; hand the PR back at a merge-ready head. Use from the green light until your PR merges or closes, and whenever a review, a comment or a CI result arrives on it.
+description: Open and own your PR once your expert has verified the branch and the lane's green light is given - watch it for reviews and CI with what your harness offers, never a busy loop; answer every review-bot, reviewer and CI finding (fix it or say why not) in one fix commit per round (a structural change in a commit of its own); rebase when the default branch moves; raise to your expert only what needs product or architecture direction; hand the PR back at a merge-ready head. Use from the green light until your PR merges or closes, and whenever a review, a comment or a CI result arrives on it.
 ---
 
 IMPORTANT: after a compaction, reload this skill before you continue.
@@ -41,7 +41,9 @@ direction.
      does not hold up this PR.
 
    Make one fix commit for the round, prove it again (`/prove-it-works`), push, and reply
-   in each thread with that commit.
+   in each thread with that commit. A rename, a move or an extraction the round asks for
+   goes in a commit of its own beside it (`/design-while-writing`); each thread names the
+   commit that answers it.
 4. **A fix bigger than a few lines** gets a fresh review round before you push it: a new
    reviewer at the fix's head, never an earlier round's (`/run-the-review-loop`). Where
    your review loop is the review the lane counts (no review bot runs), every new head

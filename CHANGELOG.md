@@ -31,6 +31,7 @@ copy of template-v2.0.0, each line says what to port.
   - "What it is worth": the fan-out fits the decision, most need one probe; an adapt marker
     asks how many probes may run in parallel for one decision (default up to 4);
   - the route example is model-neutral (`<provider>/<model>` and `<model>`).
+- `docs/how-the-work-flows.md`: the example's probe runs a check the expert wrote.
 - `/plan-and-spec`, changed: "the riskiest assumption first" names a theory probe, a spike
   or a real run, or one probe per competing approach.
 - inject, changed: "test a theory" among the probes' questions; check that work isn't
@@ -65,7 +66,8 @@ copy of template-v2.0.0, each line says what to port.
   trusted.
 - `/work-the-reviews`, changed: each finding is verified against the code before acting;
   agreement only with what was checked, saying what was checked; a YAGNI check on a finding
-  that adds an abstraction, an option or a test for a case that can't happen.
+  that adds an abstraction, an option or a test for a case that can't happen; a structural
+  change a round asks for goes in a commit of its own beside the round's fix commit.
 - `/run-the-review-loop`, changed: step 2 verifies each finding against the code and
   applies the same YAGNI check; the route example is model-neutral (`<provider>/<model>`
   and `<model>`), and the models it names for diversity no longer include Astra or Fable.
