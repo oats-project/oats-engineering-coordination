@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-## template-v2.0.0 - unreleased
+## template-v2.0.0 - 2026-11-09
 
 The first template release, in its own repository,
 oats-project/oats-engineering-coordination. Up to v1.18.0 this was the oats.engineering
