@@ -123,7 +123,7 @@ no bound. `npm test` previews every soul in OATS 0.69.7 and main, and checks tha
 list the kernel features the texts rely on.
 
 Works with any harness OATS supports (pi, Claude Code, Codex). The
-`code-reviewer` soul prefers Codex with `gpt-6-astra` (`launch:` in its soul); a machine
+`code-reviewer` soul prefers pi with `github-copilot/gpt-6.1-sol` (`launch:` in its soul); a machine
 overrides it in `oats-local.yaml` `souls.launch`, and spawn flags win over both. Developers use
 your harness's workflow tool for parallel work; where it has none, its subagents in the same
 pattern, keeping each workflow under 10 agents and asking you first for more. Where the

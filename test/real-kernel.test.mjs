@@ -149,8 +149,8 @@ async function checkKernel(t, label, ref) {
   const reviewer = preview("code-reviewer");
   assert.deepEqual(modules(reviewer), ["oats.code-review"], "the reviewer composes only its own role");
   assert.deepEqual(skills(reviewer), ["adversarial-review", "review-dev-docs", "security-review", "simplification-review"]);
-  assert.equal(reviewer.launch.effective.harness, "codex", "code-reviewer launches on Codex by default");
-  assert.equal(reviewer.launch.effective.model, "gpt-6-astra", "code-reviewer launches on Astra by default");
+  assert.equal(reviewer.launch.effective.harness, "pi", "code-reviewer launches on pi by default");
+  assert.equal(reviewer.launch.effective.model, "github-copilot/gpt-6.1-sol", "code-reviewer launches on gpt-6.1-sol by default");
   assert.equal(reviewer.launch.from, "soul", "the reviewer's launch comes from its soul");
 }
 

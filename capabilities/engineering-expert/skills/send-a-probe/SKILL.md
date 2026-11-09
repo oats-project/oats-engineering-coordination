@@ -83,8 +83,8 @@ agreement is not independent. Preview the soul first (`oats spawn <soul> --previ
 --json`) and compare its `launch.effective.model`, what this machine will launch (a
 `launch.from` of `local` is this machine's override of the soul's preference), with yours,
 `launch.model` in your `instance.json`. Compare the models, not the harnesses: a provider
-prefix names a route to a model, not another model, so `github-copilot/gpt-6-astra` and
-`gpt-6-astra` are one. A model that is unknown (`null`, absent, or a harness's native
+prefix names a route to a model, not another model, so `<provider>/<model>` and `<model>`
+are one. A model that is unknown (`null`, absent, or a harness's native
 default) proves nothing, so treat it as a match. When both are known and differ, spawn
 without `--harness`/`--model`, so the effective launch applies. When they match, spawn it
 on a model you know differs from the one you run (your harness reports yours: its status

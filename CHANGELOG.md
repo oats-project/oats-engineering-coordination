@@ -26,7 +26,8 @@ copy of template-v2.0.0, each line says what to port.
     on another model where one is available, or a mechanical check whose statement the lead
     wrote or approved; a check a probe can pass without being right proves nothing;
   - "What it is worth": the fan-out fits the decision, most need one probe; an adapt marker
-    asks how many probes may run in parallel for one decision (default up to 4).
+    asks how many probes may run in parallel for one decision (default up to 4);
+  - the route example is model-neutral (`<provider>/<model>` and `<model>`).
 - `/plan-and-spec`, changed: "the riskiest assumption first" names a theory probe, a spike
   or a real run, or one probe per competing approach.
 - inject, changed: "test a theory" among the probes' questions; check that work isn't
@@ -63,8 +64,14 @@ copy of template-v2.0.0, each line says what to port.
   agreement only with what was checked, saying what was checked; a YAGNI check on a finding
   that adds an abstraction, an option or a test for a case that can't happen.
 - `/run-the-review-loop`, changed: step 2 verifies each finding against the code and
-  applies the same YAGNI check.
+  applies the same YAGNI check; the route example is model-neutral (`<provider>/<model>`
+  and `<model>`), and the models it names for diversity no longer include Astra or Fable.
 - `oats.json`: the three skills are listed, and its description says so.
+
+### The code reviewer
+- `souls/code-reviewer`: its example `launch:` is `{ harness: pi, model:
+  github-copilot/gpt-6.1-sol }`, no longer Codex with `gpt-6-astra`. A copy sets its own,
+  as `ADAPTING.md` says; the README and the real-kernel test say the same.
 
 ### Notices and adaptation
 - `THIRD-PARTY-NOTICES.md`, added at the root: each MIT source's copyright notice and
