@@ -33,7 +33,7 @@ function mutate(t, relativePath, fn) {
 test("validator accepts the real template", () => {
   const result = runValidator();
   assert.equal(result.status, 0, result.stderr);
-  assert.match(result.stdout, /^Validated the engineering template at template-v2\.0\.0: 6 capabilities, 31 skills, 5 souls, 13 adapt markers/);
+  assert.match(result.stdout, /^Validated the engineering template at template-v2\.0\.0: 6 capabilities, 31 skills, 5 souls, 15 adapt markers/);
 });
 
 test("validator rejects capability manifest schema violations", (t) => {
@@ -180,6 +180,33 @@ test("validator rejects a soul value YAML would not parse", (t) => {
   const result = mutate(t, "souls/code-reviewer/soul.yaml", (text) => text.replace("proves its findings and reports them, as", "proves its findings and reports: as"));
   assert.equal(result.status, 1);
   assert.match(result.stderr, /souls\/code-reviewer\/soul\.yaml:3: a plain YAML value can't contain ": "/);
+});
+
+test("validator rejects a skill description YAML would not parse", (t) => {
+  const result = mutate(t, "capabilities/developer/skills/worktrees/SKILL.md", (text) => text.replace("When and how to use extra worktrees", "Extra worktrees: when and how to use them"));
+  assert.equal(result.status, 1);
+  assert.match(result.stderr, /capabilities\/developer\/skills\/worktrees\/SKILL\.md:3: a plain YAML value can't contain ": "/);
+});
+
+test("validator holds skill frontmatter to plain one-line values", (t) => {
+  const file = "capabilities/developer/skills/worktrees/SKILL.md";
+  const cases = [
+    ['description: "When', /SKILL\.md:3: a frontmatter value can't start with "/],
+    ["description: {text: When", /SKILL\.md:3: a frontmatter value can't start with \{/],
+    ["description: 'Read the developer's worktree: when", /SKILL\.md:3: a frontmatter value can't start with '/],
+    ["description: {text: [open} When", /SKILL\.md:3: a frontmatter value can't start with \{/],
+    ["description: >\n  When", /SKILL\.md:3: a frontmatter value can't start with >/],
+    ["description: Extra trees #1 When", /SKILL\.md:3: a plain YAML value can't contain " #"/],
+    ["description:When", /SKILL\.md:3: a frontmatter line must be `key: value` on one line, with a space after the colon/],
+    ["broken\ndescription: When", /SKILL\.md:3: a frontmatter line must be `key: value` on one line/],
+    ["name: other\ndescription: When", /SKILL\.md:3: frontmatter key name appears twice/],
+    ["description: 1. When", /SKILL\.md:3: a frontmatter value must read as text/],
+  ];
+  for (const [replacement, message] of cases) {
+    const result = mutate(t, file, (text) => text.replace("description: When", replacement));
+    assert.equal(result.status, 1, replacement);
+    assert.match(result.stderr, message, replacement);
+  }
 });
 
 test("validator rejects a skill reference a composing soul can't load", (t) => {

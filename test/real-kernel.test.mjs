@@ -68,6 +68,8 @@ defaults:
   const memberSrc = join(tmp, "member-src");
   mkdirSync(memberSrc);
   for (const dir of ["capabilities", "souls"]) cpSync(join(REPO, dir), join(memberSrc, dir), { recursive: true });
+  // The copy's release record (ADAPTING.md, section 4): a plain file the kernel must ignore.
+  writeFileSync(join(memberSrc, "capabilities", "TEMPLATE-RELEASE"), "template: oats-project/oats-engineering-coordination\nrelease: template-v2.0.0\n");
   writeFileSync(join(memberSrc, "oats-membership.yaml"), `schemaVersion: 2
 workspace: file://${workspaceBare}
 `);
@@ -135,6 +137,14 @@ async function checkKernel(t, label, ref) {
   const maintainer = preview("maintainer");
   assert.deepEqual(modules(maintainer), ["oats.landing-rules", "oats.maintainer"]);
   assert.deepEqual(skills(maintainer), ["cross-review-peer", "direction-gate", "keep-it-clean", "launch-work", "maintainer-intake", "plan-release", "pr-review", "ship-release", "support-maintainer"]);
+
+  // The kernel reads each skill's description with its own YAML parser and gives null when the
+  // frontmatter doesn't parse, as the harnesses would drop the skill.
+  for (const capability of ["oats.dispatcher", "oats.engineering-expert", "oats.developer", "oats.code-review", "oats.maintainer", "oats.landing-rules"]) {
+    const shown = runJson(process.execPath, [cli, "capabilities", "show", capability, "--dir", deploy, "--json"], { timeout: 120_000, env });
+    const unparsed = (shown.skills || []).filter((s) => typeof s.description !== "string" || !s.description).map((s) => s.name);
+    assert.deepEqual(unparsed, [], `${label}: ${capability} has skills whose frontmatter the kernel can't parse`);
+  }
 
   const reviewer = preview("code-reviewer");
   assert.deepEqual(modules(reviewer), ["oats.code-review"], "the reviewer composes only its own role");

@@ -129,7 +129,8 @@ the same human and lane.
   entry, its parent's included: it tells its parent each lead it launches (instance name and
   goal) and each effort it closes, and the parent updates its entry.
 - **New intake goes to it** while you have more than 5 efforts of your own in flight: pass
-  each request on once, with the requester's words, and tell an agent requester who has it
+  each request on once (your human's own words, anyone else's by link or id:
+  `/launch-work`, "The request"), and tell an agent requester who has it
   (a human one hears only what they must decide, approve or provide). You keep your own
   efforts. At 5 or fewer, take new intake yourself again; the seat finishes what it has.
 - **It drives the efforts it is given up to hand-back:** it launches each with one lead as
@@ -233,7 +234,8 @@ Each once, to the one peer it is for:
 - a hold that must stop work already in flight;
 - the release plan, where the peer's lane has PRs in it or left out (`/plan-release`);
 - a lane changing hands;
-- a request that belongs to the peer's lane, with the requester's words;
+- a request that belongs to the peer's lane (your human's own words, anyone else's by
+  link or id: `/launch-work`, "The request");
 - a direction question, to the release lane and whoever decides it;
 - an arrangement other than the default, proposed to the release lane's maintainer.
 

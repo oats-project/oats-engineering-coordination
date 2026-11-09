@@ -3,8 +3,9 @@
 These are this organisation's landing rules and its ownership record, in one place. Every
 coordinating role reads them here: the dispatcher, the experts, the developers and the
 maintainers. Where a skill says "your landing rules", it means this section. They change
-only on the yes of the person who owns the lane (the setup expert's set-landing-rules
-procedure writes them), each rule with its reason; a lane opened on the lane map for its
+only on the yes of the person who owns the lane, each rule with its reason (where the
+workspace has oats.framework's `oats.coordination-setup`, its set-landing-rules skill
+writes them); a lane opened on the lane map for its
 owner's own work runs on the defaults below until then. No rule sets a deadline or a default
 if someone is silent: a request waits for its answer. These rules are copied into each
 instance at spawn: after a change, whoever wrote it tells each standing instance (the
@@ -18,6 +19,9 @@ compaction or not.
 <!-- adapt: Which lanes does the organisation have, what does each cover, and which person owns each? -->
 - `main`: everything in this workspace's repositories, owned by the person who runs the
   workspace. It is also the release lane.
+
+**CI green,** wherever these rules or a skill say it, means every check the forge requires
+at a head has succeeded there: none failing, none pending.
 
 **What merges a change, and who merges it.**
 <!-- adapt: Per lane, which agreements must hold at a PR's head before it merges, and who merges it? -->

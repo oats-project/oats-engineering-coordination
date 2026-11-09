@@ -67,6 +67,8 @@ function validateAgainst(schema, value, { root = schema, path = "" } = {}) {
       if (s.items) v.forEach((item, i) => check(s.items, item, `${p}/${i}`));
     } else if (isObject(v)) {
       const keys = Object.keys(v);
+      if (s.minProperties !== undefined && keys.length < s.minProperties) push(p, `must have at least ${s.minProperties} propert${s.minProperties === 1 ? "y" : "ies"}`);
+      if (s.maxProperties !== undefined && keys.length > s.maxProperties) push(p, `must have at most ${s.maxProperties} propert${s.maxProperties === 1 ? "y" : "ies"}`);
       for (const req of s.required || []) if (!Object.hasOwn(v, req)) push(p, `missing required property ${show(req)}`);
       for (const key of keys) {
         const kp = `${p}/${pointerKey(key)}`;
@@ -101,6 +103,22 @@ function commandEntrypoint(spec) {
   return typeof command === "string" ? command.trim().split(/\s+/)[0] : command;
 }
 
+// Split a flow mapping's body at its own commas, never at one inside a nested {} or [] or a
+// quoted string.
+function splitTopLevel(inner) {
+  const parts = [];
+  let depth = 0, quote = null, start = 0;
+  for (let i = 0; i < inner.length; i++) {
+    const c = inner[i];
+    if (quote) { if (c === quote) quote = null; continue; }
+    if (c === '"' || c === "'") quote = c;
+    else if (c === "{" || c === "[") depth++;
+    else if (c === "}" || c === "]") depth--;
+    else if (c === "," && depth === 0) { parts.push(inner.slice(start, i).trim()); start = i + 1; }
+  }
+  parts.push(inner.slice(start).trim());
+  return parts;
+}
 function parseInlineValue(raw) {
   const s = raw.trim();
   if (s === "") return {};
@@ -112,7 +130,7 @@ function parseInlineValue(raw) {
     const obj = {};
     const inner = s.slice(1, -1).trim();
     if (!inner) return obj;
-    for (const part of inner.split(/\s*,\s*/)) {
+    for (const part of splitTopLevel(inner)) {
       const idx = part.indexOf(":");
       if (idx < 0) return s;
       obj[part.slice(0, idx).trim()] = parseInlineValue(part.slice(idx + 1));
@@ -150,11 +168,25 @@ function parseSkillFrontmatter(file) {
   const end = text.indexOf("\n---", 4);
   if (end < 0) return { text, frontmatter: null };
   const fm = {};
-  for (const raw of text.slice(4, end).split(/\r?\n/)) {
+  // The kernel parses this with a real YAML parser and drops a skill whose frontmatter fails.
+  // So every line is held to a subset that always parses as a map of text: `key: value` on one
+  // line (a space after the colon), each key once, and each value a plain scalar (no quotes, no
+  // flow or block collection) starting with no YAML indicator, with no ": " or " #" inside,
+  // and neither a word YAML reads as a boolean or null nor one that starts with a number. Any
+  // other line fails.
+  for (const [index, raw] of text.slice(4, end).split(/\r?\n/).entries()) {
     if (!raw.trim()) continue;
-    const idx = raw.indexOf(":");
-    if (idx < 0) continue;
-    fm[raw.slice(0, idx).trim()] = raw.slice(idx + 1).trim().replace(/^['"]|['"]$/g, "");
+    const at = `${relative(repoRoot, file)}:${index + 2}`;
+    const line = /^([A-Za-z][A-Za-z0-9_-]*): +(.*?)\s*$/.exec(raw);
+    if (!line) { report(at, "a frontmatter line must be `key: value` on one line, with a space after the colon"); continue; }
+    const key = line[1], value = line[2].trim();
+    if (Object.hasOwn(fm, key)) report(at, `frontmatter key ${key} appears twice`);
+    else if (value === "") report(at, "a frontmatter value must be on the same line as its key");
+    else if (/^[-?:,[\]{}#&*!|>'"%@`]/.test(value)) report(at, `a frontmatter value can't start with ${value[0]}: write it as plain text`);
+    else if (/:(\s|$)/.test(value)) report(at, "a plain YAML value can't contain \": \"; reword it");
+    else if (/\s#/.test(value)) report(at, "a plain YAML value can't contain \" #\" (YAML reads a comment); reword it");
+    else if (/^(true|false|yes|no|on|off|null|~|[-+]?\.(inf|nan))$/i.test(value) || /^[-+.]?\d/.test(value)) report(at, "a frontmatter value must read as text: not a boolean or null, and not starting with a number");
+    if (!Object.hasOwn(fm, key)) fm[key] = value;
   }
   return { text, frontmatter: fm };
 }

@@ -25,7 +25,7 @@ error."
    yes, with the run. It retires on answer; the plan stays the expert's.
 4. **A developer builds it** (`/coordinate-developers`), as the expert's child. It checks
    the spec (`/understand-the-spec`), asks one question with a proposed answer, runs a
-   workflow in one worktree on the person's opt-in (`/execution-strategy`), adds the acceptance tests unchanged and
+   workflow in one worktree (`/execution-strategy`), adds the acceptance tests unchanged and
    proves it the way the repository runs it, CI's checks included (`/prove-it-works`).
 5. **The review loop** (`/run-the-review-loop`). The developer, not the expert, iterates
    with fresh reviewers. Round 1's `code-reviewer`, briefed without the developer's
@@ -92,7 +92,8 @@ remaining quota" lives mostly in the backend, so the backend expert leads it, on
   directly, in a new thread on the effort, says who it is, and sends one card for the whole
   effort. Their answer comes in that thread; no dispatcher carries it.
 - The view is built by their area's expert: the lead asks their dispatcher to start one,
-  with its message as the task, and hands it the interface at its commit
+  which it does with the lead's message by its id as the request to read (`/dispatch`,
+  section 5), and hands it the interface at its commit
   (`GET /v2/quota → {limit, remaining, resetsAt}`).
 - A regenerated client in their paths is mechanical and needs nobody's approval.
 - A finding in their area (a stale cache header) goes to that expert as a recommendation

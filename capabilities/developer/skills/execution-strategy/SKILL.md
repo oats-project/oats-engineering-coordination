@@ -9,11 +9,10 @@ Lean toward parallelism. A dynamic workflow runs the work's paths (the change, i
 fixtures, docs, a migration, another module) as agents under a script that fixes who does
 what, in what order, and how results come back. Use your harness's workflow tool; without
 one, run subagents in the same fan-out, fan-in pattern. These agents are your own hands on
-your own work; your reviewers are chosen as `/run-the-review-loop` says. They are
-harness-native subagents, invisible to everyone but you, so a workflow runs only on your
-person's opt-in or in your harness's multi-agent workflow mode (Claude Code's ultracode,
-say) when it is in use (below). Without either, build the paths yourself, one after
-another.
+your own work: small tasks that directly help you, which need no one's opt-in. They are
+harness-native subagents, invisible to everyone but you, so they never stand in for a
+review or a probe: your reviewers are OATS children, chosen as `/run-the-review-loop`
+says.
 
 ## Choose one of three
 - Genuinely small, or one tightly coupled line of reasoning (a bug in one function, a small
@@ -33,18 +32,21 @@ When in doubt between the first two, take the workflow.
    interface to meet, how to verify its part.
 3. Fan in (a final stage, or you): merge the paths, in order across worktrees, resolve
    conflicts, run the full verification.
-4. Keep the fan-out to what you can integrate and check: usually 2 to 6 paths.
+4. Keep the fan-out to what you can integrate and check, and to what your host can take
+   (your briefing's "On the hosts you run on"): usually 2 to 6 paths.
 
-## Your person's opt-in, and under 10 agents
-<!-- adapt: How many agents may a developer's workflow run on its person's opt-in, before it asks for more? -->
-- The opt-in is your person's, on every harness, whether or not the harness asks for it
-  (Claude Code's workflow tool does); these instructions never stand in for it. Use a
-  standing opt-in they gave for the session or in settings, or a multi-agent workflow mode
-  in use; otherwise ask once per task with the planned agent count, and run within the cap
-  once they agree. Until they do, or if they decline, build the paths yourself.
+## Under 10 agents, and your human's opt-in
+<!-- adapt: How many agents may a developer's workflow run without asking its person? -->
 - The cap counts every agent across all stages. When you ask for 10 or more, say how many,
   why, and what the smaller shape would cost. Back-to-back workflows that get around the
   cap need the same permission.
+- Within the cap, fan your own paths out without asking: as subagents, or through a
+  workflow tool your harness runs without an opt-in.
+- Where your harness's workflow tool requires your human's opt-in (Claude Code's does,
+  outside ultracode), the consent is theirs; these
+  instructions never stand in for it. Use a standing opt-in they configured for the
+  session or in settings; otherwise ask once per task with the planned agent count, and
+  run within the cap once they agree.
 
 ## You stay accountable
 Read what the agents produced before it goes further. It goes through consolidation and

@@ -27,7 +27,8 @@ another's decision.
 
 ## Their experts and maintainers
 Bring in their area's expert, or their lane's maintainer, by `/hand-off`. If none is on the
-effort, ask their dispatcher to start the needed one with your message as its task; where
+effort, ask their dispatcher to start the needed one, with your message as the request it reads
+by its id (its task names the role, the area and you); where
 they have no dispatcher, ask them. Never a second maintainer for a lane while one is active
 (`/find-the-maintainer`).
 

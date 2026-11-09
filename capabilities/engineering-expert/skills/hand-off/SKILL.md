@@ -23,8 +23,8 @@ lane), then resolve it:
      is independent of you: `oats spawn <soul> --relation unrelated --purpose <slug>
      --task-file <message.md>`, your message as its task;
    - a role in another person's area, or the maintainer of their lane: ask that person's
-     dispatcher to start it, with your message as its task (`/across-people`); where they
-     have none, ask them;
+     dispatcher to start it, with your message as the request it reads by its id
+     (`/across-people`); where they have none, ask them;
    - a lane's maintainer: `/find-the-maintainer`. Never a second while one is active, even
      a stopped one.
 3. **Its name.** Give each new instance a name no instance has had. Never reuse a retired

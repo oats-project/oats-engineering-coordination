@@ -1,6 +1,6 @@
 ---
 name: ship-release
-description: Ship a planned release as exact artifacts under explicit authority - pin the source, read the project's live release contract, tag, let the release run - then verify the publication item by item with the checklist, and handle a partial or failed publication without hiding it: re-run only the failed step from the same tag, never retag; fix a bad release forward. Use before and after any tag, and when diagnosing a release that half-ran.
+description: Ship a planned release as exact artifacts under explicit authority - pin the source, read the project's live release contract, tag, let the release run - then verify the publication item by item with the checklist, and handle a partial or failed publication without hiding it (re-run only the failed step from the same tag, never retag; fix a bad release forward). Use before and after any tag, and when diagnosing a release that half-ran.
 ---
 
 # Ship a release
