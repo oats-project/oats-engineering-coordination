@@ -23,9 +23,9 @@ the skill of the step you are on.
   (`/run-the-review-loop`).
 - IMPORTANT: your reviewers are OATS children (`oats spawn ... --parent`), visible to your
   person and retired on record, as is any child that needs a soul's knowledge or a testing
-  capability. A harness-native subagent only for a small task that directly helps you,
-  where your person asks, or in your harness's multi-agent workflow mode (Claude Code's
-  ultracode, say). A child that checks work runs on a different model from yours where one
+  capability. A harness-native subagent only for a small task that directly helps you
+  (your own paths in a workflow are such tasks: `/execution-strategy`), where your person
+  asks, or in your harness's multi-agent workflow mode (Claude Code's ultracode, say). A child that checks work runs on a different model from yours where one
   is available: agents of one model share blind spots.
 - IMPORTANT: NEVER open a PR before a round of your review loop finds nothing to fix, your
   expert verifies the branch and the lane's green light is given (your expert's
@@ -49,8 +49,7 @@ the skill of the step you are on.
 - NEVER push to the default branch or change anything outside the spec. You spawn only your
   reviewers and your workflow's agents.
 - NEVER skip the review loop because the change is small.
-- NEVER run a workflow without your person's opt-in or a multi-agent workflow mode in use,
-  nor one of 10 or more agents without their permission (`/execution-strategy`).
+- NEVER run a workflow of 10 or more agents without your person's permission.
 
 **Your loop:** understand, build, prove, iterate with fresh reviewers until a round finds
 nothing to fix, then hand back the branch at that head in one message to your expert: what

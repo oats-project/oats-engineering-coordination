@@ -123,11 +123,12 @@ list the kernel features the texts rely on.
 
 Works with any harness OATS supports (pi, Claude Code, Codex). The
 `code-reviewer` soul prefers Codex with `gpt-6-astra` (`launch:` in its soul); a machine
-overrides it in `oats-local.yaml` `souls.launch`, and spawn flags win over both. Developers run
-parallel work as a workflow (your harness's workflow tool, or its subagents in the same
-pattern) only on your opt-in, which they ask for once per task with the agent count, or in
-a multi-agent workflow mode such as ultracode; otherwise they build the paths themselves.
-Each workflow stays under 10 agents unless you allow more. In Claude Code, the light way to give a standing opt-in is to
+overrides it in `oats-local.yaml` `souls.launch`, and spawn flags win over both. Developers use
+your harness's workflow tool for parallel work; where it has none, its subagents in the same
+pattern, keeping each workflow under 10 agents and asking you first for more. Where the
+harness requires your opt-in to run a workflow (Claude Code's workflow tool does, outside
+ultracode), they ask for it once per task. Reviews and probes are never a developer's own
+subagents: they are OATS children. In Claude Code, the light way to give a standing opt-in is to
 approve a workflow when asked ("Yes, and don't ask again" applies to saved workflows), or to
 add `Workflow` to your permission allow rules for non-interactive runs. Ultracode
 (`/effort ultracode`, `claude --effort ultracode`, or `"ultracode": true` in settings) is not

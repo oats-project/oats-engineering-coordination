@@ -44,8 +44,10 @@ kept from 1.x still say "human". They mean the same.
   2. Remove the package pin and run `oats sync`.
   3. On every machine, fix the keys that name a package soul, `oats.engineering/<soul>`:
      they stop resolving. The copied soul's name is the one `oats souls` lists.
-     - **`souls.launch` in `oats-local.yaml`, first:** a stale key blocks every spawn on
-       that machine. `oats soul launch set <copied soul> --harness <h> --model <m>` (or
+     - **`souls.launch` in `oats-local.yaml`, first:** a stale key blocks, on that
+       machine, every spawn that falls back to a default launch (the soul's or the
+       host's); only a spawn flag (`--harness`, `--launch-config`) or the soul's own
+       `souls.launch` entry gets past it. `oats soul launch set <copied soul> --harness <h> --model <m>` (or
        `--launch-config <name>`), then `oats soul launch remove oats.engineering/<soul>`.
        `oats doctor` reports a stale key; `oats sync` does not.
      - **`souls.disabled` in `oats-local.yaml`:** an entry `oats.engineering/<soul>` lapses
@@ -256,10 +258,12 @@ For organisations that keep adapted copies, each line says what to port.
   expert's message that the developer's checkpoint is due. The adapt marker asks which
   harnesses and models the organisation has for model diversity.
 - `/execution-strategy`, changed: the workflow cap carries an adapt marker; a workflow's
-  agents are the developer's own hands, and harness-native: a workflow runs only on the
-  person's opt-in, on every harness, or in a multi-agent workflow mode in use, and without
-  either the developer builds the paths itself; its reviewers are chosen as
-  `/run-the-review-loop` says. The inject's workflow line says the same.
+  agents are the developer's own hands, small tasks that directly help it, fanned out
+  without asking; the person's opt-in is needed only where the harness's workflow tool
+  requires it (Claude Code's, outside ultracode); being harness-native, they never stand in
+  for a review or a probe, which stay OATS children, chosen as `/run-the-review-loop` says.
+  The developer inject and `ADAPTING.md`'s principle 4 name a developer's own paths as
+  such tasks.
 - `/worktrees`, changed: consolidate before the first review round; a worktree with a
   round's reviewer attached stays until that reviewer is retired; the consolidated
   worktree stays through every round, the expert's return and the PR's fixes, and is
