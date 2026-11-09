@@ -1,0 +1,16 @@
+{
+  "name": "@awebai/oats-engineering",
+  "version": "2.0.0",
+  "description": "The OATS engineering coordination template: capabilities and souls an organisation copies and adapts.",
+  "license": "MIT",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "validate": "node scripts/validate-template.mjs",
+    "test": "npm run validate && node --test test/*.test.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oats-project/oats-engineering-coordination"
+  }
+}

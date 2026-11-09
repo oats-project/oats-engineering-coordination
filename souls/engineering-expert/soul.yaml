@@ -1,0 +1,8 @@
+schemaVersion: 2
+name: engineering-expert
+description: The generalist engineering expert. A fresh instance owns one effort from plan to merge across the organisation's repositories, reading the knowledge each task needs, and retires when it is done.
+# It plans, coordinates, verifies and lands; it builds only what the landing rules let it.
+work: directory
+capabilities:
+  oats.engineering-expert: { from: here }
+  oats.landing-rules: { from: here }

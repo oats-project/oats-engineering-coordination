@@ -1,0 +1,8 @@
+schemaVersion: 2
+name: developer
+description: The default developer. A fresh instance builds one spec in any of the organisation's repositories, proves it the way the repository runs it, iterates with a fresh reviewer each round until a round finds nothing to fix, then opens its PR and works the reviews.
+# Its own worktree and branch per spec.
+work: worktree
+capabilities:
+  oats.developer: { from: here }
+  oats.landing-rules: { from: here }
