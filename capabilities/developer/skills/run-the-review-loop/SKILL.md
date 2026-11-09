@@ -37,8 +37,7 @@ Always give both `--work-dir` and `--repo`. `<repository>` is the absolute path 
 worktree's clone: `repo` in your `instance.json`, or the clone you made an extra worktree
 from. Each reviewer is your child, on your work (`--same-work`), shares your tree to read
 the code and run the tests, and must not edit it; each gets a purpose of its own, so no two
-share a name. On a kernel whose `oats version --json` doesn't list the `instance-same-work`
-feature, leave `--same-work` out.
+share a name.
 
 ## Pick a different model
 A reviewer on your model shares your blind spots. Before spawning, compare:
@@ -49,10 +48,12 @@ A reviewer on your model shares your blind spots. Before spawning, compare:
   `launch.at` overrides the default).
 
 <!-- adapt: Which harnesses and models does this organisation have for model diversity? -->
-When the override is another harness than yours, spawn without `--harness`/`--model` so it
-applies; don't force the soul's default over it. When the effective reviewer would run on
-your harness and model, spawn it on another state-of-the-art model, on another harness when
-you can: currently Codex with Astra, Claude Code with Opus 5.5, Fable, or the latest Grok,
+Compare the models, not the harnesses: a provider prefix names a route to a model, not
+another model, so `github-copilot/gpt-6-astra` on pi and `gpt-6-astra` on Codex are one
+model. When the effective reviewer's model differs from yours, spawn without
+`--harness`/`--model`, so the machine's override applies; don't force the soul's default
+over it. When it would run on your model, on any harness, spawn it on another
+state-of-the-art model, on another harness when you can: currently Codex with Astra, Claude Code with Opus 5.5, Fable, or the latest Grok,
 through a launch configuration this host defines (`oats launch-config list`) or
 `--harness`/`--model`. If none is available, use the effective one and say so in your
 handback.
@@ -109,10 +110,11 @@ oats schedule add "$OATS_INSTANCE-review" --file checkpoint.json
 oats schedule show "$OATS_INSTANCE-review" --json   # nextRun must be the moment you meant
 ```
 - **Read `wakeHold` first.** A wake's Enter answers whatever your session is showing. Set
-  one only where it reads `on-claims` or `not-exposed`, which needs a kernel with the
-  feature `wake-hold`. With `unknown` or no `wakeHold`, set none: hand the wait to your
+  one only where it reads `on-claims` or `not-exposed`. With `unknown` or no `wakeHold`, set none: hand the wait to your
   expert in one line (who owes what, by when), and it sets a checkpoint on you, on its own
-  home: its recipe watches you, never your reviewer, which is yours to replace.
+  home: its recipe watches you, never your reviewer, which is yours to replace. When it is
+  due, your expert tells you so: follow "When it fires" below, taking its first message as
+  your first checkpoint and its second as your second.
 - **The 60 is the minutes until the verdict is overdue:** what a round like this took, with
   margin; with nothing to go on, an hour.
 - **The cron repeats daily on purpose.** A minute the host slept through is never replayed,

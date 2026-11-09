@@ -20,9 +20,7 @@ description: Launch and drive developers to build what you specified, one per su
   repository. Leave both out only when the spec is in that repository. Add only what the
   spec can't hold: the branch or PR to target, and who else works next to it.
 - `--same-work` marks the developer as working on your work. A developer you started
-  before the flag existed gets it with `oats instance same-work <developer> on`. On a
-  kernel whose `oats version --json` doesn't list the `instance-same-work` feature, do
-  neither: leave the flag out and skip the command.
+  before the flag existed gets it with `oats instance same-work <developer> on`.
 - Tell each developer which developers share an interface with it, so they talk directly.
 - Record each in your instance state: instance name, surface, spec, branch.
 
@@ -50,13 +48,22 @@ oats schedule add "$OATS_INSTANCE-<slug>" --file checkpoint-<slug>.json
 oats schedule show "$OATS_INSTANCE-<slug>" --json   # nextRun must be the moment you meant
 ```
 - **Read `wakeHold` first.** A wake's Enter answers whatever your session is showing. Set
-  one only where it reads `on-claims` or `not-exposed`, which needs a kernel with the
-  feature `wake-hold`. With `unknown` or no `wakeHold`, set none: hand the wait to your
+  one only where it reads `on-claims` or `not-exposed`. With `unknown` or no `wakeHold`, set none: hand the wait to your
   parent in one line (who owes what, by when), and it sets the checkpoint on its own home.
-  With no parent, say in the effort's status line that nothing bounds this wait.
-- **A developer hands you its wait:** set a checkpoint on that developer, as your own. It
-  watches the developer, never its reviewer: replacing a reviewer is the developer's. If
-  you can't set one either, hand it up the same way.
+  When that one is due, your parent tells you so: follow "When it fires" below, taking its
+  first message as your first checkpoint and its second as your second. With no parent,
+  say in the effort's status line that nothing bounds this wait.
+- **A developer hands you its wait** on its reviewer: set a checkpoint on that developer,
+  on your home, naming that reviewer and head in its message. It watches the developer,
+  never its reviewer: inspecting and replacing a reviewer is the developer's. When it
+  fires and the developer still waits on that reviewer, the developer's own checkpoint is
+  due, and that is no "waits on someone else" below: tell the developer in one line ("your
+  checkpoint on <reviewer> at <head> is due: follow 'When it fires' in
+  /run-the-review-loop") and set the next one half as far out, its message starting
+  "Second checkpoint:". When that one fires, your line says "second checkpoint", and the
+  developer's skill ends its wait. A developer that neither moves nor answers your line is
+  stalled itself: the list below applies to it. If you can't set one either, hand it up
+  the same way.
 - **The 240 is the minutes until the result is overdue:** your plan's estimate, with margin.
   Past a day, put the weekday it prints in the last cron field.
 - **The cron repeats on purpose.** A minute the host slept through is never replayed, so a
@@ -91,7 +98,8 @@ child failed, and no reason to interrupt one that is working. Read its row in `o
   run on its PR, or its reply naming what it waits on): set a later first checkpoint. A
   start, a claim or a lifecycle event is not movement.
 - **It waits on someone else** (a reviewer, a person, another lane) and says so: it is not
-  stalled, and no wait on an answer ends by time. Set a later first checkpoint, never a
+  stalled, and no wait on an answer ends by time. A wait it handed you is the exception
+  ("A developer hands you its wait", above). Set a later first checkpoint, never a
   second one on that account.
 - **`running` is false, `sessionEnd` `exited`:** it ended by itself. Start it again with
   `oats session start --home <home>`, and set a second checkpoint.

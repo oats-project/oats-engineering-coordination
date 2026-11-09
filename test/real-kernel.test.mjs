@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { chmodSync, cpSync, mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { chmodSync, cpSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { spawnSync } from "node:child_process";
@@ -8,6 +8,20 @@ import { fileURLToPath } from "node:url";
 
 const REPO = resolve(fileURLToPath(new URL("..", import.meta.url)));
 const OATS_URL = "https://github.com/awebai/oats.git";
+// The floor every capability's oats.json declares (the validator checks they agree).
+const FLOOR = JSON.parse(readFileSync(join(REPO, "capabilities", "developer", "oats.json"), "utf8"))
+  .compatibility.oats.replace(/^>=/, "");
+// Kernel features the texts use with no fallback: checkpoints (schedule, wake-hold), what a
+// waiter reads when one fires (instance-events, instance-git, status-liveness), retire plans,
+// spawn previews with launch.declared/effective, launch configurations, --same-work, and
+// `oats soul launch` in the move from v1.18.0.
+const FEATURES = ["schedule", "wake-hold", "instance-events", "instance-git", "status-liveness", "lifecycle-plans",
+  "spawn-preview-2", "launch-config", "instance-same-work", "soul-launch"];
+const atLeast = (version, floor) => {
+  const [a, b] = [version, floor].map((v) => v.split(/[.-]/).slice(0, 3).map(Number));
+  for (let i = 0; i < 3; i++) if (a[i] !== b[i]) return a[i] > b[i];
+  return true;
+};
 
 function run(cmd, args, options = {}) {
   const result = spawnSync(cmd, args, { encoding: "utf8", ...options });
@@ -92,12 +106,13 @@ async function checkKernel(t, label, ref) {
   const cli = kernelCli(t, label, ref);
   const version = JSON.parse(run(process.execPath, [cli, "version", "--json"]).stdout);
   if (ref === "main") {
-    // main moves past each release; it must stay at or above the template's floor (>=0.30.0).
-    const [major, minor] = version.version.split(".").map(Number);
-    assert.ok(major > 0 || minor >= 30, `${label} kernel version ${version.version} is below 0.30.0`);
+    // main moves past each release; it must stay at or above the template's floor.
+    assert.ok(atLeast(version.version, FLOOR), `${label} kernel version ${version.version} is below ${FLOOR}`);
   } else {
     assert.equal(version.version, ref.replace(/^v/, ""), `${label} kernel version ${version.version}`);
   }
+  const missing = FEATURES.filter((f) => !(version.features || []).includes(f));
+  assert.deepEqual(missing, [], `${label} kernel lacks features the texts rely on`);
 
   const { deploy, env } = makeDeployment(t);
   runJson(process.execPath, [cli, "sync", "--dir", deploy, "--json"], { timeout: 120_000, env });
@@ -129,7 +144,7 @@ async function checkKernel(t, label, ref) {
   assert.equal(reviewer.launch.from, "soul", "the reviewer's launch comes from its soul");
 }
 
-test("the template's souls load in real OATS kernels (0.30.0 and main)", { timeout: 420_000 }, async (t) => {
-  await t.test("OATS 0.30.0", { timeout: 240_000 }, (tt) => checkKernel(tt, "0300", "v0.30.0"));
+test("the template's souls load in real OATS kernels (the floor and main)", { timeout: 420_000 }, async (t) => {
+  await t.test(`OATS ${FLOOR}`, { timeout: 240_000 }, (tt) => checkKernel(tt, "FLOOR", `v${FLOOR}`));
   await t.test("OATS main", { timeout: 240_000 }, (tt) => checkKernel(tt, "MAIN", "main"));
 });

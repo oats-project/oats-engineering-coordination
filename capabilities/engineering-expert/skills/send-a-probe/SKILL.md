@@ -49,8 +49,7 @@ Spawn it as your child, the brief as its task, with a name no instance has had:
 ```bash
 oats spawn <soul> --parent "$OATS_INSTANCE" --same-work --purpose <probe-slug> --task-file <probe.md>
 ```
-On a kernel whose `oats version --json` doesn't list the `instance-same-work` feature, leave
-`--same-work` out. A developer-soul probe that needs a repository's code also gets
+A developer-soul probe that needs a repository's code also gets
 `--repo <clone> --base <branch>`, as in `/coordinate-developers`.
 
 ## The brief

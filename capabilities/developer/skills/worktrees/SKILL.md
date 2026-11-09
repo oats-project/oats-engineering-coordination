@@ -5,8 +5,10 @@ description: When and how to use extra worktrees (workflow paths that touch the 
 
 # Extra worktrees
 
-Your work-mode briefing gives the command. Create as many as the work needs, on new or
-existing branches; by default they live in your home as `.work-<purpose>`.
+Your work-mode briefing gives the command. Create as many as the work needs, each on a new
+branch (the kernel never reuses or resets one); by default they live in your home as
+`.work-<purpose>`. To rework an existing branch, an open PR's say, start the new branch from
+it as the remote base and push its `HEAD` back to that branch.
 
 ## When
 - Workflow paths that touch the same files: one worktree per path. Paths on different

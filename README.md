@@ -111,17 +111,15 @@ the OATS schemas, the skills each inject names, the adapt markers and their list
 ADAPTING.md, and that the souls load in real OATS kernels.
 
 ## Requirements
-OATS ≥ 0.30.0, the floor every capability's `oats.json` declares: the souls load there. A
-few steps use later kernel features. Each says what to do on a kernel without it, so the
-floor stays; run OATS 0.69.7 or later to use them all as written:
-- **Checkpoints,** the wake a developer, expert or maintainer sets before waiting on a
-  child, need the kernel feature `wake-hold` (OATS 0.69.7). Without it a waiter sets none
-  and hands the wait up; where no level can set one, that wait has no bound.
-- **A reviewer or probe on its spawner's work** (`--same-work`) needs `instance-same-work`
-  (OATS 0.69.2). Without it the flag is left out.
-- **`oats soul launch`,** which the move from v1.18.0 uses to rewrite `souls.launch`
-  (CHANGELOG.md, "From v1.18.0"), needs OATS 0.53.0. On an older kernel, rename the key in
-  `oats-local.yaml` by hand.
+OATS ≥ 0.69.7, the floor every capability's `oats.json` declares. The texts use, with no
+fallback, what kernels gained up to that release: needs-input (`oats instance attention`,
+0.40.0), a retire that stops the instance's children first (0.48.0), extra trees
+(`oats worktree add`, 0.49.0), `oats soul launch` (0.53.0, in the move from v1.18.0),
+`--same-work` (0.69.2) and the wake that holds while a dialog is open (`wake-hold`, 0.69.7)
+under every checkpoint. Even there, a home whose `wakeHold` reads `unknown` (a pi home)
+takes no wake: its waiter hands the wait up, and where no level can set one, that wait has
+no bound. `npm test` previews every soul in OATS 0.69.7 and main, and checks that both
+list the kernel features the texts rely on.
 
 Works with any harness OATS supports (pi, Claude Code, Codex). The
 `code-reviewer` soul prefers Codex with `gpt-6-astra` (`launch:` in its soul); a machine

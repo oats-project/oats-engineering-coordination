@@ -124,12 +124,19 @@ oats schedule add "$OATS_INSTANCE-<slug>" --file checkpoint-<slug>.json
 oats schedule show "$OATS_INSTANCE-<slug>" --json   # nextRun must be the moment you meant
 ```
 - **Read `wakeHold` first.** A wake's Enter answers whatever your session is showing. Set
-  one only where it reads `on-claims` or `not-exposed`, which needs a kernel with the
-  feature `wake-hold`. With `unknown` or no `wakeHold`, set none: tell your human (through
+  one only where it reads `on-claims` or `not-exposed`. With `unknown` or no `wakeHold`, set none: tell your human (through
   your parent, if you have one) who owes what and by when, and that nothing bounds this
   wait.
-- **A lead hands you a wait:** set that checkpoint as your own. If you can't, tell your
-  human as above.
+- **A lead hands you a wait** on its own child: set a checkpoint on that lead, on your
+  home, naming the child and what it owes in its message. It watches the lead, never its
+  child: inspecting and replacing that child is the lead's. When it fires and the lead
+  still waits on that child, the lead's own checkpoint is due, and that is no "waits on
+  someone else" below: tell the lead in one line ("your checkpoint on <child> is due:
+  follow 'When it fires' in /coordinate-developers") and set the next one half as far out,
+  its message starting "Second checkpoint:". When that one fires, your line says "second
+  checkpoint", and the lead's skill ends its wait. A lead that neither moves nor answers
+  your line is stalled itself: the list below applies to it. If you can't set one, tell
+  your human as above.
 - **The 1440 is the minutes until its next result is overdue:** what it told you, or what
   an effort like this took, with margin.
 - **The cron repeats weekly on purpose.** A minute the host slept through is never replayed,
@@ -163,7 +170,8 @@ then:
   run on its PR, a new status line on its record, or its reply naming what it waits on):
   set a later first checkpoint. A start, a claim or a lifecycle event is not movement.
 - **It waits on someone else** (a person's card, a reviewer, another lane) and says so: it
-  is not stalled, and no wait on an answer ends by time. Set a later first checkpoint,
+  is not stalled, and no wait on an answer ends by time. A wait it handed you is the
+  exception ("A lead hands you a wait", above). Set a later first checkpoint,
   never a second one on that account.
 - **`running` is false, `sessionEnd` `exited`:** it ended by itself. Start it again with
   `oats session start --home <home>`, and set a second checkpoint.

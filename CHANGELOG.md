@@ -64,14 +64,14 @@ kept from 1.x still say "human". They mean the same.
 
 ### Requirements
 
-- **OATS 0.30.0 or later,** as in 1.x: every capability's `oats.json` declares
-  `>=0.30.0`, and the tests load the souls in 0.30.0. Three steps use later kernel
-  features; each says what to do without one, so the floor stays where the souls load:
-  the checkpoints need `wake-hold` (OATS 0.69.7), and without it a waiter hands the wait
-  up; `--same-work` needs `instance-same-work` (OATS 0.69.2), and without it the flag is
-  left out; `oats soul launch` in "From v1.18.0" needs OATS 0.53.0, and on an older kernel
-  the `souls.launch` key is renamed by hand. OATS 0.69.7 or later runs every text as
-  written. The README says the same.
+- **OATS 0.69.7 or later (was 0.30.0):** every capability's `oats.json` declares
+  `>=0.69.7`. The texts use, with no fallback, what kernels gained up to that release:
+  `oats instance attention` (0.40.0), a retire that stops the instance's children first
+  (0.48.0), `oats worktree add` (0.49.0), `oats soul launch` (0.53.0, in "From v1.18.0"),
+  `--same-work` (0.69.2) and `wake-hold` (0.69.7) under every checkpoint. The skills'
+  fallbacks for a kernel without `instance-same-work` or `wake-hold` are gone. A home whose
+  `wakeHold` reads `unknown` still takes no wake: its waiter hands the wait up. The README
+  says the same.
 - **A tasks layer,** or an answer to the landing rules' "where things are kept" marker:
   the texts keep the effort records, the lane map and holds there.
 
@@ -190,7 +190,10 @@ For organisations that keep adapted copies, each line says what to port.
   and the expert builds none of it;
   "deadlines" among the constraints becomes "dates set outside the work".
 - `/coordinate-developers`, changed: a wait a developer hands up is a checkpoint on the
-  developer, never its reviewer; the developer soul is chosen by environment (adapt marker);
+  developer, never its reviewer, and when it fires while the developer still waits on that
+  reviewer, the expert tells the developer its own checkpoint is due (first, then second),
+  so the developer inspects or replaces its reviewer; a wait the expert hands its parent
+  comes back the same way; the developer soul is chosen by environment (adapt marker);
   the spawn names the spec's repository and its base (`--repo`, `--base`); the developer
   iterates with fresh reviewers, never the expert, and a return goes back to it for another
   loop; accepted work gets the green light and the developer opens the PR; a new review,
@@ -244,13 +247,17 @@ For organisations that keep adapted copies, each line says what to port.
   branch the expert returns, and a bigger fix on the PR, go through the loop again. "Iterate
   with the same instance" and "keep the reviewer while the change is open" are gone. The
   hand-back names what could not run. A reviewer with no messaging layer is retired once
-  its report is in. The adapt marker asks which harnesses and models the organisation has
-  for model diversity.
+  its report is in. Model diversity compares the models, never the harnesses: a provider
+  prefix is a route, not another model. A wait handed to the expert comes back as the
+  expert's message that the developer's checkpoint is due. The adapt marker asks which
+  harnesses and models the organisation has for model diversity.
 - `/execution-strategy`, changed: the workflow cap carries an adapt marker; a workflow's
   agents are the developer's own hands; its reviewers are chosen as `/run-the-review-loop`
   says.
 - `/worktrees`, changed: consolidate before the first review round; a worktree with a
-  round's reviewer attached stays until that reviewer is retired.
+  round's reviewer attached stays until that reviewer is retired; every extra tree is on a
+  new branch, and reworking an existing one starts from it as the base and pushes back to
+  it.
 - `/understand-the-spec`, `/maintain-dev-docs`: unchanged.
 
 **`oats.code-review`**
@@ -303,7 +310,9 @@ For organisations that keep adapted copies, each line says what to port.
   fresh lead per effort, never a live expert reused (its context reaches the new lead by
   hand-off or probe); the generalist leads work across areas or people; the lead lands its
   own PRs and calls you only where the landing rules need you; a lead with no parent retires
-  itself; waiting on someone else is not a stall.
+  itself; waiting on someone else is not a stall, except a wait a lead handed up: when that
+  checkpoint fires while the lead still waits on its child, the maintainer tells the lead
+  its own checkpoint is due (first, then second).
 - `/keep-it-clean`, changed: docs and release notes are checked in the reads you are called
   for and in your sweep of what merged; "issues" become "work items".
 - `/plan-release`, changed: one card to each owner whose lane has changes in the release,
@@ -342,8 +351,9 @@ For organisations that keep adapted copies, each line says what to port.
   other; and the docs' links and ids. The package manifest checks are gone with the
   package.
 - The tests build a workspace whose member repository is a copy of the template, and check
-  in real OATS kernels (0.30.0 and main) that every example soul previews with its
-  capabilities and skills.
+  in real OATS kernels (the floor the manifests declare, 0.69.7, and main) that every
+  example soul previews with its capabilities and skills, and that both kernels list the
+  features the texts rely on.
 
 ### What to do
 
