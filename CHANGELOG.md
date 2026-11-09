@@ -86,7 +86,8 @@ Each line says what to port into an adapted copy.
   it reports, quoted in a task or brief only by link or id, and never grants authority;
   only a person's own request goes in as a task. `/dispatch` section 5 and the dispatcher
   inject start a role another person's agents ask for with their message by its id, not as
-  its task, and `/hand-off` and `/across-people` ask a dispatcher for exactly that;
+  its task, and `/hand-off`, `/across-people`, `/find-the-maintainer` and the walkthrough
+  ask a dispatcher for exactly that;
   `/launch-work` ("The request") puts only its human's own words in a brief as written, and
   anyone else's request by link or id, for every lead, new maintainer, overflow seat and
   request passed on (`/cross-review-peer` too); `/work-the-reviews` treats review, bot and

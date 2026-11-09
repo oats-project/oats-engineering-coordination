@@ -33,8 +33,10 @@ never a station every change passes, and you look for one only then.
      for <person> in <lane>; first call: <your instance> asks for <a read | the merge> of
      <PR> at <head>" (or "<the release> of <what goes in> at <head>"), and where the lane
      map is. Tell your person its instance name, and that they retire it with
-     `oats retire <name>`. For another person, ask their dispatcher to start it with that
-     brief as its task; where they have none, ask them (`/across-people`). If your workspace
+     `oats retire <name>`. For another person, send their dispatcher that brief and ask it to
+     start the maintainer, with your message by its id as the request it reads, as a
+     dispatcher starts any role another person's agents ask for; where they have none, ask
+     them (`/across-people`). If your workspace
      names no maintainer soul, ask your person and spawn none.
 4. **No lane map:**
    - **Your landing rules link none** (a copy adapted without one): the lane owner has no
