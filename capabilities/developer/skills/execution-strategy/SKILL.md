@@ -32,7 +32,8 @@ When in doubt between the first two, take the workflow.
    interface to meet, how to verify its part.
 3. Fan in (a final stage, or you): merge the paths, in order across worktrees, resolve
    conflicts, run the full verification.
-4. Keep the fan-out to what you can integrate and check: usually 2 to 6 paths.
+4. Keep the fan-out to what you can integrate and check, and to what your host can take
+   (your briefing's "On the hosts you run on"): usually 2 to 6 paths.
 
 ## Under 10 agents, and your human's opt-in
 <!-- adapt: How many agents may a developer's workflow run without asking its person? -->

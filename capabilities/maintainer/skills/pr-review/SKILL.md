@@ -100,8 +100,9 @@ merging its own PR follows its own landing skill.
   can still break each other (one changes a text, the other's test reads it). So:
   1. on a trial merge onto the default branch, run the test files changed or added by this
      PR and by what merged since its base;
-  2. if those are more than a couple, or need what your host lacks, bring the branch up to
-     date and let CI be the run.
+  2. if those are more than a couple, need what your host lacks, or are code you haven't
+     read and trusted (an outside contributor's), bring the branch up to date and let CI
+     be the run.
 
   With a merge queue, enqueue the approved head: it does this and the next two checks.
 - **Bringing a branch up to date is yours,** with the forge's update of the PR branch (a

@@ -7,6 +7,18 @@ organisation, record the release you started from, and check the copy.
 
 ## 1. What to copy
 
+**First, check the ids.** Run `oats capabilities` in the organisation's workspace, and
+look for each id this template brings: `oats.dispatcher`, `oats.engineering-expert`,
+`oats.developer`, `oats.code-review`, `oats.maintainer` and `oats.landing-rules`. One that
+is already listed is a collision; settle it before you copy:
+- **From the `oats.engineering` package** (a v1.18.0 pin): copy, then follow "From
+  v1.18.0" in CHANGELOG.md, which removes the pin once the copies are composed.
+- **From an earlier copy of this template** in a member repository: copy nothing new. Take
+  up this release in that copy (section 6); a second copy of a capability is never kept.
+- **From something else with the same id:** give the copied capability a new id (its
+  `oats.json` `capability`, and each soul's composition of it) before you copy, or leave
+  that capability out.
+
 - **`capabilities/`.** Each folder is a working capability: its `oats.json`, its inject and
   its skills. Copy each one the roster keeps into the host repository of the organisation's
   workspace, as `capabilities/<name>/`, unchanged except at its adapt markers.
@@ -28,7 +40,10 @@ organisation, record the release you started from, and check the copy.
     (a browser, a local service stack, warehouse access, a tool rig).
   - `dispatcher`: one standing instance for each person who wants a front door. List the
     expert souls, and which area each covers, in its `AGENTS.md`.
-  - `code-reviewer`: set its `launch:` to a model family different from the developers'.
+  - `code-reviewer`: always set its `launch:` (`harness` and `model`) to a model this
+    organisation can launch, from a family different from the developers'. The template's
+    is an example, and a soul can carry no adapt marker, so nothing else reminds you
+    (section 6 checks it).
   - `maintainer`: only with the `maintainer` capability.
   - Rewrite each soul's `AGENTS.md` with what is specific to it; never restate the role.
 - **`LICENSE`:** the template is MIT. Keep its notice with what you copy, beside the copied
@@ -109,6 +124,9 @@ A copy is adapted when no marker is left; until then, the markers left are its o
 ### `capabilities/engineering-expert/skills/coordinate-developers/SKILL.md`
 - **Which developer souls exist, and which environment does each provide?** Assumes one developer soul, `developer`. Default: that.
 
+### `capabilities/developer/injects/developer.md`
+- **Where may agents build and run tests, which hosts are shared, and which are read-only?** Assumes agents build and test in their own worktree or a scratch directory, on hosts that may be shared, and never change a customer's or a production host. Name the shared hosts, any host agents may only read, and any limit on parallel or long runs. Default: as written.
+
 ### `capabilities/developer/skills/execution-strategy/SKILL.md`
 - **How many agents may a developer's workflow run without asking its person?** Assumes under 10. The developer's inject repeats the cap (`capabilities/developer/injects/developer.md`, "NEVER run a workflow of 10 or more agents"): change it there too. Default: under 10.
 
@@ -119,6 +137,7 @@ A copy is adapted when no marker is left; until then, the markers left are its o
 - **What wakes a developer here on a new review, comment or CI result on its PR?** Assumes the harness or the forge offers a notification or a watch. Name the one this organisation uses (a watch capability, say), and how to arm it for one event at a time. Default: the repeating wake the skill describes.
 
 ### `capabilities/maintainer/injects/maintainer.md`
+- **Where may agents build and run tests, which hosts are shared, and which are read-only?** Assumes agents build and test in their own worktree or a scratch directory, on hosts that may be shared, and never change a customer's or a production host. Name the shared hosts, any host agents may only read, and any limit on parallel or long runs. Default: as written.
 - **Does the organisation run a support desk that hands tickets to a maintainer?** Assumes it might. Where it doesn't, drop `skills/support-maintainer`, its line in the inject and its entry in `oats.json`. Default: no desk, so drop it.
 
 ## 4. Record the template release
@@ -126,8 +145,21 @@ A copy is adapted when no marker is left; until then, the markers left are its o
 Every copied capability records the template release it came from, in its `oats.json`
 description. The template's descriptions already end with that sentence:
 "Copied from the engineering template, template-v2.0.0." Keep it as it is when you copy,
-and set `version` to the copy's own numbering from then on. When you later take up a newer
-release, port what fits (section 6) and update the sentence to that release.
+and set `version` to the copy's own numbering from then on. The template's own validator,
+which requires `version` to be the template release, stays with the template (section 1):
+nothing in the copy checks it.
+
+Souls carry no such record, so write one for the whole copy, in the host repository, at
+`capabilities/TEMPLATE-RELEASE` (a plain file, which OATS ignores):
+```
+template: oats-project/oats-engineering-coordination
+release: template-v2.0.0
+commit: <the full commit SHA that tag points to>
+capabilities: <the ids you copied>
+souls: <the souls you copied, under their names in the copy>
+```
+When you later take up a newer release, port what fits (section 6), and update the
+sentence in each capability you ported and this file.
 
 ## 5. The small-projects variant
 
@@ -181,7 +213,9 @@ changes.
 ## 6. Check the copy, and take up later releases
 
 - **Check it:** `oats sync`, then `oats spawn <soul> --preview` for every soul. Each shows
-  its capabilities and their skills. Then bring a dispatcher (or the expert) one small, real
+  its capabilities and their skills. The code reviewer's preview shows its
+  `launch.effective`: a model this organisation can launch, from another family than the
+  developers'. Then bring a dispatcher (or the expert) one small, real
   request, and watch it land end to end.
 - **No marker left:** search the copy for `<!-- adapt:`; only the open points' markers
   (section 3) should match.

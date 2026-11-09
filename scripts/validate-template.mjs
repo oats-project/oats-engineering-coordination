@@ -67,6 +67,8 @@ function validateAgainst(schema, value, { root = schema, path = "" } = {}) {
       if (s.items) v.forEach((item, i) => check(s.items, item, `${p}/${i}`));
     } else if (isObject(v)) {
       const keys = Object.keys(v);
+      if (s.minProperties !== undefined && keys.length < s.minProperties) push(p, `must have at least ${s.minProperties} propert${s.minProperties === 1 ? "y" : "ies"}`);
+      if (s.maxProperties !== undefined && keys.length > s.maxProperties) push(p, `must have at most ${s.maxProperties} propert${s.maxProperties === 1 ? "y" : "ies"}`);
       for (const req of s.required || []) if (!Object.hasOwn(v, req)) push(p, `missing required property ${show(req)}`);
       for (const key of keys) {
         const kp = `${p}/${pointerKey(key)}`;
@@ -101,6 +103,22 @@ function commandEntrypoint(spec) {
   return typeof command === "string" ? command.trim().split(/\s+/)[0] : command;
 }
 
+// Split a flow mapping's body at its own commas, never at one inside a nested {} or [] or a
+// quoted string.
+function splitTopLevel(inner) {
+  const parts = [];
+  let depth = 0, quote = null, start = 0;
+  for (let i = 0; i < inner.length; i++) {
+    const c = inner[i];
+    if (quote) { if (c === quote) quote = null; continue; }
+    if (c === '"' || c === "'") quote = c;
+    else if (c === "{" || c === "[") depth++;
+    else if (c === "}" || c === "]") depth--;
+    else if (c === "," && depth === 0) { parts.push(inner.slice(start, i).trim()); start = i + 1; }
+  }
+  parts.push(inner.slice(start).trim());
+  return parts;
+}
 function parseInlineValue(raw) {
   const s = raw.trim();
   if (s === "") return {};
@@ -112,7 +130,7 @@ function parseInlineValue(raw) {
     const obj = {};
     const inner = s.slice(1, -1).trim();
     if (!inner) return obj;
-    for (const part of inner.split(/\s*,\s*/)) {
+    for (const part of splitTopLevel(inner)) {
       const idx = part.indexOf(":");
       if (idx < 0) return s;
       obj[part.slice(0, idx).trim()] = parseInlineValue(part.slice(idx + 1));

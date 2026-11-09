@@ -3,8 +3,9 @@
 These are this organisation's landing rules and its ownership record, in one place. Every
 coordinating role reads them here: the dispatcher, the experts, the developers and the
 maintainers. Where a skill says "your landing rules", it means this section. They change
-only on the yes of the person who owns the lane (the setup expert's set-landing-rules
-procedure writes them), each rule with its reason; a lane opened on the lane map for its
+only on the yes of the person who owns the lane, each rule with its reason (where the
+workspace has oats.framework's `oats.coordination-setup`, its set-landing-rules skill
+writes them); a lane opened on the lane map for its
 owner's own work runs on the defaults below until then. No rule sets a deadline or a default
 if someone is silent: a request waits for its answer. These rules are copied into each
 instance at spawn: after a change, whoever wrote it tells each standing instance (the
@@ -22,7 +23,8 @@ compaction or not.
 **What merges a change, and who merges it.**
 <!-- adapt: Per lane, which agreements must hold at a PR's head before it merges, and who merges it? -->
 In every lane, at one head: CI green; a review; and the lead's verification note,
-`VERIFIED at <head>`. The review is the forge's review bot's at that head where one runs,
+`VERIFIED at <head>`. CI green, wherever these rules or a skill say it, means every check
+the forge requires at that head has succeeded: none failing, none pending. The review is the forge's review bot's at that head where one runs,
 each of its findings fixed or answered (a decline with a concrete reason is answered);
 otherwise a round of the developer's review loop that found nothing to fix, with a fresh
 reviewer at that head. Either carries to a new head only through a rebase whose range-diff

@@ -9,7 +9,8 @@ description: Prove a change works the way the repository runs it - build, run lo
    Makefile or scripts, and its CI workflow. They outrank this skill. Your session starts in
    your home, not in the repository: read them from your work tree.
 2. **Build and run it locally,** with the local services it needs, and exercise the changed
-   behaviour the way a user or a caller would.
+   behaviour the way a user or a caller would, within your briefing's host rules ("On the
+   hosts you run on").
 3. **Run the checks CI runs** for what you changed, the way CI runs them.
 4. **Run the spec's acceptance tests and QA steps,** and keep the evidence: commands,
    outputs, screenshots for a UI change.
