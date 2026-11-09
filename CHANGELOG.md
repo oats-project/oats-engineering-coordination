@@ -399,8 +399,9 @@ For organisations that keep adapted copies, each line says what to port.
   other; and the docs' links and ids. The package manifest checks are gone with the
   package. The vendored OATS schemas come from v0.69.7, the floor (`schemas/README.md`
   names the commit); the schema check reads `minProperties` and `maxProperties`, and a
-  flow mapping is split only at its own commas. A skill's frontmatter values must parse: one
-  line, a closed quote or flow collection, or a plain scalar with no ": "; and the
+  flow mapping is split only at its own commas. A skill's frontmatter values are held to a
+  subset that always parses as text: one line, plain (no quotes or collections), with no
+  leading YAML indicator, no ": " or " #", and not a boolean, null or number; and the
   real-kernel test reads every skill's description through the kernel's own parser
   (`oats capabilities show`).
 - The tests build a workspace whose member repository is a copy of the template, and check

@@ -188,13 +188,21 @@ test("validator rejects a skill description YAML would not parse", (t) => {
   assert.match(result.stderr, /capabilities\/developer\/skills\/worktrees\/SKILL\.md:3: a plain YAML value can't contain ": "/);
 });
 
-test("validator rejects a skill description with an unclosed quote or flow mapping", (t) => {
-  const quote = mutate(t, "capabilities/developer/skills/worktrees/SKILL.md", (text) => text.replace("description: When", 'description: "When'));
-  assert.equal(quote.status, 1);
-  assert.match(quote.stderr, /capabilities\/developer\/skills\/worktrees\/SKILL\.md:3: a YAML value that opens with " must close with "/);
-  const flow = mutate(t, "capabilities/developer/skills/worktrees/SKILL.md", (text) => text.replace("description: When", "description: {text: When"));
-  assert.equal(flow.status, 1);
-  assert.match(flow.stderr, /capabilities\/developer\/skills\/worktrees\/SKILL\.md:3: a YAML value that opens with \{ must close with \}/);
+test("validator holds skill frontmatter to plain one-line values", (t) => {
+  const file = "capabilities/developer/skills/worktrees/SKILL.md";
+  const cases = [
+    ['description: "When', /SKILL\.md:3: a frontmatter value can't start with "/],
+    ["description: {text: When", /SKILL\.md:3: a frontmatter value can't start with \{/],
+    ["description: 'Read the developer's worktree: when", /SKILL\.md:3: a frontmatter value can't start with '/],
+    ["description: {text: [open} When", /SKILL\.md:3: a frontmatter value can't start with \{/],
+    ["description: >\n  When", /SKILL\.md:3: a frontmatter value can't start with >/],
+    ["description: Extra trees #1 When", /SKILL\.md:3: a plain YAML value can't contain " #"/],
+  ];
+  for (const [replacement, message] of cases) {
+    const result = mutate(t, file, (text) => text.replace("description: When", replacement));
+    assert.equal(result.status, 1, replacement);
+    assert.match(result.stderr, message, replacement);
+  }
 });
 
 test("validator rejects a skill reference a composing soul can't load", (t) => {

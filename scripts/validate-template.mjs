@@ -174,13 +174,16 @@ function parseSkillFrontmatter(file) {
     if (idx < 0) continue;
     const value = raw.slice(idx + 1).trim();
     const at = `${relative(repoRoot, file)}:${index + 2}`;
-    // The kernel parses this with a real YAML parser and drops a skill whose frontmatter fails,
-    // so hold each value to a grammar that always parses: one line, a closed quote or flow
-    // collection, or a plain scalar with no ": ".
-    const close = { '"': '"', "'": "'", "{": "}", "[": "]" }[value[0]];
-    if (close) { if (value.length < 2 || value[value.length - 1] !== close) report(at, `a YAML value that opens with ${value[0]} must close with ${close} on the same line`); }
-    else if (/^[|>]/.test(value)) report(at, "a block scalar isn't supported here; write the value on one line");
-    else if (/:(\s|$)/.test(value)) report(at, "a plain YAML value can't contain \": \"; quote it or reword it");
+    // The kernel parses this with a real YAML parser and drops a skill whose frontmatter fails.
+    // So each value is held to a subset that always parses as a string: one line, a plain
+    // scalar (no quotes, no flow or block collection), starting with no YAML indicator, with
+    // no ": " or " #" inside, and not a word YAML reads as a boolean, null or number.
+    if (!/^[A-Za-z][A-Za-z0-9_-]*:/.test(raw)) report(at, "a frontmatter line must be `key: value`, with nothing indented or continued");
+    else if (value === "") report(at, "a frontmatter value must be on the same line as its key");
+    else if (/^[-?:,[\]{}#&*!|>'"%@`]/.test(value)) report(at, `a frontmatter value can't start with ${value[0]}: write it as plain text`);
+    else if (/:(\s|$)/.test(value)) report(at, "a plain YAML value can't contain \": \"; reword it");
+    else if (/\s#/.test(value)) report(at, "a plain YAML value can't contain \" #\" (YAML reads a comment); reword it");
+    else if (/^(true|false|yes|no|on|off|null|~|[-+]?(\d[\d_]*)?\.?\d+([eE][-+]?\d+)?)$/i.test(value)) report(at, "a frontmatter value must read as text, not a boolean, null or number");
     fm[raw.slice(0, idx).trim()] = value.replace(/^['"]|['"]$/g, "");
   }
   return { text, frontmatter: fm };
