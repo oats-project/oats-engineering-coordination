@@ -170,7 +170,8 @@ this one, retire the stalled one (`oats retire <name>`) and say so in your handb
   replies "done, harvested:
   <harvester>" or "done, no harvest duty" (after "done, harvest pending: <proposal>", wait
   for the first), check `oats retire <name> --plan`, run `oats retire <name>`, note it
-  (name, why), and remove its worktree if it is an extra one (`/worktrees`). Retire only
+  (name, why). The consolidated worktree it read stays: the next round, your expert's
+  return and your PR's fixes all run on it, and it goes at Finish (`/worktrees`). Retire only
   your own children, and never give a new reviewer a retired one's name. None of this
   involves a person.
 

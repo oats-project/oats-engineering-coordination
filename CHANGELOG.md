@@ -164,7 +164,9 @@ For organisations that keep adapted copies, each line says what to port.
   adversarial review of a plan or a design, never of code under review, investigate an
   alternative); an OATS child, a fresh instance of the soul with the knowledge, the
   environment or the method it needs, on a different model from yours where one is
-  available; a harness-native subagent only for a small task that directly helps the lead
+  available (the soul's `launch.effective.model` from a spawn preview compared with the
+  expert's own, models and not harnesses, another model chosen when they match); a
+  harness-native subagent only for a small task that directly helps the lead
   and needs no soul's knowledge or testing capability, where the person asks, or in a
   multi-agent workflow mode (a developer-soul probe with the repository's
   `--repo` and `--base`); the artefact at its exact version, never your reasoning; retired
@@ -255,9 +257,11 @@ For organisations that keep adapted copies, each line says what to port.
   agents are the developer's own hands; its reviewers are chosen as `/run-the-review-loop`
   says.
 - `/worktrees`, changed: consolidate before the first review round; a worktree with a
-  round's reviewer attached stays until that reviewer is retired; every extra tree is on a
-  new branch, and reworking an existing one starts from it as the base and pushes back to
-  it.
+  round's reviewer attached stays until that reviewer is retired; the consolidated
+  worktree stays through every round, the expert's return and the PR's fixes, and is
+  removed at Finish with any a later fix made, never when a round's reviewer retires;
+  every extra tree is on a new branch, and reworking an existing one starts from it as the
+  base and pushes back to it.
 - `/understand-the-spec`, `/maintain-dev-docs`: unchanged.
 
 **`oats.code-review`**

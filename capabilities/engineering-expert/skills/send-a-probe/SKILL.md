@@ -41,9 +41,15 @@ harness's multi-agent workflow mode (Claude Code's ultracode, say) when it is in
 
 **On a different model from yours,** where the organisation has one: every kind of probe
 checks work or validates an idea, and agents of one model share blind spots, so their
-agreement is not independent. Use the soul's launch preference when it already differs
-from yours, otherwise `--harness <h> --model <m>` or a launch configuration this host
-defines (`oats launch-config list`).
+agreement is not independent. Preview the soul first (`oats spawn <soul> --preview
+--json`) and compare its `launch.effective.model`, what this machine will launch (a
+`launch.from` of `local` is this machine's override of the soul's preference), with yours,
+`launch.model` in your `instance.json`. Compare the models, not the harnesses: a provider
+prefix names a route to a model, not another model, so `github-copilot/gpt-6-astra` and
+`gpt-6-astra` are one. When they differ, spawn without `--harness`/`--model`, so the
+effective launch applies. When they are the same, spawn it on another model with
+`--harness <h> --model <m>` or a launch configuration this host defines (`oats launch-config
+list`). If none is available, use the effective one and say so where you use its answer.
 
 Spawn it as your child, the brief as its task, with a name no instance has had:
 ```bash
