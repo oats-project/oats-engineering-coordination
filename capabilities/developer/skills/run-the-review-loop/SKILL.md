@@ -50,13 +50,18 @@ A reviewer on your model shares your blind spots. Before spawning, compare:
 <!-- adapt: Which harnesses and models does this organisation have for model diversity? -->
 Compare the models, not the harnesses: a provider prefix names a route to a model, not
 another model, so `github-copilot/gpt-6-astra` on pi and `gpt-6-astra` on Codex are one
-model. When the effective reviewer's model differs from yours, spawn without
+model. When the effective reviewer's model is known and differs from yours, spawn without
 `--harness`/`--model`, so the machine's override applies; don't force the soul's default
 over it. When it would run on your model, on any harness, spawn it on another
 state-of-the-art model, on another harness when you can: currently Codex with Astra, Claude Code with Opus 5.5, Fable, or the latest Grok,
 through a launch configuration this host defines (`oats launch-config list`) or
 `--harness`/`--model`. If none is available, use the effective one and say so in your
 handback.
+
+If either model is unknown (`null`, absent, or a harness's native default), the comparison
+proves nothing: spawn the reviewer with `--harness`/`--model` (or a launch configuration) on
+a model you know differs from the one you run, which your harness reports (its status line,
+or its model command). If you can't establish a difference, say so in your handback.
 
 ## Brief it: context, not conclusions
 Every round's `review-brief.md` holds exactly:

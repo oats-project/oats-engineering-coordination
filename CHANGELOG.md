@@ -165,7 +165,8 @@ For organisations that keep adapted copies, each line says what to port.
   alternative); an OATS child, a fresh instance of the soul with the knowledge, the
   environment or the method it needs, on a different model from yours where one is
   available (the soul's `launch.effective.model` from a spawn preview compared with the
-  expert's own, models and not harnesses, another model chosen when they match); a
+  expert's own, models and not harnesses, an unknown model counted as a match, another
+  model chosen when they match); a
   harness-native subagent only for a small task that directly helps the lead
   and needs no soul's knowledge or testing capability, where the person asks, or in a
   multi-agent workflow mode (a developer-soul probe with the repository's
@@ -250,12 +251,15 @@ For organisations that keep adapted copies, each line says what to port.
   with the same instance" and "keep the reviewer while the change is open" are gone. The
   hand-back names what could not run. A reviewer with no messaging layer is retired once
   its report is in. Model diversity compares the models, never the harnesses: a provider
-  prefix is a route, not another model. A wait handed to the expert comes back as the
+  prefix is a route, not another model, and an unknown model (`null`, a native default)
+  proves no difference. A wait handed to the expert comes back as the
   expert's message that the developer's checkpoint is due. The adapt marker asks which
   harnesses and models the organisation has for model diversity.
 - `/execution-strategy`, changed: the workflow cap carries an adapt marker; a workflow's
-  agents are the developer's own hands; its reviewers are chosen as `/run-the-review-loop`
-  says.
+  agents are the developer's own hands, and harness-native: a workflow runs only on the
+  person's opt-in, on every harness, or in a multi-agent workflow mode in use, and without
+  either the developer builds the paths itself; its reviewers are chosen as
+  `/run-the-review-loop` says. The inject's workflow line says the same.
 - `/worktrees`, changed: consolidate before the first review round; a worktree with a
   round's reviewer attached stays until that reviewer is retired; the consolidated
   worktree stays through every round, the expert's return and the PR's fixes, and is

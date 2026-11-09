@@ -46,10 +46,13 @@ agreement is not independent. Preview the soul first (`oats spawn <soul> --previ
 `launch.from` of `local` is this machine's override of the soul's preference), with yours,
 `launch.model` in your `instance.json`. Compare the models, not the harnesses: a provider
 prefix names a route to a model, not another model, so `github-copilot/gpt-6-astra` and
-`gpt-6-astra` are one. When they differ, spawn without `--harness`/`--model`, so the
-effective launch applies. When they are the same, spawn it on another model with
-`--harness <h> --model <m>` or a launch configuration this host defines (`oats launch-config
-list`). If none is available, use the effective one and say so where you use its answer.
+`gpt-6-astra` are one. A model that is unknown (`null`, absent, or a harness's native
+default) proves nothing, so treat it as a match. When both are known and differ, spawn
+without `--harness`/`--model`, so the effective launch applies. When they match, spawn it
+on a model you know differs from the one you run (your harness reports yours: its status
+line, or its model command), with `--harness <h> --model <m>` or a launch configuration
+this host defines (`oats launch-config list`). If none is available, or you can't
+establish a difference, use the effective one and say so where you use its answer.
 
 Spawn it as your child, the brief as its task, with a name no instance has had:
 ```bash

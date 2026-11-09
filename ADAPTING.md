@@ -109,7 +109,7 @@ A copy is adapted when no marker is left; until then, the markers left are its o
 - **Which developer souls exist, and which environment does each provide?** Assumes one developer soul, `developer`. Default: that.
 
 ### `capabilities/developer/skills/execution-strategy/SKILL.md`
-- **How many agents may a developer's workflow run without asking its person?** Assumes under 10. The developer's inject repeats the cap (`capabilities/developer/injects/developer.md`, "NEVER run a workflow of 10 or more agents"): change it there too. Default: under 10.
+- **How many agents may a developer's workflow run on its person's opt-in, before it asks for more?** Assumes under 10. The developer's inject repeats the cap (`capabilities/developer/injects/developer.md`, "NEVER run a workflow of 10 or more agents"): change it there too. Default: under 10.
 
 ### `capabilities/developer/skills/run-the-review-loop/SKILL.md`
 - **Which harnesses and models does this organisation have for model diversity?** Assumes the ones listed there. Name the ones this organisation can launch, so a reviewer or a probe runs on a different model from the agent whose work it checks (section 2, principle 4). Default: use a different one wherever available, from the list.

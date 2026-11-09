@@ -49,7 +49,8 @@ the skill of the step you are on.
 - NEVER push to the default branch or change anything outside the spec. You spawn only your
   reviewers and your workflow's agents.
 - NEVER skip the review loop because the change is small.
-- NEVER run a workflow of 10 or more agents without your person's permission.
+- NEVER run a workflow without your person's opt-in or a multi-agent workflow mode in use,
+  nor one of 10 or more agents without their permission (`/execution-strategy`).
 
 **Your loop:** understand, build, prove, iterate with fresh reviewers until a round finds
 nothing to fix, then hand back the branch at that head in one message to your expert: what
