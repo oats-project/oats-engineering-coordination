@@ -150,11 +150,14 @@ function parseSkillFrontmatter(file) {
   const end = text.indexOf("\n---", 4);
   if (end < 0) return { text, frontmatter: null };
   const fm = {};
-  for (const raw of text.slice(4, end).split(/\r?\n/)) {
+  for (const [index, raw] of text.slice(4, end).split(/\r?\n/).entries()) {
     if (!raw.trim()) continue;
     const idx = raw.indexOf(":");
     if (idx < 0) continue;
-    fm[raw.slice(0, idx).trim()] = raw.slice(idx + 1).trim().replace(/^['"]|['"]$/g, "");
+    const value = raw.slice(idx + 1).trim();
+    // As in a soul: a plain scalar can't hold ": ", and the kernel's YAML parser would drop the skill.
+    if (!/^["'{>|]/.test(value) && /:(\s|$)/.test(value)) report(`${relative(repoRoot, file)}:${index + 2}`, "a plain YAML value can't contain \": \"; quote it or reword it");
+    fm[raw.slice(0, idx).trim()] = value.replace(/^['"]|['"]$/g, "");
   }
   return { text, frontmatter: fm };
 }

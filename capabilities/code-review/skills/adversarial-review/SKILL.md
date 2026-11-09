@@ -1,6 +1,6 @@
 ---
 name: adversarial-review
-description: The reviewer's method. Find the real bugs in a change by trying to break it, prove each finding, rank by impact, and keep noise out. Use when reviewing a diff as the code-reviewer: one round, at one head.
+description: The reviewer's method. Find the real bugs in a change by trying to break it, prove each finding, rank by impact, and keep noise out. Use when reviewing a diff as the code-reviewer, for one round at one head.
 ---
 
 # Adversarial review

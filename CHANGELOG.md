@@ -354,7 +354,7 @@ For organisations that keep adapted copies, each line says what to port.
   `scripts/validate-package.mjs`) checks every capability's `oats.json` against the OATS
   schema, its version and release sentence against this changelog's latest release, its
   skills and inject; every soul against the soul schema and the capabilities it composes,
-  and that no plain YAML value holds ": "; that the docs and the souls' `AGENTS.md` name
+  and that no plain YAML value holds ": ", in a soul or in a skill's frontmatter; that the docs and the souls' `AGENTS.md` name
   only skills and souls the template has; that each skill an inject or skill (its
   `SKILL.md` and every Markdown file beside it) names is one
   every soul composing that capability has; layer and forge-CLI neutrality in every inject

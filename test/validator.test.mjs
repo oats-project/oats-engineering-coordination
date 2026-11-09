@@ -182,6 +182,12 @@ test("validator rejects a soul value YAML would not parse", (t) => {
   assert.match(result.stderr, /souls\/code-reviewer\/soul\.yaml:3: a plain YAML value can't contain ": "/);
 });
 
+test("validator rejects a skill description YAML would not parse", (t) => {
+  const result = mutate(t, "capabilities/developer/skills/worktrees/SKILL.md", (text) => text.replace("When and how to use extra worktrees", "Extra worktrees: when and how to use them"));
+  assert.equal(result.status, 1);
+  assert.match(result.stderr, /capabilities\/developer\/skills\/worktrees\/SKILL\.md:3: a plain YAML value can't contain ": "/);
+});
+
 test("validator rejects a skill reference a composing soul can't load", (t) => {
   const result = mutate(t, "capabilities/engineering-expert/injects/expert.md", (text) => `${text}\nSee \`/work-the-reviews\`.\n`);
   assert.equal(result.status, 1);
