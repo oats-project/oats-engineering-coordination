@@ -1,6 +1,6 @@
 {
-  "name": "@awebai/oats-engineering",
-  "version": "2.0.0",
+  "name": "oats-engineering-coordination",
+  "version": "2.1.0",
   "description": "The OATS engineering coordination template: capabilities and souls an organisation copies and adapts.",
   "license": "MIT",
   "type": "module",

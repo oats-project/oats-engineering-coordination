@@ -33,7 +33,7 @@ function mutate(t, relativePath, fn) {
 test("validator accepts the real template", () => {
   const result = runValidator();
   assert.equal(result.status, 0, result.stderr);
-  assert.match(result.stdout, /^Validated the engineering template at template-v2\.0\.0: 6 capabilities, 31 skills, 5 souls, 15 adapt markers/);
+  assert.match(result.stdout, /^Validated the engineering template at template-v2\.1\.0: 6 capabilities, 34 skills, 5 souls, 17 adapt markers/);
 });
 
 test("validator rejects capability manifest schema violations", (t) => {
@@ -159,15 +159,15 @@ test("validator rejects an adapt marker outside a capability", (t) => {
 });
 
 test("validator rejects a capability that doesn't record its template release", (t) => {
-  const result = mutate(t, "capabilities/developer/oats.json", (text) => text.replace(" Copied from the engineering template, template-v2.0.0.", ""));
+  const result = mutate(t, "capabilities/developer/oats.json", (text) => text.replace(" Copied from the engineering template, template-v2.1.0.", ""));
   assert.equal(result.status, 1);
-  assert.match(result.stderr, /capabilities\/developer\/oats\.json\.description: must end with "Copied from the engineering template, template-v2\.0\.0\."/);
+  assert.match(result.stderr, /capabilities\/developer\/oats\.json\.description: must end with "Copied from the engineering template, template-v2\.1\.0\."/);
 });
 
 test("validator rejects a capability whose version isn't the template release", (t) => {
-  const result = mutate(t, "capabilities/developer/oats.json", (text) => text.replace('"version": "2.0.0"', '"version": "1.18.0"'));
+  const result = mutate(t, "capabilities/developer/oats.json", (text) => text.replace('"version": "2.1.0"', '"version": "1.18.0"'));
   assert.equal(result.status, 1);
-  assert.match(result.stderr, /capabilities\/developer\/oats\.json\.version: must be the template release 2\.0\.0/);
+  assert.match(result.stderr, /capabilities\/developer\/oats\.json\.version: must be the template release 2\.1\.0/);
 });
 
 test("validator rejects a soul composing a capability the template lacks", (t) => {

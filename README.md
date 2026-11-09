@@ -67,7 +67,8 @@ cases around it.
     `/coordinate-developers`, `/verify-developer-work`, `/ask-a-person`,
     `/land-on-agreement`, `/find-the-maintainer`, `/across-people`, `/findings-and-blocks`.
   - `oats.developer`: `/understand-the-spec`, `/execution-strategy`, `/worktrees`,
-    `/prove-it-works`, `/run-the-review-loop`, `/work-the-reviews`, `/maintain-dev-docs`.
+    `/test-first`, `/diagnose-before-fixing`, `/design-while-writing`, `/prove-it-works`,
+    `/run-the-review-loop`, `/work-the-reviews`, `/maintain-dev-docs`.
   - `oats.code-review`: `/adversarial-review`, `/security-review`,
     `/simplification-review`, `/review-dev-docs`.
   - `oats.maintainer`: `/maintainer-intake`, `/launch-work`, `/direction-gate`,
@@ -122,7 +123,7 @@ no bound. `npm test` previews every soul in OATS 0.69.7 and main, and checks tha
 list the kernel features the texts rely on.
 
 Works with any harness OATS supports (pi, Claude Code, Codex). The
-`code-reviewer` soul prefers Codex with `gpt-6-astra` (`launch:` in its soul); a machine
+`code-reviewer` soul prefers pi with `github-copilot/gpt-6.1-sol` (`launch:` in its soul); a machine
 overrides it in `oats-local.yaml` `souls.launch`, and spawn flags win over both. Developers use
 your harness's workflow tool for parallel work; where it has none, its subagents in the same
 pattern, keeping each workflow under 10 agents and asking you first for more. Where the
@@ -139,4 +140,5 @@ and the concurrent-subagent limit. Claude Code's `workflowSizeGuideline` default
 ([Claude Code workflows](https://code.claude.com/docs/en/workflows.md)).
 
 ## License
-MIT
+MIT. Some of the developer's skills adapt rules from MIT-licensed sources; their notices are
+in [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).

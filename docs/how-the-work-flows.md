@@ -21,8 +21,9 @@ error."
    after 100 calls; existing keys unaffected until enabled.
 3. **A probe** (`/send-a-probe`). One question the plan depends on: does a bucket shared
    across gateway replicas hold under a burst at the minute boundary? A fresh developer
-   instance, the expert's OATS child on another model, builds the smallest spike and answers
-   yes, with the run. It retires on answer; the plan stays the expert's.
+   instance, the expert's OATS child on another model, builds the smallest spike and runs
+   the check the expert wrote in its brief (no key gets more than 100 calls in a minute
+   across the replicas), and answers yes, with the run. It retires on answer; the plan stays the expert's.
 4. **A developer builds it** (`/coordinate-developers`), as the expert's child. It checks
    the spec (`/understand-the-spec`), asks one question with a proposed answer, runs a
    workflow in one worktree (`/execution-strategy`), adds the acceptance tests unchanged and

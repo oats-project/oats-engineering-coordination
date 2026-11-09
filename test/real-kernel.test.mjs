@@ -7,7 +7,7 @@ import test from "node:test";
 import { fileURLToPath } from "node:url";
 
 const REPO = resolve(fileURLToPath(new URL("..", import.meta.url)));
-const OATS_URL = "https://github.com/awebai/oats.git";
+const OATS_URL = "https://github.com/oats-project/oats.git";
 // The floor every capability's oats.json declares (the validator checks they agree).
 const FLOOR = JSON.parse(readFileSync(join(REPO, "capabilities", "developer", "oats.json"), "utf8"))
   .compatibility.oats.replace(/^>=/, "");
@@ -69,7 +69,7 @@ defaults:
   mkdirSync(memberSrc);
   for (const dir of ["capabilities", "souls"]) cpSync(join(REPO, dir), join(memberSrc, dir), { recursive: true });
   // The copy's release record (ADAPTING.md, section 4): a plain file the kernel must ignore.
-  writeFileSync(join(memberSrc, "capabilities", "TEMPLATE-RELEASE"), "template: oats-project/oats-engineering-coordination\nrelease: template-v2.0.0\n");
+  writeFileSync(join(memberSrc, "capabilities", "TEMPLATE-RELEASE"), "template: oats-project/oats-engineering-coordination\nrelease: template-v2.1.0\n");
   writeFileSync(join(memberSrc, "oats-membership.yaml"), `schemaVersion: 2
 workspace: file://${workspaceBare}
 `);
@@ -86,8 +86,8 @@ workspace: file://${workspaceBare}
   const bin = join(tmp, "bin");
   mkdirSync(bin);
   // Spawn previews refuse a harness whose binary is missing (E_HARNESS_UNAVAILABLE): pi is the
-  // default harness and codex is the code-reviewer's launch preference.
-  for (const harness of ["pi", "codex"]) {
+  // default harness and the code-reviewer's launch preference.
+  for (const harness of ["pi"]) {
     const fake = join(bin, harness);
     writeFileSync(fake, `#!/usr/bin/env sh\necho fake ${harness} for spawn-preview tests >&2\n`);
     chmodSync(fake, 0o755);
@@ -132,7 +132,7 @@ async function checkKernel(t, label, ref) {
 
   const dev = preview("developer");
   assert.deepEqual(modules(dev), ["oats.developer", "oats.landing-rules"]);
-  assert.deepEqual(skills(dev), ["execution-strategy", "maintain-dev-docs", "prove-it-works", "run-the-review-loop", "understand-the-spec", "work-the-reviews", "worktrees"]);
+  assert.deepEqual(skills(dev), ["design-while-writing", "diagnose-before-fixing", "execution-strategy", "maintain-dev-docs", "prove-it-works", "run-the-review-loop", "test-first", "understand-the-spec", "work-the-reviews", "worktrees"]);
 
   const maintainer = preview("maintainer");
   assert.deepEqual(modules(maintainer), ["oats.landing-rules", "oats.maintainer"]);
@@ -149,8 +149,8 @@ async function checkKernel(t, label, ref) {
   const reviewer = preview("code-reviewer");
   assert.deepEqual(modules(reviewer), ["oats.code-review"], "the reviewer composes only its own role");
   assert.deepEqual(skills(reviewer), ["adversarial-review", "review-dev-docs", "security-review", "simplification-review"]);
-  assert.equal(reviewer.launch.effective.harness, "codex", "code-reviewer launches on Codex by default");
-  assert.equal(reviewer.launch.effective.model, "gpt-6-astra", "code-reviewer launches on Astra by default");
+  assert.equal(reviewer.launch.effective.harness, "pi", "code-reviewer launches on pi by default");
+  assert.equal(reviewer.launch.effective.model, "github-copilot/gpt-6.1-sol", "code-reviewer launches on gpt-6.1-sol by default");
   assert.equal(reviewer.launch.from, "soul", "the reviewer's launch comes from its soul");
 }
 

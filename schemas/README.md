@@ -1,6 +1,6 @@
 # Vendored OATS schemas
 
-These schemas are vendored from `awebai/oats` release v0.69.7 (commit
+These schemas are vendored from `oats-project/oats` release v0.69.7 (commit
 `4b43bbff9021fd5258e22a37b1754cf587c7da50`), the floor every capability's `oats.json`
 declares:
 

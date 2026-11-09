@@ -49,14 +49,14 @@ A reviewer on your model shares your blind spots. Before spawning, compare:
 
 <!-- adapt: Which harnesses and models does this organisation have for model diversity? -->
 Compare the models, not the harnesses: a provider prefix names a route to a model, not
-another model, so `github-copilot/gpt-6-astra` on pi and `gpt-6-astra` on Codex are one
+another model, so `<provider>/<model>` on one harness and `<model>` on another are one
 model. When the effective reviewer's model is known and differs from yours, spawn without
 `--harness`/`--model`, so the machine's override applies; don't force the soul's default
 over it. When it would run on your model, on any harness, spawn it on another
-state-of-the-art model, on another harness when you can: currently Codex with Astra, Claude Code with Opus 5.5, Fable, or the latest Grok,
-through a launch configuration this host defines (`oats launch-config list`) or
-`--harness`/`--model`. If none is available, use the effective one and say so in your
-handback.
+state-of-the-art model, on another harness when you can: currently a GPT model through
+Codex or pi, Claude Code with Opus 5.5, or the latest Grok, through a launch configuration
+this host defines (`oats launch-config list`) or `--harness`/`--model`. If none is
+available, use the effective one and say so in your handback.
 
 If either model is unknown (`null`, absent, or a harness's native default), the comparison
 proves nothing: spawn the reviewer with `--harness`/`--model` (or a launch configuration) on
@@ -81,8 +81,9 @@ cases, tests; report findings with a verdict".
 ## Iterate, one fresh reviewer per round
 1. The round's reviewer reports findings with a verdict: `APPROVE`, `APPROVE WITH NITS` or
    `CHANGES NEEDED`.
-2. Fix each finding, or dispute it with a concrete reason (a test, a contract, a spec
-   line). Skip none silently, and record each in your notes. A finding you can't place or
+2. Verify each finding against the code, then fix it, or dispute it with a concrete
+   reason (a test, a contract, a spec line); one that adds an abstraction gets the YAGNI
+   check of `/work-the-reviews`. Skip none silently, and record each in your notes. A finding you can't place or
    reproduce, ask that reviewer about while it still runs: a fact about its finding, never
    a review of your fix.
 3. Once every finding is fixed or disputed, close the round and retire its reviewer
