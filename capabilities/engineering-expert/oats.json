@@ -9,7 +9,7 @@
   "inject": "injects/expert.md",
   "skills": [
     "skills/plan-and-spec",
-    "skills/send-a-probe",
+    "skills/send-a-helper",
     "skills/hand-off",
     "skills/coordinate-developers",
     "skills/verify-developer-work",

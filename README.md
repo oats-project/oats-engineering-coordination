@@ -70,7 +70,7 @@ cases around it.
   plus the skills an agent loads when it needs them, except `oats.build`, which is skills
   only.
   - `oats.dispatcher`: `/dispatch`.
-  - `oats.engineering-expert`: `/plan-and-spec`, `/send-a-probe`, `/hand-off`,
+  - `oats.engineering-expert`: `/plan-and-spec`, `/send-a-helper`, `/hand-off`,
     `/coordinate-developers`, `/verify-developer-work`, `/ask-a-person`,
     `/land-on-agreement`, `/find-the-maintainer`, `/across-people`, `/findings-and-blocks`.
   - `oats.build`, the craft of building a change, composed by the developer and the expert

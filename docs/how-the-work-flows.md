@@ -22,7 +22,7 @@ error."
    middleware, its tests and a run across replicas are sustained work whose detail the rest
    of the effort doesn't need, so a developer earns its place (the context case), and the
    expert records that in one line.
-3. **A probe** (`/send-a-probe`). One closed question the plan depends on: does a bucket
+3. **A probe** (`/send-a-helper`). One closed question the plan depends on: does a bucket
    shared across gateway replicas hold under a burst at the minute boundary, yes or no? Its
    brief bounds it (two replicas, the smallest spike, stop at the first minute that breaks)
    and asks for the verdict in a line, the run's command and output, and what it didn't

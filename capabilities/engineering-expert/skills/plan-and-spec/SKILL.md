@@ -96,7 +96,7 @@ tests have one author.
 - No two builders edit the same files without an agreed order.
 - The riskiest assumption is tested first, not last: a probe that tests a theory the plan
   rests on, a spike or a real run, or, where the plan can go more than one way, one probe per
-  competing approach (`/send-a-probe`).
+  competing approach (`/send-a-helper`).
 - Each spec has its builder, you or a developer, by the cases in section 5, recorded one
   line per spec. Whoever builds it iterates with fresh reviewers until a round finds
   nothing to fix. You verify a developer's converged branch once, and run no review rounds

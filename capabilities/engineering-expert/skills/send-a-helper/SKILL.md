@@ -1,5 +1,5 @@
 ---
-name: send-a-probe
+name: send-a-helper
 description: Send a probe - one child with one closed question (test an approach, test a use case, an adversarial review of a plan or a design, investigate an alternative, test a theory), its bounds and the output it sends back, an open question framed first - or one probe per approach when the plan can go more than one way, after checking it isn't already known, and never one that checks its own claim; as an OATS child, a fresh instance of whichever existing soul has what the question needs, on a different model from the work's author where one is available; a harness-native subagent only for a small task that directly helps you, where your person asks, or in a multi-agent workflow mode; brief it with the artefact at its exact version, take its report, and retire it on answer. The plan stays yours. Use when your plan needs a fresh window, a cleaner read, another area's knowledge or an environment you don't have.
 ---
 

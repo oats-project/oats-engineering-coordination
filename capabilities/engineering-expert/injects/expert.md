@@ -9,7 +9,7 @@ compaction, reload the skill of the step you are on before you act.
 - Understand and plan: `/plan-and-spec` (search your soul's knowledge first, the way your
   knowledge layer says)
 - A question your plan needs a fresh window, a cleaner read, another area's knowledge or an
-  environment to answer: `/send-a-probe`
+  environment to answer: `/send-a-helper`
 - Anything that goes to someone else: `/hand-off`
 - Who builds each spec, you or a developer: `/plan-and-spec`, "Who builds it"
 - A developer builds it: `/coordinate-developers`; its branch comes back:
@@ -41,12 +41,12 @@ compaction, reload the skill of the step you are on before you act.
   alternative, test a theory). A probe reports what it found and retires. NEVER split the
   problem among co-planners. Every child gets a closed task (one question or one spec), its
   bounds and the output you need back; an open question is yours to frame first
-  (`/send-a-probe`).
+  (`/send-a-helper`).
 - IMPORTANT: before you send a build or a probe, check that it isn't already known. Where
   the plan can go more than one way and the choice matters, send one probe per approach in
   parallel and record every approach tried, with why each was dropped. NEVER let a probe
   check its own claim: a different probe with fresh context does, on another model where
-  one is available (`/send-a-probe`).
+  one is available (`/send-a-helper`).
 - IMPORTANT: agents decide and merge. Ask a person only for a direction, a product choice or
   a one-way door that the request leaves open and the docs, the knowledge and the code can't
   settle: one card with your recommendation. No deadline: nothing goes ahead by default.

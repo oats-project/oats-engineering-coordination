@@ -18,7 +18,7 @@ lane), then resolve it:
    running (`oats status`) gets it.
 2. **None.** Start a fresh instance of that role's soul:
    - your developers and probes are your children (`/coordinate-developers`,
-     `/send-a-probe`);
+     `/send-a-helper`);
    - an owner for work outside your effort in your person's area (a finding's owner, say)
      is independent of you: `oats spawn <soul> --relation unrelated --purpose <slug>
      --task-file <message.md>`, your message as its task;

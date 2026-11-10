@@ -138,7 +138,7 @@ A copy is adapted when no marker is left; until then, the markers left are its o
 ### `capabilities/engineering-expert/skills/plan-and-spec/SKILL.md`
 - **Is there a size or a kind of change past which a lead always sends a developer?** Assumes none: the three cases in "Who builds it" (context, parallel work, an environment or knowledge the lead lacks) decide each spec. Name a size or a kind (a migration, a change across repositories) only where the organisation wants a developer for it whatever the cases say. Default: none.
 
-### `capabilities/engineering-expert/skills/send-a-probe/SKILL.md`
+### `capabilities/engineering-expert/skills/send-a-helper/SKILL.md`
 - **How many probes may a lead run in parallel for one decision?** Assumes up to 4, one per competing approach. A probe costs a full instance's run, so name a lower cap where runs are expensive, or a higher one where decisions are worth it. Default: up to 4.
 
 ### `capabilities/engineering-expert/skills/coordinate-developers/SKILL.md`

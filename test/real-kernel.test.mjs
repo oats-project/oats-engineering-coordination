@@ -131,7 +131,7 @@ async function checkKernel(t, label, ref) {
   const BUILD = ["design-while-writing", "diagnose-before-fixing", "execution-strategy", "maintain-dev-docs", "prove-it-works", "run-the-review-loop", "test-first", "work-the-reviews", "worktrees"];
   const expert = preview("engineering-expert");
   assert.deepEqual(modules(expert), ["oats.build", "oats.engineering-expert", "oats.landing-rules"]);
-  assert.deepEqual(skills(expert), sorted(["across-people", "ask-a-person", "coordinate-developers", "find-the-maintainer", "findings-and-blocks", "hand-off", "land-on-agreement", "plan-and-spec", "send-a-probe", "verify-developer-work", ...BUILD]));
+  assert.deepEqual(skills(expert), sorted(["across-people", "ask-a-person", "coordinate-developers", "find-the-maintainer", "findings-and-blocks", "hand-off", "land-on-agreement", "plan-and-spec", "send-a-helper", "verify-developer-work", ...BUILD]));
 
   const dev = preview("developer");
   assert.deepEqual(modules(dev), ["oats.build", "oats.developer", "oats.landing-rules"]);

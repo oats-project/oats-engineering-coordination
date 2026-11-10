@@ -102,7 +102,7 @@ Then port the changes below.
 ### Closed briefs
 
 **`oats.engineering-expert`**
-- `/send-a-probe`, changed: a new section, "A closed question, or it isn't a probe yet": a
+- `/send-a-helper`, changed: a new section, "A closed question, or it isn't a probe yet": a
   question is closed when its possible answers can be written before it is sent; an open
   one the lead frames first (the decision, what "answered" means, 2 to 4 closed angles,
   where to look and when to stop), then one probe per angle; framing that needs sources is
@@ -215,10 +215,10 @@ says what to port.
   again where they differ. Before, the recipe gave `--base <its default branch>`, which
   the kernel reads as a ref in the clone, never fetched: the developer started at the
   clone's local branch, however far behind the remote.
-- `/send-a-probe`, fixed: a developer-soul probe gets the same `--repo`/`--base` and the
+- `/send-a-helper`, fixed: a developer-soul probe gets the same `--repo`/`--base` and the
   same check, by reference to `/coordinate-developers`.
   Port: replace your copy's spawn recipe in `/coordinate-developers` with the new one and
-  its check, and the probe's line in `/send-a-probe`.
+  its check, and the probe's line in `/send-a-helper`.
 
 ### The research template is released
 
@@ -235,7 +235,7 @@ copy of template-v2.0.0, each line says what to port.
 ### Probes that test theories and approaches
 
 **`oats.engineering-expert`**
-- `/send-a-probe`, changed:
+- `/send-a-helper`, changed:
   - a fifth kind of question, "Test a theory": a claim the plan rests on, tried on small,
     concrete cases or the smallest run first, as hard to break as to confirm, reported case
     by case;
@@ -509,7 +509,7 @@ For organisations that keep adapted copies, each line says what to port.
   comments (the developer does, `/work-the-reviews`); the hand-over to a maintainer, the
   lane label and "leave the branch alone after the hand-over" are gone.
 - `/coordinate-experts`, removed: sibling experts sharing a plan go, replaced by one lead
-  with probes (`/send-a-probe`) and hand-offs of finished parts (`/hand-off`). "New work:
+  with probes (`/send-a-helper`) and hand-offs of finished parts (`/hand-off`). "New work:
   reuse a live expert" goes: one effort, one instance, and the dispatcher starts new ones.
   "Your maintainer" moves to `/find-the-maintainer`, "Across machines and people" to
   `/across-people`, and "Relaying a decision you made with your human" to the decision
@@ -522,7 +522,7 @@ For organisations that keep adapted copies, each line says what to port.
   purpose names the person, the lane and a sequence number, so no instance takes a retired
   one's name), or asked
   of another person's dispatcher; never a second while one is active, even a stopped one.
-- `/send-a-probe`, added: one question per probe (test an approach, test a use case, an
+- `/send-a-helper`, added: one question per probe (test an approach, test a use case, an
   adversarial review of a plan or a design, never of code under review, investigate an
   alternative); an OATS child, a fresh instance of the soul with the knowledge, the
   environment or the method it needs, on a different model from yours where one is
