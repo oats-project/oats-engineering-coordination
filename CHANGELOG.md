@@ -1,5 +1,299 @@
 # Changelog
 
+## Unreleased
+
+A major release. Principle 3 changes: the lead decides who builds each spec, itself or a
+developer, whoever builds it runs the review loop, and nothing lands without a fresh
+review. Principles 1 and 2 change with it: an extra agent earns its place by splitting
+context, testing, specialisation or parallel work, and a lead's children are helpers, each
+with one closed task. Nine build skills move into a new capability, `oats.build`, which the
+developer and the expert both compose, and `/send-a-probe` becomes `/send-a-helper`. A
+helper's brief is a closed task with bounds and a required output, a reviewer's verdict
+lists what it checked, a developer splits its work by context, not by kind of work, a lead
+for a related effort is a sibling, and every inject says, in capitals, to keep loading the
+skill for each step. For a copy of a template-v2.x release, each line says what to port;
+move and rename the skills first.
+
+### Principle 3: whoever builds a change iterates with fresh reviewers
+
+ADAPTING.md, section 2, principle 3, changed. Was: "The developer iterates with fresh
+reviewers, not the experts": a developer built every change, and a lead only a one-line
+docs fix, with no review loop. Now: whoever builds a change iterates with fresh reviewers,
+and nothing lands without a fresh review. The lead decides who builds each spec, itself or
+a developer. The author runs the review loop, a fresh reviewer (a new `code-reviewer`
+instance, its OATS child) on a different model where one is available, until a round finds
+nothing to fix: at least one round, always. No author reviews its own work. A lead still
+never runs review rounds or spawns reviewers for a developer's work, and verifies a
+developer's converged branch once. A one-line docs fix skips the local loop, not the
+review; only a maintainer's release prep needs no review round. Principle 10 says a
+reviewer retires once its round is closed.
+
+### What a template-v2.x copy must move
+
+ADAPTING.md, section 6, "A copy at template-v2.2.0 or earlier takes up `oats.build`", has
+the steps:
+- check that `oats.build` is not already an id in the workspace (section 1);
+- move the nine skill directories from your developer capability's `skills/` to
+  `capabilities/build/skills/`: `execution-strategy`, `worktrees`, `test-first`,
+  `diagnose-before-fixing`, `design-while-writing`, `prove-it-works`,
+  `run-the-review-loop`, `work-the-reviews` and `maintain-dev-docs`, keeping your
+  adaptations, and drop them from its `oats.json`;
+- add `capabilities/build/oats.json`, with your copy's release sentence;
+- add `oats.build: { from: here }` (or `from: <repo key>`) to the developer soul and to each
+  expert soul;
+- repoint whatever in the copy names those skills by their old capability or path: its
+  notices file, its adaptation notes, its tests, its docs.
+
+And rename one skill: move `capabilities/engineering-expert/skills/send-a-probe/` to
+`send-a-helper/`, set its frontmatter `name: send-a-helper`, update its entry in the
+expert's `oats.json`, and change every `/send-a-probe` in the copy (the injects, the skills,
+the docs, any test) to `/send-a-helper`. Then port the changes below.
+
+### Who builds, and the lead as author
+
+**`oats.engineering-expert`**
+- inject, changed: the skill list says who builds each spec (`/plan-and-spec`, "Who builds
+  it"), and what to load when a developer builds it or when the lead builds it itself (the
+  build skills, then `/run-the-review-loop` and `/work-the-reviews`); "the developer
+  iterates with fresh reviewers, not you" becomes "whoever builds a change iterates with
+  fresh reviewers": the lead decides who builds, the author runs its loop, the lead is
+  never its own reviewer, and still runs no rounds for a developer's work; the lead opens
+  and works the PR of a change it built; "Your loop" decides who builds each spec. Two new
+  paragraphs give a lead that builds the developer's rules: "The quality floor" and "On the
+  hosts you run on" (the shared-host limits, unread code, read-only customer and
+  production hosts, no secret in a message, report, log or commit), each with the
+  developer's adapt question, so a copy answers it in both places.
+  Port: replace those bullets and "Your loop", and add the two paragraphs with your
+  developer inject's answers.
+- `/plan-and-spec`, changed: a new section 5, "Who builds it". An extra agent costs a
+  context, a hand-off and several times the tokens; a developer earns its place in three
+  cases (context, parallel, specialisation in a lane of its own), and otherwise the
+  lead builds it; one coupled change is never split; the choice and its case are recorded,
+  one line per spec. When the lead builds: a short spec with pinned acceptance tests, an
+  extra worktree of its own (`oats worktree add … --base <its default branch> --repo
+  <clone>`, whose start the lead checks against `git ls-remote` after it runs), the build
+  skills as a developer follows them ("your expert" is the lead, with no hand-back and no
+  `VERIFIED` note), a fresh reviewer each round that is never the lead, and the clean round
+  as its green light. A large feature always goes to developers, one per surface, and a
+  new adapt question asks what counts as one (default: more than one surface, or sustained
+  building and testing). "Check the plan" is now section 6, and its builder line follows.
+  The description says who builds. Port: add the section, answer the question (ADAPTING.md,
+  section 3), and replace the builder line.
+- `/coordinate-developers`, changed: "Launch" starts with when a developer builds a spec
+  (the three cases), and never splits one coupled change across agents. The description
+  says so. Port: those two bullets.
+- `/findings-and-blocks`, changed: a small fix in your area is its own spec, built by
+  whoever `/plan-and-spec` names, usually the lead; a one-line docs fix skips the local
+  loop, not the review. Port: step 1 and the description.
+- `/land-on-agreement`, changed: section 1 covers a developer's work (your verification) and
+  a change you built (your own clean round is the green light, with no `VERIFIED` note; you
+  open and work the PR); a one-line docs fix lands on CI green and one fresh review; "the
+  author" rebases; your note is an agreement only on a developer's work. Port: section 1,
+  the lines in sections 2, 5 and 6, and the description.
+- `oats.json`: the description. Port: replace it.
+
+**`oats.landing-rules`**
+- "What merges a change", changed: the lead's verification note is an agreement for a
+  developer's work only; a change its lead built merges on CI green and the review at that
+  head. When a review carries to a new head: with no re-read through an unchanged rebase or
+  update; through the same reviewer's re-read of a delta that only fixes a minor, takes a
+  nit or fixes CI with no change in behaviour; otherwise not, a fix to a blocker or a major
+  getting a fresh reviewer. The reviewer's severity decides.
+- "The green light to open a PR", changed: for a change its lead built, the round that found
+  nothing to fix.
+- "Who builds a change", changed: the lead decides, by the three cases; whoever builds it
+  iterates with fresh reviewers, never reading its own work. The adapt question "May a
+  lead make a one-line docs fix itself, with no review loop?" becomes "May a change land
+  with no fresh review (a typo, a broken link)?", default no: a one-line docs fix merges on
+  CI green and one fresh review at its head.
+- "A PR with no lead here": release prep is unchanged; it no longer compares itself to a
+  lead's one-line docs fix.
+- `oats.json`: the description.
+  Port: replace those paragraphs, keeping your answers; answer the replaced question again
+  (ADAPTING.md, section 3).
+
+**`oats.maintainer`**
+- `/pr-review`, changed: a call, the evidence read and the merge's needs ask for the lead's
+  verification note only for a developer's work or a helper's scoped piece; a change its
+  lead built has none, and the clean round of its review loop stands in its place.
+  `references/reviewed-delivery.md` says the same in its record. Port: those lines.
+- `/cross-review-peer`, changed: a new lane's default review is a clean round of the
+  author's review loop, and the lead's verification note is for a developer's work.
+  Port: "A lane's arrangement".
+
+### Helpers, closed briefs and sibling leads
+
+ADAPTING.md, section 2: principle 1 names the four reasons an extra agent earns its place
+(splitting context, testing, specialisation, parallel work); principle 2 says a lead's
+children are helpers, each with one closed task (a question, a spec, or a scoped piece of
+the effort that needs another soul's capabilities), never co-planners, that another area's
+step goes to a helper and never to a second lead, and that a related effort's lead is a
+sibling; principle 10 retires a helper with a scoped piece once its work has landed.
+
+**`oats.engineering-expert`**
+- `/send-a-helper`, renamed from `/send-a-probe` and changed. It opens with the four
+  reasons to start a child and the three kinds of task. "Test before you build on it" puts
+  the tag's probe rules up front: the riskiest assumption first, one probe per competing
+  approach or cause, and a plan on an untested theory or an approach chosen by argument
+  isn't ready. New sections: "A closed question, or it isn't a probe yet" (a question is
+  closed when its possible answers can be written before it is sent; an open one the lead
+  frames first, then one probe per angle; framing that needs sources is research, one probe
+  that returns the closed questions); "Specialisation" (when lanes are clearly separate,
+  what a specialist brings, what is not a reason, routing is the lead's); "A scoped piece
+  of work" (another soul as the lead's child, a closed brief with a checkable "done" and
+  the interface first, questions to the lead and never its person, what it builds reviewed
+  and verified once); "Another area's work in your effort" (it stays in the effort, never a
+  second lead; the test is the effort's "done"). "The brief" gains the helper's bounds and
+  what it sends back, in order (the verdict in a line, evidence you can open, what it
+  didn't check, its recommendation), and keeps the rule that third-party text goes in by
+  its link or id, never as directives. "What it is worth" says when a helper earns its
+  place; "Who does it" carries a new adapt question on the organisation's specialist souls;
+  its spawn recipe says what `--same-work` does and doesn't; "Its answer" checks a claim
+  against what the helper points to, not its summary. Every probe rule is unchanged:
+  already known, the cap of 4, no self-check, a different model. Port: rename the skill,
+  then replace its text, keeping your answers to its adapt questions and answering the
+  new one (ADAPTING.md, section 3).
+- `/hand-off`, changed: "To whom" spawns helpers and developers with `--same-work`, keeps
+  another area's step of the effort in the effort, and starts a lead for another effort by
+  whether it is related: a continuation, a follow-on or a discovery that bears on the
+  effort gets a sibling (`--relation sibling --relative-to "$OATS_INSTANCE"`, which takes
+  no `--same-work`), spawned only by a root lead, a maintainer-launched lead asking its
+  maintainer instead; an unrelated finding stays `--relation unrelated`. Either way the new
+  effort has its own record, linked both ways, and the person is told the new lead's exact
+  name at once. Port: "To whom", step 2, and the description.
+- `/findings-and-blocks`, changed: a finding's owner is a sibling where the finding bears on
+  the effort, otherwise independent, and the person is told its name. Port: step 2.
+- `/land-on-agreement`, changed: "Retire what's finished" retires a helper with a scoped
+  piece once its work has landed. Port: that bullet.
+- inject, changed: children are helpers with one closed task each, their bounds and the
+  output the lead needs back, an open question framed first; a bullet of its own, "test
+  before you build on it"; another area's step stays in the effort, and a related effort's
+  lead is a sibling whose name the person is told; "Sent as a helper" replaces "Sent as a
+  probe", for a question or a scoped piece. A helper's scoped piece hands its clean round
+  back to the parent lead and opens no PR until the parent has verified it, as a
+  developer's work; then the helper opens the PR and works its reviews. `/plan-and-spec`,
+  `/send-a-helper`, `/land-on-agreement` and the landing rules' green light say the same.
+  Port: those bullets and lines.
+- `/plan-and-spec`, `/coordinate-developers`: the third case is "specialisation" (a lane of
+  its own: an environment, tools, skills or knowledge the lead lacks, or instructions that
+  would conflict with its own). Port: the case's line.
+
+**`oats.code-review`**
+- inject: "An expert may also spawn you as a probe" is unchanged; a probe is a helper with a
+  question.
+
+### `--same-work` on every child
+
+Every recipe that spawns a child carries `--same-work` (a helper, a developer, each round's
+reviewer), and says in one line what it does (it records that the child does its parent's
+work, and the person's sidebar draws the line) and what it doesn't (it shares no work tree:
+a developer keeps its own, and only a reviewer is attached to its author's tree, by
+`--work attached`). A sibling can't carry it: the kernel refuses the flag where no parent
+is recorded. In `/send-a-helper`, `/hand-off`, `/coordinate-developers`,
+`/run-the-review-loop`, and the expert's and the developer's injects. Port: those lines.
+
+### No standing maintainer: the lead starts one, and says what it is
+
+**`oats.engineering-expert`**
+- `/find-the-maintainer`, changed: step 1 finds your person and the lane, and calls or
+  starts no maintainer before both are known; where your person has no active maintainer in
+  the lane, you start it yourself, without asking, and right after tell your person in two
+  or three plain sentences what a maintainer is, what it is for, and its exact name. A new
+  adapt question carries those sentences. The guards are unchanged: never a second while
+  one is active, even a stopped one. Port: steps 1 and 3, and answer the new question.
+- inject, changed: the `/find-the-maintainer` line moves beside the who-builds line and says
+  the same in one line. Port: that line.
+
+**`oats.maintainer`**
+- inject, changed: a lead may have started you; introduce yourself to that person once, at
+  your first intake. Port: that bullet, under "Your role".
+
+### Loading skills as the work goes on
+
+Each role's inject (the expert's, the developer's, the reviewer's, the maintainer's and the
+dispatcher's) opens with an `IMPORTANT:` line in capital letters: load the skill for each
+step, and keep loading it as the work goes on, each time the step comes round, not once at
+the start; reload it after every compaction. Each lists its steps with their skills: the
+expert's gains the build skills, under "when you build a spec yourself"; the reviewer's
+names `/adversarial-review` for a round and for a delta; the maintainer's list is now "Your
+steps". The expert's inject has a second capital-letters line beside its who-builds line:
+load `/send-a-helper` before deciding whether to start a child and before briefing one, and
+send a helper when a reason holds. The developer's has one for its own children
+(`/execution-strategy` before fanning out, `/run-the-review-loop` before a reviewer), with
+the reasons in words; the maintainer's `/launch-work` line says it starts leads, not
+helpers, and `/launch-work` says a lead drives its developers and helpers and brings in
+what else it needs by a helper or a hand-off. Port: the opening line of each inject, those
+lines, and those two in `/launch-work`.
+
+### Checked verdicts, and when a reviewer is fresh
+
+**`oats.code-review`**
+- `/adversarial-review`, changed: section 4 adds a "Checked" section to every report, an
+  `APPROVE` included: one line per "done when" item and pinned acceptance test (read, with
+  the file and lines, or ran, with the command and its result), then the attacks that found
+  nothing. An approval that lists no checks is not a review. Section 5: the reviewer's
+  severity decides what comes next; a minor's fix, a nit taken or a CI fix that changes no
+  behaviour comes back to the same reviewer as a delta, which updates its verdict and its
+  Checked section. Port: both.
+- inject, changed: "the developer" is "the author who spawned you (a developer, or a lead
+  building its own spec)"; the probe paragraph's "never of code under review" has one
+  exception, code the lead itself built; "Your round" step 3 requires the Checked section,
+  and step 4 takes a minor delta back. Port: replace those lines.
+- `oats.json` and the `code-reviewer` soul (its description and `AGENTS.md`): say "author".
+  Port: the descriptions.
+
+**`oats.engineering-expert`**
+- `/verify-developer-work`, changed: section 0 needs the final round's Checked section in
+  the hand-back; without one, or with a "done when" item missing from it, the branch goes
+  back. Port: section 0.
+
+### The build skills, `oats.build`
+
+**`oats.build`**, new, skills only (no inject): composed by the developer and the expert.
+- `/execution-strategy`, moved and changed: one context by default; a path earns an agent
+  when it is independent (no shared files, no shared reasoning) and worth a fresh context,
+  or when breadth is the point; split by context, never by kind of work, a path carrying
+  its own tests; "When in doubt, do it yourself" replaces "When in doubt between the first
+  two, take the workflow", and "Lean toward parallelism" goes. The cap, the opt-in rules
+  and "You stay accountable" are unchanged. The description follows. Port: the opening,
+  "Choose one of three", step 1 of "Shape the workflow" and "Re-decide".
+- `/run-the-review-loop`, moved and changed: the author's loop, a developer's or a lead's
+  for its own spec, never its own reviewer; a round counts as finding nothing to fix only
+  with a Checked section covering every "done when" item (else that reviewer completes it,
+  or a fresh round runs); who reads a fix is the reviewer's severity's call: fresh on the
+  whole change after a blocker's or a major's fix or any behaviour, contract or design
+  change, the same reviewer on a minor's delta, none for an unchanged rebase; the cap is 4
+  fresh rounds, a delta's re-read not counting; a reviewer retires once its round is
+  closed; the hand-back carries the final Checked section. Port: "Iterate", the intro, the
+  first and last bullets of "Close", and the description.
+- `/work-the-reviews`, moved and changed: step 4, each new head gets the review its fix
+  calls for, by the same rule; a lead's own change opens at its clean round's head. Port:
+  step 4, step 1's green light and the description.
+- `/worktrees`, `/test-first`, `/diagnose-before-fixing`, `/design-while-writing`,
+  `/prove-it-works` and `/maintain-dev-docs`: moved, path only.
+
+**`oats.developer`**
+- `oats.json`: lists only `skills/understand-the-spec`; its description says "in one
+  context by default, fanning out only by context" for "preferring parallel dynamic
+  workflows".
+- inject, changed: the review-loop bullet says a minor's fix goes back to that round's
+  reviewer, and that the clean round's report lists what it checked. Port: that bullet.
+- `/understand-the-spec`: unchanged.
+
+**Souls**
+- `developer` and `engineering-expert`: compose `oats.build`. The expert's comment says it
+  builds its own specs or verifies a developer's.
+
+### The repository
+- `README.md`, `docs/how-the-work-flows.md` and `THIRD-PARTY-NOTICES.md` follow. The
+  walkthrough shows the lead deciding who builds, a closed probe, a minor's delta re-read
+  and a lead building a small change itself; a new section, "Where this comes from", cites
+  the three Anthropic articles behind the three cases, the split by context and the
+  verifier's criteria.
+- The validator knows `oats.build`, and a test checks that a build skill names no skill only
+  the developer has. The real-kernel test previews every soul: the expert gets its ten
+  skills and the nine build skills, the developer all ten.
+
 ## template-v2.2.0 - 2026-11-10
 
 One definition of "CI green", a developer who starts at the remote's commit, and the

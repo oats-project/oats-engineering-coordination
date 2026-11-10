@@ -10,8 +10,10 @@ description: Read a PR at the exact head an author names, when your lane's landi
   lane's landing rules need from you (`/cross-review-peer`, "A lane's arrangement"). You are
   never a station every PR passes: a PR nobody calls you for lands on its lane's other
   agreements, and you read it only if your sweep finds a reason to (`/keep-it-clean`).
-- **The call names:** the exact head, CI green on it, the lead's verification note at that
-  head, and the reviews the lane counts, where they are in. Before CI is green at that head,
+- **The call names:** the exact head, CI green on it, the reviews the lane counts, where
+  they are in, and, for a developer's work or a helper's scoped piece, the lead's
+  verification note at that head. A change its lead built has no such note: nobody
+  verifies their own work; the clean round of its review loop stands in its place. Before CI is green at that head,
   no read: tell the author what is missing, in one line.
 - **A head that moves after the call:** stop until the author calls again, then read only
   the delta and re-bind your verdict. A branch you brought up to date yourself is not a new
@@ -31,7 +33,8 @@ Pin the base and head SHAs before you read a line. Read
 hold applies, or you are about to merge.
 
 Read the author's evidence, given at this head: what it was verified with and, where the
-project uses them, the pre-PR review's verdict and rounds and the lead's verification note.
+project uses them, the pre-PR review's verdict and rounds and, for a developer's work, the
+lead's verification note.
 Missing: ask the author for it at this head. These inform your read and don't replace it.
 
 Read the PR as a whole: the description's claim against the diff, the scope against what
@@ -75,12 +78,12 @@ line, in its thread.
 
 ## Your verdict is one agreement
 Your verdict is one of the agreements the lane's landing rules name. The author gathers the
-others (CI, the reviews, its verification note, another lane's read where its code is
-touched) and merges, unless the lane reserves the merge for you. A PR with no lead (an
-outside contributor's) is yours to merge where your landing rules say so: at its head, once
-every agreement they name for it holds. You forward nothing to
-another maintainer and ask no one else for a read: where a PR also needs another lane's
-read, its author asks that lane's maintainer.
+others (CI, the reviews, its verification note for a developer's work, another lane's read
+where its code is touched) and merges, unless the lane reserves the merge for you. A PR with
+no lead (an outside contributor's) is yours to merge where your landing rules say so: at its
+head, once every agreement they name for it holds. You forward nothing to another maintainer
+and ask no one else for a read: where a PR also needs another lane's read, its author asks
+that lane's maintainer.
 
 **As the release lane's maintainer,** read what the landing rules give you the same way,
 with all four gates. Your APPROVE on the PR at that head is the release lane's agreement.
@@ -91,9 +94,10 @@ This section is yours when the lane's landing rules reserve the merge for you; a
 merging its own PR follows its own landing skill.
 - **Who:** you, where the landing rules reserve the merge for your lane, on the author's
   call at the head to merge. A maintainer alone merges what its landing rules give it.
-- **Needs:** the authority; every agreement the landing rules name, at the current head
-  (CI green, the reviews, the lead's verification note, your verdict, and any other lane's
-  read the PR needs). An earlier-head verdict carries only as Merge says below.
+- **Needs:** the authority; every agreement the landing rules name, at the current head (CI
+  green, the reviews, the lead's verification note for a developer's work, your verdict, and
+  any other lane's read the PR needs). An earlier-head verdict carries only as Merge says
+  below.
 - **No hold:** no hold recorded on the PR, and every open default-branch hold names an
   exception for this PR at this head (`/cross-review-peer`, "Holds").
 - **The default branch moved since CI ran on this head?** Two changes that share no file

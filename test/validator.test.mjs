@@ -33,7 +33,7 @@ function mutate(t, relativePath, fn) {
 test("validator accepts the real template", () => {
   const result = runValidator();
   assert.equal(result.status, 0, result.stderr);
-  assert.match(result.stdout, /^Validated the engineering template at template-v2\.2\.0: 6 capabilities, 34 skills, 5 souls, 18 adapt markers/);
+  assert.match(result.stdout, /^Validated the engineering template at template-v2\.2\.0: 7 capabilities, 34 skills, 5 souls, 23 adapt markers/);
 });
 
 test("validator rejects capability manifest schema violations", (t) => {
@@ -50,7 +50,7 @@ test("validator rejects helperInjection and team targeting in capability manifes
 });
 
 test("validator rejects skill frontmatter name mismatch and missing descriptions", (t) => {
-  const result = mutate(t, "capabilities/developer/skills/worktrees/SKILL.md", (text) => text.replace("name: worktrees", "name: other-name").replace(/description: .+\n/, ""));
+  const result = mutate(t, "capabilities/build/skills/worktrees/SKILL.md", (text) => text.replace("name: worktrees", "name: other-name").replace(/description: .+\n/, ""));
   assert.equal(result.status, 1);
   assert.match(result.stderr, /frontmatter name must equal directory/);
   assert.match(result.stderr, /frontmatter must include a description/);
@@ -60,7 +60,7 @@ test("validator rejects duplicate skill names", (t) => {
   const dir = fixture(t);
   const target = join(dir, "capabilities/code-review/skills/worktrees");
   mkdirSync(target, { recursive: true });
-  writeFileSync(join(target, "SKILL.md"), readFileSync(join(dir, "capabilities/developer/skills/worktrees/SKILL.md")));
+  writeFileSync(join(target, "SKILL.md"), readFileSync(join(dir, "capabilities/build/skills/worktrees/SKILL.md")));
   const manifest = join(dir, "capabilities/code-review/oats.json");
   writeFileSync(manifest, readFileSync(manifest, "utf8").replace('"skills/simplification-review"', '"skills/simplification-review",\n    "skills/worktrees"'));
   const result = runValidator(dir);
@@ -111,9 +111,9 @@ test("validator rejects template-local ids in docs that are not defined", (t) =>
 });
 
 test("validator rejects a skill that commands the messaging layer", (t) => {
-  const result = mutate(t, "capabilities/developer/skills/worktrees/SKILL.md", (text) => `${text}\nTell your expert with \`aw mail send\`.\n`);
+  const result = mutate(t, "capabilities/build/skills/worktrees/SKILL.md", (text) => `${text}\nTell your expert with \`aw mail send\`.\n`);
   assert.equal(result.status, 1);
-  assert.match(result.stderr, /developer\/skills\/worktrees\/SKILL\.md:\d+: commands the aweb CLI/);
+  assert.match(result.stderr, /build\/skills\/worktrees\/SKILL\.md:\d+: commands the aweb CLI/);
 });
 
 test("validator rejects an inject that commands the knowledge layer", (t) => {
@@ -135,13 +135,13 @@ test("validator rejects a reviewer whose report needs a messaging layer", (t) =>
 });
 
 test("validator rejects a malformed adapt marker", (t) => {
-  const result = mutate(t, "capabilities/developer/skills/execution-strategy/SKILL.md", (text) => text.replace("<!-- adapt: How many", "<!-- adapt How many"));
+  const result = mutate(t, "capabilities/build/skills/execution-strategy/SKILL.md", (text) => text.replace("<!-- adapt: How many", "<!-- adapt How many"));
   assert.equal(result.status, 1);
   assert.match(result.stderr, /execution-strategy\/SKILL\.md:\d+: malformed adapt marker/);
 });
 
 test("validator rejects an adapt marker ADAPTING.md doesn't list", (t) => {
-  const result = mutate(t, "capabilities/developer/skills/worktrees/SKILL.md", (text) => `${text}\n<!-- adapt: Where do this organisation's worktrees live? -->\n`);
+  const result = mutate(t, "capabilities/build/skills/worktrees/SKILL.md", (text) => `${text}\n<!-- adapt: Where do this organisation's worktrees live? -->\n`);
   assert.equal(result.status, 1);
   assert.match(result.stderr, /worktrees\/SKILL\.md: adapt marker "Where do this organisation's worktrees live\?" is not listed in ADAPTING\.md/);
 });
@@ -177,19 +177,19 @@ test("validator rejects a soul composing a capability the template lacks", (t) =
 });
 
 test("validator rejects a soul value YAML would not parse", (t) => {
-  const result = mutate(t, "souls/code-reviewer/soul.yaml", (text) => text.replace("proves its findings and reports them, as", "proves its findings and reports: as"));
+  const result = mutate(t, "souls/code-reviewer/soul.yaml", (text) => text.replace("proves its findings and reports them with what it checked, as", "proves its findings and reports: as"));
   assert.equal(result.status, 1);
   assert.match(result.stderr, /souls\/code-reviewer\/soul\.yaml:3: a plain YAML value can't contain ": "/);
 });
 
 test("validator rejects a skill description YAML would not parse", (t) => {
-  const result = mutate(t, "capabilities/developer/skills/worktrees/SKILL.md", (text) => text.replace("When and how to use extra worktrees", "Extra worktrees: when and how to use them"));
+  const result = mutate(t, "capabilities/build/skills/worktrees/SKILL.md", (text) => text.replace("When and how to use extra worktrees", "Extra worktrees: when and how to use them"));
   assert.equal(result.status, 1);
-  assert.match(result.stderr, /capabilities\/developer\/skills\/worktrees\/SKILL\.md:3: a plain YAML value can't contain ": "/);
+  assert.match(result.stderr, /capabilities\/build\/skills\/worktrees\/SKILL\.md:3: a plain YAML value can't contain ": "/);
 });
 
 test("validator holds skill frontmatter to plain one-line values", (t) => {
-  const file = "capabilities/developer/skills/worktrees/SKILL.md";
+  const file = "capabilities/build/skills/worktrees/SKILL.md";
   const cases = [
     ['description: "When', /SKILL\.md:3: a frontmatter value can't start with "/],
     ["description: {text: When", /SKILL\.md:3: a frontmatter value can't start with \{/],
@@ -210,9 +210,16 @@ test("validator holds skill frontmatter to plain one-line values", (t) => {
 });
 
 test("validator rejects a skill reference a composing soul can't load", (t) => {
-  const result = mutate(t, "capabilities/engineering-expert/injects/expert.md", (text) => `${text}\nSee \`/work-the-reviews\`.\n`);
+  const result = mutate(t, "capabilities/engineering-expert/injects/expert.md", (text) => `${text}\nSee \`/understand-the-spec\`.\n`);
   assert.equal(result.status, 1);
-  assert.match(result.stderr, /expert\.md: skill reference \/work-the-reviews is not a skill every soul composing oats\.engineering-expert has \(engineering-expert\)/);
+  assert.match(result.stderr, /expert\.md: skill reference \/understand-the-spec is not a skill every soul composing oats\.engineering-expert has \(engineering-expert\)/);
+});
+
+test("validator rejects a build skill naming a skill only the developer has", (t) => {
+  // oats.build is composed by the developer and the lead alike, so its skills name only what both load.
+  const result = mutate(t, "capabilities/build/skills/test-first/SKILL.md", (text) => `${text}\nSee \`/understand-the-spec\`.\n`);
+  assert.equal(result.status, 1);
+  assert.match(result.stderr, /test-first\/SKILL\.md: skill reference \/understand-the-spec is not a skill every soul composing oats\.build has \(developer, engineering-expert\)/);
 });
 
 test("validator rejects a forge CLI command in a skill", (t) => {
@@ -252,7 +259,7 @@ test("validator rejects an adapt marker in a soul's yaml", (t) => {
 });
 
 test("validator rejects a skill directory its oats.json doesn't list", (t) => {
-  const result = mutate(t, "capabilities/developer/oats.json", (text) => text.replace('    "skills/prove-it-works",\n', ""));
+  const result = mutate(t, "capabilities/build/oats.json", (text) => text.replace('    "skills/prove-it-works",\n', ""));
   assert.equal(result.status, 1);
-  assert.match(result.stderr, /capabilities\/developer\/skills\/prove-it-works: skill directory is not listed/);
+  assert.match(result.stderr, /capabilities\/build\/skills\/prove-it-works: skill directory is not listed/);
 });
