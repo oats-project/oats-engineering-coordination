@@ -9,7 +9,9 @@ and souls into your own workspace and shape them with [ADAPTING.md](ADAPTING.md)
 Each way of working has a template of its own, named `oats-<way of working>-coordination`.
 This one is for engineering. Research's,
 [oats-project/oats-research-coordination](https://github.com/oats-project/oats-research-coordination),
-is released at template-v1.0.0; oats-scientific-research-coordination is coming.
+is released at template-v1.0.0, and scientific research's,
+[oats-project/oats-scientific-research-coordination](https://github.com/oats-project/oats-scientific-research-coordination),
+at template-v1.0.0.
 
 ## The way of working
 
