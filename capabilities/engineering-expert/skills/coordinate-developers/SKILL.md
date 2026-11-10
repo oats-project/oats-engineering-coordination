@@ -13,12 +13,22 @@ description: Launch and drive developers to build what you specified, one per su
   environment the surface needs) as your child, the spec as its task:
   ```bash
   oats spawn <developer-soul> --parent <your instance> --same-work --purpose <short-slug> \
-    --repo <clone of the spec's repository> --base <its default branch> --task-file <spec.md>
+    --task-file <spec.md>
   ```
-  The spec's "Surface / files" names its repository. A developer's worktree comes from the
-  clone `--repo` names and starts at `--base`; without them it comes from the soul's own
-  repository. Leave both out only when the spec is in that repository. Add only what the
-  spec can't hold: the branch or PR to target, and who else works next to it.
+  The spec's "Surface / files" names its repository. Where that is the developer soul's own
+  repository, leave out `--repo` and `--base`: the worktree starts at the commit the spawn
+  observed on the remote. Where it is another repository, add
+  `--repo <clone of the spec's repository> --base origin/<its default branch>`. `--base`
+  names a ref in the clone, read there and never fetched: a bare branch name is the clone's
+  local branch, however far behind, and `origin/<branch>` is as fresh as the clone's last
+  fetch. Add only what the spec can't hold: the branch or PR to target, and who else works
+  next to it.
+- Before you apply, preview the same command with `--preview` and check its start point,
+  `from <ref or repository>@<commit>`, against the remote:
+  `git -C <clone> ls-remote origin <its default branch>`. If they differ, don't apply. For
+  the soul's own repository the remote moved since the preview: preview again. For
+  another, the clone is behind: `git -C <clone> fetch origin <its default branch>` (it
+  moves only `origin/<its default branch>`), then preview again.
 - `--same-work` marks the developer as working on your work. A developer you started
   before the flag existed gets it with `oats instance same-work <developer> on`.
 - Tell each developer which developers share an interface with it, so they talk directly.

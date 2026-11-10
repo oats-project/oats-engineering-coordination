@@ -14,6 +14,23 @@
   Port: replace your copy's definition of CI green with the new one, and answer the
   question (ADAPTING.md, section 3).
 
+### A developer starts at the remote's commit
+
+**`oats.engineering-expert`**
+- `/coordinate-developers`, fixed: for a spec in the developer soul's own repository, the
+  spawn leaves out `--repo` and `--base`, and the worktree starts at the commit the spawn
+  observed on the remote. For another repository it gives
+  `--base origin/<its default branch>`. Either way, before applying, the expert checks the
+  preview's start point (`from <ref or repository>@<commit>`) against
+  `git -C <clone> ls-remote origin <its default branch>`, and fetches the clone or previews
+  again where they differ. Before, the recipe gave `--base <its default branch>`, which
+  the kernel reads as a ref in the clone, never fetched: the developer started at the
+  clone's local branch, however far behind the remote.
+- `/send-a-probe`, fixed: a developer-soul probe gets the same `--repo`/`--base` and the
+  same check, by reference to `/coordinate-developers`.
+  Port: replace your copy's spawn recipe in `/coordinate-developers` with the new one and
+  its check, and the probe's line in `/send-a-probe`.
+
 ## template-v2.1.0 - 2026-11-09
 
 Probes that test theories and competing approaches, and the developer's craft skills. For a

@@ -99,8 +99,9 @@ Spawn it as your child, the brief as its task, with a name no instance has had:
 ```bash
 oats spawn <soul> --parent "$OATS_INSTANCE" --same-work --purpose <probe-slug> --task-file <probe.md>
 ```
-A developer-soul probe that needs a repository's code also gets
-`--repo <clone> --base <branch>`, as in `/coordinate-developers`.
+A developer-soul probe that needs another repository's code also gets
+`--repo <clone> --base origin/<its default branch>`. Check a developer-soul probe's start
+point against the remote before you apply. Both work as in `/coordinate-developers`.
 
 ## The brief
 - the one question, and in one line why the plan needs it;
