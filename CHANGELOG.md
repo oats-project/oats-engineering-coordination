@@ -112,6 +112,15 @@ the docs, any test) to `/send-a-helper`. Then port the changes below.
   Port: replace those paragraphs, keeping your answers; answer the replaced question again
   (ADAPTING.md, section 3).
 
+**`oats.maintainer`**
+- `/pr-review`, changed: a call, the evidence read and the merge's needs ask for the lead's
+  verification note only for a developer's work or a helper's scoped piece; a change its
+  lead built has none, and the clean round of its review loop stands in its place.
+  `references/reviewed-delivery.md` says the same in its record. Port: those lines.
+- `/cross-review-peer`, changed: a new lane's default review is a clean round of the
+  author's review loop, and the lead's verification note is for a developer's work.
+  Port: "A lane's arrangement".
+
 ### Helpers, closed briefs and sibling leads
 
 ADAPTING.md, section 2: principle 1 names the four reasons an extra agent earns its place

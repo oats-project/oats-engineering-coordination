@@ -17,10 +17,11 @@ is released at template-v1.0.0; oats-scientific-research-coordination is coming.
 each piece of work from plan to merge, on a fresh instance. Helpers add a fresh window, a
 cleaner read, an area's knowledge or an environment; for proper work they are OATS instances
 the person can see, and one that checks work runs on a different model. Every hand-off is a
-message about a finished artefact at its exact reference. The developer, not the expert,
-iterates with fresh reviewers. People give direction and decisions, as one card with a
-recommendation, with no deadline and no default if they are silent. A change merges once the
-agreements its lane needs hold at one head.
+message about a finished artefact at its exact reference. Whoever builds a change iterates
+with fresh reviewers; a lead verifies a developer's work once and never runs its rounds.
+People give direction and decisions, as one card with a recommendation, with no deadline and
+no default if they are silent. A change merges once the agreements its lane needs hold at
+one head.
 
 It suits organisations whose agents build software in repositories on a forge: one person
 or several, one repository or many. The template's roles:

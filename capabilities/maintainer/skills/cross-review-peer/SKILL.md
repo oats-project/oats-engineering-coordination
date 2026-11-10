@@ -150,8 +150,8 @@ the same human and lane.
 A lane's arrangement is its landing rules: the agreements that merge its changes, who
 merges, who gives a lead the green light to open a PR, and where a maintainer's read is
 needed. A new lane starts with the default: CI green and a review at the head (the review
-bot's, or a clean round of the developer's review loop), plus the lead's verification note
-at that head; the lead merges; no maintainer's read. The landing rules in your briefing
+bot's, or a clean round of the author's review loop), plus, for a developer's work, the
+lead's verification note at that head; the lead merges; no maintainer's read. The landing rules in your briefing
 record each lane's arrangement, and they are the authority. Common additions, each where the
 organisation already requires it:
 - **A maintainer's read:** on every PR, or only on one that changes a product decision, the
