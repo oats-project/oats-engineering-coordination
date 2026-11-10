@@ -8,15 +8,6 @@
   "requires": [],
   "inject": "injects/developer.md",
   "skills": [
-    "skills/understand-the-spec",
-    "skills/execution-strategy",
-    "skills/worktrees",
-    "skills/test-first",
-    "skills/diagnose-before-fixing",
-    "skills/design-while-writing",
-    "skills/prove-it-works",
-    "skills/run-the-review-loop",
-    "skills/work-the-reviews",
-    "skills/maintain-dev-docs"
+    "skills/understand-the-spec"
   ]
 }

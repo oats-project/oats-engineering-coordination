@@ -126,13 +126,16 @@ async function checkKernel(t, label, ref) {
   assert.deepEqual(modules(dispatcher), ["oats.dispatcher", "oats.landing-rules"]);
   assert.deepEqual(skills(dispatcher), ["dispatch"], "the dispatcher leads nothing: no expert or maintainer skills");
 
+  // oats.build holds the build skills, with no inject: a lead that builds a spec itself and a
+  // developer have the same craft.
+  const BUILD = ["design-while-writing", "diagnose-before-fixing", "execution-strategy", "maintain-dev-docs", "prove-it-works", "run-the-review-loop", "test-first", "work-the-reviews", "worktrees"];
   const expert = preview("engineering-expert");
-  assert.deepEqual(modules(expert), ["oats.engineering-expert", "oats.landing-rules"]);
-  assert.deepEqual(skills(expert), ["across-people", "ask-a-person", "coordinate-developers", "find-the-maintainer", "findings-and-blocks", "hand-off", "land-on-agreement", "plan-and-spec", "send-a-probe", "verify-developer-work"]);
+  assert.deepEqual(modules(expert), ["oats.build", "oats.engineering-expert", "oats.landing-rules"]);
+  assert.deepEqual(skills(expert), sorted(["across-people", "ask-a-person", "coordinate-developers", "find-the-maintainer", "findings-and-blocks", "hand-off", "land-on-agreement", "plan-and-spec", "send-a-probe", "verify-developer-work", ...BUILD]));
 
   const dev = preview("developer");
-  assert.deepEqual(modules(dev), ["oats.developer", "oats.landing-rules"]);
-  assert.deepEqual(skills(dev), ["design-while-writing", "diagnose-before-fixing", "execution-strategy", "maintain-dev-docs", "prove-it-works", "run-the-review-loop", "test-first", "understand-the-spec", "work-the-reviews", "worktrees"]);
+  assert.deepEqual(modules(dev), ["oats.build", "oats.developer", "oats.landing-rules"]);
+  assert.deepEqual(skills(dev), sorted([...BUILD, "understand-the-spec"]));
 
   const maintainer = preview("maintainer");
   assert.deepEqual(modules(maintainer), ["oats.landing-rules", "oats.maintainer"]);
@@ -140,7 +143,7 @@ async function checkKernel(t, label, ref) {
 
   // The kernel reads each skill's description with its own YAML parser and gives null when the
   // frontmatter doesn't parse, as the harnesses would drop the skill.
-  for (const capability of ["oats.dispatcher", "oats.engineering-expert", "oats.developer", "oats.code-review", "oats.maintainer", "oats.landing-rules"]) {
+  for (const capability of ["oats.dispatcher", "oats.engineering-expert", "oats.build", "oats.developer", "oats.code-review", "oats.maintainer", "oats.landing-rules"]) {
     const shown = runJson(process.execPath, [cli, "capabilities", "show", capability, "--dir", deploy, "--json"], { timeout: 120_000, env });
     const unparsed = (shown.skills || []).filter((s) => typeof s.description !== "string" || !s.description).map((s) => s.name);
     assert.deepEqual(unparsed, [], `${label}: ${capability} has skills whose frontmatter the kernel can't parse`);

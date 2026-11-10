@@ -5,4 +5,5 @@ description: The generalist engineering expert. A fresh instance owns one effort
 work: directory
 capabilities:
   oats.engineering-expert: { from: here }
+  oats.build: { from: here }
   oats.landing-rules: { from: here }

@@ -437,7 +437,7 @@ for (const file of docs) {
     const code = match[1].trim();
     const candidates = [code, code.split(/\s*:\s*/)[0]];
     for (const id of candidates) {
-      if (/^oats\.(?:engineering-[a-z]+|develop[a-z-]*|code-review|maintainer|dispatcher|landing-[a-z]+)$/.test(id) || id === "code-reviewer" || id === "dispatcher") {
+      if (/^oats\.(?:engineering-[a-z]+|develop[a-z-]*|build|code-review|maintainer|dispatcher|landing-[a-z]+)$/.test(id) || id === "code-reviewer" || id === "dispatcher") {
         if (!localIds.has(id)) report(rel, `template-local id ${id} is named in docs but not defined`);
       }
     }
