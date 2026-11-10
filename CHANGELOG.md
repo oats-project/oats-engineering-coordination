@@ -1,6 +1,10 @@
 # Changelog
 
-## Unreleased
+## template-v2.2.0 - 2026-11-10
+
+One definition of "CI green", a developer who starts at the remote's commit, and the
+README naming the released research template. For a copy of template-v2.1.0, each line
+says what to port.
 
 ### One definition of "CI green"
 
