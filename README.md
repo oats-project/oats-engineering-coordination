@@ -7,8 +7,9 @@ still pinning it. From template-v2.0.0 on, there is no package: you copy the cap
 and souls into your own workspace and shape them with [ADAPTING.md](ADAPTING.md).
 
 Each way of working has a template of its own, named `oats-<way of working>-coordination`.
-This one is for engineering; oats-research-coordination and
-oats-scientific-research-coordination are coming.
+This one is for engineering. Research's,
+[oats-project/oats-research-coordination](https://github.com/oats-project/oats-research-coordination),
+is released at template-v1.0.0; oats-scientific-research-coordination is coming.
 
 ## The way of working
 
