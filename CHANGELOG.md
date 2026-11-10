@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## template-v3.0.1 - 2026-11-10
+
 A patch release: five lines still said the old rule, that a fix goes to "a lead and its
 developer". Under principle 3 the lead decides who builds it. For a copy of
 template-v3.0.0, port the five lines.
