@@ -138,7 +138,9 @@ An instance is **finished** when all of these hold:
   harvest.
 - **Your developers:** once the PR is merged and green, or closed, and it sends its done
   line.
-- **Your probes:** once they have answered (`/send-a-helper`). A probe's work is its answer,
+- **Your helpers:** a helper with a scoped piece of work once that work has landed, as a
+  developer is. **Your probes** (helpers with a question): once they have answered
+  (`/send-a-helper`). A probe's work is its answer,
   and its scratch commits are not delivered: skip the `oats instance git` check, and where
   it has a work tree, retire it with `oats retire <probe> --discard-worktree`. Retire any
   probe that hasn't answered too.

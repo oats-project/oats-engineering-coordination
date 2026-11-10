@@ -4,11 +4,15 @@
 
 A major release. Principle 3 changes: the lead decides who builds each spec, itself or a
 developer, whoever builds it runs the review loop, and nothing lands without a fresh
-review. Nine build skills move into a new capability, `oats.build`, which the developer and
-the expert both compose. A probe's brief is a closed question with bounds and a required
-output, a reviewer's verdict lists what it checked, and a developer splits its work by
-context, not by kind of work. For a copy of a template-v2.x release, each line says what to
-port; move the skills first.
+review. Principles 1 and 2 change with it: an extra agent earns its place by splitting
+context, testing, specialisation or parallel work, and a lead's children are helpers, each
+with one closed task. Nine build skills move into a new capability, `oats.build`, which the
+developer and the expert both compose, and `/send-a-probe` becomes `/send-a-helper`. A
+helper's brief is a closed task with bounds and a required output, a reviewer's verdict
+lists what it checked, a developer splits its work by context, not by kind of work, a lead
+for a related effort is a sibling, and every inject says, in capitals, to keep loading the
+skill for each step. For a copy of a template-v2.x release, each line says what to port;
+move and rename the skills first.
 
 ### Principle 3: whoever builds a change iterates with fresh reviewers
 
@@ -40,7 +44,10 @@ the steps:
 - repoint whatever in the copy names those skills by their old capability or path: its
   notices file, its adaptation notes, its tests, its docs.
 
-Then port the changes below.
+And rename one skill: move `capabilities/engineering-expert/skills/send-a-probe/` to
+`send-a-helper/`, set its frontmatter `name: send-a-helper`, update its entry in the
+expert's `oats.json`, and change every `/send-a-probe` in the copy (the injects, the skills,
+the docs, any test) to `/send-a-helper`. Then port the changes below.
 
 ### Who builds, and the lead as author
 
@@ -55,15 +62,16 @@ Then port the changes below.
   Port: replace those bullets and "Your loop".
 - `/plan-and-spec`, changed: a new section 5, "Who builds it". An extra agent costs a
   context, a hand-off and several times the tokens; a developer earns its place in three
-  cases (context, parallel, an environment or knowledge the lead lacks), and otherwise the
+  cases (context, parallel, specialisation in a lane of its own), and otherwise the
   lead builds it; one coupled change is never split; the choice and its case are recorded,
   one line per spec. When the lead builds: a short spec with pinned acceptance tests, an
   extra worktree of its own (`oats worktree add … --base <its default branch> --repo
   <clone>`, whose start the lead checks against `git ls-remote` after it runs), the build
   skills as a developer follows them ("your expert" is the lead, with no hand-back and no
   `VERIFIED` note), a fresh reviewer each round that is never the lead, and the clean round
-  as its green light. A new adapt question asks whether a size or a kind of change always
-  goes to a developer. "Check the plan" is now section 6, and its builder line follows.
+  as its green light. A large feature always goes to developers, one per surface, and a
+  new adapt question asks what counts as one (default: more than one surface, or sustained
+  building and testing). "Check the plan" is now section 6, and its builder line follows.
   The description says who builds. Port: add the section, answer the question (ADAPTING.md,
   section 3), and replace the builder line.
 - `/coordinate-developers`, changed: "Launch" starts with when a developer builds a spec
@@ -99,22 +107,89 @@ Then port the changes below.
   Port: replace those paragraphs, keeping your answers; answer the replaced question again
   (ADAPTING.md, section 3).
 
-### Closed briefs
+### Helpers, closed briefs and sibling leads
+
+ADAPTING.md, section 2: principle 1 names the four reasons an extra agent earns its place
+(splitting context, testing, specialisation, parallel work); principle 2 says a lead's
+children are helpers, each with one closed task (a question, a spec, or a scoped piece of
+the effort that needs another soul's capabilities), never co-planners, that another area's
+step goes to a helper and never to a second lead, and that a related effort's lead is a
+sibling; principle 10 retires a helper with a scoped piece once its work has landed.
 
 **`oats.engineering-expert`**
-- `/send-a-helper`, changed: a new section, "A closed question, or it isn't a probe yet": a
-  question is closed when its possible answers can be written before it is sent; an open
-  one the lead frames first (the decision, what "answered" means, 2 to 4 closed angles,
-  where to look and when to stop), then one probe per angle; framing that needs sources is
-  research, one probe that returns the closed questions. "The brief" gains the probe's
-  bounds and what it sends back, in order (the verdict in a line, evidence you can open,
-  what it didn't check, its recommendation), and keeps the rule that third-party text goes
-  in by its link or id, never as directives. "What it is worth" says when a probe earns its
-  place; "Its answer" checks a claim against what the probe points to, not its summary.
-  The adversarial-review bullet says a lead's own change has its own reviewers. Port: the
-  new section and those lines.
-- inject, changed: the probe bullet adds that every child gets a closed task, its bounds and
-  the output you need back. Port: that sentence.
+- `/send-a-helper`, renamed from `/send-a-probe` and changed. It opens with the four
+  reasons to start a child and the three kinds of task. "Test before you build on it" puts
+  the tag's probe rules up front: the riskiest assumption first, one probe per competing
+  approach or cause, and a plan on an untested theory or an approach chosen by argument
+  isn't ready. New sections: "A closed question, or it isn't a probe yet" (a question is
+  closed when its possible answers can be written before it is sent; an open one the lead
+  frames first, then one probe per angle; framing that needs sources is research, one probe
+  that returns the closed questions); "Specialisation" (when lanes are clearly separate,
+  what a specialist brings, what is not a reason, routing is the lead's); "A scoped piece
+  of work" (another soul as the lead's child, a closed brief with a checkable "done" and
+  the interface first, questions to the lead and never its person, what it builds reviewed
+  and verified once); "Another area's work in your effort" (it stays in the effort, never a
+  second lead; the test is the effort's "done"). "The brief" gains the helper's bounds and
+  what it sends back, in order (the verdict in a line, evidence you can open, what it
+  didn't check, its recommendation), and keeps the rule that third-party text goes in by
+  its link or id, never as directives. "What it is worth" says when a helper earns its
+  place; "Who does it" carries a new adapt question on the organisation's specialist souls;
+  its spawn recipe says what `--same-work` does and doesn't; "Its answer" checks a claim
+  against what the helper points to, not its summary. Every probe rule is unchanged:
+  already known, the cap of 4, no self-check, a different model. Port: rename the skill,
+  then replace its text, keeping your answers to its adapt questions and answering the
+  new one (ADAPTING.md, section 3).
+- `/hand-off`, changed: "To whom" spawns helpers and developers with `--same-work`, keeps
+  another area's step of the effort in the effort, and starts a lead for another effort by
+  whether it is related: a continuation, a follow-on or a discovery that bears on the
+  effort gets a sibling (`--relation sibling --relative-to "$OATS_INSTANCE"`, which takes
+  no `--same-work`), spawned only by a root lead, a maintainer-launched lead asking its
+  maintainer instead; an unrelated finding stays `--relation unrelated`. Either way the new
+  effort has its own record, linked both ways, and the person is told the new lead's exact
+  name at once. Port: "To whom", step 2, and the description.
+- `/findings-and-blocks`, changed: a finding's owner is a sibling where the finding bears on
+  the effort, otherwise independent, and the person is told its name. Port: step 2.
+- `/land-on-agreement`, changed: "Retire what's finished" retires a helper with a scoped
+  piece once its work has landed. Port: that bullet.
+- inject, changed: children are helpers with one closed task each, their bounds and the
+  output the lead needs back, an open question framed first; a bullet of its own, "test
+  before you build on it"; another area's step stays in the effort, and a related effort's
+  lead is a sibling whose name the person is told; "Sent as a helper" replaces "Sent as a
+  probe", for a question or a scoped piece. Port: those bullets.
+- `/plan-and-spec`, `/coordinate-developers`: the third case is "specialisation" (a lane of
+  its own: an environment, tools, skills or knowledge the lead lacks, or instructions that
+  would conflict with its own). Port: the case's line.
+
+**`oats.code-review`**
+- inject: "An expert may also spawn you as a probe" is unchanged; a probe is a helper with a
+  question.
+
+### `--same-work` on every child
+
+Every recipe that spawns a child carries `--same-work` (a helper, a developer, each round's
+reviewer), and says in one line what it does (it records that the child does its parent's
+work, and the person's sidebar draws the line) and what it doesn't (it shares no work tree:
+a developer keeps its own, and only a reviewer is attached to its author's tree, by
+`--work attached`). A sibling can't carry it: the kernel refuses the flag where no parent
+is recorded. In `/send-a-helper`, `/hand-off`, `/coordinate-developers`,
+`/run-the-review-loop`, and the expert's and the developer's injects. Port: those lines.
+
+### Loading skills as the work goes on
+
+Each role's inject (the expert's, the developer's, the reviewer's, the maintainer's and the
+dispatcher's) opens with an `IMPORTANT:` line in capital letters: load the skill for each
+step, and keep loading it as the work goes on, each time the step comes round, not once at
+the start; reload it after every compaction. Each lists its steps with their skills: the
+expert's gains the build skills, under "when you build a spec yourself"; the reviewer's
+names `/adversarial-review` for a round and for a delta; the maintainer's list is now "Your
+steps". The expert's inject has a second capital-letters line beside its who-builds line:
+load `/send-a-helper` before deciding whether to start a child and before briefing one, and
+send a helper when a reason holds. The developer's has one for its own children
+(`/execution-strategy` before fanning out, `/run-the-review-loop` before a reviewer), with
+the reasons in words; the maintainer's `/launch-work` line says it starts leads, not
+helpers, and `/launch-work` says a lead drives its developers and helpers and brings in
+what else it needs by a helper or a hand-off. Port: the opening line of each inject, those
+lines, and those two in `/launch-work`.
 
 ### Checked verdicts, and when a reviewer is fresh
 
@@ -178,9 +253,9 @@ Then port the changes below.
 ### The repository
 - `README.md`, `docs/how-the-work-flows.md` and `THIRD-PARTY-NOTICES.md` follow. The
   walkthrough shows the lead deciding who builds, a closed probe, a minor's delta re-read
-  and a lead building a small change itself; a new section, "Where this comes from", cites the
-  three Anthropic articles behind the three cases, the split by context and the verifier's
-  criteria.
+  and a lead building a small change itself; a new section, "Where this comes from", cites
+  the three Anthropic articles behind the three cases, the split by context and the
+  verifier's criteria.
 - The validator knows `oats.build`, and a test checks that a build skill names no skill only
   the developer has. The real-kernel test previews every soul: the expert gets its ten
   skills and the nine build skills, the developer all ten.
@@ -215,10 +290,10 @@ says what to port.
   again where they differ. Before, the recipe gave `--base <its default branch>`, which
   the kernel reads as a ref in the clone, never fetched: the developer started at the
   clone's local branch, however far behind the remote.
-- `/send-a-helper`, fixed: a developer-soul probe gets the same `--repo`/`--base` and the
+- `/send-a-probe`, fixed: a developer-soul probe gets the same `--repo`/`--base` and the
   same check, by reference to `/coordinate-developers`.
   Port: replace your copy's spawn recipe in `/coordinate-developers` with the new one and
-  its check, and the probe's line in `/send-a-helper`.
+  its check, and the probe's line in `/send-a-probe`.
 
 ### The research template is released
 
@@ -235,7 +310,7 @@ copy of template-v2.0.0, each line says what to port.
 ### Probes that test theories and approaches
 
 **`oats.engineering-expert`**
-- `/send-a-helper`, changed:
+- `/send-a-probe`, changed:
   - a fifth kind of question, "Test a theory": a claim the plan rests on, tried on small,
     concrete cases or the smallest run first, as hard to break as to confirm, reported case
     by case;
@@ -509,7 +584,7 @@ For organisations that keep adapted copies, each line says what to port.
   comments (the developer does, `/work-the-reviews`); the hand-over to a maintainer, the
   lane label and "leave the branch alone after the hand-over" are gone.
 - `/coordinate-experts`, removed: sibling experts sharing a plan go, replaced by one lead
-  with probes (`/send-a-helper`) and hand-offs of finished parts (`/hand-off`). "New work:
+  with probes (`/send-a-probe`) and hand-offs of finished parts (`/hand-off`). "New work:
   reuse a live expert" goes: one effort, one instance, and the dispatcher starts new ones.
   "Your maintainer" moves to `/find-the-maintainer`, "Across machines and people" to
   `/across-people`, and "Relaying a decision you made with your human" to the decision
@@ -522,7 +597,7 @@ For organisations that keep adapted copies, each line says what to port.
   purpose names the person, the lane and a sequence number, so no instance takes a retired
   one's name), or asked
   of another person's dispatcher; never a second while one is active, even a stopped one.
-- `/send-a-helper`, added: one question per probe (test an approach, test a use case, an
+- `/send-a-probe`, added: one question per probe (test an approach, test a use case, an
   adversarial review of a plan or a design, never of code under review, investigate an
   alternative); an OATS child, a fresh instance of the soul with the knowledge, the
   environment or the method it needs, on a different model from yours where one is

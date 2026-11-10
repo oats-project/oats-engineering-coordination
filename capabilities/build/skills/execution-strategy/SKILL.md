@@ -8,7 +8,7 @@ description: Decide how to execute a piece of work - in one context by default, 
 Do the work in one context unless a split earns its place. An extra agent costs a context
 to fill, a hand-off that loses detail, and messages to coordinate. It earns its place in
 the same three cases that decide who builds a spec: it keeps detail out of a context that
-needs room, it runs in parallel, or it brings an environment or knowledge you lack. Split by
+needs room, it runs in parallel, or it specialises in a lane of its own. Split by
 context, never by kind of work: a path is a piece of the change with its own tests (a
 module, a migration, another package), never "the code" for one agent and "the tests" for
 another.

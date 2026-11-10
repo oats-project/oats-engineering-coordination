@@ -80,6 +80,27 @@ head. A one-line docs fix (a typo, a broken link) skips even the local loop, nev
 review: it merges on CI green and one fresh review at its head, the review bot's where one
 runs.
 
+## Another area's step, and another effort
+
+The rate-limit plan also needs a dashboard panel of each key's 429s, in the observability
+area, whose expert soul has the dashboards' tools. The effort's "done" needs it, so it is a
+step of this effort. The backend expert reads the observability node's index and the two
+concepts the panel needs, writes the interface first (the metric's name and labels), and
+sends a helper (`/send-a-helper`): a fresh `observability-expert` instance as its child,
+with `--same-work`, briefed with the panel as a closed task, the interface, its bounds and
+what to hand back. The helper builds it with its own review loop, asks the lead (never the
+person) about one choice, and hands it back at its head; the lead verifies it once and lands
+it in its effort. There is no second lead: the person still has one place to look.
+
+While building, the developer finds that the gateway sends no `Retry-After` on any of its
+errors. That bears on the effort, but its "done" doesn't need it: a related effort. The
+lead, which the person's dispatcher started, starts that effort's lead as its sibling
+(`/hand-off`), gives it a record of its own linked both ways, and tells the person at once,
+in the effort's thread, the new lead's exact name, what it leads, its record and that they
+talk to it there. A broken link on the pricing page, noticed on the way, has nothing to do
+with the effort: its owner is started independent of the lead, and the person is told its
+name the same way.
+
 ## A decision only a person can take
 
 The spec leaves one product choice open: should internal service keys be exempt? The docs,
@@ -151,7 +172,7 @@ Three of the rules above follow what Anthropic reports from building multi-agent
   specialization improves the work. Outside them, the coordination costs typically exceed
   the benefits; in Anthropic's testing, multi-agent implementations typically used 3 to 10
   times the tokens of a single agent for equivalent tasks. The template's three cases
-  (context, parallel, an environment or knowledge the lead lacks) are those situations
+  (context, parallel, specialisation) are those situations
   ([Building multi-agent systems: when and how to use them](https://claude.com/resources/articles/building-multi-agent-systems-when-and-how-to-use-them),
   Anthropic). Across several enterprise deployments, a single agent with skills frequently
   did better than a design of subagents

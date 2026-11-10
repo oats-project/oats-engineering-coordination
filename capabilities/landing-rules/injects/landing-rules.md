@@ -58,13 +58,13 @@ that found nothing to fix: the lead opens the PR at that head. Why: the lead hol
 design, and nothing else needs to happen before review.
 
 **Who builds a change.** The lead decides, for each spec: itself, or a developer, which
-earns its place by protecting the lead's context, building in parallel, or bringing an
-environment or knowledge the lead lacks. Either way the spec comes first, with pinned
-acceptance tests, and whoever builds it iterates with a fresh reviewer each round (a new
-`code-reviewer` instance, its OATS child) until a round finds nothing to fix: at least one
-round, always, and never the author reading its own work. The lead verifies a developer's
-converged branch once, and never runs review rounds or spawns reviewers for a developer's
-work.
+earns its place by protecting the lead's context, building in parallel, or specialising in a
+lane of its own; a large feature always goes to developers. Either way the spec comes first,
+with pinned acceptance tests, and whoever builds it iterates with a fresh reviewer each
+round (a new `code-reviewer` instance, its OATS child) until a round finds nothing to fix:
+at least one round, always, and never the author reading its own work. The lead verifies a
+developer's converged branch once, and never runs review rounds or spawns reviewers for a
+developer's work.
 <!-- adapt: May a change land with no fresh review (a typo, a broken link)? -->
 No change lands without a fresh review. A one-line docs fix (a typo, a broken link) skips
 the local loop, not the review: it merges on CI green and one fresh review at its head, the

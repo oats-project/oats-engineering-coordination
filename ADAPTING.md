@@ -65,11 +65,18 @@ is already listed is a collision; settle it before you copy:
 
 These have no adapt markers. A copy that changes one is no longer this way of working.
 
-1. **The design never splits a problem; it splits responsibility and context.** One agent
-   holds a whole task. An extra agent earns its place by adding context: a fresh window, a
-   cleaner read, an area's knowledge, an environment.
+1. **The design never splits a problem; it splits responsibility and context.** An extra
+   agent earns its place by one of four reasons: splitting context (a fresh window, a
+   cleaner read), testing a theory or an approach in a fresh context, specialisation (a
+   lane's tools, environment, skills or knowledge, or instructions that would conflict with
+   the lead's), or parallel work. Otherwise one agent holds a whole task.
 2. **One lead per effort,** on a fresh instance, from plan to merge, compacting and never
-   respawning. Its children are probes, one question each, never co-planners.
+   respawning. Its children are helpers, each with one closed task, never co-planners: a
+   question to answer (a probe), a spec to build (a developer), or a scoped piece of the
+   effort that needs another soul's capabilities. The plan, and every decision in it,
+   stays the lead's. Another area's step of the effort goes to a helper, never to a second
+   lead; a lead for another, related effort is the first lead's sibling, and the person is
+   told its name.
 3. **Whoever builds a change iterates with fresh reviewers, and nothing lands without a
    fresh review.** The lead decides who builds each spec: itself, or a developer
    (`/plan-and-spec`, "Who builds it"). The author runs the review loop, a fresh reviewer
@@ -104,6 +111,7 @@ These have no adapt markers. A copy that changes one is no longer this way of wo
    rules already requires that read.
 9. **A finding goes to its area's owner** as a recommendation, never to a person as an FYI.
 10. **Every short-lived instance has a retire rule:** probes once they have answered,
+    helpers with a scoped piece once its work has landed,
     reviewers once their round is closed, developers once their PR has merged or
     closed, experts when their effort is done.
 11. **The code is the truth about code.** Split knowledge before souls, and skills before
@@ -136,9 +144,10 @@ A copy is adapted when no marker is left; until then, the markers left are its o
 - **Where are the effort records, the lane map and holds kept?** Assumes one item per effort in the tasks layer, and the lane map and the default branch's holds as records in the tasks layer, each linked from these rules. Never in the rules themselves: they are copied into each instance at spawn and can't change while work runs. Create the lane map's record now, empty, and write its link into the rules, so the first maintainer, started later, finds it there and adds its entry. Default: that.
 
 ### `capabilities/engineering-expert/skills/plan-and-spec/SKILL.md`
-- **Is there a size or a kind of change past which a lead always sends a developer?** Assumes none: the three cases in "Who builds it" (context, parallel work, an environment or knowledge the lead lacks) decide each spec. Name a size or a kind (a migration, a change across repositories) only where the organisation wants a developer for it whatever the cases say. Default: none.
+- **What counts as a large feature here, past which a lead always sends developers?** Assumes more than one surface, or sustained building and testing: a large feature always goes to developers, one per surface, and below that the three cases in "Who builds it" (context, parallel work, specialisation) decide each spec. Name a size or a kind (a migration, a change across repositories) where the organisation draws the line elsewhere. Default: more than one surface, or sustained building and testing.
 
 ### `capabilities/engineering-expert/skills/send-a-helper/SKILL.md`
+- **Which specialist souls can a lead call as helpers, and what does each bring (tools, an environment, skills, a domain)?** Assumes the template's own souls: an expert soul for an area's knowledge or a scoped piece of its area, a developer soul for an environment, and the code reviewer for an adversarial read. List the organisation's specialist souls, each with what it brings, so a lead routes each lane's piece to the soul that specialises in it. Default: the template's souls, as listed.
 - **How many probes may a lead run in parallel for one decision?** Assumes up to 4, one per competing approach. A probe costs a full instance's run, so name a lower cap where runs are expensive, or a higher one where decisions are worth it. Default: up to 4.
 
 ### `capabilities/engineering-expert/skills/coordinate-developers/SKILL.md`

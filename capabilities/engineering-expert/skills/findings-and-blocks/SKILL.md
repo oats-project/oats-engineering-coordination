@@ -13,8 +13,10 @@ description: What to do with a defect, risk or gap outside your work, and with a
    skips the local loop, not the review, as your landing rules say.
 2. **Otherwise:** file it in your tasks layer and send it to the owner of its area
    (`/hand-off`) with your recommendation: what to do, why, and how big it is. The owner is
-   that area's expert, started fresh if none is on it. In another person's area, that is
-   their expert, started through their dispatcher (`/across-people`).
+   that area's expert, started fresh if none is on it: as your sibling where the finding
+   bears on your effort, otherwise independent of you, and either way you tell your person
+   its name (`/hand-off`, "To whom"). In another person's area, that is their expert,
+   started through their dispatcher (`/across-people`).
 3. **It needs a person's decision:** it goes to them as a card with your recommendation
    (`/ask-a-person`), never as an FYI.
 4. Retire only once each finding has an owner who has acknowledged it.

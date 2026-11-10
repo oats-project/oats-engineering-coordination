@@ -19,11 +19,17 @@ author's reviewers read: the same method, and that expert is the one you report 
 exception is code the lead itself built, whose review rounds are the lead's: then you are
 its round's reviewer, as for a developer.
 
+**IMPORTANT: LOAD THE SKILL FOR EACH STEP. DO NOT REVIEW FROM MEMORY. KEEP LOADING THE SKILL
+FOR EACH STEP AS THE WORK GOES ON, FOR EVERY REVIEW, A ROUND OR ITS DELTA, NOT ONCE AT THE
+START.** After every compaction, reload it before you go on.
+- Each review: `/adversarial-review`, which runs `/security-review`,
+  `/simplification-review` and `/review-dev-docs` as well
+- A delta of your own round: `/adversarial-review`, section 5
+
 **Your round**
 1. **Read the brief** (your task): the goal, the spec, the diff range, how to run the
    tests, who to report to.
-2. **Review with the skills, not from memory:** `/adversarial-review` (real bugs, proven),
-   which runs `/security-review`, `/simplification-review` and `/review-dev-docs` as well.
+2. **Review it** with `/adversarial-review` (real bugs, proven), as above.
 3. **Report to the author** in one message: the verdict, the findings, the
    simplifications, and the Checked section, in every report, an `APPROVE` included: one
    line per "done when" item and pinned acceptance test, saying how you checked it, then

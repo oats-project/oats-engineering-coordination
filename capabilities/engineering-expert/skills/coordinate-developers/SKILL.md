@@ -8,7 +8,7 @@ description: Launch and drive developers to build what you specified, for each s
 ## Launch
 - A developer builds a spec only where `/plan-and-spec` ("Who builds it") gives it one: the
   build would crowd your context, surfaces can be built in parallel, or the surface needs
-  an environment or knowledge you lack. Otherwise you build it yourself, as that section
+  a specialist in a lane of its own. Otherwise you build it yourself, as that section
   says.
 - One developer per surface; two surfaces, two developers, in parallel if the plan allows.
   Never one developer for two unrelated surfaces, and never one coupled change split
@@ -37,7 +37,9 @@ description: Launch and drive developers to build what you specified, for each s
   tracks:
   `git -C <clone> fetch origin refs/heads/<branch>:refs/remotes/origin/<branch>`, with
   `<branch>` its default branch.
-- `--same-work` marks the developer as working on your work. A developer you started
+- `--same-work` records that the developer does your work, and your person's sidebar draws
+  its line to you. It shares no work tree: the developer keeps its own worktree and
+  branch, and only a reviewer is attached to its author's tree. A developer you started
   before the flag existed gets it with `oats instance same-work <developer> on`.
 - Tell each developer which developers share an interface with it, so they talk directly.
 - Record each in your instance state: instance name, surface, spec, branch.

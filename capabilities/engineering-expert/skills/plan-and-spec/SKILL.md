@@ -1,6 +1,6 @@
 ---
 name: plan-and-spec
-description: Turn a goal into a plan and one executable spec per surface (code area, package or service), and decide who builds each, you or a developer - a developer only where it protects your context, builds in parallel, or brings an environment or knowledge you lack. Use when starting a feature, fix or project in your domain, when a spec is needed, when choosing who builds it, or when work must be split.
+description: Turn a goal into a plan and one executable spec per surface (code area, package or service), and decide who builds each, you or a developer - a developer only where it protects your context, builds in parallel, or specialises in a lane of its own. Use when starting a feature, fix or project in your domain, when a spec is needed, when choosing who builds it, or when work must be split.
 ---
 
 # Plan and spec
@@ -58,11 +58,14 @@ coordinate, and several times the tokens. A developer earns its place in three c
 - **Context:** the build is sustained work whose detail (long diffs, test output,
   debugging) the rest of the effort doesn't need, and which would crowd out what it does.
 - **Parallel:** two or more surfaces are independent and can be built at once.
-- **Environment or knowledge:** the surface needs an environment, tools or a soul's
-  knowledge you lack.
+- **Specialisation:** the surface is in a lane of its own. It needs an environment, tools,
+  skills or a soul's knowledge you lack, or instructions that would conflict with your own
+  (`/send-a-helper`, "Specialisation").
 
-<!-- adapt: Is there a size or a kind of change past which a lead always sends a developer? -->
-If none holds, build it yourself: usually a small change, or one that is a single line of
+<!-- adapt: What counts as a large feature here, past which a lead always sends developers? -->
+**A large feature always goes to developers,** one per surface: more than one surface, or
+sustained building and testing. It is the context case by definition. If none of the cases
+holds, build it yourself: usually a small change, or one that is a single line of
 reasoning with the plan you hold. Where one holds, a developer builds it
 (`/coordinate-developers`). Never split one coupled change across agents: a change and its
 tests have one author.
