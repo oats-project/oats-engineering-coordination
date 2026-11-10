@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## template-v3.0.0 - 2026-11-10
+
 A major release. Principle 3 changes: the lead decides who builds each spec, itself or a
 developer, whoever builds it runs the review loop, and nothing lands without a fresh
 review. Principles 1 and 2 change with it: an extra agent earns its place by splitting
