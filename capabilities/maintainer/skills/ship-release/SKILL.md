@@ -15,8 +15,8 @@ credential or protected-ref authority.
 Read what actually runs the release: the workflow, its scripts, and the project's release
 docs or skill. The executable is the authority; where the docs disagree, record it rather
 than improvise. Get a broken release step fixed in the project rather than worked around by
-hand each release: the fix goes to a lead and its developer (`/launch-work`), the expert
-who owns the release tooling where there is one.
+hand each release: the fix goes to a lead, which decides who builds it (`/launch-work`), the
+expert who owns the release tooling where there is one.
 
 ## Prepare
 1. Pin the source SHA, this version's release notes, and the scope (artifacts, channels).
