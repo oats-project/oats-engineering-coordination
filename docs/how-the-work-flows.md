@@ -34,15 +34,15 @@ error."
    one context, since the bucket, the 429 path and their tests are one coupled change
    (`/execution-strategy`), adds the acceptance tests unchanged and proves it the way the
    repository runs it, CI's checks included (`/prove-it-works`).
-5. **The review loop** (`/run-the-review-loop`). The developer, not the expert, iterates
-   with fresh reviewers. Round 1's `code-reviewer`, briefed without the developer's
-   reasoning, finds a blocker (the key is logged in the 429 path) and is retired. The
-   developer fixes it: a blocker's fix gets a fresh reviewer. Round 2's reviewer, a new
-   instance at the new head that never saw round 1, approves with one minor (a vague error
-   message), and its Checked section lists how it checked each "done when" item and the
-   attacks that found nothing. The developer fixes the minor and sends that reviewer the
-   delta; it re-reads it and updates its verdict at the new head. The developer hands the
-   branch back there.
+5. **The review loop** (`/run-the-review-loop`). The developer, its author, iterates with
+   fresh reviewers; the expert runs no rounds for a developer's work. Round 1's
+   `code-reviewer`, briefed without the developer's reasoning, finds a blocker (the key is
+   logged in the 429 path) and is retired. The developer fixes it: a blocker's fix gets a
+   fresh reviewer. Round 2's reviewer, a new instance at the new head that never saw
+   round 1, approves with one minor (a vague error message), and its Checked section lists how it
+   checked each "done when" item and the attacks that found nothing. The developer fixes the
+   minor and sends that reviewer the delta; it re-reads it and updates its verdict at the
+   new head. The developer hands the branch back there.
 6. **The expert verifies it once** (`/verify-developer-work`): `VERIFIED at <head>`. Had it
    found something, the branch would have gone back to the developer for another loop. Its
    verification is the lane's green light, so it tells the developer to open the PR.

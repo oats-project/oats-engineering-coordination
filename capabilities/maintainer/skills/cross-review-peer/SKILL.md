@@ -222,9 +222,9 @@ A maintainer joining doesn't change a lane's arrangement.
   lane is changing is that human's to decide; its lead asks them, as one card.
 - **When you are called** to read, read with `/pr-review`, post your verdict on the PR at
   that head, and tell the author in one line.
-- **Your own PRs** (release prep only; a fix goes to a lead and its developer) are in your
-  lane, and land as your landing rules say for a PR with no lead. You never approve your
-  own.
+- **Your own PRs** (release prep only; a fix goes to a lead, which decides who builds it)
+  are in your lane, and land as your landing rules say for a PR with no lead. You never
+  approve your own.
 - **A RETURN you disagree with:** put both positions on the PR, each with its evidence, and
   take it to the humans who decide.
 

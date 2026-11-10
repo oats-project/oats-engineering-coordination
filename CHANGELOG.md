@@ -2,6 +2,24 @@
 
 ## Unreleased
 
+A patch release: five lines still said the old rule, that a fix goes to "a lead and its
+developer". Under principle 3 the lead decides who builds it. For a copy of
+template-v3.0.0, port the five lines.
+
+**`oats.landing-rules`**
+- inject, fixed: release prep's "Any fix goes to a lead, which decides who builds it."
+  Port: that sentence.
+
+**`oats.maintainer`**
+- `/pr-review`, `/cross-review-peer`, `/plan-release` and `/ship-release`, fixed: a fix a
+  maintainer finds (in its own release prep, in a release, in a release step) goes to a
+  lead, which decides who builds it, not to "a lead and its developer". Port: that phrase
+  in each.
+
+**The repository**
+- `docs/how-the-work-flows.md`: the walkthrough's review loop says the developer is the
+  change's author, and the expert runs no rounds for a developer's work.
+
 ## template-v3.0.0 - 2026-11-10
 
 A major release. Principle 3 changes: the lead decides who builds each spec, itself or a

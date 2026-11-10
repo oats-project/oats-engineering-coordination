@@ -49,7 +49,7 @@ that list.
 The version bump and the assembled notes, nothing more, are your own small PR: open it,
 keep it green and up to date, and merge it at an exact head once the agreements your
 landing rules name for a PR with no lead hold. A fix the release needs is
-not release prep: it goes to a lead and its developer (`/launch-work`).
+not release prep: it goes to a lead, which decides who builds it (`/launch-work`).
 
 ## Write the plan down
 The release lane's maintainer owns each release (`/cross-review-peer`, "The release lane").

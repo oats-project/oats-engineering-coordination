@@ -85,7 +85,7 @@ release prep (the version bump and the assembled notes, nothing more). The lane 
 maintainer merges it at its head once CI is green and the review bot's review holds where
 one runs; it reads any but its own release prep first, and approves at that head. Release
 prep needs no review round, and is no exception to who iterates with reviewers: nothing in
-it needs one. Any fix goes to a lead and its developer.
+it needs one. Any fix goes to a lead, which decides who builds it.
 A running maintainer finds such a PR in its intake; until one runs, the person brings it to
 their dispatcher, which starts it. Why: someone here has to own the merge, and the lane's
 maintainer holds it.
