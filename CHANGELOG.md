@@ -58,8 +58,13 @@ the docs, any test) to `/send-a-helper`. Then port the changes below.
   iterates with fresh reviewers, not you" becomes "whoever builds a change iterates with
   fresh reviewers": the lead decides who builds, the author runs its loop, the lead is
   never its own reviewer, and still runs no rounds for a developer's work; the lead opens
-  and works the PR of a change it built; "Your loop" decides who builds each spec.
-  Port: replace those bullets and "Your loop".
+  and works the PR of a change it built; "Your loop" decides who builds each spec. Two new
+  paragraphs give a lead that builds the developer's rules: "The quality floor" and "On the
+  hosts you run on" (the shared-host limits, unread code, read-only customer and
+  production hosts, no secret in a message, report, log or commit), each with the
+  developer's adapt question, so a copy answers it in both places.
+  Port: replace those bullets and "Your loop", and add the two paragraphs with your
+  developer inject's answers.
 - `/plan-and-spec`, changed: a new section 5, "Who builds it". An extra agent costs a
   context, a hand-off and several times the tokens; a developer earns its place in three
   cases (context, parallel, specialisation in a lane of its own), and otherwise the
@@ -155,7 +160,11 @@ sibling; principle 10 retires a helper with a scoped piece once its work has lan
   output the lead needs back, an open question framed first; a bullet of its own, "test
   before you build on it"; another area's step stays in the effort, and a related effort's
   lead is a sibling whose name the person is told; "Sent as a helper" replaces "Sent as a
-  probe", for a question or a scoped piece. Port: those bullets.
+  probe", for a question or a scoped piece. A helper's scoped piece hands its clean round
+  back to the parent lead and opens no PR until the parent has verified it, as a
+  developer's work; then the helper opens the PR and works its reviews. `/plan-and-spec`,
+  `/send-a-helper`, `/land-on-agreement` and the landing rules' green light say the same.
+  Port: those bullets and lines.
 - `/plan-and-spec`, `/coordinate-developers`: the third case is "specialisation" (a lane of
   its own: an environment, tools, skills or knowledge the lead lacks, or instructions that
   would conflict with its own). Port: the case's line.
@@ -173,6 +182,22 @@ a developer keeps its own, and only a reviewer is attached to its author's tree,
 `--work attached`). A sibling can't carry it: the kernel refuses the flag where no parent
 is recorded. In `/send-a-helper`, `/hand-off`, `/coordinate-developers`,
 `/run-the-review-loop`, and the expert's and the developer's injects. Port: those lines.
+
+### No standing maintainer: the lead starts one, and says what it is
+
+**`oats.engineering-expert`**
+- `/find-the-maintainer`, changed: step 1 finds your person and the lane, and calls or
+  starts no maintainer before both are known; where your person has no active maintainer in
+  the lane, you start it yourself, without asking, and right after tell your person in two
+  or three plain sentences what a maintainer is, what it is for, and its exact name. A new
+  adapt question carries those sentences. The guards are unchanged: never a second while
+  one is active, even a stopped one. Port: steps 1 and 3, and answer the new question.
+- inject, changed: the `/find-the-maintainer` line moves beside the who-builds line and says
+  the same in one line. Port: that line.
+
+**`oats.maintainer`**
+- inject, changed: a lead may have started you; introduce yourself to that person once, at
+  your first intake. Port: that bullet, under "Your role".
 
 ### Loading skills as the work goes on
 

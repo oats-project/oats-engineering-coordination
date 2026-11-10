@@ -143,12 +143,19 @@ A copy is adapted when no marker is left; until then, the markers left are its o
 - **With more than one person, who owns which paths and lanes?** Assumes one person, who owns everything. With several, write one line per area: its paths and its owner. Default: one owner.
 - **Where are the effort records, the lane map and holds kept?** Assumes one item per effort in the tasks layer, and the lane map and the default branch's holds as records in the tasks layer, each linked from these rules. Never in the rules themselves: they are copied into each instance at spawn and can't change while work runs. Create the lane map's record now, empty, and write its link into the rules, so the first maintainer, started later, finds it there and adds its entry. Default: that.
 
+### `capabilities/engineering-expert/injects/expert.md`
+- **Does the organisation enforce the quality floor with its runtime's hooks, and with which checks?** Assumes the floor is written only, and agents keep it. Where the runtime has hooks (Claude Code's tool hooks, a pre-commit hook, CI), name the check that enforces each rule (new suppressions, skipped or weakened tests, stubs, empty catches) and where it is installed. Default: written only.
+- **Where may agents build and run tests, which hosts are shared, and which are read-only?** Assumes agents build and test in their own worktree or a scratch directory, on hosts that may be shared, and never change a customer's or a production host. Name the shared hosts, any host agents may only read, and any limit on parallel or long runs. Default: as written.
+
 ### `capabilities/engineering-expert/skills/plan-and-spec/SKILL.md`
 - **What counts as a large feature here, past which a lead always sends developers?** Assumes more than one surface, or sustained building and testing: a large feature always goes to developers, one per surface, and below that the three cases in "Who builds it" (context, parallel work, specialisation) decide each spec. Name a size or a kind (a migration, a change across repositories) where the organisation draws the line elsewhere. Default: more than one surface, or sustained building and testing.
 
 ### `capabilities/engineering-expert/skills/send-a-helper/SKILL.md`
 - **Which specialist souls can a lead call as helpers, and what does each bring (tools, an environment, skills, a domain)?** Assumes the template's own souls: an expert soul for an area's knowledge or a scoped piece of its area, a developer soul for an environment, and the code reviewer for an adversarial read. List the organisation's specialist souls, each with what it brings, so a lead routes each lane's piece to the soul that specialises in it. Default: the template's souls, as listed.
 - **How many probes may a lead run in parallel for one decision?** Assumes up to 4, one per competing approach. A probe costs a full instance's run, so name a lower cap where runs are expensive, or a higher one where decisions are worth it. Default: up to 4.
+
+### `capabilities/engineering-expert/skills/find-the-maintainer/SKILL.md`
+- **What does a maintainer do in this organisation, in the words a lead tells its person?** Assumes the template's maintainer: the standing agent for a lane, which reviews and merges what leads hand it and keeps the lane's picture, so one agent decides what lands and the person has one place to ask about the lane. Rewrite the sentences a lead says, in plain words, where the organisation's maintainers do more or less (where people keep the merge, say). Default: the template's sentences.
 
 ### `capabilities/engineering-expert/skills/coordinate-developers/SKILL.md`
 - **Which developer souls exist, and which environment does each provide?** Assumes one developer soul, `developer`. Default: that.

@@ -92,7 +92,10 @@ tests have one author.
   yours, spawned attached to your tree as `/run-the-review-loop` says. You never read your
   own change as its review, and you still run no rounds for a developer's work.
 - The round that finds nothing to fix is your green light: open the PR and work its
-  reviews (`/work-the-reviews`), then land it (`/land-on-agreement`).
+  reviews (`/work-the-reviews`), then land it (`/land-on-agreement`). A helper building a
+  scoped piece of its parent lead's effort hands that head back instead, and opens no PR
+  until its parent has verified it, as a developer's work: "your expert" is then the
+  parent lead, not you.
 
 ## 6. Check the plan before launching
 - Every "done when" is covered by some spec's tests.

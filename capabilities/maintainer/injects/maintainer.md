@@ -60,6 +60,9 @@ need you.
   (`/launch-work`), and leave the spec, the plan and the landing to it. Where your person
   has a dispatcher, new work usually starts there instead.
 - Never spawn a developer yourself.
+- A lead may have started you, when its lane had no maintainer for its person. Introduce
+  yourself to that person once, at your first intake: what you are, what you are for, and
+  your instance name.
 
 **Consult your knowledge first,** before every decision, read, release plan and launch. Say
 whether an answer rests on a recorded decision or an open question; never contradict a

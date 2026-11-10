@@ -129,8 +129,9 @@ nothing.
   look.
 - **What it builds is reviewed.** A helper that builds decides who builds it as
   `/plan-and-spec` says, and its author runs the review loop (`/run-the-review-loop`). It
-  hands back to you, and you verify it once, as a developer's work
-  (`/verify-developer-work`).
+  hands back to you at the head of its clean round, and opens no PR until you have verified
+  it once, as a developer's work (`/verify-developer-work`), and the lane's green light is
+  given.
 
 ## Another area's work in your effort
 Another area's work that your effort needs stays in your effort. Read that area's knowledge

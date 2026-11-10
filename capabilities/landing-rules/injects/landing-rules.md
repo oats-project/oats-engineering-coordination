@@ -52,9 +52,10 @@ the same head, and the one who owns the whole effort lands it.
 
 **The green light to open a PR.**
 <!-- adapt: Who gives the green light to open a PR at the verified head? -->
-For a developer's work, the lead's verification note: the developer then opens the PR at
-that head and works its reviews. For a change its lead built, the round of its review loop
-that found nothing to fix: the lead opens the PR at that head. Why: the lead holds the
+For a developer's work, or a helper's scoped piece of a lead's effort, the lead's
+verification note: the developer or helper then opens the PR at that head and works its
+reviews. For a change a lead built for its own effort, the round of its review loop that
+found nothing to fix: the lead opens the PR at that head. Why: the lead holds the
 design, and nothing else needs to happen before review.
 
 **Who builds a change.** The lead decides, for each spec: itself, or a developer, which

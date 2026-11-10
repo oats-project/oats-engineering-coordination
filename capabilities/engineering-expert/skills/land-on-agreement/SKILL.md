@@ -17,11 +17,11 @@ compaction. None in your briefing: that is a block (`/findings-and-blocks`); mer
 until it is settled.
 
 ## 1. Verify, or your own clean round
-**A developer's work:** the developer iterates with fresh reviewers, not you. Its branch
-comes back at the head of a round that found nothing to fix: verify it once
-(`/verify-developer-work`), ending with `VERIFIED at <head>` and the checks you ran. What
-you find goes back to the developer, which fixes it and runs its loop again. You never run
-review rounds or spawn reviewers for it.
+**A developer's work,** or a helper's scoped piece: its author iterates with fresh
+reviewers, not you. Its branch comes back at the head of a round that found nothing to
+fix: verify it once (`/verify-developer-work`), ending with `VERIFIED at <head>` and the
+checks you ran. What you find goes back to its author, which fixes it and runs its loop
+again. You never run review rounds or spawn reviewers for it.
 
 **A change you built:** you ran its review loop (`/run-the-review-loop`), each round's
 reviewer a fresh `code-reviewer` instance, your child, never you. The round that found
@@ -36,7 +36,7 @@ fresh review at its head: the review bot's where one runs, otherwise one reviewe
 fix: it gets the loop.
 
 ## 2. The green light, and the PR
-For a developer's work (a change you built: section 1):
+For a developer's work, or a helper's scoped piece (a change you built: section 1):
 - Where the lane names another authority for the green light, ask it first (`/hand-off`)
   at the verified head. Then give the developer the green light in one message: `VERIFIED
   at <head>`, open the PR, and the reviews the lane counts (the forge's review bot, or its
