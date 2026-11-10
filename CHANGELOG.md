@@ -31,6 +31,13 @@
   Port: replace your copy's spawn recipe in `/coordinate-developers` with the new one and
   its check, and the probe's line in `/send-a-probe`.
 
+### The research template is released
+
+- `README.md`: research's template,
+  [oats-project/oats-research-coordination](https://github.com/oats-project/oats-research-coordination),
+  is released at template-v1.0.0; scientific research's is still coming.
+  Port: nothing; no capability changes.
+
 ## template-v2.1.0 - 2026-11-09
 
 Probes that test theories and competing approaches, and the developer's craft skills. For a
