@@ -9,7 +9,8 @@ organisation, record the release you started from, and check the copy.
 
 **First, check the ids.** Run `oats capabilities` in the organisation's workspace, and
 look for each id this template brings: `oats.dispatcher`, `oats.engineering-expert`,
-`oats.developer`, `oats.code-review`, `oats.maintainer` and `oats.landing-rules`. One that
+`oats.build`, `oats.developer`, `oats.code-review`, `oats.maintainer` and
+`oats.landing-rules`. One that
 is already listed is a collision; settle it before you copy:
 - **From the `oats.engineering` package** (a v1.18.0 pin): copy, then follow "From
   v1.18.0" in CHANGELOG.md, which removes the pin once the copies are composed.
@@ -22,8 +23,11 @@ is already listed is a collision; settle it before you copy:
 - **`capabilities/`.** Each folder is a working capability: its `oats.json`, its inject and
   its skills. Copy each one the roster keeps into the host repository of the organisation's
   workspace, as `capabilities/<name>/`, unchanged except at its adapt markers.
-  - `dispatcher`, `engineering-expert`, `developer`, `code-review` and `landing-rules`:
-    every copy keeps them.
+  - `dispatcher`, `engineering-expert`, `build`, `developer`, `code-review` and
+    `landing-rules`: every copy keeps them.
+  - `build` is skills only, with no inject: the craft of building a change (`oats.build`).
+    The developer and the expert both compose it, since whoever builds a spec, a developer
+    or its lead, builds it the same way.
   - `maintainer`: only where a lane needs a maintainer's read or merge, or releases need
     one. A small project drops it (section 5).
   - Keep the capability ids: the souls name them. Souls in other repositories of the
@@ -48,9 +52,10 @@ is already listed is a collision; settle it before you copy:
   - Rewrite each soul's `AGENTS.md` with what is specific to it; never restate the role.
 - **`LICENSE`:** the template is MIT. Keep its notice with what you copy, beside the copied
   folders or in the host repository's notices.
-- **`THIRD-PARTY-NOTICES.md`:** the developer's `test-first`, `diagnose-before-fixing`,
-  `design-while-writing` and `prove-it-works`, and its inject's quality floor, adapt rules
-  from MIT-licensed sources, and each of those skills ends by pointing to this file. Copy it
+- **`THIRD-PARTY-NOTICES.md`:** the build skills `test-first`, `diagnose-before-fixing`,
+  `design-while-writing` and `prove-it-works`, and the developer's inject's quality floor,
+  adapt rules from MIT-licensed sources, and each of those skills ends by pointing to this
+  file. Copy it
   beside the copied capabilities whenever you keep any of them, and keep it while they
   stay.
 - **Not copied:** this guide, `README.md`, `CHANGELOG.md`, `docs/`, `schemas/`, `scripts/`,
@@ -65,16 +70,19 @@ These have no adapt markers. A copy that changes one is no longer this way of wo
    cleaner read, an area's knowledge, an environment.
 2. **One lead per effort,** on a fresh instance, from plan to merge, compacting and never
    respawning. Its children are probes, one question each, never co-planners.
-3. **The developer iterates with fresh reviewers, not the experts.** A developer builds
-   every change and runs its review loop, a fresh reviewer each round (a new instance, never
-   the previous round's), until a round finds nothing to fix.
-   Its expert verifies the converged branch once; what it finds goes back to the developer,
-   which runs the loop again. An expert never runs review rounds or spawns reviewers for a
-   developer's work, and builds nothing that needs them. Only text that needs no review
-   round, a lead's one-line docs fix or a maintainer's release prep, may skip the loop where
-   the landing rules allow: no exception to who iterates.
+3. **Whoever builds a change iterates with fresh reviewers, and nothing lands without a
+   fresh review.** The lead decides who builds each spec: itself, or a developer
+   (`/plan-and-spec`, "Who builds it"). The author runs the review loop, a fresh reviewer
+   (a new `code-reviewer` instance, the author's OATS child) on a different model where one
+   is available, until a round finds nothing to fix: at least one round, always. No author
+   reviews its own work: a lead that builds a spec runs the loop for it, and each round's
+   reader is that fresh reviewer, never the lead. A lead never runs review rounds or spawns
+   reviewers for a developer's work: it verifies a developer's converged branch once, and
+   what it finds goes back to the developer, which runs the loop again. A one-line docs fix
+   skips the local loop, not the review: one fresh review at its head. Only a maintainer's
+   release prep needs no review round, as the landing rules say.
 4. **Proper work goes to OATS children, and checks are model-diverse.** A review (the
-   developer's reviewer included), an investigation or a test of an approach or a use case
+   author's reviewer included), an investigation or a test of an approach or a use case
    the plan rests on, and any work that needs a soul's knowledge, an environment or a
    testing capability goes to an OATS child: visible to the person (its status, the
    Desktop), with its own messaging and knowledge, and retired on record. A harness's
@@ -96,7 +104,7 @@ These have no adapt markers. A copy that changes one is no longer this way of wo
    rules already requires that read.
 9. **A finding goes to its area's owner** as a recommendation, never to a person as an FYI.
 10. **Every short-lived instance has a retire rule:** probes once they have answered,
-    reviewers once their round is reported, developers once their PR has merged or
+    reviewers once their round is closed, developers once their PR has merged or
     closed, experts when their effort is done.
 11. **The code is the truth about code.** Split knowledge before souls, and skills before
     souls. Knowledge an upstream owns stays upstream: the node holds only the
@@ -119,13 +127,16 @@ A copy is adapted when no marker is left; until then, the markers left are its o
 ### `capabilities/landing-rules/injects/landing-rules.md`
 - **Which lanes does the organisation have, what does each cover, and which person owns each?** Assumes one lane, `main`, owned by the person who runs the workspace, which is also the release lane. With several lanes, name the one release lane: its maintainer owns every release. Default: that.
 - **Which checks does the forge require on the default branch?** Assumes any number, none included: CI green needs at least one check to have run at the head, every required check among them, and every check that ran succeeded, so a head is never green with a check red, and a forge that requires none still needs one to run. Read which checks the default branch requires (its protection and rulesets). Where agents should wait for specific checks, have the organisation require them. Default: the definition, as written.
-- **Per lane, which agreements must hold at a PR's head before it merges, and who merges it?** Assumes CI green, a review (the forge's review bot's, or a clean round of the developer's review loop at that head) and the lead's verification note at one head, and the lead merges. Where a review bot runs, say whether it reviews each push by itself, and how a developer asks it for a review at a new head. Read the required reviews, who may merge and the branch protection first. Where the organisation keeps the merge for its people, say so: agents hand them the PR at its exact head. Every lane must name a merge path a lead can reach. Default: the assumption.
-- **Who gives the green light to open a PR at the verified head?** Assumes the lead's verification note. Default: that, unless whoever holds the lane today gives it.
-- **May a lead make a one-line docs fix itself, with no review loop?** Assumes it may: a typo or a broken link, merged on CI, the review bot where one runs, and the lead's note. Whatever the answer, a developer builds every other change and iterates with fresh reviewers (section 2, principle 3). Where every commit must pass a review round (commits signed under a shared account, a repository's own pre-PR review), the answer is no. Default: it may.
+- **Per lane, which agreements must hold at a PR's head before it merges, and who merges it?** Assumes CI green, a review (the forge's review bot's, or a clean round of the author's review loop at that head) and, for a developer's work, the lead's verification note at one head, and the lead merges. Where a review bot runs, say whether it reviews each push by itself, and how a developer asks it for a review at a new head. Read the required reviews, who may merge and the branch protection first. Where the organisation keeps the merge for its people, say so: agents hand them the PR at its exact head. Every lane must name a merge path a lead can reach. Default: the assumption.
+- **Who gives the green light to open a PR at the verified head?** Assumes the lead's verification note for a developer's work, and the round that found nothing to fix for a change its lead built. Default: that, unless whoever holds the lane today gives it.
+- **May a change land with no fresh review (a typo, a broken link)?** Assumes no: nothing lands without a fresh review (section 2, principle 3). A one-line docs fix skips the local loop, not the review: CI green and one fresh review at its head, the review bot's where one runs, otherwise one reviewer round. A copy that answers yes for some change departs from that principle, and says so beside the rule. Default: no.
 - **Where does the organisation require a maintainer's read, keep the merge for a maintainer or a person, and who releases?** Assumes no maintainer's read, and the release lane's maintainer releases on the yes of the owners whose lanes have changes in it. Only where the organisation already requires a second read or reserves its merges does a lane get one. Default: the assumption.
 - **Which acts must a person approve, beyond a release's contents?** Assumes publishing outside the organisation, spending money and deleting what someone else uses. Default: those, and only the doors the organisation keeps today.
 - **With more than one person, who owns which paths and lanes?** Assumes one person, who owns everything. With several, write one line per area: its paths and its owner. Default: one owner.
 - **Where are the effort records, the lane map and holds kept?** Assumes one item per effort in the tasks layer, and the lane map and the default branch's holds as records in the tasks layer, each linked from these rules. Never in the rules themselves: they are copied into each instance at spawn and can't change while work runs. Create the lane map's record now, empty, and write its link into the rules, so the first maintainer, started later, finds it there and adds its entry. Default: that.
+
+### `capabilities/engineering-expert/skills/plan-and-spec/SKILL.md`
+- **Is there a size or a kind of change past which a lead always sends a developer?** Assumes none: the three cases in "Who builds it" (context, parallel work, an environment or knowledge the lead lacks) decide each spec. Name a size or a kind (a migration, a change across repositories) only where the organisation wants a developer for it whatever the cases say. Default: none.
 
 ### `capabilities/engineering-expert/skills/send-a-probe/SKILL.md`
 - **How many probes may a lead run in parallel for one decision?** Assumes up to 4, one per competing approach. A probe costs a full instance's run, so name a lower cap where runs are expensive, or a higher one where decisions are worth it. Default: up to 4.
@@ -197,23 +208,24 @@ lead's go at that head.
 `capabilities/landing-rules/injects/landing-rules.md`:
 - "What merges a change": "In every lane, at one head: CI green; a review (the forge's
   review bot's at that head where one runs, each of its findings fixed or answered;
-  otherwise a round of the developer's review loop that found nothing to fix, with a fresh
-  reviewer at that head); and the lead's verification note, `VERIFIED at <head>`. Either
-  review carries to a new head only through a rebase whose range-diff shows every commit
-  unchanged, or an update from the default branch that leaves the PR's own diff unchanged;
-  any other new head gets a fresh round, or a new review the developer asks the bot for. The
-  developer merges once all three hold at that head and the lead, having checked them and
-  the holds, gives its go in one line at that head; the developer tells the lead once it
-  has merged. A lead's one-line docs fix, the lead merges."
+  otherwise a round of the author's review loop that found nothing to fix, with a fresh
+  reviewer at that head); and, for a developer's work, the lead's verification note,
+  `VERIFIED at <head>`. A review carries to a new head as the template's rule says: with no
+  re-read through an unchanged rebase or update, through the same reviewer's re-read of a
+  delta that only fixes a minor, takes a nit or fixes CI with no change in behaviour, and
+  otherwise not, the reviewer's severity deciding. The developer merges its work once they
+  all hold at that head and the lead, having checked them and the holds, gives its go in one
+  line at that head; the developer tells the lead once it has merged. A change its lead
+  built, the lead merges."
 - "A maintainer's read, and releases", with its paragraph "A PR with no lead here": "No
   maintainer. A release's contents are the person's to approve; the lead plans, tags and
   publishes it on their yes. Its release prep (the version bump and the notes) is a change
-  like any other: a developer builds it, and it lands on the rule above. A person's own PR
-  is theirs to merge. An outside contributor's PR gets a lead from the person's dispatcher
-  (or the person, with none). The lead hands it at its head to a developer, which checks
-  that CI won't run a fork's code with the repository's secrets before it runs, then runs
-  its review loop with fresh reviewers on it and works its reviews as it would its own. The
-  lead verifies it, and the developer merges it on the rule above."
+  like any other: the lead decides who builds it, and it lands on the rule above. A person's
+  own PR is theirs to merge. An outside contributor's PR gets a lead from the person's
+  dispatcher (or the person, with none). The lead hands it at its head to a developer, which
+  checks that CI won't run a fork's code with the repository's secrets before it runs, then
+  runs its review loop with fresh reviewers on it and works its reviews as it would its own.
+  The lead verifies it, and the developer merges it on the rule above."
 - "Where things are kept": the lane map's bullet goes; a hold on the default branch is one
   open record in your tasks layer.
 
@@ -232,3 +244,21 @@ changes.
 - **A later release:** read [CHANGELOG.md](CHANGELOG.md) from the release your copy records
   up to the new one. Each skill's line says what to port. Port what fits, keep your
   adaptations, and update the release sentence in each capability you ported.
+- **A copy at template-v2.2.0 or earlier takes up `oats.build`** before it ports the rest
+  of the release that brought it:
+  1. Check the new id first, as in section 1: `oats.build` must not be listed by
+     `oats capabilities` in the workspace already.
+  2. Move the nine build skills' directories from your developer capability's `skills/` to
+     `capabilities/build/skills/`, keeping your adaptations in them: `execution-strategy`,
+     `worktrees`, `test-first`, `diagnose-before-fixing`, `design-while-writing`,
+     `prove-it-works`, `run-the-review-loop`, `work-the-reviews` and `maintain-dev-docs`.
+     The developer capability keeps its inject and `understand-the-spec`; drop the nine
+     from its `oats.json`.
+  3. Add `capabilities/build/oats.json` from the template's, with your copy's release
+     sentence.
+  4. Add `oats.build: { from: here }` (or `from: <repo key>`) to the developer soul and to
+     each expert soul.
+  5. Repoint whatever in the copy names those skills by their old path: its notices file,
+     its adaptation notes, its tests.
+  6. Check it as above: each expert soul's preview lists the nine build skills, and the
+     developer's lists ten.

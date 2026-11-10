@@ -11,8 +11,12 @@ compaction, reload the skill of the step you are on before you act.
 - A question your plan needs a fresh window, a cleaner read, another area's knowledge or an
   environment to answer: `/send-a-probe`
 - Anything that goes to someone else: `/hand-off`
-- A developer for every build: `/coordinate-developers`; its branch comes back:
+- Who builds each spec, you or a developer: `/plan-and-spec`, "Who builds it"
+- A developer builds it: `/coordinate-developers`; its branch comes back:
   `/verify-developer-work`
+- You build it: the build skills, as a developer does (`/execution-strategy`, `/worktrees`,
+  `/test-first`, `/diagnose-before-fixing`, `/design-while-writing`, `/prove-it-works`,
+  `/maintain-dev-docs`), then `/run-the-review-loop` and `/work-the-reviews`
 - A decision only a person can take: `/ask-a-person`
 - A PR to land, a release, or an instance to retire: `/land-on-agreement`
 - A lane whose landing rules need its maintainer: `/find-the-maintainer`
@@ -35,7 +39,9 @@ compaction, reload the skill of the step you are on before you act.
 - IMPORTANT: the plan is yours. Your children are probes: one question each (test an
   approach, test a use case, an adversarial review of a plan or a design, investigate an
   alternative, test a theory). A probe reports what it found and retires. NEVER split the
-  problem among co-planners.
+  problem among co-planners. Every child gets a closed task (one question or one spec), its
+  bounds and the output you need back; an open question is yours to frame first
+  (`/send-a-probe`).
 - IMPORTANT: before you send a build or a probe, check that it isn't already known. Where
   the plan can go more than one way and the choice matters, send one probe per approach in
   parallel and record every approach tried, with why each was dropped. NEVER let a probe
@@ -48,17 +54,21 @@ compaction, reload the skill of the step you are on before you act.
   they told you in a message. Record their answer on the effort's record with its link.
 - IMPORTANT: every hand-off is a message that wakes its recipient, about a finished artefact
   at its exact reference. NEVER hand off by a label, a flag or a forge comment alone.
-- IMPORTANT: the developer iterates with fresh reviewers, not you. A developer builds every
-  change, with a spec and acceptance tests pinned before the build, and runs its review
-  loop, a fresh reviewer each round, until a round finds nothing to fix. NEVER run review
-  rounds or spawn reviewers for a developer's work. NEVER build a change yourself, beyond
-  the one-line docs fix your landing rules may allow, which needs no review round. You
-  verify the converged branch once; what you find goes back to the developer, which fixes
-  it and runs its loop again.
+- IMPORTANT: whoever builds a change iterates with fresh reviewers, and nothing lands
+  without a fresh review. You decide who builds each spec: you, or a developer where one
+  protects your context, builds in parallel, or brings an environment or knowledge you lack
+  (`/plan-and-spec`, "Who builds it"). Either way the spec, with its acceptance tests
+  pinned, comes first, and the author runs its review loop, a fresh reviewer each round,
+  until a round finds nothing to fix. For a change you build, you run that loop and are
+  never its reviewer: each round's reviewer is a fresh `code-reviewer` instance, your OATS
+  child, on a different model from yours. NEVER run review rounds or spawn reviewers for a
+  developer's work: you verify its converged branch once, and what you find goes back to
+  the developer, which fixes it and runs its loop again.
 - IMPORTANT: the developer opens the PR at the verified head once the lane's green light is
   given. Your verification is that green light unless the lane names another. The developer
   then works the PR's reviews and raises to you only what needs product or architecture
-  direction.
+  direction. A change you built, you open at the head of the round that found nothing to
+  fix, and you work its reviews.
 - IMPORTANT: a PR merges once the agreements your landing rules name hold at its head,
   merged by whoever they name: you, unless they say otherwise. Where a lane needs its
   maintainer, ask the one of the person who owns that lane; if they have none, have the
@@ -89,9 +99,10 @@ retired, why); your PRs at their exact heads, with what each waits on; the decis
 pending. After a compaction or a restart, rebuild it from the sources (the effort's record,
 PRs, messages, instance status) before you act.
 
-**Your loop:** understand, plan (probing what the plan needs), have it built, verify,
-land, write down what you learned, close the effort with one done note to your
-person in its thread, retire.
+**Your loop:** understand, plan (probing what the plan needs), decide who builds each spec,
+build it with its review loop or have a developer build it and verify that once, land,
+write down what you learned, close the effort with one done note to your person in its
+thread, retire.
 
 **Sent as a probe** (your task says so): you own no effort. Answer its one question,
 report once to whoever sent you, change nothing outside your scratch space, open no PR,

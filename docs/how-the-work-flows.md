@@ -18,21 +18,31 @@ error."
 2. **The expert plans** (`/plan-and-spec`). It reads its soul's knowledge first (rate
    limits sit in the gateway, by an earlier decision), chooses a token bucket in the gateway
    middleware, and writes a spec with pinned acceptance tests: a 429 with `Retry-After`
-   after 100 calls; existing keys unaffected until enabled.
-3. **A probe** (`/send-a-probe`). One question the plan depends on: does a bucket shared
-   across gateway replicas hold under a burst at the minute boundary? A fresh developer
-   instance, the expert's OATS child on another model, builds the smallest spike and runs
-   the check the expert wrote in its brief (no key gets more than 100 calls in a minute
+   after 100 calls; existing keys unaffected until enabled. It decides who builds it: the
+   middleware, its tests and a run across replicas are sustained work whose detail the rest
+   of the effort doesn't need, so a developer earns its place (the context case), and the
+   expert records that in one line.
+3. **A probe** (`/send-a-probe`). One closed question the plan depends on: does a bucket
+   shared across gateway replicas hold under a burst at the minute boundary, yes or no? Its
+   brief bounds it (two replicas, the smallest spike, stop at the first minute that breaks)
+   and asks for the verdict in a line, the run's command and output, and what it didn't
+   check. A fresh developer instance, the expert's OATS child on another model, builds the
+   spike and runs the check the expert wrote (no key gets more than 100 calls in a minute
    across the replicas), and answers yes, with the run. It retires on answer; the plan stays the expert's.
 4. **A developer builds it** (`/coordinate-developers`), as the expert's child. It checks
-   the spec (`/understand-the-spec`), asks one question with a proposed answer, runs a
-   workflow in one worktree (`/execution-strategy`), adds the acceptance tests unchanged and
-   proves it the way the repository runs it, CI's checks included (`/prove-it-works`).
+   the spec (`/understand-the-spec`), asks one question with a proposed answer, builds it in
+   one context, since the bucket, the 429 path and their tests are one coupled change
+   (`/execution-strategy`), adds the acceptance tests unchanged and proves it the way the
+   repository runs it, CI's checks included (`/prove-it-works`).
 5. **The review loop** (`/run-the-review-loop`). The developer, not the expert, iterates
    with fresh reviewers. Round 1's `code-reviewer`, briefed without the developer's
    reasoning, finds a blocker (the key is logged in the 429 path) and is retired. The
-   developer fixes it, and round 2's reviewer, a new instance at the new head that never saw
-   round 1, finds nothing to fix. The developer hands the branch back at that head.
+   developer fixes it: a blocker's fix gets a fresh reviewer. Round 2's reviewer, a new
+   instance at the new head that never saw round 1, approves with one minor (a vague error
+   message), and its Checked section lists how it checked each "done when" item and the
+   attacks that found nothing. The developer fixes the minor and sends that reviewer the
+   delta; it re-reads it and updates its verdict at the new head. The developer hands the
+   branch back there.
 6. **The expert verifies it once** (`/verify-developer-work`): `VERIFIED at <head>`. Had it
    found something, the branch would have gone back to the developer for another loop. Its
    verification is the lane's green light, so it tells the developer to open the PR.
@@ -60,10 +70,15 @@ on the same head, the developer merges and tells the lead in one line.
 
 ## A small change
 
-A one-line config fix still goes to a developer, which runs its review loop: the expert
-builds nothing that needs review rounds, and never runs them. Only a one-line docs fix (a
-typo, a broken link) may be the lead's own, where its landing rules allow it: it has no
-review loop, which is why it is no exception to who iterates with reviewers.
+A one-line config fix: none of the three cases holds, so the expert builds it itself
+(`/plan-and-spec`, "Who builds it"). It writes a short spec with its acceptance test pinned,
+makes an extra worktree of its own, builds and proves it with the build skills, and runs
+its review loop: a fresh `code-reviewer`, its OATS child on another model, finds nothing to
+fix and lists what it checked. The expert is never that reviewer. The round is its green
+light: it opens the PR, works its reviews and merges once CI and the review hold at the
+head. A one-line docs fix (a typo, a broken link) skips even the local loop, never the
+review: it merges on CI green and one fresh review at its head, the review bot's where one
+runs.
 
 ## A decision only a person can take
 
@@ -127,3 +142,33 @@ maintainer who drives the area how the fix fits the rate-limit work, and launche
 with its own summary and the ticket reference. The lead lands the fix on the support lane's
 landing rules, which name a read by that feature maintainer. At each step the support
 maintainer tells the desk what the ticket says.
+
+## Where this comes from
+
+Three of the rules above follow what Anthropic reports from building multi-agent systems:
+- **Who builds, and when to split.** An extra agent earns its place in three situations:
+  when context pollution would degrade the work, when tasks can run in parallel, and when
+  specialization improves the work. Outside them, the coordination costs typically exceed
+  the benefits; in Anthropic's testing, multi-agent implementations typically used 3 to 10
+  times the tokens of a single agent for equivalent tasks. The template's three cases
+  (context, parallel, an environment or knowledge the lead lacks) are those situations
+  ([Building multi-agent systems: when and how to use them](https://claude.com/resources/articles/building-multi-agent-systems-when-and-how-to-use-them),
+  Anthropic). Across several enterprise deployments, a single agent with skills frequently
+  did better than a design of subagents
+  ([Building agents: when to fold subagents into your main agent loop](https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop),
+  Anthropic), which is why the lead and the developer share `oats.build`.
+- **Split by context, not by kind of work.** Dividing work by type (one agent writes
+  features, another tests, a third reviews) loses context at each hand-off; an agent that
+  handles a feature should also handle its tests. Planning, implementing and testing one
+  feature are sequential phases of the same work, a poor boundary. Hence one context by
+  default in `/execution-strategy`, and a lead that builds a small change itself rather
+  than handing it off
+  ([Building multi-agent systems: when and how to use them](https://claude.com/resources/articles/building-multi-agent-systems-when-and-how-to-use-them),
+  Anthropic).
+- **A verifier needs criteria.** A verifier is only as good as its criteria: one told only
+  to check whether output is good rubber-stamps it, and a loop needs a maximum number of
+  iterations with a fallback
+  ([Multi-agent coordination patterns](https://claude.com/resources/articles/multi-agent-coordination-patterns),
+  Anthropic). Hence the reviewer's Checked section, one line per "done when" item, without
+  which an approval is not a review, and the loop's cap of 4 fresh rounds, after which the
+  lead decides.

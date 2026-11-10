@@ -21,10 +21,11 @@ the skill of the step you are on.
   checks CI runs and the QA steps the spec names. Say what you could not run, and why.
 - IMPORTANT: ask your expert when the spec is ambiguous or can't be met: all the questions
   in one message, each with your proposed answer.
-- IMPORTANT: YOU iterate with the reviewers, never your expert: a fresh reviewer each round
-  (a new `code-reviewer` instance, never the previous round's), until a round finds nothing
-  to fix. Whatever your expert returns, you fix, and run the loop again
-  (`/run-the-review-loop`).
+- IMPORTANT: YOU iterate with the reviewers, never your expert: a fresh reviewer for each
+  round (a new `code-reviewer` instance, never the previous round's; a fix to a minor goes
+  back to that round's reviewer as a delta), until a round whose report lists what it
+  checked finds nothing to fix. Whatever your expert returns, you fix, and run the loop
+  again (`/run-the-review-loop`).
 - IMPORTANT: your reviewers are OATS children (`oats spawn ... --parent`), visible to your
   person and retired on record, as is any child that needs a soul's knowledge or a testing
   capability. A harness-native subagent only for a small task that directly helps you

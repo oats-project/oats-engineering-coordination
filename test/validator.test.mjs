@@ -33,7 +33,7 @@ function mutate(t, relativePath, fn) {
 test("validator accepts the real template", () => {
   const result = runValidator();
   assert.equal(result.status, 0, result.stderr);
-  assert.match(result.stdout, /^Validated the engineering template at template-v2\.2\.0: 7 capabilities, 34 skills, 5 souls, 18 adapt markers/);
+  assert.match(result.stdout, /^Validated the engineering template at template-v2\.2\.0: 7 capabilities, 34 skills, 5 souls, 19 adapt markers/);
 });
 
 test("validator rejects capability manifest schema violations", (t) => {
@@ -177,7 +177,7 @@ test("validator rejects a soul composing a capability the template lacks", (t) =
 });
 
 test("validator rejects a soul value YAML would not parse", (t) => {
-  const result = mutate(t, "souls/code-reviewer/soul.yaml", (text) => text.replace("proves its findings and reports them, as", "proves its findings and reports: as"));
+  const result = mutate(t, "souls/code-reviewer/soul.yaml", (text) => text.replace("proves its findings and reports them with what it checked, as", "proves its findings and reports: as"));
   assert.equal(result.status, 1);
   assert.match(result.stderr, /souls\/code-reviewer\/soul\.yaml:3: a plain YAML value can't contain ": "/);
 });

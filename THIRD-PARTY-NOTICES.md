@@ -1,9 +1,9 @@
 # Third-party notices
 
-Three of the developer's skills adapt rules from MIT-licensed skill collections. The rules
-were rewritten in this template's words; no file was copied. Each source's copyright notice
-and licence follow, as the MIT licence asks. Keep this file with any copy of those skills
-(ADAPTING.md, section 1).
+Four of the build skills (`oats.build`) and the developer's quality floor adapt rules from
+MIT-licensed skill collections. The rules were rewritten in this template's words; no file
+was copied. Each source's copyright notice and licence follow, as the MIT licence asks. Keep
+this file with any copy of those skills (ADAPTING.md, section 1).
 
 | Template skill | Adapted from |
 |---|---|
