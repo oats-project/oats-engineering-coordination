@@ -27,8 +27,11 @@ description: Launch and drive developers to build what you specified, one per su
   `from <ref or repository>@<commit>`, against the remote:
   `git -C <clone> ls-remote origin <its default branch>`. If they differ, don't apply. For
   the soul's own repository the remote moved since the preview: preview again. For
-  another, the clone is behind: `git -C <clone> fetch origin <its default branch>` (it
-  moves only `origin/<its default branch>`), then preview again.
+  another, the clone is behind: update its `origin/<its default branch>`, then preview
+  again. Name the destination, so the fetch updates that ref whatever branches the clone
+  tracks:
+  `git -C <clone> fetch origin refs/heads/<branch>:refs/remotes/origin/<branch>`, with
+  `<branch>` its default branch.
 - `--same-work` marks the developer as working on your work. A developer you started
   before the flag existed gets it with `oats instance same-work <developer> on`.
 - Tell each developer which developers share an interface with it, so they talk directly.
