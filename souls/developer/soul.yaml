@@ -5,4 +5,5 @@ description: The default developer. A fresh instance builds one spec in any of t
 work: worktree
 capabilities:
   oats.developer: { from: here }
+  oats.build: { from: here }
   oats.landing-rules: { from: here }

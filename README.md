@@ -19,10 +19,11 @@ at template-v1.0.0.
 each piece of work from plan to merge, on a fresh instance. Helpers add a fresh window, a
 cleaner read, an area's knowledge or an environment; for proper work they are OATS instances
 the person can see, and one that checks work runs on a different model. Every hand-off is a
-message about a finished artefact at its exact reference. The developer, not the expert,
-iterates with fresh reviewers. People give direction and decisions, as one card with a
-recommendation, with no deadline and no default if they are silent. A change merges once the
-agreements its lane needs hold at one head.
+message about a finished artefact at its exact reference. Whoever builds a change iterates
+with fresh reviewers; a lead verifies a developer's work once and never runs its rounds.
+People give direction and decisions, as one card with a recommendation, with no deadline and
+no default if they are silent. A change merges once the agreements its lane needs hold at
+one head.
 
 It suits organisations whose agents build software in repositories on a forge: one person
 or several, one repository or many. The template's roles:
@@ -31,23 +32,29 @@ or several, one repository or many. The template's roles:
   record, starts a fresh expert for it, introduces that lead once and steps aside. It never
   relays.
 - **Expert,** one soul per way of working, plus a generalist for work across areas. Its
-  instance plans, sends probes (one question each, never co-planners), gives every build to
-  a developer, verifies the converged branch once, asks people only for decisions, lands the
-  work and retires. It never runs review rounds.
+  instance plans, sends helpers (each with one closed task, never co-planners: a probe's
+  question, a developer's spec, or a scoped piece that needs another soul), and decides
+  who builds each spec: itself, or a developer where one protects its context, builds in
+  parallel or specialises in a lane of its own. What it builds, it builds as a
+  developer would, with a fresh reviewer each round, never its own; a developer's converged
+  branch it verifies once, and it never runs review rounds for a developer's work. It asks
+  people only for decisions, lands the work and retires.
 - **Developer,** one soul by default, plus one per environment that runs the work
   differently. It builds one spec, proves it the way the repository runs it and iterates
   with a fresh reviewer each round until a round finds nothing to fix. Once its expert has
   verified the branch, it opens the PR and works the reviews, raising only product or
   architecture direction.
-- **Reviewer,** fresh each round: a `code-reviewer` instance, the developer's OATS child on
-  a different model where one is available; on the PR, the forge's review bot as well.
+- **Reviewer,** fresh each round: a `code-reviewer` instance, the author's OATS child (the
+  developer's, or the lead's for a spec it builds) on a different model where one is
+  available, whose every verdict lists what it checked; on the PR, the forge's review bot
+  as well. Nothing lands without a fresh review.
 - **Maintainer,** one per person per lane, started only where a lane's landing rules need
   its read or keep its merge, and for releases. It is called by message at an exact head,
   never a station every change passes.
 
 ```
    person ──request──► dispatcher ──starts, introduces──► expert (lead)
-     ▲                                                   │  plan · probes · verify · land
+     ▲                                                   │  plan · helpers · verify · land
      └──── cards and one done note, in the effort's ─────┤
            own thread                                    │ spec        ▲ branch at its head
                                                          ▼             │
@@ -63,15 +70,18 @@ cases around it.
 
 ## What's in it
 
-- **`capabilities/`:** six working capabilities, each an inject (the always-on briefing)
-  plus the skills an agent loads when it needs them.
+- **`capabilities/`:** seven working capabilities, each an inject (the always-on briefing)
+  plus the skills an agent loads when it needs them, except `oats.build`, which is skills
+  only.
   - `oats.dispatcher`: `/dispatch`.
-  - `oats.engineering-expert`: `/plan-and-spec`, `/send-a-probe`, `/hand-off`,
+  - `oats.engineering-expert`: `/plan-and-spec`, `/send-a-helper`, `/hand-off`,
     `/coordinate-developers`, `/verify-developer-work`, `/ask-a-person`,
     `/land-on-agreement`, `/find-the-maintainer`, `/across-people`, `/findings-and-blocks`.
-  - `oats.developer`: `/understand-the-spec`, `/execution-strategy`, `/worktrees`,
-    `/test-first`, `/diagnose-before-fixing`, `/design-while-writing`, `/prove-it-works`,
-    `/run-the-review-loop`, `/work-the-reviews`, `/maintain-dev-docs`.
+  - `oats.build`, the craft of building a change, composed by the developer and the expert
+    alike: `/execution-strategy`, `/worktrees`, `/test-first`, `/diagnose-before-fixing`,
+    `/design-while-writing`, `/prove-it-works`, `/run-the-review-loop`,
+    `/work-the-reviews`, `/maintain-dev-docs`.
+  - `oats.developer`: its inject and `/understand-the-spec`.
   - `oats.code-review`: `/adversarial-review`, `/security-review`,
     `/simplification-review`, `/review-dev-docs`.
   - `oats.maintainer`: `/maintainer-intake`, `/launch-work`, `/direction-gate`,
