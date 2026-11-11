@@ -31,10 +31,11 @@ or several, one repository or many. The template's roles:
   record, starts a fresh expert for it, introduces that lead once and steps aside. It never
   relays.
 - **Expert,** one soul per way of working, plus a generalist for work across areas. Its
-  instance plans, sends helpers (each with one closed task, never co-planners: a probe's
-  question, a developer's spec, or a scoped piece that needs another soul), and decides
-  who builds each spec: itself, or a developer where one protects its context, builds in
-  parallel or specialises in a lane of its own. What it builds, it builds as a
+  instance leads one effort: it plans, sends helpers (every task closed, never co-planners:
+  a probe's question, a developer's spec, a scoped piece that needs another soul, or a
+  standing specialist kept for the effort; usually experts, a developer or a reviewer only
+  for a named piece of code), and decides who builds each spec: itself, or a developer where
+  one protects its context, builds in parallel or specialises in a lane of its own. What it builds, it builds as a
   developer would, with a fresh reviewer each round, never its own; a developer's converged
   branch it verifies once, and it never runs review rounds for a developer's work. It asks
   people only for decisions, lands the work and retires.
