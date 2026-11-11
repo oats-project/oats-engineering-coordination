@@ -2,6 +2,17 @@
 
 ## Unreleased
 
+## template-v3.1.1 - 2026-11-11
+
+A patch release: one sentence. After a change to the landing rules, a lead told only its
+developers. A standing specialist (template-v3.1.0) stays for the whole effort on the rules
+it was spawned with, so a change must reach it too. For a copy of template-v3.1.0, port the
+sentence.
+
+**`oats.landing-rules`**
+- inject, fixed: "each lead tells its running children (its developers and its helpers, a
+  standing specialist included)". Port: that sentence of the opening paragraph.
+
 ## template-v3.1.0 - 2026-11-11
 
 A minor release: the lead's texts say that it leads the whole effort and how it delegates.
