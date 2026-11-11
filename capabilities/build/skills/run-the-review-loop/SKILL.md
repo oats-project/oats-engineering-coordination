@@ -212,8 +212,8 @@ An instance is **finished** when all of these hold:
   children are retired;
 - with a duty to propose knowledge (your knowledge layer says whether you have one), its
   final knowledge checkpoint ("you finish a task") is run and its outcome recorded, as that
-  layer says. A proposal it opens there is in the knowledge layer's hands from then on, not
-  one of its PRs above: nobody waits for it.
+  layer says. A proposal it opened at any knowledge checkpoint is in the knowledge layer's
+  hands from then on, not one of its PRs above: nobody waits for it.
 
 Once you learn your PR is merged and green, or closed, or that the work was dropped (your
 expert tells you, or you see it on the forge), finish unprompted:
