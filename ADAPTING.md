@@ -71,10 +71,11 @@ These have no adapt markers. A copy that changes one is no longer this way of wo
    lane's tools, environment, skills or knowledge, or instructions that would conflict with
    the lead's), or parallel work. Otherwise one agent holds a whole task.
 2. **One lead per effort,** on a fresh instance, from plan to merge, compacting and never
-   respawning. Its children are helpers, each with one closed task, never co-planners: a
-   question to answer (a probe), a spec to build (a developer), or a scoped piece of the
-   effort that needs another soul's capabilities. The plan, and every decision in it,
-   stays the lead's. Another area's step of the effort goes to a helper, never to a second
+   respawning. Leading is not doing it all: its children are helpers, never co-planners,
+   and every task it gives one is closed: a question to answer (a probe), a spec to build
+   (a developer), or a scoped piece of the effort that needs another soul's capabilities.
+   A helper is usually an expert, and one the effort keeps needing stays for the effort as
+   a standing specialist. The plan, and every decision in it, stays the lead's. Another area's step of the effort goes to a helper, never to a second
    lead; a lead for another, related effort is the first lead's sibling, and the person is
    told its name.
 3. **Whoever builds a change iterates with fresh reviewers, and nothing lands without a
@@ -151,8 +152,9 @@ A copy is adapted when no marker is left; until then, the markers left are its o
 - **What counts as a large feature here, past which a lead always sends developers?** Assumes more than one surface, or sustained building and testing: a large feature always goes to developers, one per surface, and below that the three cases in "Who builds it" (context, parallel work, specialisation) decide each spec. Name a size or a kind (a migration, a change across repositories) where the organisation draws the line elsewhere. Default: more than one surface, or sustained building and testing.
 
 ### `capabilities/engineering-expert/skills/send-a-helper/SKILL.md`
-- **Which specialist souls can a lead call as helpers, and what does each bring (tools, an environment, skills, a domain)?** Assumes the template's own souls: an expert soul for an area's knowledge or a scoped piece of its area, a developer soul for an environment, and the code reviewer for an adversarial read. List the organisation's specialist souls, each with what it brings, so a lead routes each lane's piece to the soul that specialises in it. Default: the template's souls, as listed.
+- **Which specialist souls can a lead call as helpers, and what does each bring (tools, an environment, skills, a domain)?** Assumes the template's own souls: an expert soul for whatever needs an area's knowledge or judgment (the usual helper), a developer soul for a named piece of code and for an environment, and the code reviewer for an adversarial read of a named piece of code. List the organisation's specialist souls, each with what it brings, so a lead routes each lane's piece to the soul that specialises in it. Default: the template's souls, as listed.
 - **How many probes may a lead run in parallel for one decision?** Assumes up to 4, one per competing approach. A probe costs a full instance's run, so name a lower cap where runs are expensive, or a higher one where decisions are worth it. Default: up to 4.
+- **How many standing specialists may a lead keep at once?** Assumes up to 3. Each is a full instance kept for the effort, so name a lower cap where instances are expensive, or a higher one where efforts are routinely large. Default: up to 3.
 
 ### `capabilities/engineering-expert/skills/find-the-maintainer/SKILL.md`
 - **What does a maintainer do in this organisation, in the words a lead tells its person?** Assumes the template's maintainer: the standing agent for a lane, which reviews and merges what leads hand it and keeps the lane's picture, so one agent decides what lands and the person has one place to ask about the lane. Rewrite the sentences a lead says, in plain words, where the organisation's maintainers do more or less (where people keep the merge, say). Default: the template's sentences.
@@ -181,7 +183,7 @@ A copy is adapted when no marker is left; until then, the markers left are its o
 
 Every copied capability records the template release it came from, in its `oats.json`
 description. The template's descriptions already end with that sentence:
-"Copied from the engineering template, template-v3.0.2." Keep it as it is when you copy,
+"Copied from the engineering template, template-v3.1.0." Keep it as it is when you copy,
 and set `version` to the copy's own numbering from then on. The template's own validator,
 which requires `version` to be the template release, stays with the template (section 1):
 nothing in the copy checks it.
@@ -190,7 +192,7 @@ Souls carry no such record, so write one for the whole copy, in the host reposit
 `capabilities/TEMPLATE-RELEASE` (a plain file, which OATS ignores):
 ```
 template: oats-project/oats-engineering-coordination
-release: template-v3.0.2
+release: template-v3.1.0
 commit: <the full commit SHA that tag points to>
 capabilities: <the ids you copied>
 souls: <the souls you copied, under their names in the copy>

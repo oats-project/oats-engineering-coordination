@@ -2,6 +2,70 @@
 
 ## Unreleased
 
+## template-v3.1.0 - 2026-11-11
+
+A minor release: the lead's texts say that it leads the whole effort and how it delegates.
+They leaned toward the lead keeping the work ("see it through on this instance", "build it
+yourself by default") and gave every helper one task and one answer. Now: the lead leads
+and decides who does each piece, with no default; the lead's own briefing carries the test
+for what an effort is; a helper is usually an expert, and a developer or a code reviewer
+only for a task about a named piece of code; a standing specialist stays for the effort;
+and exploration is a task once it has bounds. For a copy of template-v3.0.2, port the
+passages below.
+
+**`oats.engineering-expert`**
+- inject, changed: the heading and opening paragraph ("you lead one effort"; leading is not
+  doing it all yourself). Port: both.
+- inject, changed: "Who builds each spec" no longer says "Build it yourself by default":
+  the cases decide, and neither is the default. Port: that line.
+- inject, changed: the helpers bullet ("every task you give one is closed"; each task
+  carries its bounds, what "done" means and what to send back). Port: the bullet.
+- inject, added: two bullets after it, "a helper is usually an expert" and "keep a standing
+  specialist". Port: both.
+- inject, changed: the bullet on another area's work now opens with what an effort is ("know
+  where your effort ends"). Port: the bullet.
+- `/plan-and-spec`, changed: "Who builds it" opens with both costs, a developer's and
+  building it yourself, and says neither is the default; the description says the same.
+  Port: the description and that paragraph.
+- `/send-a-helper`, changed: the description and the opening (every task closed; most
+  helpers stay for one task, a standing specialist for the effort; "an effort too large for
+  one context" under splitting context). Port: both.
+- `/send-a-helper`, changed: "A closed question, or it isn't a probe yet" ends with
+  "Exploration with bounds is a closed task too" and its four parts, in place of the
+  research probe. Port: from "Then send one probe per angle." to the end of the section.
+- `/send-a-helper`, added: "For how long" under "Specialisation", and the section "A
+  standing specialist" with its `adapt` marker (how many a lead may keep). Port: both.
+- `/send-a-helper`, changed: "Who does it" chooses the soul by what the task needs: an
+  expert for knowledge or judgment (the usual helper), a developer for a named piece of
+  code, the code reviewer for an adversarial read of a named piece of code. An adversarial
+  read of a plan or a design now goes to an expert, not to the code reviewer. Port: from
+  "**An OATS child,**" to the paragraph that ends "it goes to an expert."
+- `/send-a-helper`, changed: "The brief" (it reports once for the task; a standing
+  specialist's first brief) and "Its answer" (when a standing specialist is retired). Port:
+  the last bullet of "The brief" with the paragraph after it, and the done-line bullet.
+- `/land-on-agreement`, changed: "Retire what's finished" says when a standing specialist
+  is retired. Port: the helpers bullet.
+- inject, added: "Sent as a helper" ends with the standing specialist's side: it hands each
+  task back, stays between tasks, and sends its done line only when its parent says its area
+  is done. Port: from "A standing specialist (your first brief" to the end of the paragraph.
+
+**`oats.code-review`**
+- inject and the capability's description, changed: as an expert's probe, the reviewer reads
+  a named piece of code that is not under review (a spike, a design written as code). A
+  plan or a design in prose goes to an expert. Port: the probe sentence in each, and the
+  inject's sentence after it.
+
+**`oats.dispatcher`**
+- inject and `/dispatch`, changed: "One effort, one lead, from start to done", not "one
+  instance"; the lead brings in its own developers and helpers. Port: that sentence in each.
+
+**The repository**
+- `README.md` and `ADAPTING.md` (principle 2): the expert leads one effort, every task it
+  gives a helper is closed, a helper is usually an expert, and a standing specialist stays
+  for the effort.
+- `docs/how-the-work-flows.md`: the walkthrough's probe is a fresh instance of the expert's
+  own soul, not a developer.
+
 ## template-v3.0.2 - 2026-11-11
 
 A patch release for oats.okf 6.0, which removes the knowledge harvester: an instance

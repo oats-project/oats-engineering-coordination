@@ -26,9 +26,11 @@ error."
    shared across gateway replicas hold under a burst at the minute boundary, yes or no? Its
    brief bounds it (two replicas, the smallest spike, stop at the first minute that breaks)
    and asks for the verdict in a line, the run's command and output, and what it didn't
-   check. A fresh developer instance, the expert's OATS child on another model, builds the
-   spike and runs the check the expert wrote (no key gets more than 100 calls in a minute
-   across the replicas), and answers yes, with the run. It retires on answer; the plan stays the expert's.
+   check. Testing an approach needs the area's knowledge, so the probe is a fresh instance
+   of the expert's own soul, its OATS child on another model. It builds the spike and runs
+   the check the expert wrote (no key gets more than 100 calls in a minute across the
+   replicas), and answers yes, with the run. It retires on answer; the plan stays the
+   expert's.
 4. **A developer builds it** (`/coordinate-developers`), as the expert's child. It checks
    the spec (`/understand-the-spec`), asks one question with a proposed answer, builds it in
    one context, since the bucket, the 429 path and their tests are one coupled change
