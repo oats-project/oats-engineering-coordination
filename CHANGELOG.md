@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## template-v3.0.2 - 2026-11-11
+
 A patch release for oats.okf 6.0, which removes the knowledge harvester: an instance
 proposes its own knowledge, as a pull request on the knowledge base, and the knowledge
 layer's maintainer gates every merge. Seven texts still launched, waited for or named the
