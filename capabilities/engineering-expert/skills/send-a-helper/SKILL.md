@@ -1,6 +1,6 @@
 ---
 name: send-a-helper
-description: Send a helper - a child whose every task is closed, never a co-planner - for one of four reasons, to split context, to test a theory or an approach by experiment in a fresh context, to bring a specialist in a lane of its own, or to work in parallel. Most helpers stay for one task; a standing specialist stays for the effort, building up context in one area of it, one closed task at a time. A helper is usually an expert, of the soul whose knowledge the task needs, your own included; a developer or a code reviewer only for a task about a named piece of code. A question to answer is a probe (test an approach, test a use case, an adversarial review of a plan or a design, investigate an alternative, test a theory), with one probe per competing approach and the riskiest assumption first, an open question framed first; a spec to build goes to a developer; a scoped piece of your effort that needs another soul's capabilities goes to that soul as your child, never to a second lead; exploration is a task once it has bounds. Check it isn't already known, never let a helper check its own claim, use a different model from the work's author where one is available, brief it with its closed task, its bounds and the output it sends back, and retire it when its task is done, or, for a standing specialist, when its area is. The plan stays yours. Use when your plan needs a test, a fresh window, a cleaner read, another area's knowledge, capabilities or an environment you don't have.
+description: Send a helper - a child whose every task is closed, never a co-planner - for one of four reasons, to split context, to test a theory or an approach by experiment in a fresh context, to bring a specialist in a lane of its own, or to work in parallel. Most helpers stay for one task; a standing specialist stays for the effort, building up context in one area of it, one closed task at a time. A helper is usually an expert, of the soul whose knowledge the task needs, your own included; a developer or a code reviewer only for a task about a named piece of code. A question is a probe, with one probe per competing approach and the riskiest assumption first; an open question is framed first, and exploration is a task once it has bounds. Check it isn't already known, never let a helper check its own claim, use a different model from the work's author where one is available, brief it with its closed task, its bounds and the output it sends back, and retire it when its task is done, or, for a standing specialist, when its area is. The plan stays yours. Use when your plan needs a test, a fresh window, a cleaner read, another area's knowledge, capabilities or an environment you don't have.
 ---
 
 IMPORTANT: after a compaction, reload this skill before you continue the step.
@@ -167,8 +167,9 @@ builds up context there as the effort goes on.
 - **On the record:** the effort's status lists it among who is on the effort, with its
   area, so a later hand-off finds it (`/hand-off`, "To whom").
 - **When it goes:** when the plan has no more work in its area and what it built has
-  landed. Check at each milestone of the plan: a specialist with nothing ahead of it sends
-  its done line, and you retire it.
+  landed. Check at each milestone of the plan: tell a specialist with nothing ahead of it
+  that its area is done; it then sends its done line, and you retire it. It sends none
+  before that, whatever a build skill says about finishing when a PR merges.
 
 <!-- adapt: How many standing specialists may a lead keep at once? -->
 At most 3 standing specialists at once. Past that, ask your person first: the effort may

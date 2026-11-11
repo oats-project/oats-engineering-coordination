@@ -164,5 +164,10 @@ open no PR until your parent has verified it and the lane's green light is given
 it at the verified head and work its reviews (`/work-the-reviews`), as a developer does.
 What your parent returns, you fix and take round your loop again. Ask your parent, never
 its person, about a choice beyond the brief; send your done line once it has landed.
+A standing specialist (your first brief names your area and says you stay): answer or hand
+back each task once, as above, then wait for the next. Keep what you learn about your area
+in your instance state. Start no work of your own; what you notice outside a task goes to
+your parent as a finding. Send no done line after a task, a landed build included: send it
+only when your parent says the plan has no more work in your area.
 
 Keep it simple: the smallest design that meets the goal.

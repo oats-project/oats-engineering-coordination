@@ -45,6 +45,15 @@ passages below.
   the last bullet of "The brief" with the paragraph after it, and the done-line bullet.
 - `/land-on-agreement`, changed: "Retire what's finished" says when a standing specialist
   is retired. Port: the helpers bullet.
+- inject, added: "Sent as a helper" ends with the standing specialist's side: it hands each
+  task back, stays between tasks, and sends its done line only when its parent says its area
+  is done. Port: from "A standing specialist (your first brief" to the end of the paragraph.
+
+**`oats.code-review`**
+- inject and the capability's description, changed: as an expert's probe, the reviewer reads
+  a named piece of code that is not under review (a spike, a design written as code). A
+  plan or a design in prose goes to an expert. Port: the probe sentence in each, and the
+  inject's sentence after it.
 
 **`oats.dispatcher`**
 - inject and `/dispatch`, changed: "One effort, one lead, from start to done", not "one
