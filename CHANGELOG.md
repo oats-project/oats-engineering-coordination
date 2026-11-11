@@ -2,6 +2,52 @@
 
 ## Unreleased
 
+## template-v3.0.2 - 2026-11-11
+
+A patch release for oats.okf 6.0, which removes the knowledge harvester: an instance
+proposes its own knowledge, as a pull request on the knowledge base, and the knowledge
+layer's maintainer gates every merge. Seven texts still launched, waited for or named the
+harvester. They now say the knowledge checkpoint and its outcome, naming no mechanism, and
+where they name done lines they name oats.okf 6.0's. For a copy of template-v3.0.1, port the
+lines below. The old lines map to the new: "done, harvested: <harvester>" is "done,
+proposed: <PR URLs>", "done, no harvest duty" is "done, no duty to propose", "done, harvest
+pending: <proposal>" is "done, proposal pending: <slug and why>", and "done, nothing to
+propose: <reason>" is new, for a checkpoint that found nothing worth proposing. A copy whose
+knowledge layer is not oats.okf words the lines as its layer does.
+
+**`oats.code-review`**
+- inject, changed: the reviewer's done line is one of "done, proposed: <PR URLs>", "done,
+  nothing to propose: <reason>", "done, no duty to propose" or "done, proposal pending:
+  <slug and why>". Port: that sentence.
+
+**`oats.build`**
+- `/run-the-review-loop`, changed: the author retires a reviewer once it replies with one of
+  the three finished lines (after "done, proposal pending", it waits for one of them). At
+  Finish, the knowledge condition is the final knowledge checkpoint, run and its outcome
+  recorded as the knowledge layer says; a proposal it opened at any knowledge checkpoint is
+  in the knowledge layer's hands, not one of the PRs that must land, so nobody waits for it.
+  Steps 3 and 4 run that checkpoint and send one of the four lines. Port: the retire
+  sentence, that Finish condition and steps 3 and 4.
+
+**`oats.engineering-expert`**
+- `/land-on-agreement`, "Retire what's finished", changed: the same knowledge condition; the
+  done report says the final knowledge checkpoint's outcome in one of four lines, three of
+  them finished and "done, proposal pending: <slug and why>" not finished (retire nothing
+  yet; it reports again with one of the three); and a retired one's name is never reused
+  because the records it left and the provenance of the knowledge it proposed still name it.
+  Port: those three bullets.
+
+**`oats.maintainer`**
+- inject, changed: "Harvest at a maintainer's checkpoints" becomes "Run your knowledge
+  checkpoints as a maintainer", following your knowledge layer's checkpoint procedure. Port:
+  that paragraph.
+- `/launch-work`, "Retire what's finished", changed: as `/land-on-agreement`. Port: the same
+  three bullets.
+
+**The repository**
+- `docs/how-the-work-flows.md`: the walkthrough's developer sends "done, no duty to
+  propose", and the expert runs its final knowledge checkpoint.
+
 ## template-v3.0.1 - 2026-11-10
 
 A patch release: five lines still said the old rule, that a fix goes to "a lead and its

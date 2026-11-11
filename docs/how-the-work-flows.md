@@ -56,8 +56,8 @@ error."
    concrete reason, touches no design either, so it stands. CI is green and every finding of
    the bot's review is fixed or answered at that head: the lane's agreements hold. It merges
    at that head, checks CI on the merged commit and tells the developer, which sends "done,
-   no harvest duty"; the expert retires it.
-9. **Done.** The expert closes the effort's record, runs its final harvest checkpoint,
+   no duty to propose"; the expert retires it.
+9. **Done.** The expert closes the effort's record, runs its final knowledge checkpoint,
    sends the person one done note in the effort's thread, and retires itself.
 
 ## A small project
