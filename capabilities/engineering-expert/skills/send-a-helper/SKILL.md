@@ -190,8 +190,8 @@ breadth in parallel, or another soul's knowledge, capabilities or environment. O
 it yourself: you hold the context, and a child would first have to be given it.
 
 The fan-out fits what the decision is worth: most decisions need one probe, and a choice
-that is cheap to reverse needs none. Past the cap above, for one decision, ask your person
-first.
+that is cheap to reverse needs none. Past the probe cap ("Competing approaches", above),
+for one decision, ask your person first.
 
 ## Who does it
 **An OATS child,** a fresh instance of whichever existing soul has what the task needs. A
@@ -211,9 +211,8 @@ the task needs:
 - **An adversarial read of a named piece of code** that is not under review (a spike, a
   design written as code): the code reviewer (`code-reviewer`).
 
-A developer or a code reviewer brings a craft and an environment, not an area's knowledge.
-A question about the effort's design, a theory or an approach doesn't go to one, however
-small: it goes to an expert.
+A question about the effort's design, a theory or an approach doesn't go to a developer or
+a code reviewer, however small: it goes to an expert.
 
 An OATS child is visible to your person (its status, the Desktop), has its own messaging and
 knowledge, and is retired on record; a native subagent of your harness (Claude Code's, pi's
