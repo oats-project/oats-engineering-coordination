@@ -23,10 +23,10 @@ knowledge layer is not oats.okf words the lines as its layer does.
 **`oats.build`**
 - `/run-the-review-loop`, changed: the author retires a reviewer once it replies with one of
   the three finished lines (after "done, proposal pending", it waits for one of them). At
-  Finish, the knowledge condition is the final knowledge checkpoint, run and recorded in
-  log.md with the proposal it opened or why there was nothing to propose; the knowledge
-  layer's maintainer gates the proposal, so nobody waits for it to merge. Steps 3 and 4 run
-  that checkpoint and send one of the four lines. Port: the retire sentence, that Finish
+  Finish, the knowledge condition is the final knowledge checkpoint, run and its outcome
+  recorded as the knowledge layer says; a proposal it opens there is in the knowledge
+  layer's hands, not one of the PRs that must land, so nobody waits for it. Steps 3 and 4
+  run that checkpoint and send one of the four lines. Port: the retire sentence, that Finish
   condition and steps 3 and 4.
 
 **`oats.engineering-expert`**
