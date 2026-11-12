@@ -4,28 +4,40 @@
 
 ## template-v3.1.3 - 2026-11-12
 
-A patch release: a floor for a child's model. The texts asked for a different model for a
-child that checks work and set no floor, so a lead could pick a smaller, cheaper model and
-call it different. Now no child, an OATS child or a native subagent, runs on a weaker
-model tier than the floor the briefing sets, which a copy names per model family. For a
-copy of template-v3.1.2, port the passages below and answer the new marker.
+A patch release: a floor for a child's model, and a cap on a name's length. The texts asked
+for a different model for a child that checks work and set no floor, so a lead could pick a
+smaller, cheaper model and call it different. Now the landing rules set a floor, no child
+below its parent's own tier, which a copy names per model family, and it comes before
+model diversity. For a copy of template-v3.1.2, port the passages below and answer the new
+marker.
+
+**`oats.landing-rules`**
+- inject, added: the rule "The models children run on", with its adapt marker, before "A
+  maintainer's read, and releases". Port: both.
 
 **`oats.engineering-expert`**
-- inject, added: the sentence "NEVER run a child ... on a weaker model tier", with its
-  adapt marker, after "agents of one model share blind spots". Port: both.
-- `/send-a-helper`, added: the paragraph "Never on a weaker model". Port: it.
+- inject, added: the sentence "NEVER run a child ... on a model below the floor", after
+  "agents of one model share blind spots". Port: it.
+- `/send-a-helper`, added: the paragraph "The floor comes first". Port: it.
+- `/hand-off`, changed: step 3, "Its name", caps a name at five words. Port: that sentence.
 
 **`oats.developer`**
-- inject, added: the same sentence and marker. Port: both.
+- inject, added: the same sentence as the lead's. Port: it.
+
+**`oats.code-review`**
+- inject, added: "Never run a child of your own ... on a weaker model tier than yours".
+  Port: that sentence.
 
 **`oats.build`**
-- `/run-the-review-loop`, added: "Never go below the model tier your briefing sets as the
-  floor for a child", at the end of the paragraph under the model-diversity marker. Port:
-  that sentence.
+- `/run-the-review-loop`, added: the paragraph "The floor comes first", under the
+  model-diversity marker's paragraph. Port: it.
 
 **`ADAPTING.md`**
-- added: the question "Which is the weakest model tier a child may run on", under both
-  injects.
+- added: the question "Which is the weakest model tier a child may run on", under the
+  landing rules.
+
+**Docs**
+- `docs/how-the-work-flows.md`: the naming rule in step 1 gives the five-word cap.
 
 ## template-v3.1.2 - 2026-11-12
 

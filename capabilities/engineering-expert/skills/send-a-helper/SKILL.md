@@ -242,10 +242,12 @@ line, or its model command), with `--harness <h> --model <m>` or a launch config
 this host defines (`oats launch-config list`). If none is available, or you can't
 establish a difference, use the effective one and say so where you use its answer.
 
-**Never on a weaker model.** Every helper, probe or not, OATS child or native subagent,
-runs at or above the model tier your briefing sets as the floor for a child: never a
-smaller, faster or cheaper model to save cost or time. When you pass `--model`, or pick a
-native subagent's model, check it against that floor first.
+**The floor comes first.** Every helper, probe or not, OATS child or native subagent, runs
+at or above the floor your landing rules set ("The models children run on"). Before you
+pass `--model`, or pick a native subagent's model, check it against that floor: a smaller,
+faster or cheaper model is not a different one. Where no other family has a model at or
+above the floor, or you can't establish its tier, use your own model and say, where you
+use the answer, that diversity was lost.
 
 Spawn it as your child, the brief as its task. Name it for its task, with its role in your
 effort last: `<task-slug>-helper` (`retry-header-helper`), or `<area-slug>-specialist` for
