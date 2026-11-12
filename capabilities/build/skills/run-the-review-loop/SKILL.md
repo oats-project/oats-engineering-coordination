@@ -42,7 +42,9 @@ from. Each reviewer is your child, on your work: `--same-work` records that it d
 work, and your person's sidebar draws its line to you. That flag shares no tree:
 `--work attached` is what gives the reviewer your tree, to read the code and run the tests,
 and it must not edit it. Name each for the change it reviews and its round, with its role
-last (`gateway-limits-r2-reviewer`), so no two share a name.
+last (`gateway-limits-r2-reviewer`), so no two share a name. A reviewer that replaces one
+in the same round adds a letter to the round (`gateway-limits-r2b-reviewer`): a name is
+used once, even after its instance retires.
 
 ## Pick a different model
 A reviewer on your model shares your blind spots. Before spawning, compare:
@@ -178,8 +180,9 @@ status --json` and `oats instance events <reviewer> --json` (`waitingClaims`), t
   question through your messaging layer, and set a second checkpoint, half as far out.
 
 **A second overdue checkpoint ends the wait.** Never set a third, and never read silence as
-approval. Spawn a new reviewer with the same brief, on another model if a provider refused
-this one, retire the stalled one (`oats retire <name>`) and say so in your handback.
+approval. Spawn a new reviewer with the same brief, a letter added to its round in the
+name, on another model if a provider refused this one, retire the stalled one
+(`oats retire <name>`) and say so in your handback.
 
 ## Close
 - Hand the branch to your expert only once the loop converges, never intermediate heads,

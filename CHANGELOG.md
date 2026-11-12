@@ -32,10 +32,12 @@ port the passages below.
 
 **`oats.build`**
 - `/run-the-review-loop`, changed: a reviewer is `--name <change-slug>-r<round>-reviewer`.
-  Port: the command and the sentence "Name each for the change it reviews".
+  Port: the command, the two sentences after "Name each for the change it reviews", and
+  "a letter added to its round in the name" under the second overdue checkpoint.
 
 **Docs**
-- `README.md`: the dispatcher is `<person>-dispatcher`. `docs/how-the-work-flows.md`: the
+- `README.md`: the dispatcher is `<person>-dispatcher`, and an expert started directly
+  is `--name <effort-slug>-lead`. `docs/how-the-work-flows.md`: the
   walkthrough's lead is `rate-limit-lead`, with the naming rule in step 1.
 
 ## template-v3.1.1 - 2026-11-11
