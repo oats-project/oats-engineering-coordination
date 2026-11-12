@@ -134,6 +134,7 @@ marker; then remove the marker. Where the organisation has no answer yet:
 A copy is adapted when no marker is left; until then, the markers left are its open points.
 
 ### `capabilities/landing-rules/injects/landing-rules.md`
+- **Which is the weakest model tier a child may run on, in each model family the organisation launches?** Assumes the spawning agent's own tier: a child, an OATS child or a native subagent, never runs on a smaller, faster or cheaper model than its parent's, in the parent's family or another. The lead's and the developer's injects, `/send-a-helper` and `/run-the-review-loop` point at this rule; the code reviewer's inject, which has no landing rules, keeps "than yours". Name the floor for each family the organisation launches (a tier, say, not a version, so it outlives a release). Default: as written.
 - **Which lanes does the organisation have, what does each cover, and which person owns each?** Assumes one lane, `main`, owned by the person who runs the workspace, which is also the release lane. With several lanes, name the one release lane: its maintainer owns every release. Default: that.
 - **Which checks does the forge require on the default branch?** Assumes any number, none included: CI green needs at least one check to have run at the head, every required check among them, and every check that ran succeeded, so a head is never green with a check red, and a forge that requires none still needs one to run. Read which checks the default branch requires (its protection and rulesets). Where agents should wait for specific checks, have the organisation require them. Default: the definition, as written.
 - **Per lane, which agreements must hold at a PR's head before it merges, and who merges it?** Assumes CI green, a review (the forge's review bot's, or a clean round of the author's review loop at that head) and, for a developer's work, the lead's verification note at one head, and the lead merges. Where a review bot runs, say whether it reviews each push by itself, and how a developer asks it for a review at a new head. Read the required reviews, who may merge and the branch protection first. Where the organisation keeps the merge for its people, say so: agents hand them the PR at its exact head. Every lane must name a merge path a lead can reach. Default: the assumption.
@@ -183,7 +184,7 @@ A copy is adapted when no marker is left; until then, the markers left are its o
 
 Every copied capability records the template release it came from, in its `oats.json`
 description. The template's descriptions already end with that sentence:
-"Copied from the engineering template, template-v3.1.2." Keep it as it is when you copy,
+"Copied from the engineering template, template-v3.1.3." Keep it as it is when you copy,
 and set `version` to the copy's own numbering from then on. The template's own validator,
 which requires `version` to be the template release, stays with the template (section 1):
 nothing in the copy checks it.
@@ -192,7 +193,7 @@ Souls carry no such record, so write one for the whole copy, in the host reposit
 `capabilities/TEMPLATE-RELEASE` (a plain file, which OATS ignores):
 ```
 template: oats-project/oats-engineering-coordination
-release: template-v3.1.2
+release: template-v3.1.3
 commit: <the full commit SHA that tag points to>
 capabilities: <the ids you copied>
 souls: <the souls you copied, under their names in the copy>

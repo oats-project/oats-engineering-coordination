@@ -73,6 +73,20 @@ review bot's where one runs, otherwise one reviewer round. If that review finds 
 fix, it is no longer a one-line fix: it gets the loop. Why: the one who built a change
 holds the context to answer its reviews, and a fresh reader catches what its author can't.
 
+**The models children run on.**
+<!-- adapt: Which is the weakest model tier a child may run on, in each model family the organisation launches? -->
+No agent runs a child, an OATS child or a native subagent, on a weaker model tier than its
+own, in its family or another: never a smaller, faster or cheaper model, to save cost or
+time. That is the floor, and it comes before model diversity: a child that checks work
+runs on another family's model only where one at or above the floor is available;
+otherwise on the parent's own model, and the parent says that diversity was lost. A model
+whose tier the parent can't establish is below the floor. The floor binds the model a child
+would actually launch on, wherever it comes from: a soul's default or a machine's override
+that is below it is not used. The parent spawns that child on a model at or above the
+floor instead, its own by default, and tells its person once that the configuration is
+below the floor, naming the soul and the machine. Why: a child's answer is used as its parent's own would be,
+and a weaker model fails without saying so.
+
 **A maintainer's read, and releases.**
 <!-- adapt: Where does the organisation require a maintainer's read, keep the merge for a maintainer or a person, and who releases? -->
 No lane needs a maintainer's read. A release's contents are approved by the owners whose

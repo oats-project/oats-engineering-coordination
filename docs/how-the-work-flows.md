@@ -17,7 +17,7 @@ error."
    "rate-limit-lead leads this; from now on talk to it in the effort's thread." It carries
    nothing further. Every instance is named this way, `<task>-<role>`: the task first, and
    last the role it plays in the effort (lead, developer, reviewer, helper, specialist,
-   maintainer, dispatcher), never its soul, which the sidebar already shows.
+   maintainer, dispatcher), never its soul, which the sidebar already shows, in five words at most.
 2. **The expert plans** (`/plan-and-spec`). It reads its soul's knowledge first (rate
    limits sit in the gateway, by an earlier decision), chooses a token bucket in the gateway
    middleware, and writes a spec with pinned acceptance tests: a 429 with `Retry-After`

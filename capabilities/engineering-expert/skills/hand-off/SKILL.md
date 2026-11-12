@@ -59,9 +59,9 @@ lane), then resolve it:
      a stopped one.
 3. **Its name.** `<task>-<role>`: the task first, and last the role it plays in the
    coordination (lead, developer, reviewer, helper, specialist, maintainer, dispatcher),
-   never its soul, which the sidebar already shows (`retry-after-lead`). Give each new
-   instance a name no instance has had, never a retired one's: when the name is taken, make
-   the task's part more specific.
+   never its soul, which the sidebar already shows (`retry-after-lead`). Keep it short: five
+   words at most, the role included. Give each new instance a name no instance has had,
+   never a retired one's: when the name is taken, make the task's part more specific.
 
 ## The message
 One message, in the effort's thread with that role:
