@@ -65,11 +65,14 @@ Codex or pi, Claude Code with Opus 5.5, or the latest Grok, through a launch con
 this host defines (`oats launch-config list`) or `--harness`/`--model`. If none is
 available, use the effective one and say so in your handback.
 
-**The floor comes first.** Before you pick any model yourself, check it against the floor
-your landing rules set ("The models children run on"): a smaller, faster or cheaper model
-is not a different one, and a native reviewer keeps the same floor. Where no other family
-has a model at or above the floor, or you can't establish its tier, spawn the reviewer on
-your own model and say in your handback that diversity was lost.
+**The floor comes first.** Check the model the reviewer would launch on against the floor
+your landing rules set ("The models children run on"), before anything above: the
+effective one from the preview as much as one you pick, and a native reviewer's too. A
+smaller, faster or cheaper model is not a different one. An effective model below the
+floor is not used, even where it differs from yours: pass `--harness`/`--model` for one
+at or above the floor, and tell your person once that the configuration is below it.
+Where no other family has a model at or above the floor, or you can't establish its tier,
+spawn the reviewer on your own model and say in your handback that diversity was lost.
 
 If either model is unknown (`null`, absent, or a harness's native default), the comparison
 proves nothing: spawn the reviewer with `--harness`/`--model` (or a launch configuration) on
