@@ -20,7 +20,7 @@ port the passages below.
 - `/send-a-helper`, changed: `--name <task-slug>-helper`, or `<area-slug>-specialist` for a
   standing specialist. Port: the paragraph before the command, and the command.
 - `/hand-off`, changed: a new lead, sibling or independent, is `--name <effort-slug>-lead`.
-  Port: both commands and the sentence "Either way it is named for its effort".
+  Port: both commands, and step 3, "Its name", which now states the rule.
 - `/find-the-maintainer`, changed: `--name <person>-<lane>-maintainer`, with a count before
   the role only after a retired one. Port: the command and the sentence after it.
 

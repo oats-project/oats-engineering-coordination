@@ -48,9 +48,8 @@ lane), then resolve it:
        you, `oats spawn <soul> --relation unrelated --name <effort-slug>-lead --task-file
        <message.md>`.
 
-     Either way it is named for its effort, with its role last and a name no instance has
-     had; your message is its task, and the new effort gets its own record, linked from
-     yours and back. Tell your person at once, in your effort's thread, in one
+     Either way your message is its task, and the new effort gets its own record, linked
+     from yours and back. Tell your person at once, in your effort's thread, in one
      message: the new lead's exact instance name, what it leads, its record's link, and
      that they talk to it in that effort's thread. Add the new effort to your status line;
    - a role in another person's area, or the maintainer of their lane: ask that person's
@@ -58,8 +57,11 @@ lane), then resolve it:
      (`/across-people`); where they have none, ask them;
    - a lane's maintainer: `/find-the-maintainer`. Never a second while one is active, even
      a stopped one.
-3. **Its name.** Give each new instance a name no instance has had. Never reuse a retired
-   instance's name.
+3. **Its name.** `<task>-<role>`: the task first, and last the role it plays in the
+   coordination (lead, developer, reviewer, helper, specialist, maintainer, dispatcher),
+   never its soul, which the sidebar already shows (`retry-after-lead`). Give each new
+   instance a name no instance has had, never a retired one's: when the name is taken, make
+   the task's part more specific.
 
 ## The message
 One message, in the effort's thread with that role:
