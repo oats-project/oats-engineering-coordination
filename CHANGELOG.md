@@ -2,6 +2,44 @@
 
 ## Unreleased
 
+## template-v3.1.2 - 2026-11-12
+
+A patch release: instance names. Spawn commands used `--purpose`, which names an instance
+`<soul>-<purpose>`: the soul first, which the sidebar already shows, and the task last.
+Every spawn command now gives an exact `--name`, `<task>-<role>`: the task first, and last
+the role the instance plays in the effort, never its soul. For a copy of template-v3.1.1,
+port the passages below.
+
+**`oats.dispatcher`**
+- `/dispatch`, changed: the lead is `--name <effort-slug>-lead`, with the sentences after
+  the command. Port: the command and those sentences.
+
+**`oats.engineering-expert`**
+- `/coordinate-developers`, changed: `--name <piece-slug>-developer`, and the two lines
+  after the command. Port: both.
+- `/send-a-helper`, changed: `--name <task-slug>-helper`, or `<area-slug>-specialist` for a
+  standing specialist. Port: the paragraph before the command, and the command.
+- `/hand-off`, changed: a new lead, sibling or independent, is `--name <effort-slug>-lead`.
+  Port: both commands, and step 3, "Its name", which now states the rule.
+- `/find-the-maintainer`, changed: `--name <person>-<lane>-maintainer`, with a count before
+  the role only after a retired one. Port: the command and the sentence after it.
+
+**`oats.maintainer`**
+- `/launch-work`, changed: a lead is `--name <effort-slug>-lead`; a maintainer launched
+  into a lane is `<person>-<lane>-maintainer`; an overflow seat is
+  `<person>-<lane>-overflow-maintainer`. Port: the three commands and the sentences beside
+  each.
+
+**`oats.build`**
+- `/run-the-review-loop`, changed: a reviewer is `--name <change-slug>-r<round>-reviewer`.
+  Port: the command, the two sentences after "Name each for the change it reviews", and
+  "a letter added to its round in the name" under the second overdue checkpoint.
+
+**Docs**
+- `README.md`: the dispatcher is `<person>-dispatcher`, and an expert started directly
+  is `--name <effort-slug>-lead`. `docs/how-the-work-flows.md`: the
+  walkthrough's lead is `rate-limit-lead`, with the naming rule in step 1.
+
 ## template-v3.1.1 - 2026-11-11
 
 A patch release: one sentence. After a change to the landing rules, a lead told only its

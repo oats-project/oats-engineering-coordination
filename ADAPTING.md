@@ -183,7 +183,7 @@ A copy is adapted when no marker is left; until then, the markers left are its o
 
 Every copied capability records the template release it came from, in its `oats.json`
 description. The template's descriptions already end with that sentence:
-"Copied from the engineering template, template-v3.1.1." Keep it as it is when you copy,
+"Copied from the engineering template, template-v3.1.2." Keep it as it is when you copy,
 and set `version` to the copy's own numbering from then on. The template's own validator,
 which requires `version` to be the template release, stays with the template (section 1):
 nothing in the copy checks it.
@@ -192,7 +192,7 @@ Souls carry no such record, so write one for the whole copy, in the host reposit
 `capabilities/TEMPLATE-RELEASE` (a plain file, which OATS ignores):
 ```
 template: oats-project/oats-engineering-coordination
-release: template-v3.1.1
+release: template-v3.1.2
 commit: <the full commit SHA that tag points to>
 capabilities: <the ids you copied>
 souls: <the souls you copied, under their names in the copy>

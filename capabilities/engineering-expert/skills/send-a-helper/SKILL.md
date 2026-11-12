@@ -242,9 +242,13 @@ line, or its model command), with `--harness <h> --model <m>` or a launch config
 this host defines (`oats launch-config list`). If none is available, or you can't
 establish a difference, use the effective one and say so where you use its answer.
 
-Spawn it as your child, the brief as its task, with a name no instance has had:
+Spawn it as your child, the brief as its task. Name it for its task, with its role in your
+effort last: `<task-slug>-helper` (`retry-header-helper`), or `<area-slug>-specialist` for
+a standing specialist (`billing-api-specialist`). Never name it for its soul, which the
+sidebar already shows, and give it a name no instance has had: when the name is taken,
+make the task's part more specific.
 ```bash
-oats spawn <soul> --parent "$OATS_INSTANCE" --same-work --purpose <helper-slug> --task-file <brief.md>
+oats spawn <soul> --parent "$OATS_INSTANCE" --same-work --name <task-slug>-helper --task-file <brief.md>
 ```
 `--same-work` records that the helper does your work, and your person's sidebar draws its
 line to you. It shares no work tree: a helper of a worktree soul gets its own worktree and
