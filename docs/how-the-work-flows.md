@@ -13,8 +13,11 @@ error."
 1. **The person → their dispatcher** (`/dispatch`). It reads the request against the
    record: no open effort on rate limits, nothing shipped. It opens the effort's item in the
    tasks layer and starts a fresh `backend-expert` with the request verbatim, its link and
-   who asked, then introduces it once: "backend-expert-rate-limit leads this; from now on
-   talk to it in the effort's thread." It carries nothing further.
+   who asked, named for the effort with its role last, then introduces it once:
+   "rate-limit-lead leads this; from now on talk to it in the effort's thread." It carries
+   nothing further. Every instance is named this way, `<task>-<role>`: the task first, and
+   last the role it plays in the effort (lead, developer, reviewer, helper, specialist,
+   maintainer, dispatcher), never its soul, which the sidebar already shows.
 2. **The expert plans** (`/plan-and-spec`). It reads its soul's knowledge first (rate
    limits sit in the gateway, by an earlier decision), chooses a token bucket in the gateway
    middleware, and writes a spec with pinned acceptance tests: a 429 with `Retry-After`

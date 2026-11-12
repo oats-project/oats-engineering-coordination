@@ -32,8 +32,8 @@ lane), then resolve it:
        what you were working on. Say the rate-limit effort finds that the gateway sends no
        `Retry-After` on any of its errors: its lead is your sibling.
        ```bash
-       oats spawn <soul> --relation sibling --relative-to "$OATS_INSTANCE" --purpose <slug> \
-         --task-file <message.md>
+       oats spawn <soul> --relation sibling --relative-to "$OATS_INSTANCE" \
+         --name <effort-slug>-lead --task-file <message.md>
        ```
        The two show together in your person's status and sidebar, and it outlives your
        retirement, which a child would not. A sibling records no parent, so it takes no
@@ -45,11 +45,12 @@ lane), then resolve it:
        the right lane.
      - **Unrelated:** a finding with nothing to do with your effort's subject. Say the
        same effort notices a broken link on the pricing page: its owner is independent of
-       you, `oats spawn <soul> --relation unrelated --purpose <slug> --task-file
+       you, `oats spawn <soul> --relation unrelated --name <effort-slug>-lead --task-file
        <message.md>`.
 
-     Either way your message is its task, and the new effort gets its own record, linked
-     from yours and back. Tell your person at once, in your effort's thread, in one
+     Either way it is named for its effort, with its role last and a name no instance has
+     had; your message is its task, and the new effort gets its own record, linked from
+     yours and back. Tell your person at once, in your effort's thread, in one
      message: the new lead's exact instance name, what it leads, its record's link, and
      that they talk to it in that effort's thread. Add the new effort to your status line;
    - a role in another person's area, or the maintainer of their lane: ask that person's

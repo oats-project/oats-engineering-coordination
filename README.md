@@ -107,7 +107,7 @@ Every place where the template assumes something about an organisation carries o
 2. **Sync and start:** `oats sync`, then a dispatcher for each person who wants one, with
    who they are as its task:
    ```bash
-   oats spawn dispatcher --name dispatcher-<person> --task-file <brief.md>
+   oats spawn dispatcher --name <person>-dispatcher --task-file <brief.md>
    ```
    Bring it your requests, or start an expert directly: `oats spawn <expert> --task "<goal>"`.
 

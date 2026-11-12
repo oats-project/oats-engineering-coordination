@@ -17,9 +17,11 @@ description: Launch and drive developers to build what you specified, for each s
 - Spawn the developer soul for the surface (your workspace's default one, or the one whose
   environment the surface needs) as your child, the spec as its task:
   ```bash
-  oats spawn <developer-soul> --parent <your instance> --same-work --purpose <short-slug> \
-    --task-file <spec.md>
+  oats spawn <developer-soul> --parent <your instance> --same-work \
+    --name <piece-slug>-developer --task-file <spec.md>
   ```
+  Name it for the piece it builds, with its role last (`gateway-limits-developer`), and
+  with a name no instance has had.
   The spec's "Surface / files" names its repository. Where that is the developer soul's own
   repository, leave out `--repo` and `--base`: the worktree starts at the commit the spawn
   observed on the remote. Where it is another repository, add

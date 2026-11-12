@@ -34,14 +34,15 @@ It is spawned attached to your tree:
 ```bash
 oats spawn code-reviewer --work attached --work-dir <the consolidated worktree> \
   --parent "$OATS_INSTANCE" --same-work --repo <repository> \
-  --purpose <short-slug> --task-file <review-brief.md>
+  --name <change-slug>-r<round>-reviewer --task-file <review-brief.md>
 ```
 Always give both `--work-dir` and `--repo`. `<repository>` is the absolute path of the
 worktree's clone: `repo` in your `instance.json`, or the clone you made an extra worktree
 from. Each reviewer is your child, on your work: `--same-work` records that it does your
 work, and your person's sidebar draws its line to you. That flag shares no tree:
 `--work attached` is what gives the reviewer your tree, to read the code and run the tests,
-and it must not edit it. Each gets a purpose of its own, so no two share a name.
+and it must not edit it. Name each for the change it reviews and its round, with its role
+last (`gateway-limits-r2-reviewer`), so no two share a name.
 
 ## Pick a different model
 A reviewer on your model shares your blind spots. Before spawning, compare:
