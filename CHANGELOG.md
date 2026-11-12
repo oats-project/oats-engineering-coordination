@@ -2,6 +2,31 @@
 
 ## Unreleased
 
+## template-v3.1.3 - 2026-11-12
+
+A patch release: a floor for a child's model. The texts asked for a different model for a
+child that checks work and set no floor, so a lead could pick a smaller, cheaper model and
+call it different. Now no child, an OATS child or a native subagent, runs on a weaker
+model tier than the floor the briefing sets, which a copy names per model family. For a
+copy of template-v3.1.2, port the passages below and answer the new marker.
+
+**`oats.engineering-expert`**
+- inject, added: the sentence "NEVER run a child ... on a weaker model tier", with its
+  adapt marker, after "agents of one model share blind spots". Port: both.
+- `/send-a-helper`, added: the paragraph "Never on a weaker model". Port: it.
+
+**`oats.developer`**
+- inject, added: the same sentence and marker. Port: both.
+
+**`oats.build`**
+- `/run-the-review-loop`, added: "Never go below the model tier your briefing sets as the
+  floor for a child", at the end of the paragraph under the model-diversity marker. Port:
+  that sentence.
+
+**`ADAPTING.md`**
+- added: the question "Which is the weakest model tier a child may run on", under both
+  injects.
+
 ## template-v3.1.2 - 2026-11-12
 
 A patch release: instance names. Spawn commands used `--purpose`, which names an instance

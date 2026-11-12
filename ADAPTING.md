@@ -145,6 +145,7 @@ A copy is adapted when no marker is left; until then, the markers left are its o
 - **Where are the effort records, the lane map and holds kept?** Assumes one item per effort in the tasks layer, and the lane map and the default branch's holds as records in the tasks layer, each linked from these rules. Never in the rules themselves: they are copied into each instance at spawn and can't change while work runs. Create the lane map's record now, empty, and write its link into the rules, so the first maintainer, started later, finds it there and adds its entry. Default: that.
 
 ### `capabilities/engineering-expert/injects/expert.md`
+- **Which is the weakest model tier a child may run on, in each model family the organisation launches?** Assumes the spawning agent's own tier: a child, an OATS child or a native subagent, never runs on a smaller, faster or cheaper model than its parent's, in the parent's family or another. Name the floor for each family the organisation launches (a tier, say, not a version, so it outlives a release). Default: as written.
 - **Does the organisation enforce the quality floor with its runtime's hooks, and with which checks?** Assumes the floor is written only, and agents keep it. Where the runtime has hooks (Claude Code's tool hooks, a pre-commit hook, CI), name the check that enforces each rule (new suppressions, skipped or weakened tests, stubs, empty catches) and where it is installed. Default: written only.
 - **Where may agents build and run tests, which hosts are shared, and which are read-only?** Assumes agents build and test in their own worktree or a scratch directory, on hosts that may be shared, and never change a customer's or a production host. Name the shared hosts, any host agents may only read, and any limit on parallel or long runs. Default: as written.
 
@@ -163,6 +164,7 @@ A copy is adapted when no marker is left; until then, the markers left are its o
 - **Which developer souls exist, and which environment does each provide?** Assumes one developer soul, `developer`. Default: that.
 
 ### `capabilities/developer/injects/developer.md`
+- **Which is the weakest model tier a child may run on, in each model family the organisation launches?** Assumes the spawning agent's own tier: a child, an OATS child or a native subagent, never runs on a smaller, faster or cheaper model than its parent's, in the parent's family or another. Name the floor for each family the organisation launches (a tier, say, not a version, so it outlives a release). Default: as written.
 - **Does the organisation enforce the quality floor with its runtime's hooks, and with which checks?** Assumes the floor is written only, and agents keep it. Where the runtime has hooks (Claude Code's tool hooks, a pre-commit hook, CI), name the check that enforces each rule (new suppressions, skipped or weakened tests, stubs, empty catches) and where it is installed. Default: written only.
 - **Where may agents build and run tests, which hosts are shared, and which are read-only?** Assumes agents build and test in their own worktree or a scratch directory, on hosts that may be shared, and never change a customer's or a production host. Name the shared hosts, any host agents may only read, and any limit on parallel or long runs. Default: as written.
 
@@ -183,7 +185,7 @@ A copy is adapted when no marker is left; until then, the markers left are its o
 
 Every copied capability records the template release it came from, in its `oats.json`
 description. The template's descriptions already end with that sentence:
-"Copied from the engineering template, template-v3.1.2." Keep it as it is when you copy,
+"Copied from the engineering template, template-v3.1.3." Keep it as it is when you copy,
 and set `version` to the copy's own numbering from then on. The template's own validator,
 which requires `version` to be the template release, stays with the template (section 1):
 nothing in the copy checks it.
@@ -192,7 +194,7 @@ Souls carry no such record, so write one for the whole copy, in the host reposit
 `capabilities/TEMPLATE-RELEASE` (a plain file, which OATS ignores):
 ```
 template: oats-project/oats-engineering-coordination
-release: template-v3.1.2
+release: template-v3.1.3
 commit: <the full commit SHA that tag points to>
 capabilities: <the ids you copied>
 souls: <the souls you copied, under their names in the copy>

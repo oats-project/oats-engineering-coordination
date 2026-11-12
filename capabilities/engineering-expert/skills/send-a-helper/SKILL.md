@@ -242,6 +242,11 @@ line, or its model command), with `--harness <h> --model <m>` or a launch config
 this host defines (`oats launch-config list`). If none is available, or you can't
 establish a difference, use the effective one and say so where you use its answer.
 
+**Never on a weaker model.** Every helper, probe or not, OATS child or native subagent,
+runs at or above the model tier your briefing sets as the floor for a child: never a
+smaller, faster or cheaper model to save cost or time. When you pass `--model`, or pick a
+native subagent's model, check it against that floor first.
+
 Spawn it as your child, the brief as its task. Name it for its task, with its role in your
 effort last: `<task-slug>-helper` (`retry-header-helper`), or `<area-slug>-specialist` for
 a standing specialist (`billing-api-specialist`). Never name it for its soul, which the

@@ -63,7 +63,9 @@ over it. When it would run on your model, on any harness, spawn it on another
 state-of-the-art model, on another harness when you can: currently a GPT model through
 Codex or pi, Claude Code with Opus 5.5, or the latest Grok, through a launch configuration
 this host defines (`oats launch-config list`) or `--harness`/`--model`. If none is
-available, use the effective one and say so in your handback.
+available, use the effective one and say so in your handback. Never go below the model tier
+your briefing sets as the floor for a child: a smaller, faster or cheaper model is not a
+different one for this purpose, and a native reviewer keeps the same floor.
 
 If either model is unknown (`null`, absent, or a harness's native default), the comparison
 proves nothing: spawn the reviewer with `--harness`/`--model` (or a launch configuration) on
