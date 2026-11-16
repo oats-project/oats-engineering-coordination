@@ -14,15 +14,21 @@ and scientific research's is
 
 ## The way of working
 
-**The design never splits a problem; it splits responsibility and context.** One expert owns
-each piece of work from plan to merge, on a fresh instance. Helpers add a fresh window, a
-cleaner read, an area's knowledge or an environment; for proper work they are OATS instances
-the person can see, and one that checks work runs on a different model. Every hand-off is a
-message about a finished artefact at its exact reference. Whoever builds a change iterates
-with fresh reviewers; a lead verifies a developer's work once and never runs its rounds.
-People give direction and decisions, as one card with a recommendation, with no deadline and
-no default if they are silent. A change merges once the agreements its lane needs hold at
-one head.
+**The design never splits a problem; it splits responsibility and context.** One agent is
+the default: one expert owns each effort from plan to merge, on a fresh instance. Another
+agent earns its place by one of three reasons, named in its brief: protecting context,
+parallel work, or specialisation. The tree is sized to the work. A simple effort is one
+agent. A complex one adds short-lived probes and helpers. A large one, or one across
+several areas, has one long-lived specialist per area, each leading its area inside the
+lead's plan.
+
+Every expert instance holds exactly one seat, named in the first line of its task: root lead,
+specialist, or helper or probe. Every hand-off is a message about a finished artefact at
+its exact reference. Whoever builds a change iterates with fresh reviewers; whoever
+specified it verifies it once and never runs its rounds. People give direction and
+decisions, as one card with a recommendation, with no deadline and no default if they are
+silent. A change merges once the agreements its lane names hold at one head. Every
+finished instance retires itself, and its parent checks that it is gone.
 
 It suits organisations whose agents build software in repositories on a forge: one person
 or several, one repository or many. The template's roles:
@@ -30,31 +36,33 @@ or several, one repository or many. The template's roles:
 - **Dispatcher,** for each person who wants a front door. It reads a request against the
   record, starts a fresh expert for it, introduces that lead once and steps aside. It never
   relays.
-- **Expert,** one soul per way of working, plus a generalist for work across areas. Its
-  instance leads one effort: it plans, sends helpers (every task closed, never co-planners:
-  a probe's question, a developer's spec, a scoped piece that needs another soul, or a
-  standing specialist kept for the effort; usually experts, a developer or a reviewer only
-  for a named piece of code), and decides who builds each spec: itself, or a developer where
-  one protects its context, builds in parallel or specialises in a lane of its own. What it builds, it builds as a
-  developer would, with a fresh reviewer each round, never its own; a developer's converged
-  branch it verifies once, and it never runs review rounds for a developer's work. It asks
-  people only for decisions, lands the work and retires.
+- **Expert,** one soul per specialisation, plus a generalist. As an effort's root lead it
+  plans, sizes the tree, briefs each child with a closed task, and decides who builds each
+  spec: itself, or a developer where one protects its context, builds in parallel or
+  specialises. The same soul serves as a specialist for one area of another lead's effort,
+  and as a short-lived helper or probe. What it builds, it builds as a developer would,
+  with a fresh reviewer each round, never its own. A developer's converged branch it
+  verifies once, with `VERIFIED at <head>`. It asks people only for decisions, lands the
+  work and retires itself.
 - **Developer,** one soul by default, plus one per environment that runs the work
   differently. It builds one spec, proves it the way the repository runs it and iterates
-  with a fresh reviewer each round until a round finds nothing to fix. Once its expert has
-  verified the branch, it opens the PR and works the reviews, raising only product or
-  architecture direction.
-- **Reviewer,** fresh each round: a `code-reviewer` instance, the author's OATS child (the
-  developer's, or the lead's for a spec it builds) on a different model where one is
-  available, whose every verdict lists what it checked; on the PR, the forge's review bot
-  as well. Nothing lands without a fresh review.
-- **Maintainer,** one per person per lane, started only where a lane's landing rules need
-  its read or keep its merge, and for releases. It is called by message at an exact head,
-  never a station every change passes.
+  with a fresh reviewer each round until a round finds nothing to fix. On `VERIFIED` it
+  opens the PR and works the reviews, raising only product or architecture direction.
+  Once the PR has merged, it retires itself.
+- **Reviewer,** fresh each round: a `code-reviewer` instance, the author's OATS child, on a
+  different model where one is available. One reviewer, one report that lists what it
+  checked, and then it retires itself. On the PR, the forge's review bot reviews as well.
+  Nothing lands without a fresh review.
+- **Maintainer,** one per person per lane, found by its instance name
+  (`<person>-<lane>-maintainer`), with no lane map. It is called by message at an exact
+  head, never a station every change passes, and it releases. Its **green light** on a PR
+  is an option a lane can choose: a verdict on direction, contracts, coherence, scope and
+  evidence, never a second code review. It suits a large project with parallel efforts; a
+  small or personal one leaves it out.
 
 ```
    person ──request──► dispatcher ──starts, introduces──► expert (lead)
-     ▲                                                   │  plan · helpers · verify · land
+     ▲                                                   │  plan · children · verify · land
      └──── cards and one done note, in the effort's ─────┤
            own thread                                    │ spec        ▲ branch at its head
                                                          ▼             │
@@ -71,24 +79,23 @@ cases around it.
 ## What's in it
 
 - **`capabilities/`:** seven working capabilities, each an inject (the always-on briefing)
-  plus the skills an agent loads when it needs them, except `oats.build`, which is skills
-  only.
+  plus the skills an agent opens when it reaches their moment, except `oats.build`, which
+  is skills only.
   - `oats.dispatcher`: `/dispatch`.
-  - `oats.engineering-expert`: `/plan-and-spec`, `/send-a-helper`, `/hand-off`,
-    `/coordinate-developers`, `/verify-developer-work`, `/ask-a-person`,
-    `/land-on-agreement`, `/find-the-maintainer`, `/across-people`, `/findings-and-blocks`.
-  - `oats.build`, the craft of building a change, composed by the developer and the expert
-    alike: `/execution-strategy`, `/worktrees`, `/test-first`, `/diagnose-before-fixing`,
-    `/design-while-writing`, `/prove-it-works`, `/run-the-review-loop`,
-    `/work-the-reviews`, `/maintain-dev-docs`.
-  - `oats.developer`: its inject and `/understand-the-spec`.
+  - `oats.engineering-expert`: `/plan-and-spec`, `/orchestrate-agents`,
+    `/coordinate-developers`, `/hand-off-and-ask`, `/land-on-agreement`.
+  - `oats.build`, what the team adds to building a change, composed by the developer and
+    the expert alike: `/build-in-the-repository`, `/run-the-review-loop`,
+    `/work-the-reviews`.
+  - `oats.developer`: its inject, with no skill of its own.
   - `oats.code-review`: `/adversarial-review`, `/security-review`,
     `/simplification-review`, `/review-dev-docs`.
-  - `oats.maintainer`: `/maintainer-intake`, `/launch-work`, `/direction-gate`,
-    `/pr-review`, `/plan-release`, `/ship-release`, `/cross-review-peer`, `/keep-it-clean`,
-    `/support-maintainer`.
-  - `oats.landing-rules`: the organisation's landing rules and ownership record, in one
-    small capability every coordinating soul composes. The template's rules are an example.
+  - `oats.maintainer`: `/keep-the-lane`, `/pr-review`, `/direction-gate`, `/launch-work`,
+    `/plan-and-ship-release`, `/support-maintainer`.
+  - `oats.landing-rules`: the organisation's landing rules, its ownership record and the
+    house rules every role keeps (instance names, the model floor, the hosts), in one small
+    capability every coordinating soul composes, with `/landing-rules-detail` and
+    `/wait-and-retire`. The template's rules are an example.
 - **`souls/`:** the example roster: `dispatcher`, `engineering-expert`, `developer`,
   `maintainer` and `code-reviewer`.
 - **[ADAPTING.md](ADAPTING.md):** what to copy, the principles that never change, every
@@ -100,6 +107,11 @@ cases around it.
 Every place where the template assumes something about an organisation carries one marker,
 `<!-- adapt: <the question to ask> -->`. An adapted copy has none left.
 
+A briefing has one order: what you are, how the work flows, the rules that aren't obvious,
+and which skill to open at which moment. A skill is one team procedure for one moment, with
+its longer material in `references/` files. The texts leave out what a current model does
+unprompted: general engineering practice isn't restated.
+
 ## Using it
 
 1. **Copy and adapt** with [ADAPTING.md](ADAPTING.md). Your organisation's setup expert does
@@ -110,16 +122,17 @@ Every place where the template assumes something about an organisation carries o
    oats spawn dispatcher --name <person>-dispatcher --task-file <brief.md>
    ```
    Bring it your requests, or start an expert directly, named for the effort with its role
-   last: `oats spawn <expert> --name <effort-slug>-lead --task "<goal>"`. A name is used
+   last: `oats spawn <expert> --name <effort-slug>-lead --task-file <brief.md>`, where the brief
+   opens with `Seat: root lead of this effort` and then states the goal. A name is used
    once: after a retired instance had it, make the effort's part more specific.
 
 A messaging capability (for example `oats.aweb`) is strongly recommended: hand-offs are
 messages that wake their recipient. Without one, reports land in session transcripts.
 
-A tasks layer, or your own answer to the landing rules' "where things are kept" marker, is
-required. The texts keep each effort's record, the lane map and holds in "your tasks layer",
-live, because the rules themselves are copied into each instance at spawn and can't change
-while work runs. Without a tasks layer, name a place every instance reads and updates
+A tasks layer, or your own answer to the landing rules' marker on where records are kept,
+is required. The texts keep each effort's record and the holds in "your tasks layer", live,
+because the rules themselves are copied into each instance at spawn and can't change while
+work runs. Without a tasks layer, name a place every instance reads and updates
 (ADAPTING.md, section 3).
 
 `npm test` checks the template itself: every capability's `oats.json` and every soul against
@@ -129,7 +142,8 @@ ADAPTING.md, and that the souls load in real OATS kernels.
 ## Requirements
 OATS ≥ 0.69.7, the floor every capability's `oats.json` declares. The texts use, with no
 fallback, what kernels gained up to that release: needs-input (`oats instance attention`,
-0.40.0), a retire that stops the instance's children first (0.48.0), extra trees
+0.40.0), a retire that stops the instance's children first (0.48.0), a self-retire
+(`oats retire <instance> --self`), extra trees
 (`oats worktree add`, 0.49.0), `oats soul launch` (0.53.0, in the move from v1.18.0),
 `--same-work` (0.69.2) and the wake that holds while a dialog is open (`wake-hold`, 0.69.7)
 under every checkpoint. Even there, a home whose `wakeHold` reads `unknown` (a pi home)
@@ -155,5 +169,5 @@ and the concurrent-subagent limit. Claude Code's `workflowSizeGuideline` default
 ([Claude Code workflows](https://code.claude.com/docs/en/workflows.md)).
 
 ## License
-MIT. Some of the developer's skills adapt rules from MIT-licensed sources; their notices are
-in [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
+MIT. A few of the build rules adapt rules from MIT-licensed sources; their notices are in
+[THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
