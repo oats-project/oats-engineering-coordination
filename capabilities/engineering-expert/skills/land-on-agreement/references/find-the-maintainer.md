@@ -7,36 +7,38 @@ build, for a merge they keep for it, for a release. It is never in your build lo
 There is no lane map. Your landing rules name the lanes and who owns each, and a lane's
 maintainer is found by its instance name: `<person>-<lane>-maintainer`, for the person
 who owns the lane (where several own it, your own person when they are among them,
-otherwise the first owner named). After a retired one, the seat's next holder carries a
-count before the role (`<person>-<lane>-2-maintainer`, then `-3-`): look for the name and
-its numbered successors, and the one that is not retired is the maintainer. Look for it:
+otherwise the first owner named). A name is used once, so after a retired holder the next
+one carries a count before the role: `<person>-<lane>-2-maintainer`, then `-3-`. Look for
+every name of that family:
 - `oats status --json`: this machine, each instance with its soul, running or stopped;
 - across machines, your messaging layer's roster, by name.
 
 Then:
-- **Running:** call it.
-- **Stopped, or known but not active:** message it anyway (messages wait), and tell its
-  person it is stopped, so they can start it.
+- **One is running:** call it.
+- **One is stopped, or known but not active:** message it anyway (messages wait), and
+  tell its person it is stopped, so they can start it.
+- **More than one is running or stopped:** ask your person which holds the seat, and
+  start none.
 - **Named on the roster with nothing running anywhere you can see:** it may be retired,
-  or run where you can't look. Ask its person before you start one. After a retired
-  one, the next takes its count before the role (`<person>-<lane>-2-maintainer`): a
-  name is used once.
+  or run where you can't look. Ask its person before you start one.
 <!-- adapt: What does a maintainer do in this organisation, in the words a lead tells its person? -->
 - **None:** start one for your own person, without asking, independent of you so your
   retirement can't stop it:
   ```bash
-  oats spawn <maintainer soul> --relation unrelated --name <person>-<lane>-maintainer --task-file <brief.md>
+  oats spawn <maintainer soul> --relation unrelated --name <person>-<lane>[-<count>]-maintainer --task-file <brief.md>
   ```
-  The name is the seat. A spawn refused because the name is taken: look whether that
-  instance is live (running or stopped). If it is, the lane has a maintainer: find it,
-  and start none under another name. If it is retired, the name is used up: take the next
-  count. Brief: "maintainer for
-  <person> in <lane>; first call: <your instance> asks for <the green light | the merge |
-  the release> on <PR> at <head>, or for an answer on <the question, at its revision>". Then tell your person, in two or three
-  plain sentences, what you started: "I started <name>, your maintainer for <lane>. A
-  maintainer is the standing agent for a lane: it holds the lane's direction across
-  efforts, answers the calls its landing rules name and keeps its releases. You retire
-  it with `oats retire <name>`."
+  The name is the first of the family that no instance has had. The kernel doesn't
+  refuse a retired instance's name, so check each in order before you spawn: `oats
+  instance events <name>` lists a used name's events, a `retired` one among them, and
+  says "no instance" for a name never used on this machine; a name the roster still
+  lists is used too. A spawn refused because the name is taken means a holder is running
+  or stopped: find it, and start none under another name. Brief: "maintainer for
+  <person> in <lane>; first call: <your instance> asks for <the green light | the merge
+  | the release> on <PR> at <head>, or for an answer on <the question, at its
+  revision>". Then tell your person, in two or three plain sentences, what you started:
+  "I started <name>, your maintainer for <lane>. A maintainer is the standing agent for
+  a lane: it holds the lane's direction across efforts, answers the calls its landing
+  rules name and keeps its releases. You retire it with `oats retire <name>`."
   As a specialist, tell your parent instead. In another person's lane, ask their
   dispatcher to start it, or them where they have none (`/hand-off-and-ask`, "Across
   people").
