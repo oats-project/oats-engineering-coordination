@@ -2,6 +2,21 @@
 
 ## Unreleased
 
+## template-v4.0.2 - 2026-11-16
+
+A patch release: one sentence, in two places. A copy at template-v4.0.1 ports it.
+
+- **A refused spawn of a maintainer's name means the seat is held.** The dispatcher's
+  lookup, and the maintainer's launch of a maintainer for a lane that has none, said how
+  to choose the name but not what a refusal means, and neither soul reads the expert's
+  reference, which does. Their only rule was the house rule for a taken name ("make the
+  task's part more specific"), which, when another instance takes the seat between the
+  lookup and the spawn, would start a second maintainer under the next name. Both now
+  say: a spawn refused because the name is taken means a holder is running or stopped;
+  find it, and start none under another name.
+  `capabilities/dispatcher/skills/dispatch/SKILL.md`, section 5, and
+  `capabilities/maintainer/skills/launch-work/SKILL.md`, section 6.
+
 ## template-v4.0.1 - 2026-11-16
 
 A patch release: one lookup fixed. A copy at template-v4.0.0 ports the three passages below.

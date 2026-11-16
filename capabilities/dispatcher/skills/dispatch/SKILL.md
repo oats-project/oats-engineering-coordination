@@ -78,7 +78,8 @@ own work or a finding there, or the maintainer of one of your person's lanes.
   your person so they can start it. If more than one does, ask your person which holds
   the seat. If none does, name the one you start with the first of the family no
   instance has had: `oats instance events <name>` lists a used name's events and says
-  "no instance" for one never used here.
+  "no instance" for one never used here. A spawn refused because the name is taken
+  means a holder is running or stopped: find it, and start none under another name.
 - Starting a role decides nothing for your person: a behaviour change in your person's
   paths still comes to them from the lead, as a card.
 
