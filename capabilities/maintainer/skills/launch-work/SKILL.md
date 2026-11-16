@@ -97,7 +97,8 @@ doesn't refuse a retired instance's name: `oats instance events <name>` shows wh
 one was used. Its brief names the lane, its person, the starting request, and any
 efforts in flight it takes over. Tell your person its name, its lane, and that they
 retire it with `oats retire <name>`. If your person already has one in that lane, say so
-instead: there is never a second.
+instead: there is never a second. A spawn refused because the name is taken means a
+holder is running or stopped: find it, and start none under another name.
 
 ## 7. An overflow seat
 A maintainer is never overrun. With more than 5 efforts of your own in flight, spawn one

@@ -15,7 +15,7 @@ every name of that family:
 
 Then:
 - **One is running:** call it.
-- **One is stopped, or known but not active:** message it anyway (messages wait), and
+- **One is stopped:** message it anyway (messages wait), and
   tell its person it is stopped, so they can start it.
 - **More than one is running or stopped:** ask your person which holds the seat, and
   start none.

@@ -2,6 +2,36 @@
 
 ## Unreleased
 
+## template-v4.0.2 - 2026-11-16
+
+A patch release: the dispatcher's and the maintainer's lookup of a lane's maintainer. A
+copy at template-v4.0.1 ports the three passages below.
+
+- **A refused spawn of a maintainer's name means the seat is held.** The dispatcher's
+  lookup, and the maintainer's launch of a maintainer for a lane that has none, said how
+  to choose the name but not what a refusal means, and neither soul reads the expert's
+  reference, which does. Their only rule was the house rule for a taken name ("make the
+  task's part more specific"), which, when another instance takes the seat between the
+  lookup and the spawn, would start a second maintainer under the next name. Both now
+  say: a spawn refused because the name is taken means a holder is running or stopped;
+  find it, and start none under another name.
+  `capabilities/dispatcher/skills/dispatch/SKILL.md`, section 5, and
+  `capabilities/maintainer/skills/launch-work/SKILL.md`, section 6.
+- **A name only on the roster is not a maintainer.** The dispatcher's lookup had no
+  branch for a name the roster still lists with nothing running anywhere it can see,
+  which may be retired or run elsewhere: it now asks its person before it starts one,
+  as the expert's reference and the maintainer's already do, and its other branches
+  speak of a holder that is running or stopped. Two more cases the expert's reference
+  had and the dispatcher's text did not: in another person's lane it asks their
+  dispatcher, or that person, and starts none itself; and where the workspace has no
+  maintainer soul it asks its person and starts none. It also picks the owner as the
+  expert does where several people own a lane (its own person, otherwise the first
+  named), and asks its person where it can't tell the lane or its owner.
+  `capabilities/dispatcher/skills/dispatch/SKILL.md`, section 5.
+- **"One is stopped"** in the expert's reference no longer says "or known but not
+  active", which also matched the roster-only case, where the rule is to ask.
+  `capabilities/engineering-expert/skills/land-on-agreement/references/find-the-maintainer.md`.
+
 ## template-v4.0.1 - 2026-11-16
 
 A patch release: one lookup fixed. A copy at template-v4.0.0 ports the three passages below.
