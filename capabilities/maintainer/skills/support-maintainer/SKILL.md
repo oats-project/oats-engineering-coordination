@@ -84,10 +84,11 @@ Before you merge, and before any release, agree with them in writing (`/keep-the
 - **Who drives the area.** Before the lead starts, check whether a feature maintainer
   already has an effort, an open PR or a hold in the same area or release. If so, agree how
   the fix fits: folded into their effort, landed before theirs, or after.
-- **Merges.** Support is a lane like any other, with its own landing rules. They usually
+- **Merges.** Support is a lane like any other, with its own landing rules. They may
   name a green light by the feature maintainer who drives the area, which the lead calls
-  at the head. A fix that touches a contract, or code a feature PR has in review, needs
-  that lane's maintainer's green light too. Any verdict or merge for the release lane
+  at the head. A fix that touches a contract, or code a feature PR has in review, also
+  follows that lane's landing rules: its maintainer's green light, where they ask for
+  one. Any verdict or merge for the release lane
   follows the support lane's landing rules.
 - **Releases.** The release lane's maintainer decides what goes in and alone tags. A fix
   that can't wait is a hotfix (`/plan-and-ship-release`): propose it with the severity

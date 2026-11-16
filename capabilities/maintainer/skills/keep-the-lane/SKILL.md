@@ -7,7 +7,8 @@ description: Keeps a maintainer's lane in order - rebuilds the overview of the l
 
 ## 1. Intake: rebuild the overview from the sources
 Never from memory. With no seat yet, take one first
-([references/lanes-and-peers.md](references/lanes-and-peers.md)).
+([references/lanes-and-peers.md](references/lanes-and-peers.md)). An overflow seat holds
+none: it sweeps only the efforts its parent gave it, and their PRs.
 - **A full sweep:** at session start, after a compaction, and at least weekly.
 - **On a wake:** no sweep. Handle the event, and update the rows it touches, each from
   its source (the PR's head from the remote, not from the message).

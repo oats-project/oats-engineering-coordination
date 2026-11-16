@@ -79,8 +79,10 @@ These have no adapt markers. A copy that changes one is no longer this way of wo
    leading its area inside the lead's plan. The plan stays the root lead's: never a
    co-planner, and never a second lead for a step of it. A new effort gets its own lead,
    and the person hears its name.
-3. **Every instance holds exactly one seat,** named in the first line of its task: root
-   lead, specialist, or helper or probe. Whoever launches an instance writes that line.
+3. **Every expert instance holds exactly one seat,** named in the first line of its task:
+   root lead, specialist, or helper or probe. Whoever launches an expert writes that
+   line. The other roles are their own seat: a developer, a reviewer, a maintainer, a
+   dispatcher.
 4. **Whoever builds a change iterates with fresh reviewers, and nothing lands without a
    fresh review.** Whoever specifies a piece decides who builds it: itself, or a developer
    (`/plan-and-spec`, "Who builds it"). The author runs the review loop: a new

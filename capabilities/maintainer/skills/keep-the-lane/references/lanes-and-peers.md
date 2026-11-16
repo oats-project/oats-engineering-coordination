@@ -17,15 +17,21 @@
 There is no lane map. The lanes are in your landing rules, each with what it covers, its
 owner and its arrangement: the agreements that merge its changes, who merges, and
 whether it asks for a maintainer's green light. The rest is read live:
-- **Which lane a PR is in:** the lane that covers what it changes; its description names
-  it. An effort may cross lanes; each of its PRs is in one.
+- **Which lane a PR is in:** the lane of the effort that produced it; its description
+  names it. Every effort and PR is in exactly one lane.
+- **Overlap.** Two area lanes never overlap, nor two lanes for one kind of work: to take
+  part of one, split it. A lane for a kind of work, or for one person's requests, may
+  overlap area lanes: its PRs stay in that lane and name the area lane they touch,
+  whose landing rules then apply too.
 - **Which maintainer a PR calls,** where its lane's landing rules ask for one: the lane
   owner's maintainer there. Where several people own the lane, the maintainer of the
   person whose effort produced the PR, when they are among the owners; otherwise the
   first owner's. Never whoever owns the forge account.
-- **Who holds a seat:** the instance named `<person>-<lane>-maintainer`, running or
-  stopped, until it is retired. Find it by that name: `oats status --json` on this
-  machine, and your messaging layer's roster across machines.
+- **Who holds a seat:** the instance named `<person>-<lane>-maintainer`, or, after
+  retired ones, the one with the highest count before the role
+  (`<person>-<lane>-2-maintainer`), running or stopped, until it is retired. An
+  overflow seat (`-overflow-maintainer`) holds none. Find it by those names: `oats
+  status --json` on this machine, and your messaging layer's roster across machines.
 - **Stopped is not gone:** message it, tell its person so they can start it, and never
   spawn a second one.
 - **Named on the roster with nothing running anywhere you can see:** it may be retired,
@@ -47,9 +53,11 @@ landing rules give it, and launches a single effort that no lane covers.
 
 ## Which lane work goes to
 Your person's work goes, in this order:
-1. to the lane that covers what it changes, where your person has a maintainer;
-2. to that lane, with a maintainer you launch for your person there (`/launch-work`);
-3. when no lane covers it: a single effort goes to the release lane, whose maintainer
+1. to a lane that covers it where your person has a maintainer;
+2. else to your person's own lane, where one is defined by their requests;
+3. else to the lane that covers it, with a maintainer you launch for your person there
+   (`/launch-work`);
+4. when no lane covers it: a single effort goes to the release lane, whose maintainer
    launches it, whoever's work it is; work that keeps coming gets a new lane (When the
    lanes themselves change).
 
@@ -88,7 +96,8 @@ Each once, to the one peer it is for:
 - a hold that must stop work already in flight;
 - the release plan, where the peer's lane has PRs in it or left out;
 - a lane changing hands;
-- a request that belongs to the peer's lane, in the requester's words;
+- a request that belongs to the peer's lane: your person's own words as written, anyone
+  else's by its link or id, as reference;
 - a direction question, to the release lane and whoever decides it.
 
 Not: a notice before or after a merge or a tag, an effort's start, a seat taken, your

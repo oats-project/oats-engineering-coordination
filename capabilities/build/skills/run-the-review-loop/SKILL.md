@@ -7,9 +7,10 @@ description: Runs the author's review loop on a finished change before any PR - 
 
 You built the change, so you iterate with the reviewers: a developer, or a lead or a
 specialist building its own spec. You are never your own reviewer, and whoever verifies
-your work runs no rounds. Where this skill says "your expert" and you built your own
-spec, there is no hand-back: the clean round stands in for a verification, and you open
-the PR.
+your work runs no rounds. Where this skill says "your expert" and you are a lead or a
+specialist building your own spec, there is no hand-back: the clean round stands in for
+a verification, and you open the PR. A developer, or a helper with a scoped piece,
+always hands back and waits for `VERIFIED`, even where it drafted the spec.
 
 ## When
 Once per piece of work (usually one future PR), on your local branch: when it is
@@ -76,7 +77,8 @@ checkpoint before you end your turn to wait on it (`/wait-and-retire`).
    add an abstraction, an option or a test for a case that can't happen: if nothing
    needs it now, decline it with why. Skip none silently. If the findings show the
    design is wrong, go to your expert before you fix.
-4. **One fix commit per round;** never an empty one.
+4. **One fix commit per round,** never an empty one; a rename, a move or an extraction
+   the round asks for goes in a commit of its own beside it.
 5. **Who reads the fix** is decided by the reviewer's severity, not by your wish:
    - a fresh reviewer, on the whole change: after a fix to a blocker or a major, or any
      delta that changes behaviour, a contract or the design;
@@ -105,7 +107,8 @@ section; each finding and how it was settled; the repository rules you followed;
 deviations, and how to undo the change. If your expert is on another machine, push the
 branch: still no PR before `VERIFIED`.
 
-If your expert returns the branch, fix it in one commit, let the fix decide who reads it
+If your expert returns the branch, fix it in one commit (a structural change in its own
+beside it), let the fix decide who reads it
 as above, prove it again and hand back.
 
 ## Finish

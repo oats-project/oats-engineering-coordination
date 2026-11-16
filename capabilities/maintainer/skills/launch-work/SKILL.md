@@ -20,8 +20,8 @@ there; you launch what reaches you.
   or your person's, before anyone builds.
 
 ## 2. Whose lane is it?
-Work goes to the lane that covers what it changes (`/keep-the-lane`, "Seats, peers,
-holds"). Launch only in a lane where you hold your person's seat; as the release lane's
+Which lane work goes to is in `/keep-the-lane` ("Seats, peers, holds", "Which lane work
+goes to"). Launch only in a lane where you hold your person's seat; as the release lane's
 maintainer, also a single effort no lane covers. As an overflow seat, launch only what
 your parent gives you.
 
@@ -38,7 +38,7 @@ you can't tell the lane, ask your person.
 
 ## 3. Spawn a fresh lead
 The soul is the expert whose specialisation fits the effort best, from your knowledge and
-the expert souls your workspace has; the generalist expert when it spans areas. It leads
+the expert souls your workspace has; the generalist expert when none fits better. It leads
 the whole effort, across areas too, with the other areas' experts as its specialists.
 ```bash
 oats spawn <expert> --parent "$OATS_INSTANCE" --name <effort-slug>-lead --task-file <brief.md>

@@ -28,6 +28,8 @@ Reason:    <protecting context | parallel work | specialisation>, <one line>
 Effort:    <the effort's record>
 Artefact:  <a spec at its commit | a branch at its head | a document at its revision>
 Interface: <a scoped piece only: its interface with the rest of the effort, written>
+First:     check that it isn't known already (the code, your knowledge, a library, the
+           forge's history), and say where you looked.
 Bounds:    <what you may read and run, and where; what is out of scope>
 Stop when: <the smallest run that answers | the first case that breaks it | n sources or attempts>.
            If the question turns out bigger than that, report so instead of going on.

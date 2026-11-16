@@ -33,7 +33,7 @@ A review thread is **answered** by a fix, or by a decline with a concrete reason
 Why: whoever specified the work holds its design, and nobody verifies their own work.
 
 ## What carries to a new head
-A review, a `VERIFIED` note or a green light carries to a new head:
+A review carries to a new head:
 - **with no re-read,** through a rebase whose range-diff shows every commit unchanged, or
   an update from the default branch that leaves the PR's own diff unchanged;
 - **through a read of the delta alone,** where the review is the author's loop and the
@@ -45,6 +45,10 @@ A review, a `VERIFIED` note or a green light carries to a new head:
   a contract or the design, gets a fresh reviewer on the whole change. Where the review
   is the bot's, any new head gets a new review, which the author asks the bot for where
   it doesn't review each push by itself.
+
+A `VERIFIED` note and a green light carry with no re-read through the same unchanged
+rebase or update, and in no other way: at any other new head, whoever gave it reads the
+delta and gives it again at that head. A reviewer's verdict never stands in for either.
 
 The reviewer's severity decides which, not the author's wish: a fix ranked minor that
 turns out to change behaviour gets a fresh reviewer.

@@ -22,7 +22,7 @@ agent. A complex one adds short-lived probes and helpers. A large one, or one ac
 several areas, has one long-lived specialist per area, each leading its area inside the
 lead's plan.
 
-Every instance holds exactly one seat, named in the first line of its task: root lead,
+Every expert instance holds exactly one seat, named in the first line of its task: root lead,
 specialist, or helper or probe. Every hand-off is a message about a finished artefact at
 its exact reference. Whoever builds a change iterates with fresh reviewers; whoever
 specified it verifies it once and never runs its rounds. People give direction and

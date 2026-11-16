@@ -33,7 +33,7 @@ whole (ADAPTING.md, section 6).
   long-lived specialist per area, each leading its area inside the lead's plan, up to the
   last agreement on its PRs. This replaces template-v3.1.1's standing specialist, and its
   cap and marker are gone.
-- **Seats.** Every instance holds exactly one seat, root lead, specialist, or helper or
+- **Seats.** Every expert instance holds exactly one seat, root lead, specialist, or helper or
   probe, named on a `Seat:` line in its task by whoever launches it: a lead's briefs, a
   maintainer's launch, a dispatcher's dispatch. An expert with no seat named takes itself
   for a root lead.
@@ -48,6 +48,11 @@ whole (ADAPTING.md, section 6).
   option a lane chooses, off by default: ADAPTING.md recommends it for a large project and
   leaves it out for a small or personal one. Three returns on one PR become one card to
   the person, through the root lead.
+- **What carries to a new head:** a review carries as before. A `VERIFIED` note and a
+  green light carry only through an unchanged rebase or update; at any other new head,
+  whoever gave it reads the delta and gives it again.
+- **Handing a whole effort over:** the outgoing lead's children hand back and retire
+  first, and the new lead starts what remains as its own children.
 - **No lane map.** The landing rules list the lanes and their owners. A lane's maintainer
   is found by its instance name, `<person>-<lane>-maintainer`, on `oats status` and the
   messaging layer's roster, and a taken name stops a second one. The map's entries, its

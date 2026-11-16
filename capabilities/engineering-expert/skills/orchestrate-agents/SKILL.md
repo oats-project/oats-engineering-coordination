@@ -57,7 +57,9 @@ The question is where the instance's work comes from.
 oats spawn <soul> --parent "$OATS_INSTANCE" --same-work --name <task>-<role> --task-file <brief.md>
 ```
 `--same-work` records that the child does your work; it shares no work tree. A child of
-a worktree soul that needs another repository's code also gets `--repo <clone>`. Where
+a worktree soul that needs another repository's code also gets `--repo <clone> --base
+origin/<its default branch>`: preview it and check its start point against the remote
+before you apply, as `/coordinate-developers` says for a developer. Where
 `$OATS_INSTANCE` is empty (a resumed session), write your instance name.
 
 ## 4. A specialist

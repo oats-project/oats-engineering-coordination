@@ -44,14 +44,12 @@ Only when another expert's specialisation has come to fit the effort better than
 3. **Its task is your hand-off,** at exact references: the effort's record, the plan and
    the specs at their commits, each open PR at its head with the verdicts it holds, the
    people's decisions as recorded, and each child with what it is doing.
-4. **Your children:** those whose part is done have retired themselves; check that none
-   is still listed. Tell each of the others who leads now. Retiring you stops them and
-   keeps their homes, and the new lead, or the person whose machine runs them, starts
-   each again (`oats session start --home <home>`). Their records still name you as
-   their parent, but the new lead takes them over as its own children: it answers their
-   questions, gets their done lines and sweeps after them.
-5. **Retire once the new lead confirms** it has the effort. First put its name on the
-   effort's record and tell your person (`/wait-and-retire`).
+4. **Your children finish with you, not after you.** Each hands back what it has at an
+   exact reference (a branch at its head, an open PR, its findings) and retires itself;
+   a retire of yours over a live child would only stop it and leave it behind. The new
+   lead starts what remains as its own children, from those references.
+5. **Retire once your children are gone and the new lead confirms** it has the effort.
+   First put its name on the effort's record and tell your person (`/wait-and-retire`).
 
 ## Ask a person
 Only for a direction or a product choice the request leaves open, a behaviour change in

@@ -71,8 +71,9 @@ wakes. In this order:
      the first three once the proposal is settled.
 
    Where your work isn't a Git work tree, name each repository you used, with its branch.
-   A lead with no parent (started by a dispatcher or a person, or a sibling lead) closes
-   the effort's record and sends its person one done note in the effort's thread instead.
+   A root lead first closes the effort's record and sends its person one done note in
+   the effort's thread, whoever started it; with no parent, that note is its last
+   message.
    A reviewer's report and a probe's answer are their last message: no done line.
 5. **`oats retire <your instance> --self`** (the name is required). Your window closes a
    few seconds later, so everything above comes first. A self-retire discards nothing:
@@ -88,7 +89,8 @@ You started it, so you make sure it is gone.
 - **Before every step that needs it gone** (the next review round, your hand-back, your
   own finish) **and at every checkpoint wake:** no finished child of yours is listed.
 - **One that is finished and still listed** did not complete its own retirement. Retire
-  it:
+  it. A reviewer attached to your tree delivers nothing and owns no tree: skip steps 1
+  and 2 for it.
   1. `oats instance git <child>`: no uncommitted changes and no unpushed commits. With
      `E_NO_WORKTREE` (directory or workspace mode), check each repository its done line
      names, read-only: `git -C <path> status --short --branch` shows a clean tree, not

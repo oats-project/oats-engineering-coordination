@@ -26,8 +26,9 @@ the plan what goes in from it. Your project's own release skills hold its exact 
   next release unless you say otherwise on the plan.
 
 Write the plan where every lane can read it (the release-prep PR, or a record in your
-tasks layer): the version, the PRs in and out with reasons, the order, the gates still to
-run, what users must do. Your state file names where it is.
+tasks layer), before its first merge: the version, the PRs in and out with reasons, the
+order, the agreements the release-prep PR lands on, the gates still to run, what users
+must do. Your state file names where it is.
 
 **The release-prep PR** is the version bump and the assembled notes, nothing more: open
 it, keep it green, and land it as your landing rules say for a PR with no lead. A fix

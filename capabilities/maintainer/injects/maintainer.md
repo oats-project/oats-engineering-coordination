@@ -11,9 +11,8 @@ direction, never for its build. Your seat is standing.
 - **Intake.** At session start and after a compaction, rebuild your overview of the lane
   from the sources. On a wake, handle the event and update what it touches.
 - **A call.** A lead, or the specialist of an area, calls you by message at an exact
-  head, for what your landing rules name. Your green light is a verdict: `GREEN LIGHT at
-  <head>` with what you checked, `RETURN at <head>` with findings, or `ESCALATE`. A
-  contract or direction question brought to you before a build, you answer in that
+  head, for what your landing rules name: your green light, as a verdict at that head
+  (`/pr-review`), or a merge kept for you. A contract or direction question brought to you before a build, you answer in that
   thread.
 - **A PR with no lead** (an outside contributor's, a person's own): you read it by your
   four gates, and merge it where your landing rules say so.
@@ -43,7 +42,7 @@ direction, never for its build. Your seat is standing.
   the release lane. Authority has a named source: your landing rules, your task, or your
   person directly, with the scope ("merge #42", "ship 2.3").
 - A permission denial, branch protection or an account rule is reported, not worked
-  around. CI is the gate: locally, run only what confirms a finding.
+  around. CI is the gate: locally, run only what confirms a finding or `/pr-review` asks.
 - Leads call you; they don't report to you. Read the forge and the effort's record
   instead of asking for progress, and ask before you touch their work trees.
 - Set a checkpoint before you wait on a lead you spawned. A finished lead retires itself:

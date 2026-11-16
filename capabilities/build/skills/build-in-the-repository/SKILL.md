@@ -38,7 +38,7 @@ oats worktree add --purpose <slug> --branch <branch> --base <the default branch>
 - `--base` names the remote's branch, which the command fetches when it runs. Check the
   commit it reports (`from origin's <branch> @ <commit>`) against
   `git -C <clone> ls-remote origin <branch>`. If they differ, the remote moved: remove
-  the tree and add it again.
+  the tree and add it again under a new branch name: a tree never reuses a branch.
 - Name the branch by the repository's rules. To rework an open PR, start the new branch
   from its branch and push `HEAD` back to it.
 - One tree per path that touches the same files, a spike you may throw away in its own
@@ -54,20 +54,24 @@ oats worktree add --purpose <slug> --branch <branch> --base <the default branch>
 - **A change and its tests have one author.** One context is the default. Fan out only
   across components with a settled interface between them, or independent questions.
 <!-- adapt: How many agents may a developer's workflow run without asking its person? -->
-- **Harness workflows need your person's opt-in.** A workflow of your harness's own
-  agents runs only on a standing opt-in from your person or in a multi-agent workflow
-  mode already in use; otherwise ask once, with the agent count. Ten agents or more,
-  counted across all stages and back-to-back workflows, need their permission, with why.
-  Read what the agents produced: it goes through consolidation and the review loop as
-  your own work.
+- **A workflow of your harness's own agents** runs your own paths without asking while
+  it stays under 10 agents, counted across all stages and back-to-back workflows. Ten
+  or more need your person's permission: say how many, why, and what the smaller shape
+  would cost. Where the harness itself requires a person's opt-in to run a workflow,
+  that consent is theirs: use a standing opt-in they gave, or ask once per task with
+  the agent count. Read what the agents produced: it goes through consolidation and the
+  review loop as your own work.
 - **The spec's acceptance tests go in unchanged.** One that looks wrong goes to your
   expert, with why.
 - **Commit rules from the first commit:** the repository's sign-off, signing and message
   format. A check that refuses an early commit is fixed only by rewriting history.
 - Generated code is regenerated with the repository's generator, never edited by hand.
   A rename, a move or an extraction goes in a commit of its own.
-- **Three failed fixes for one bug means stop:** tell your expert what you learned, with
-  your recommendation, before a fourth.
+- **A bug you can't reproduce with a command stops its fix:** tell your expert what you
+  tried and what would let you (an environment, a captured artefact, instrumentation).
+  **Three failed fixes for one bug means stop:** tell your expert what you learned, with
+  your recommendation, before a fourth. A fix with no seam that can hold a regression
+  test is a finding: name it in your hand-back.
 <!-- adapt: Does the organisation enforce the quality floor with its runtime's hooks, and with which checks? -->
 - **The quality floor** in your briefing is yours to keep: nothing enforces it but you
   and your reviewers.

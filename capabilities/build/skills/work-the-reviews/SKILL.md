@@ -10,9 +10,9 @@ the direction.
 
 ## 1. Open the PR
 From the verified head, once your expert writes `VERIFIED at <head>` (for a change you
-specified and built yourself: the head of the clean round). Say what it does, the spec it
+specified and built yourself as a lead or a specialist: the head of the clean round). Say what it does, the spec it
 implements, what you ran, your review loop's final verdict and rounds, and how to undo
-it, in the repository's PR template where it has one. Tell your expert the PR's number
+it, in the repository's PR template where it has one. Name your expert as the PR's owner, and tell it the PR's number
 and head in one line.
 
 ## 2. Watch it
@@ -63,8 +63,7 @@ options and your recommendation. Go on with the rest, and settle the thread with
 answer.
 
 ## 6. The default branch moved
-Update the branch the way the repository wants it (a rebase, or a merge of the default
-branch), only when it conflicts or the repository requires it to be up to date. Prove it
+Rebase onto it (or merge it in, where the repository's rules say so), prove the change
 again and push; section 4 says what review the new head needs. Nobody is asked to decide
 again.
 
