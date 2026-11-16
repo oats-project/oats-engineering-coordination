@@ -4,7 +4,8 @@
 
 ## template-v4.0.2 - 2026-11-16
 
-A patch release: one sentence, in two places. A copy at template-v4.0.1 ports it.
+A patch release: the dispatcher's and the maintainer's lookup of a lane's maintainer. A
+copy at template-v4.0.1 ports the two passages below.
 
 - **A refused spawn of a maintainer's name means the seat is held.** The dispatcher's
   lookup, and the maintainer's launch of a maintainer for a lane that has none, said how
@@ -16,6 +17,12 @@ A patch release: one sentence, in two places. A copy at template-v4.0.1 ports it
   find it, and start none under another name.
   `capabilities/dispatcher/skills/dispatch/SKILL.md`, section 5, and
   `capabilities/maintainer/skills/launch-work/SKILL.md`, section 6.
+- **A name only on the roster is not a maintainer.** The dispatcher's lookup had no
+  branch for a name the roster still lists with nothing running anywhere it can see,
+  which may be retired or run elsewhere: it now asks its person before it starts one,
+  as the expert's reference and the maintainer's already do, and its other branches
+  speak of a holder that is running or stopped.
+  `capabilities/dispatcher/skills/dispatch/SKILL.md`, section 5.
 
 ## template-v4.0.1 - 2026-11-16
 
