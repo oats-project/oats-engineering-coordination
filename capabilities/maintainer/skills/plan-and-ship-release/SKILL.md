@@ -52,8 +52,9 @@ backport** goes on the supported line's branch, from the fix already merged on t
 default branch, with its own patch version and notes.
 
 ## 2. Ship it
-Start read-only. Confirm the version and its plan, the exact source SHA (on the default
-branch, reviewed, CI green), where it will be published, and your authority: the yes of
+Start read-only. Confirm the version and its plan, the exact source SHA (on the planned
+release branch: the default branch, or the supported line for a backport; reviewed, CI
+green), where it will be published, and your authority: the yes of
 every owner, with that scope. This skill grants no push, merge, credential or
 protected-ref authority.
 1. **Read the live release contract:** the workflow, its scripts and the project's

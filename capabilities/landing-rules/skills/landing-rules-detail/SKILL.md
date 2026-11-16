@@ -38,7 +38,7 @@ A review carries to a new head:
   an update from the default branch that leaves the PR's own diff unchanged;
 - **through a read of the delta alone,** where the review is the author's loop and the
   delta only fixes a minor, takes a nit, or fixes CI with no change in behaviour: the
-  review bot's review at the new head, where one runs; otherwise a fresh reviewer
+  review bot's review at the new head, on an open PR where one runs; otherwise a fresh reviewer
   briefed with the delta, the findings it answers and the spec. That reviewer's verdict
   on the delta, with the round's Checked section, holds at the new head;
 - **otherwise not:** a fix to a blocker or a major, or any delta that changes behaviour,

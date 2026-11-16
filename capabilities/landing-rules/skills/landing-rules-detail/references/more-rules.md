@@ -13,7 +13,9 @@
 <!-- adapt: May a change land with no fresh review (a typo, a broken link)? -->
 - **A one-line docs fix** (a typo, a broken link) skips the local loop, not the review:
   it merges on CI green and one fresh review at its head, the review bot's where one
-  runs, otherwise one reviewer round. If that review finds anything to fix, it is no
+  runs, otherwise one reviewer round. Its PR opens once the fix is proven the way the
+  repository checks its docs, before that review; a developer's gets its expert's
+  `VERIFIED` after the review, before the merge. If that review finds anything to fix, it is no
   longer a one-line fix: it gets the loop.
 - **A maintainer's release prep** (the version bump and the assembled notes, nothing
   more) is the one change that needs no review round.

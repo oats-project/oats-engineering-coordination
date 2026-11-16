@@ -20,7 +20,8 @@ Then, for each repository of your lane:
    your landing rules ask for your green light, a ready PR that hasn't called you needs
    it: tell its lead.
 2. **PRs with no lead** (an outside contributor's, a person's own), new or moved since
-   the last sweep.
+   the last sweep. One that names no lane: place it from the landing rules' lanes and
+   owners and say so on the PR; leave other lanes' PRs to their maintainers.
 3. **Work items** in your tasks layer that are new, reopened or given to you.
 4. **What merged since the last sweep:** did its docs and release notes come with it, and
    is the default branch green on it?

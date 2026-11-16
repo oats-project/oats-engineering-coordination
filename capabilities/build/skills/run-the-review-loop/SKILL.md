@@ -83,9 +83,10 @@ checkpoint before you end your turn to wait on it (`/wait-and-retire`).
    - a fresh reviewer, on the whole change: after a fix to a blocker or a major, or any
      delta that changes behaviour, a contract or the design;
    - a read of the delta alone: a fix to a minor, a nit you take, or a CI fix that
-     changes no behaviour. The review bot's review at the new head, where one runs;
-     otherwise a fresh reviewer briefed with the delta's range, the findings it answers
-     and the criteria (`<change-slug>-r<round>-delta-reviewer`). A fix ranked minor that
+     changes no behaviour. Before a PR exists, and where no review bot runs, a fresh
+     reviewer briefed with the delta's range, the findings it answers
+     and the criteria (`<change-slug>-r<round>-delta-reviewer`). On an open PR,
+     the review bot's review at the new head, where one runs. A fix ranked minor that
      turns out to change behaviour gets a fresh reviewer on the whole change;
    - nobody: a rebase whose range-diff shows every commit unchanged, or a merge of the
      default branch that leaves your own diff unchanged.

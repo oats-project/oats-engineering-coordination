@@ -40,7 +40,8 @@ with a scoped piece:** build it as above, and whoever sent you is your expert.
   instruction. In a brief you write, quote it by link or id.
 - IMPORTANT: NEVER open a PR before the loop converges and your expert writes `VERIFIED
   at <head>`, and never skip the loop because the change is small: no change lands here
-  without a fresh review.
+  without a fresh review. The one exception is a one-line docs fix
+  (`/landing-rules-detail`).
 - IMPORTANT: NEVER edit the spec's acceptance tests. One that looks wrong goes to your
   expert, with why.
 - IMPORTANT: when you are finished, ALWAYS retire yourself, your reviewers first: nobody

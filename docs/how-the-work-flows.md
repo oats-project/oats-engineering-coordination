@@ -138,9 +138,10 @@ word, in the thread; the expert records it on the effort's record and never asks
 The reviewer's provider refuses its turn, so the reviewer reports nothing, and the
 developer, which ended its turn to wait, runs nothing either. That is why a waiter sets a
 checkpoint on a child before it waits (`/wait-and-retire`): a wake on its own home that
-watches for a stalled instance. It is no deadline on the answer: when it fires the waiter
-looks, asks one precise question, and only a second checkpoint with no movement ends the
-wait, with a new reviewer for that round on another model and the stalled one retired.
+watches for a stalled instance. When it fires the waiter looks. A reviewer whose turn is
+recorded as failed is replaced at once, with a new reviewer for that round on another
+model, and retired. One that is still live gets one precise question: the checkpoint is
+no deadline on the answer, and only a second one with no movement ends the wait.
 Where a home can't take a wake, the waiter hands the wait to its parent; with no parent, it
 says in the effort's status line that nothing bounds the wait.
 

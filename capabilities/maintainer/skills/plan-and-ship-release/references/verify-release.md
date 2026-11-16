@@ -6,7 +6,7 @@ or "not checked, because ..."; never leave it silently out.
 ## The run
 - [ ] The release run for this tag finished, every job, not only the first green one.
 - [ ] The tag points at the planned SHA (an annotated tag peels to it), and that SHA is on
-      the default branch.
+      the planned release branch (the default branch, or a backport's supported line).
 
 ## Each published artifact (a registry package, a binary, an image)
 - [ ] The version exists where it was meant to be published.

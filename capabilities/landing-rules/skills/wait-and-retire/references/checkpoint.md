@@ -15,7 +15,7 @@ oats session inspect --home "$OATS_INSTANCE_HOME" --json   # read wakeHold first
 node -e 'const d=new Date(Date.now()+<minutes>*60000);console.log(d.getUTCMinutes(),d.getUTCHours(),d.getUTCDay())'
 cat > checkpoint-<slug>.json <<EOF
 {"kind":"wake","enabled":true,"cron":"<minute> <hour> * * <weekday>","tz":"UTC","home":"$OATS_INSTANCE_HOME",
- "message":"Checkpoint: <instance> owes <result>. If it came, remove this job and stop; if not, follow 'When it fires' in /wait-and-retire."}
+ "message":"Checkpoint: <instance> owes <result>. If it came, remove this job and stop; if not, follow 'When it fires' in the checkpoint reference of /wait-and-retire."}
 EOF
 oats schedule add "$OATS_INSTANCE-<slug>" --file checkpoint-<slug>.json
 oats schedule show "$OATS_INSTANCE-<slug>" --json   # nextRun must be the moment you meant
@@ -60,7 +60,7 @@ that instance: inspecting and replacing it is your child's.
 
 When it fires and your child still waits, your child's own checkpoint is due. Tell it in
 one line ("your checkpoint on <instance> is due: follow 'When it fires' in
-/wait-and-retire"), and set the next one half as far out, its message starting "Second
+the checkpoint reference of /wait-and-retire"), and set the next one half as far out, its message starting "Second
 checkpoint:". When that one fires, your line says "second checkpoint", and your child
 ends its wait as below. The child takes your first line as its first checkpoint and your
 second as its second. A child that neither moves nor answers your line is stalled

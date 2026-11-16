@@ -60,7 +60,8 @@ oats worktree add --purpose <slug> --branch <branch> --base <the default branch>
   would cost. Where the harness itself requires a person's opt-in to run a workflow,
   that consent is theirs: use a standing opt-in they gave, or ask once per task with
   the agent count. Read what the agents produced: it goes through consolidation and the
-  review loop as your own work.
+  review loop as your own work. A path that needs a soul's knowledge, or a testing
+  capability you lack, is no workflow agent's: ask your expert for an OATS child of that soul.
 - **The spec's acceptance tests go in unchanged.** One that looks wrong goes to your
   expert, with why.
 - **Commit rules from the first commit:** the repository's sign-off, signing and message

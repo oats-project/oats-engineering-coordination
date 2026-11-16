@@ -49,7 +49,8 @@ don't assume authority you weren't given.
 
 **The release lane** is one lane for the whole project, whatever the project calls it.
 Its maintainer owns every release (`/plan-and-ship-release`), answers the calls the
-landing rules give it, and launches a single effort that no lane covers.
+landing rules give it, and launches a single effort that no lane covers. It coordinates
+merges and deployments across the lanes, and keeps them aligned with product direction.
 
 ## Which lane work goes to
 Your person's work goes, in this order:

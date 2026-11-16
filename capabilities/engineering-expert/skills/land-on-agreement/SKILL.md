@@ -18,9 +18,8 @@ merge nothing: that is a block (`/hand-off-and-ask`).
 - **A change you built:** the round of your review loop that found nothing to fix stands
   in for a verification. Open the PR at that head and work its reviews
   (`/work-the-reviews`).
-- **A one-line docs fix** skips the local loop, not the review (`/landing-rules-detail`).
-  Its PR opens once it is proven the way the repository checks its docs, before its one
-  fresh review; a developer's gets your `VERIFIED` after that review, before the merge.
+- **A one-line docs fix** skips the local loop, not the review: `/landing-rules-detail`
+  has its order. A developer's gets your `VERIFIED` after its one review.
 
 When a developer hands the PR back ready, read what changed since your verified head.
 Verify again only where the change touches the design (the architecture, a contract, a
@@ -86,5 +85,6 @@ goes in and the head to tag (`/hand-off-and-ask`); after their yes, tag and publ
 your release procedure says, and tell them in one line that it is out.
 
 ## 6. When it has landed
-Each finished child retires itself: check that none is still listed, then retire
-yourself (`/wait-and-retire`).
+Act on what the merge unblocks. Each finished child retires itself: check that none is
+still listed. When your own seat is finished, as `/wait-and-retire` defines it, retire
+yourself.

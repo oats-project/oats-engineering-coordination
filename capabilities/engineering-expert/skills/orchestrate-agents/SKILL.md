@@ -11,7 +11,9 @@ yours, whichever areas they cross.
 ## 1. Is a child worth it?
 One agent is the default: several cost 3 to 10 times the tokens of one. Start a child
 only when one of your briefing's three reasons holds (protecting context, parallel work,
-specialisation), and name it in the brief. Otherwise do the work yourself.
+specialisation), and name it in the brief. Otherwise do the work yourself. The reviewers
+of a change you build are the exception: the review loop requires them, with its own
+brief (`/run-the-review-loop`), and so are your own workflow's agents.
 
 Good boundaries are independent questions, areas with a written interface, and black-box
 checks. Bad ones are phases of one piece of work (a planner, an implementer and a tester
@@ -100,8 +102,9 @@ your person asks for one, or inside your harness's multi-agent workflow mode. Ei
 kind runs at or above the model floor your landing rules set.
 
 ## 6. Brief it, and take back its result
-Write the brief from [references/briefs.md](references/briefs.md). ALWAYS name the
-child's seat in it (specialist, or helper or probe): it acts by the seat its task names.
+Write the brief from [references/briefs.md](references/briefs.md). For an expert
+instance, ALWAYS name its seat on a `Seat:` line (specialist, or helper or probe): it
+acts by the seat its task names.
 Then:
 - Set a checkpoint before you wait on it (`/wait-and-retire`), and don't ask it for
   progress: it reports its result, a question or a blocker.
