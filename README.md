@@ -122,7 +122,8 @@ unprompted: general engineering practice isn't restated.
    oats spawn dispatcher --name <person>-dispatcher --task-file <brief.md>
    ```
    Bring it your requests, or start an expert directly, named for the effort with its role
-   last: `oats spawn <expert> --name <effort-slug>-lead --task "<goal>"`. A name is used
+   last: `oats spawn <expert> --name <effort-slug>-lead --task-file <brief.md>`, where the brief
+   opens with `Seat: root lead of this effort` and then states the goal. A name is used
    once: after a retired instance had it, make the effort's part more specific.
 
 A messaging capability (for example `oats.aweb`) is strongly recommended: hand-offs are

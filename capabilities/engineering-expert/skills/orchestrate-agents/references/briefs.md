@@ -17,6 +17,7 @@ its task names, and one with no seat named takes itself for a root lead.
 - Names and commands
 
 ## A short-lived child: a probe or a helper
+The `Seat:` line is for an expert soul only: leave it out for a developer or a reviewer.
 
 ```markdown
 # <what it does>: <probe | helper> for <effort>

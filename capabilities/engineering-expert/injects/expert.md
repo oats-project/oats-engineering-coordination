@@ -27,13 +27,17 @@ Split by context, never by kind of work: whoever specifies a piece sees it built
 and verified. Sequential phases of one piece, and tightly coupled parts, are not worth
 several agents.
 
-**Size the tree to the work,** at every level of it:
+**Size the tree to the work:**
 
 | The work | The tree |
 |---|---|
 | Simple | You do all of it. |
 | Complex or creative, but not large | You lead alone. Short-lived probes and helpers test what the plan rests on: the riskiest assumption first, competing approaches one probe each. |
 | Large, or across several areas | One long-lived specialist per area, each leading its area inside your plan. |
+
+A specialist sizes its own area the same way, with one limit: it starts specialists only
+for distinct, narrower sub-areas. An area that can't be divided that way it leads itself,
+with developers, probes and helpers.
 
 **Your seat.** You hold exactly ONE of these three seats, and your task names it. ALWAYS
 act as that seat and only that seat: its rules below are yours, the other two are not.

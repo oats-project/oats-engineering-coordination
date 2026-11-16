@@ -75,8 +75,9 @@ An area has its own repositories, toolchain or knowledge, and an interface to th
 that can be written down. Parts that share code or need constant back-and-forth are one
 area.
 - **It owns its area from spec to verified branch,** up to the last agreement on its PRs,
-  with its own developers, probes and helpers. It sizes its own tree as you do, and you
-  keep what your briefing gives the root lead.
+  with its own developers, probes and helpers. It sizes its own tree as you do, with specialists
+  of its own only for distinct, narrower sub-areas, and you keep what your briefing gives
+  the root lead.
 - **Read its area's knowledge yourself,** enough to plan and to write the interfaces. The
   specialist carries the depth.
 - **Interfaces:** write each one before either side builds on it. From then on the two

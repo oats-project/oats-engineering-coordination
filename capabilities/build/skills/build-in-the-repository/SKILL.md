@@ -27,7 +27,8 @@ your expert with your proposed answer before you build that part. Don't settle i
 silently either way.
 
 Docs are part of the change: when your change makes a document, a rule or a comment
-untrue, fix it in the same change. What the next developer needs goes into the
+untrue, fix it in the same change. A doc that was already wrong: fix it, or name it in
+your hand-back if it is outside your surface. What the next developer needs goes into the
 repository, never only into a knowledge base.
 
 ## 2. Your trees
@@ -46,8 +47,8 @@ oats worktree add --purpose <slug> --branch <branch> --base <the default branch>
 - **Consolidate before review:** merge every path into the one tree whose branch becomes
   the PR, and run the full verification there. Every review round, your expert's return
   and your PR's fixes run on that tree, so it stays until you finish.
-- **Before you hand back,** every other tree is merged, pushed and named in your
-  hand-back, or deliberately abandoned, then removed. **At finish,** with your PR merged
+- **Before you hand back,** every other tree is merged, or its branch is pushed and
+  named in your hand-back, or it is deliberately abandoned; then it is removed. **At finish,** with your PR merged
   or closed, remove them all. Retire an instance attached to a tree before you remove it.
 
 ## 3. While you build

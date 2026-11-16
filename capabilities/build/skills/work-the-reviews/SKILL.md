@@ -38,7 +38,8 @@ finding.
 - Verify each finding against the code before you act: reproduce it, or read the lines
   it names. Say what you checked.
 - A defect, a missing test, naming, docs: fix it.
-- A suggestion you disagree with: reply with why, with the evidence. One that adds an
+- A suggestion you disagree with: reply with why, with the evidence, and leave the
+  thread to the reviewer. One that adds an
   abstraction, an option or a test for a case that can't happen: if nothing needs it
   now, reply with why it stays out.
 - Something outside the spec: one message to your expert with your recommendation. It

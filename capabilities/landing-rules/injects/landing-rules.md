@@ -14,7 +14,9 @@ nothing.
 A lane's maintainer, where it has one, is the instance named `<person>-<lane>-maintainer`.
 There is no lane map: the name is the seat.
 
-**What merges a change:** all of these, at one head.
+**What merges a change** built inside an effort: all of these, at one head. A PR with no
+lead (an outside contributor's, a person's own, a maintainer's release prep) follows
+`/landing-rules-detail`.
 <!-- adapt: Per lane, which agreements must hold at a PR's head before it merges, and who merges it? -->
 1. CI green.
 2. A review at that head: the forge's review bot's where one runs, every finding fixed

@@ -24,7 +24,8 @@ The recipe, what to do when it fires, and when a wait ends are in
 time one fires.
 
 Never wait on a person with a checkpoint: set needs-input
-(`oats instance attention --message "<one line>"`), and clear it when they answer.
+(`oats instance attention --message "<one line>"`), and clear it when they answer
+(`oats instance attention --clear`).
 
 ## Finished
 An instance is finished when all of these hold:

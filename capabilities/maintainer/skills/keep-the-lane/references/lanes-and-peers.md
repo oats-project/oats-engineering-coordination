@@ -180,6 +180,10 @@ lead can reach. Until a lane is listed, work no lane covers lands on the default
 agreements, and a single effort there is launched by the release lane's maintainer.
 When a lane splits, efforts move whole, with their lead and all their PRs, by hand-over
 to the person's maintainer in the other lane; a moved PR keeps its verdicts, since a
-lane change is not a new head. A lane closes only once its PRs are merged or closed;
+lane change is not a new head. A moved effort's lead stays the OATS child of the
+maintainer that launched it, whose stop or retire stops it: that maintainer tells the
+receiving one before either.
+When a lane is finished, absorbed, or without work for two releases, propose its closure
+to its owner. It closes in the landing rules only once its PRs are merged or closed;
 closing it retires nobody, and no seat is taken in a closed lane until its people
 reopen it.

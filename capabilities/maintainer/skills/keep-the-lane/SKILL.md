@@ -11,7 +11,8 @@ Never from memory. With no seat yet, take one first
 none: it sweeps only the efforts its parent gave it, and their PRs.
 - **A full sweep:** at session start, after a compaction, and at least weekly.
 - **On a wake:** no sweep. Handle the event, and update the rows it touches, each from
-  its source (the PR's head from the remote, not from the message).
+  its source (the PR's head from the remote, not from the message). Sweep only when the
+  event shows your state is wrong beyond those rows.
 
 Read the roadmap, the open decisions, the coherence rules and your landing rules first.
 Then, for each repository of your lane:

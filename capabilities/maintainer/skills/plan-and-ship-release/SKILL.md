@@ -10,8 +10,10 @@ the plan what goes in from it. Your project's own release skills hold its exact 
 (version files, tags, where it deploys) and win on those facts.
 
 ## 1. Plan it in writing, before anyone tags
-- **What is merged since the last release:** `git log <last-tag>..<default-branch>`,
-  grouped by change, each with its PR.
+- **The branch it ships from:** the default branch, or the supported line for a
+  backport. Use that branch in every step below.
+- **What is merged since the last release:** `git log <last tag on that
+  line>..<release-branch>`, grouped by change, each with its PR.
 - **What should still go in:** open PRs that are ready or nearly so. For each one left
   out, write why.
 - **The version,** by the project's policy. Without one: patch for fixes only, minor for
@@ -49,7 +51,8 @@ the hold is lifted.
 **A hotfix** is a patch release for a break in the current version: only the fix and its
 notes, planned like any release but small. It doesn't wait for the planned release. **A
 backport** goes on the supported line's branch, from the fix already merged on the
-default branch, with its own patch version and notes.
+default branch, with its own patch version and notes. Which lines are supported is your
+project's decision: record it in your knowledge.
 
 ## 2. Ship it
 Start read-only. Confirm the version and its plan, the exact source SHA (on the planned
