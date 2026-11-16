@@ -2,6 +2,20 @@
 
 ## Unreleased
 
+## template-v4.0.1 - 2026-11-16
+
+A patch release: one lookup fixed. A copy at template-v4.0.0 ports the two passages below.
+
+- **A lane's maintainer is found by its name and its numbered successors.** A seat's next
+  holder after a retired one carries a count before the role
+  (`<person>-<lane>-2-maintainer`), but the lookup named only the first form, so a lead
+  could miss a running successor and try to start the retired name. The lookup now takes
+  the name and its numbered successors, the one not retired; and on a spawn refused
+  because the name is taken, it checks whether that instance is live before it concludes
+  the lane has a maintainer, and takes the next count where it is retired.
+  `capabilities/engineering-expert/skills/land-on-agreement/references/find-the-maintainer.md`
+  and `capabilities/dispatcher/skills/dispatch/SKILL.md`, section 5.
+
 ## template-v4.0.0 - 2026-11-16
 
 A major release: every text is recomposed, and the way of working gains seats, a tree sized

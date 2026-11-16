@@ -7,7 +7,9 @@ build, for a merge they keep for it, for a release. It is never in your build lo
 There is no lane map. Your landing rules name the lanes and who owns each, and a lane's
 maintainer is found by its instance name: `<person>-<lane>-maintainer`, for the person
 who owns the lane (where several own it, your own person when they are among them,
-otherwise the first owner named). Look for it:
+otherwise the first owner named). After a retired one, the seat's next holder carries a
+count before the role (`<person>-<lane>-2-maintainer`, then `-3-`): look for the name and
+its numbered successors, and the one that is not retired is the maintainer. Look for it:
 - `oats status --json`: this machine, each instance with its soul, running or stopped;
 - across machines, your messaging layer's roster, by name.
 
@@ -25,8 +27,10 @@ Then:
   ```bash
   oats spawn <maintainer soul> --relation unrelated --name <person>-<lane>-maintainer --task-file <brief.md>
   ```
-  The name is the seat: a spawn refused because the name is taken means the lane has a
-  maintainer, so find it, and start none under another name. Brief: "maintainer for
+  The name is the seat. A spawn refused because the name is taken: look whether that
+  instance is live (running or stopped). If it is, the lane has a maintainer: find it,
+  and start none under another name. If it is retired, the name is used up: take the next
+  count. Brief: "maintainer for
   <person> in <lane>; first call: <your instance> asks for <the green light | the merge |
   the release> on <PR> at <head>, or for an answer on <the question, at its revision>". Then tell your person, in two or three
   plain sentences, what you started: "I started <name>, your maintainer for <lane>. A
