@@ -21,7 +21,10 @@ copy at template-v4.0.1 ports the two passages below.
   branch for a name the roster still lists with nothing running anywhere it can see,
   which may be retired or run elsewhere: it now asks its person before it starts one,
   as the expert's reference and the maintainer's already do, and its other branches
-  speak of a holder that is running or stopped.
+  speak of a holder that is running or stopped. Two more cases the expert's reference
+  had and the dispatcher's text did not: in another person's lane it asks their
+  dispatcher, or that person, and starts none itself; and where the workspace has no
+  maintainer soul it asks its person and starts none.
   `capabilities/dispatcher/skills/dispatch/SKILL.md`, section 5.
 
 ## template-v4.0.1 - 2026-11-16
