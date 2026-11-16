@@ -2,6 +2,22 @@
 
 ## Unreleased
 
+## template-v4.0.1 - 2026-11-16
+
+A patch release: one lookup fixed. A copy at template-v4.0.0 ports the three passages below.
+
+- **A lane's maintainer is found by its name and its numbered successors.** A seat's next
+  holder after a retired one carries a count before the role
+  (`<person>-<lane>-2-maintainer`), but the lookup named only the first form, so a lead
+  could miss a running successor, and with no holder left it would start the retired
+  name again, which the kernel accepts. The lookup now takes every name of the family;
+  with more than one running or stopped, it asks the person; and before it starts one,
+  it finds the first name no instance has had, with `oats instance events <name>`. A
+  spawn refused because the name is taken means a holder is running or stopped.
+  `capabilities/engineering-expert/skills/land-on-agreement/references/find-the-maintainer.md`,
+  `capabilities/dispatcher/skills/dispatch/SKILL.md`, section 5, and one sentence in
+  `capabilities/maintainer/skills/launch-work/SKILL.md`.
+
 ## template-v4.0.0 - 2026-11-16
 
 A major release: every text is recomposed, and the way of working gains seats, a tree sized

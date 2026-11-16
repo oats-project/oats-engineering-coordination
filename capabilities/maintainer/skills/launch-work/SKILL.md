@@ -92,11 +92,12 @@ never your child.
 oats spawn <maintainer soul> --relation unrelated --name <person>-<lane>-maintainer --task-file <brief.md>
 ```
 The name is the seat. A name is used once: after a retired maintainer of that person in
-that lane, put its count before the role (`<person>-<lane>-2-maintainer`). Its brief
-names the lane, its person, the starting request, and any efforts in flight it takes
-over. Tell your person its name, its lane, and that they retire it with `oats retire
-<name>`. If your person already has one in that lane, say so instead: there is never a
-second.
+that lane, put its count before the role (`<person>-<lane>-2-maintainer`). The kernel
+doesn't refuse a retired instance's name: `oats instance events <name>` shows whether
+one was used. Its brief names the lane, its person, the starting request, and any
+efforts in flight it takes over. Tell your person its name, its lane, and that they
+retire it with `oats retire <name>`. If your person already has one in that lane, say so
+instead: there is never a second.
 
 ## 7. An overflow seat
 A maintainer is never overrun. With more than 5 efforts of your own in flight, spawn one
