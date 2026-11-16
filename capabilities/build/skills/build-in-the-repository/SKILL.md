@@ -74,6 +74,10 @@ oats worktree add --purpose <slug> --branch <branch> --base <the default branch>
   **Three failed fixes for one bug means stop:** tell your expert what you learned, with
   your recommendation, before a fourth. A fix with no seam that can hold a regression
   test is a finding: name it in your hand-back.
+- **No test asserts on a double instead of the behaviour.** Doubles stand only at real
+  boundaries (the network, the clock, a paid service), never for your own collaborators.
+  A double of an external tool or API is checked against the real one at least once,
+  with the command in your hand-back.
 <!-- adapt: Does the organisation enforce the quality floor with its runtime's hooks, and with which checks? -->
 - **The quality floor** in your briefing is yours to keep: nothing enforces it but you
   and your reviewers.
