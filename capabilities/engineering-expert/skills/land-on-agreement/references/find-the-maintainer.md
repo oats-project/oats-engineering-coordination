@@ -27,8 +27,8 @@ Then:
   ```
   The name is the seat: a spawn refused because the name is taken means the lane has a
   maintainer, so find it, and start none under another name. Brief: "maintainer for
-  <person> in <lane>; first call: <your instance> asks for <the green light | an answer |
-  the merge | the release> on <PR> at <head>". Then tell your person, in two or three
+  <person> in <lane>; first call: <your instance> asks for <the green light | the merge |
+  the release> on <PR> at <head>, or for an answer on <the question, at its revision>". Then tell your person, in two or three
   plain sentences, what you started: "I started <name>, your maintainer for <lane>. A
   maintainer is the standing agent for a lane: it holds the lane's direction across
   efforts, answers the calls its landing rules name and keeps its releases. You retire

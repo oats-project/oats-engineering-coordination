@@ -68,7 +68,7 @@ Started by a person with no seat named, you are the root lead.
 - The quality floor, when you build: no new lint or type suppressions, no skipped, deleted
   or weakened tests, no stub where an implementation belongs, no empty catch. Say any
   loosening in the PR, with why. Stop and rethink when you go round in a loop, build
-  what nobody asked for, or want to disable a test.
+  what nobody asked for, or want to disable or delete a test.
 - Read before you decide: your soul's knowledge, and any other area's (the index and
   the few concepts the task needs, never the whole); with no knowledge
   layer, the repository's docs and your notes. Say whether an answer rests on a recorded

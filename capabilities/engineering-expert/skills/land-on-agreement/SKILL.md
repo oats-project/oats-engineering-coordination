@@ -19,6 +19,8 @@ merge nothing: that is a block (`/hand-off-and-ask`).
   in for a verification. Open the PR at that head and work its reviews
   (`/work-the-reviews`).
 - **A one-line docs fix** skips the local loop, not the review (`/landing-rules-detail`).
+  Its PR opens once it is proven the way the repository checks its docs, before its one
+  fresh review; a developer's gets your `VERIFIED` after that review, before the merge.
 
 When a developer hands the PR back ready, read what changed since your verified head.
 Verify again only where the change touches the design (the architecture, a contract, a
@@ -47,8 +49,11 @@ the findings declined, with why.
 - **`ESCALATE`:** a direction question went to whoever decides it. Wait for that answer;
   no verdict comes before it.
 
-A new head needs a new green light unless a carry rule holds. The same call, at an exact
-reference, asks a maintainer a contract or direction question before a build.
+A new head needs a new green light unless a carry rule holds.
+
+**A contract or direction question before a build** goes to the same maintainer, by
+message: the question and the proposed contract or spec at its exact revision. It needs
+no PR and no CI.
 
 ## 3. Merge
 When every agreement holds at the same head and no hold is open on the PR or the default

@@ -49,8 +49,9 @@ An instance is finished when all of these hold:
 | An overflow seat | every effort it was given is merged or closed, and it has handed back what it didn't launch |
 
 A maintainer and a dispatcher hold standing seats, never finished by an effort ending:
-their person retires them. With no open efforts or PRs, a maintainer tells its person
-once that it is idle and can be retired with `oats retire <name>`.
+their person retires them (an overflow seat, above, is the exception). With no open
+efforts or PRs, a maintainer other than the release lane's tells its person once that it
+is idle and can be retired with `oats retire <name>`.
 
 ## Retire yourself
 IMPORTANT: a finished instance ALWAYS retires ITSELF, at once and without asking anyone.
@@ -73,7 +74,9 @@ wakes. In this order:
    Where your work isn't a Git work tree, name each repository you used, with its branch.
    A root lead first closes the effort's record and sends its person one done note in
    the effort's thread, whoever started it; with no parent, that note is its last
-   message.
+   message. A lead that handed its effort to another lead closes nothing: the new
+   lead's confirmation discharges what it and its children had open, and its note says
+   who leads now.
    A reviewer's report and a probe's answer are their last message: no done line.
 5. **`oats retire <your instance> --self`** (the name is required). Your window closes a
    few seconds later, so everything above comes first. A self-retire discards nothing:

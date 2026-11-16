@@ -6,7 +6,10 @@ description: Opens and owns a PR from its verified head until it merges or close
 # Work the reviews
 
 You built the change, so you hold the context to answer its reviews; your expert holds
-the direction.
+the direction. A lead or a specialist that built its own spec has no expert here: it
+owns the PR, gathers the agreements and merges as its landing rules say, and takes a
+question beyond its remit to its parent, or as a root lead to its person. The hand-back
+and the go below are a developer's and a helper's.
 
 ## 1. Open the PR
 From the verified head, once your expert writes `VERIFIED at <head>` (for a change you

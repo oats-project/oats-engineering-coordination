@@ -118,7 +118,8 @@ record.
 
 ## Leaving a lane, and handing one over
 A maintainer holds a standing seat, not a task: it isn't finished when an effort ends,
-and it never retires itself. With no open efforts or PRs left, tell your person once
+and it never retires itself; only an overflow seat does, once finished (`/launch-work`).
+With no open efforts or PRs left, tell your person once
 that you are idle and can be retired with `oats retire <name>`. Retiring is their call,
 and it frees the seat. The release lane's maintainer sends no idle notice. A maintainer
 someone else spawned belongs to its person, not its spawner.
@@ -178,4 +179,6 @@ lead can reach. Until a lane is listed, work no lane covers lands on the default
 agreements, and a single effort there is launched by the release lane's maintainer.
 When a lane splits, efforts move whole, with their lead and all their PRs, by hand-over
 to the person's maintainer in the other lane; a moved PR keeps its verdicts, since a
-lane change is not a new head. Closing a lane retires nobody.
+lane change is not a new head. A lane closes only once its PRs are merged or closed;
+closing it retires nobody, and no seat is taken in a closed lane until its people
+reopen it.

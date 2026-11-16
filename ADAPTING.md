@@ -226,8 +226,10 @@ agree at one head, on the lead's go at that head.
   repository's own release procedure (its release docs or skill): where it has none, write
   one first from the maintainer capability's release skill (pin the source, read the live
   release contract, tag, verify the publication item by item);
-- in `capabilities/dispatcher/`: the maintainer bullet of `dispatch`'s section 5, the
-  inject's sentence on maintainers, and `dispatch`'s "A PR with no lead" bullet, which
+- in `capabilities/dispatcher/`: in `dispatch`'s section 5, "or the maintainer of one of
+  your person's lanes" in its opening and its maintainer bullet; in the inject, the same
+  words and the sentence "Never a second maintainer ..."; and `dispatch`'s "A PR with no
+  lead" bullet, which
   becomes: "An outside contributor's PR your person brings you: start a lead for it, as an
   effort (the landing rules)";
 - the dispatcher itself, if the one person would rather start the expert directly.

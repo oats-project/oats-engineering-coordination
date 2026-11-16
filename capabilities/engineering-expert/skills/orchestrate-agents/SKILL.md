@@ -34,7 +34,8 @@ judgment, skills or a clean context, it goes to the area's specialist, or to a h
 fresh instance of that area's expert or developer soul.
 
 ## 3. Child, sibling or independent
-The question is where the instance's work comes from.
+An effort is one goal that can land on its own. Work its "done means" needs stays in it;
+work it can finish without is another effort. In doubt, it is yours.
 
 | Its work | Relation | Spawn with |
 |---|---|---|

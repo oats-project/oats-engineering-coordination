@@ -67,7 +67,8 @@ place in three cases:
 
 <!-- adapt: What counts as a large feature here, past which a lead always sends developers? -->
 A large feature always goes to developers, one per surface: more than one surface, or
-sustained building and testing. Otherwise build it yourself: usually a small change, or
+sustained building and testing. If none of the three cases holds, build it yourself:
+usually a small change, or
 one that is a single line of reasoning with the plan. A change and its tests have one
 author: never split one coupled change across agents.
 

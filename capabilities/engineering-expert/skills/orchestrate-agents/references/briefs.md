@@ -41,7 +41,8 @@ Send back, once, to <your instance>, in this order:
   3. what you did not check;
   4. your recommendation.
 Rules:     change nothing outside your scratch space (a scoped piece: your own worktree
-           and branch); decide nothing beyond this brief; ask me, never my person.
+           and branch); decide nothing beyond this brief; ask me, never my person. If
+           you are the wrong soul for this, say so as a finding; don't guess.
 Finish:    retire yourself once you have reported (a scoped piece: once its PR has
            merged or closed).
 ```

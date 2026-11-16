@@ -49,7 +49,10 @@ Only when another expert's specialisation has come to fit the effort better than
    a retire of yours over a live child would only stop it and leave it behind. The new
    lead starts what remains as its own children, from those references.
 5. **Retire once your children are gone and the new lead confirms** it has the effort.
-   First put its name on the effort's record and tell your person (`/wait-and-retire`).
+   A transfer is not a finish: the new lead's confirmation takes over what you and your
+   children had open, an open PR included. Put its name on the effort's record, leave
+   the record open, and send your person a transfer note in place of a done note; then
+   retire yourself (`/wait-and-retire`).
 
 ## Ask a person
 Only for a direction or a product choice the request leaves open, a behaviour change in

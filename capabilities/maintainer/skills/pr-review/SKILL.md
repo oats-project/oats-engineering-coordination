@@ -17,7 +17,8 @@ description: Gives or returns the green light on a PR, where the lane's landing 
   loop). With one of these missing, give no verdict: tell the author what is missing, in
   one line.
 - **The head moves after the call:** stop until the author calls again, then read only
-  the delta and re-bind your verdict.
+  the delta and re-bind your verdict. An unchanged update you made yourself under the
+  carry rules needs no new call.
 - **A PR with no lead** (an outside contributor's, a person's own) has had none of our
   reviews: it gets the four gates of
   [references/no-lead-pr.md](references/no-lead-pr.md), and you merge it where your
@@ -69,7 +70,8 @@ RETURN at <sha>: <repo>#<PR>
 1. <finding>: <file and line, or the contract>; why it blocks; what would settle it
 ```
 - A green light names each of the five. One that lists nothing it checked isn't one.
-- Only a finding on one of the five blocks. Record the rest as follow-ups.
+- Only a finding on one of the five, or on the security gate where it applies, blocks.
+  Record the rest as follow-ups.
 - **`ESCALATE`** is the third verdict: a direction question goes to whoever decides it.
   Give no other verdict until it is answered, and tell the author so in one line.
 - **A `RETURN`** goes to the author, which calls you again at the fixed head: read the

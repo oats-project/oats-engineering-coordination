@@ -21,3 +21,4 @@ branch>`. If they differ, don't apply:
 `--same-work` records that the developer does your work, and your person's sidebar draws
 its line to you. It shares no work tree: the developer keeps its own worktree and branch,
 and only a reviewer is attached to its author's tree.
+A developer started without the flag gets it with `oats instance same-work <developer> on`.

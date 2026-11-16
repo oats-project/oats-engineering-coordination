@@ -56,7 +56,8 @@ whole (ADAPTING.md, section 6).
 - **No lane map.** The landing rules list the lanes and their owners. A lane's maintainer
   is found by its instance name, `<person>-<lane>-maintainer`, on `oats status` and the
   messaging layer's roster, and a taken name stops a second one. The map's entries, its
-  keeper and its `active` and `left` marks are gone.
+  keeper and its `active` and `left` marks are gone. A lane exists once the landing rules
+  list it, on its owner's yes: a maintainer no longer opens one by itself.
 - **Every finished instance retires itself,** children first, with `oats retire <name>
   --self`, and its parent sweeps: it checks that the child is gone on its last message,
   before any step that needs it gone and at every checkpoint wake, and retires what is
