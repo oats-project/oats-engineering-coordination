@@ -5,7 +5,7 @@
 ## template-v4.0.2 - 2026-11-16
 
 A patch release: the dispatcher's and the maintainer's lookup of a lane's maintainer. A
-copy at template-v4.0.1 ports the two passages below.
+copy at template-v4.0.1 ports the three passages below.
 
 - **A refused spawn of a maintainer's name means the seat is held.** The dispatcher's
   lookup, and the maintainer's launch of a maintainer for a lane that has none, said how
@@ -24,8 +24,13 @@ copy at template-v4.0.1 ports the two passages below.
   speak of a holder that is running or stopped. Two more cases the expert's reference
   had and the dispatcher's text did not: in another person's lane it asks their
   dispatcher, or that person, and starts none itself; and where the workspace has no
-  maintainer soul it asks its person and starts none.
+  maintainer soul it asks its person and starts none. It also picks the owner as the
+  expert does where several people own a lane (its own person, otherwise the first
+  named), and asks its person where it can't tell the lane or its owner.
   `capabilities/dispatcher/skills/dispatch/SKILL.md`, section 5.
+- **"One is stopped"** in the expert's reference no longer says "or known but not
+  active", which also matched the roster-only case, where the rule is to ask.
+  `capabilities/engineering-expert/skills/land-on-agreement/references/find-the-maintainer.md`.
 
 ## template-v4.0.1 - 2026-11-16
 
