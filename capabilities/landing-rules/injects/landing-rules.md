@@ -1,108 +1,42 @@
 ## Landing rules: how work lands here
 
-These are this organisation's landing rules and its ownership record, in one place. Every
-coordinating role reads them here: the dispatcher, the experts, the developers and the
-maintainers. Where a skill says "your landing rules", it means this section. They change
-only on the yes of the person who owns the lane, each rule with its reason (where the
-workspace has oats.framework's `oats.coordination-setup`, its set-landing-rules skill
-writes them); a lane opened on the lane map for its
-owner's own work runs on the defaults below until then. No rule sets a deadline or a default
-if someone is silent: a request waits for its answer. These rules are copied into each
-instance at spawn: after a change, whoever wrote it tells each standing instance (the
-dispatchers, the maintainers) and the lead of each open effort (the effort records name
-them) by message, with the change at its commit; each lead tells its running children (its
-developers and its helpers, a standing specialist included). Each recipient records the
-change, at its commit, in its state file (a lead on its effort's record too), and from then
-on reads these rules with the changes it recorded, which win, compaction or not.
+"Your landing rules" in a skill means this section: this organisation's rules for landing
+work, and its ownership record. They change only on the yes of the person who owns the
+lane, each rule with its reason. Whoever writes a change then messages you, and it wins
+once you record it in your state file. No rule sets a deadline, and silence approves
+nothing.
 
 **Lanes and their owners.**
 <!-- adapt: Which lanes does the organisation have, what does each cover, and which person owns each? -->
 - `main`: everything in this workspace's repositories, owned by the person who runs the
   workspace. It is also the release lane.
 
-<!-- adapt: Which checks does the forge require on the default branch? -->
-**CI green,** wherever these rules or a skill say it, means at least one check ran at a
-head, every check the forge requires is among them, and every check that ran succeeded (a
-skipped check didn't run): none failing, none pending. A head where no check ran isn't
-green.
+A lane's maintainer, where it has one, is the instance named `<person>-<lane>-maintainer`.
+There is no lane map: the name is the seat.
 
-**What merges a change, and who merges it.**
+**What merges a change:** all of these, at one head.
 <!-- adapt: Per lane, which agreements must hold at a PR's head before it merges, and who merges it? -->
-In every lane, at one head: CI green; a review; and, for a developer's work, the lead's
-verification note, `VERIFIED at <head>`. A change its lead built needs CI green and the
-review at that head: nobody verifies their own work. The review is the forge's review bot's
-at that head where one runs, each of its findings fixed or answered (a decline with a
-concrete reason is answered); otherwise a round of the author's review loop that found
-nothing to fix, with a fresh reviewer at that head. A review carries to a new head:
-- **with no re-read,** through a rebase whose range-diff shows every commit unchanged, or
-  an update from the default branch that leaves the PR's own diff unchanged;
-- **through the same reviewer's re-read of the delta,** where the review is the author's
-  loop and the delta only fixes a minor, takes a nit, or fixes CI with no change in
-  behaviour: that reviewer updates its verdict and its Checked section at the new head.
-  Where it has retired, the review bot's review at that head does, where one runs;
-  otherwise a fresh reviewer briefed with the delta and the spec;
-- **otherwise not:** a fix to a blocker or a major, or any delta that changes behaviour, a
-  contract or the design, gets a fresh reviewer on the whole change; where the review is
-  the bot's, any new head gets a new review, which the author asks the bot for where it
-  doesn't review each push by itself.
+1. CI green.
+2. A review at that head: the forge's review bot's where one runs, every finding fixed
+   or answered; otherwise a round of the author's review loop that found nothing to fix.
+3. `VERIFIED at <head>` from whoever specified the work, for a developer's or a helper's
+   change. A change a lead or a specialist built itself needs none: nobody verifies
+   their own work.
 
-The reviewer's severity decides which, not the author's wish: a fix ranked minor that turns
-out to change behaviour gets a fresh reviewer. The lead merges. Why: independent checks at
-the same head, and the one who owns the whole effort lands it.
+A new commit needs them again unless a carry rule holds (`/landing-rules-detail`). The
+lead merges, or the specialist for its area's PRs. Why: independent checks at one head,
+and whoever owns the work lands it.
 
-**The green light to open a PR.**
-<!-- adapt: Who gives the green light to open a PR at the verified head? -->
-For a developer's work, or a helper's scoped piece of a lead's effort, the lead's
-verification note: the developer or helper then opens the PR at that head and works its
-reviews. For a change a lead built for its own effort, the round of its review loop that
-found nothing to fix: the lead opens the PR at that head. Why: the lead holds the
-design, and nothing else needs to happen before review.
+**A maintainer's green light, and releases.**
+<!-- adapt: Where does the organisation require a maintainer's green light on a PR, keep the merge for a maintainer or a person, and who releases? -->
+No lane needs a maintainer's green light. A release's contents are approved by the owners
+whose lanes have changes in it; the release lane's maintainer plans, tags and publishes
+it, started when first needed. Why: a maintainer holds what a lead wouldn't, and is called
+only for it.
 
-**Who builds a change.** The lead decides, for each spec: itself, or a developer, which
-earns its place by protecting the lead's context, building in parallel, or specialising in a
-lane of its own; a large feature always goes to developers. Either way the spec comes first,
-with pinned acceptance tests, and whoever builds it iterates with a fresh reviewer each
-round (a new `code-reviewer` instance, its OATS child) until a round finds nothing to fix:
-at least one round, always, and never the author reading its own work. The lead verifies a
-developer's converged branch once, and never runs review rounds or spawns reviewers for a
-developer's work.
-<!-- adapt: May a change land with no fresh review (a typo, a broken link)? -->
-No change lands without a fresh review. A one-line docs fix (a typo, a broken link) skips
-the local loop, not the review: it merges on CI green and one fresh review at its head, the
-review bot's where one runs, otherwise one reviewer round. If that review finds anything to
-fix, it is no longer a one-line fix: it gets the loop. Why: the one who built a change
-holds the context to answer its reviews, and a fresh reader catches what its author can't.
-
-**The models children run on.**
-<!-- adapt: Which is the weakest model tier a child may run on, in each model family the organisation launches? -->
-No agent runs a child, an OATS child or a native subagent, on a weaker model tier than its
-own, in its family or another: never a smaller, faster or cheaper model, to save cost or
-time. That is the floor, and it comes before model diversity: a child that checks work
-runs on another family's model only where one at or above the floor is available;
-otherwise on the parent's own model, and the parent says that diversity was lost. A model
-whose tier the parent can't establish is below the floor. The floor binds the model a child
-would actually launch on, wherever it comes from: a soul's default or a machine's override
-that is below it is not used. The parent spawns that child on a model at or above the
-floor instead, its own by default, and tells its person once that the configuration is
-below the floor, naming the soul and the machine. Why: a child's answer is used as its parent's own would be,
-and a weaker model fails without saying so.
-
-**A maintainer's read, and releases.**
-<!-- adapt: Where does the organisation require a maintainer's read, keep the merge for a maintainer or a person, and who releases? -->
-No lane needs a maintainer's read. A release's contents are approved by the owners whose
-lanes have changes in it; the release lane's maintainer plans, tags and publishes it,
-started when first needed. Why: a maintainer holds what a lead wouldn't, and is called only
-for it.
-
-**A PR with no lead here:** an outside contributor's, a person's own, or a maintainer's
-release prep (the version bump and the assembled notes, nothing more). The lane owner's
-maintainer merges it at its head once CI is green and the review bot's review holds where
-one runs; it reads any but its own release prep first, and approves at that head. Release
-prep needs no review round, and is no exception to who iterates with reviewers: nothing in
-it needs one. Any fix goes to a lead, which decides who builds it.
-A running maintainer finds such a PR in its intake; until one runs, the person brings it to
-their dispatcher, which starts it. Why: someone here has to own the merge, and the lane's
-maintainer holds it.
+Where a lane does ask for it, "green light" means only that maintainer's verdict at an
+exact head, `GREEN LIGHT at <head>` or `RETURN at <head>`, by message: on direction,
+contracts, coherence, scope and evidence, never a second code review.
 
 **One-way doors kept for people.**
 <!-- adapt: Which acts must a person approve, beyond a release's contents? -->
@@ -113,11 +47,33 @@ what someone else uses. Nothing else goes to a person by rule.
 <!-- adapt: With more than one person, who owns which paths and lanes? -->
 - (one line per area: its paths, and the person who owns them)
 
-**Where things are kept.** These rules are copied into each instance at spawn, so what
-changes while work runs is kept where everyone reads and updates it live.
-<!-- adapt: Where are the effort records, the lane map and holds kept? -->
-- the effort records: one item per effort in your tasks layer, its status at the top;
-- the lane map, with one entry per maintainer: one record in your tasks layer, created
-  empty when these rules are adapted, at: (its link). A maintainer adds its own entry;
-- a hold: marked on the PR it holds, or, for the default branch, one open record next to
-  the lane map, each with its reason, its scope and who lifts it.
+**Records.**
+<!-- adapt: Where are the effort records and holds kept? -->
+- An effort record: one item per effort in your tasks layer, its status at the top.
+- A hold: marked on the PR it holds, or, for the default branch, one open record in your
+  tasks layer, each with its reason, its scope and who lifts it.
+
+**House rules, for every role.**
+- Name every instance you spawn `--name <task>-<role>`: its task first, and last the
+  role it plays in the effort (lead, specialist, helper, probe, developer, reviewer,
+  maintainer, dispatcher), never its soul, which the sidebar already shows. Five words at
+  most, the role included. A person tells instances apart by name alone, so never reuse
+  one: when a name is taken, make the task's part more specific.
+<!-- adapt: Which is the weakest model tier a child may run on, in each model family the organisation launches? -->
+- IMPORTANT: NEVER run a child, an OATS child or a native subagent, on a model below the
+  floor: a weaker model fails without saying so, and its answer is used as your own. The
+  floor is your own model's tier, in your family or another: never a smaller, faster or
+  cheaper model, to save cost or time. It comes before model diversity, and it binds the
+  model a child would actually launch on (`/landing-rules-detail`).
+<!-- adapt: Where may agents build and run tests, which hosts are shared, and which are read-only? -->
+- Build and test in an environment of your own (your worktree, a scratch directory, a
+  container), never against another instance's or a person's state. On a shared host,
+  run the tests that bear on the change, no load or soak tests, and only as much in
+  parallel as the host can take. A customer's or a production host is read-only.
+- Never run code you haven't read on your host: an outside contributor's change runs in
+  CI. Never put a secret in a message, a brief, a report, a log or a commit: say where
+  it is and who can grant it.
+
+**Skills.** `/landing-rules-detail` when you judge whether an agreement holds at a head,
+and for what this section leaves open. `/wait-and-retire` before you end a turn to wait
+on an instance you started, and when one is finished.

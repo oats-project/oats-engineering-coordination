@@ -69,7 +69,7 @@ defaults:
   mkdirSync(memberSrc);
   for (const dir of ["capabilities", "souls"]) cpSync(join(REPO, dir), join(memberSrc, dir), { recursive: true });
   // The copy's release record (ADAPTING.md, section 4): a plain file the kernel must ignore.
-  writeFileSync(join(memberSrc, "capabilities", "TEMPLATE-RELEASE"), "template: oats-project/oats-engineering-coordination\nrelease: template-v3.1.3\n");
+  writeFileSync(join(memberSrc, "capabilities", "TEMPLATE-RELEASE"), "template: oats-project/oats-engineering-coordination\nrelease: template-v4.0.0\n");
   writeFileSync(join(memberSrc, "oats-membership.yaml"), `schemaVersion: 2
 workspace: file://${workspaceBare}
 `);
@@ -124,22 +124,24 @@ async function checkKernel(t, label, ref) {
 
   const dispatcher = preview("dispatcher");
   assert.deepEqual(modules(dispatcher), ["oats.dispatcher", "oats.landing-rules"]);
-  assert.deepEqual(skills(dispatcher), ["dispatch"], "the dispatcher leads nothing: no expert or maintainer skills");
+  // oats.landing-rules brings its two skills to every soul that composes it.
+  const RULES = ["landing-rules-detail", "wait-and-retire"];
+  assert.deepEqual(skills(dispatcher), sorted(["dispatch", ...RULES]), "the dispatcher leads nothing: no expert or maintainer skills");
 
   // oats.build holds the build skills, with no inject: a lead that builds a spec itself and a
-  // developer have the same craft.
-  const BUILD = ["design-while-writing", "diagnose-before-fixing", "execution-strategy", "maintain-dev-docs", "prove-it-works", "run-the-review-loop", "test-first", "work-the-reviews", "worktrees"];
+  // developer build it the same way.
+  const BUILD = ["build-in-the-repository", "run-the-review-loop", "work-the-reviews"];
   const expert = preview("engineering-expert");
   assert.deepEqual(modules(expert), ["oats.build", "oats.engineering-expert", "oats.landing-rules"]);
-  assert.deepEqual(skills(expert), sorted(["across-people", "ask-a-person", "coordinate-developers", "find-the-maintainer", "findings-and-blocks", "hand-off", "land-on-agreement", "plan-and-spec", "send-a-helper", "verify-developer-work", ...BUILD]));
+  assert.deepEqual(skills(expert), sorted(["coordinate-developers", "hand-off-and-ask", "land-on-agreement", "orchestrate-agents", "plan-and-spec", ...BUILD, ...RULES]));
 
   const dev = preview("developer");
   assert.deepEqual(modules(dev), ["oats.build", "oats.developer", "oats.landing-rules"]);
-  assert.deepEqual(skills(dev), sorted([...BUILD, "understand-the-spec"]));
+  assert.deepEqual(skills(dev), sorted([...BUILD, ...RULES]), "the developer has no skill of its own");
 
   const maintainer = preview("maintainer");
   assert.deepEqual(modules(maintainer), ["oats.landing-rules", "oats.maintainer"]);
-  assert.deepEqual(skills(maintainer), ["cross-review-peer", "direction-gate", "keep-it-clean", "launch-work", "maintainer-intake", "plan-release", "pr-review", "ship-release", "support-maintainer"]);
+  assert.deepEqual(skills(maintainer), sorted(["direction-gate", "keep-the-lane", "launch-work", "plan-and-ship-release", "pr-review", "support-maintainer", ...RULES]));
 
   // The kernel reads each skill's description with its own YAML parser and gives null when the
   // frontmatter doesn't parse, as the harnesses would drop the skill.

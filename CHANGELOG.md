@@ -2,6 +2,147 @@
 
 ## Unreleased
 
+## template-v4.0.0 - 2026-11-16
+
+A major release: every text is recomposed, and the way of working gains seats, a tree sized
+to the work, a maintainer's green light as an option, and self-retirement. The texts say
+less and say it once: the capabilities' text is a quarter shorter (about 45,500 words to
+about 33,700), the briefings roughly half (the expert's 2,333 words to 1,040, the
+developer's 1,343 to 731, the landing rules' 1,557 to 853, the maintainer's 1,797 to
+1,073), and 34 skills are 21. There is no passage to port: a copy takes this release up
+whole (ADAPTING.md, section 6).
+
+**How the texts are composed now**
+- A briefing has one order: what you are, how the work flows, the rules that aren't
+  obvious (each with its reason), and which skill to open at which moment.
+- A skill is one team procedure for one moment. Longer material sits in `references/`
+  files one level down, which the skill names.
+- A rule lives in one place. Instance names, the model floor and the hosts rule moved from
+  three briefings into the landing rules' house rules, once.
+- What a current model does unprompted is no longer restated: six general build skills are
+  gone from the default. template-v3.1.3 keeps them for a copy that wants them.
+- Capitals mark a handful of rules per briefing.
+
+**What changes in how agents work**
+- **One agent is the default.** A child earns its place by one of three reasons, named in
+  its brief: protecting context, parallel work, specialisation. Split by context, never
+  by kind of work. (template-v3.1.x listed four reasons; testing a theory is now a use of a
+  probe, under the same three.)
+- **The tree is sized to the work.** Simple: one agent. Complex or creative but not large:
+  the lead alone, with short-lived probes and helpers. Large, or across several areas: one
+  long-lived specialist per area, each leading its area inside the lead's plan, up to the
+  last agreement on its PRs. This replaces template-v3.1.1's standing specialist, and its
+  cap and marker are gone.
+- **Seats.** Every instance holds exactly one seat, root lead, specialist, or helper or
+  probe, named on a `Seat:` line in its task by whoever launches it: a lead's briefs, a
+  maintainer's launch, a dispatcher's dispatch. An expert with no seat named takes itself
+  for a root lead.
+- **Who leads:** the expert whose specialisation fits the effort best, across areas too.
+  It hands a whole effort to another expert only on its person's yes.
+- **`VERIFIED at <head>`** is the one name for the note of whoever specified a developer's
+  or a helper's work. It opens the PR.
+- **"Green light" means only a lane maintainer's verdict** on a PR at an exact head:
+  `GREEN LIGHT at <head>`, `RETURN at <head>` or `ESCALATE`, on direction, contracts,
+  coherence, scope and evidence, never a second code review. It replaces the maintainer's
+  four-gate read of a lead's PR; the four gates remain for a PR with no lead. It is an
+  option a lane chooses, off by default: ADAPTING.md recommends it for a large project and
+  leaves it out for a small or personal one. Three returns on one PR become one card to
+  the person, through the root lead.
+- **No lane map.** The landing rules list the lanes and their owners. A lane's maintainer
+  is found by its instance name, `<person>-<lane>-maintainer`, on `oats status` and the
+  messaging layer's roster, and a taken name stops a second one. The map's entries, its
+  keeper and its `active` and `left` marks are gone.
+- **Every finished instance retires itself,** children first, with `oats retire <name>
+  --self`, and its parent sweeps: it checks that the child is gone on its last message,
+  before any step that needs it gone and at every checkpoint wake, and retires what is
+  finished or stalled and still listed. Before, a parent retired its children on their
+  done line.
+- **One reviewer, one report.** A reviewer retires itself once its report is sent. A fix to
+  a minor is no longer re-read by the same reviewer: its delta is read by the review bot
+  where one runs, otherwise by a fresh reviewer briefed with the delta alone (not a round).
+- **The tasks layer holds outcomes only:** an effort, a change to land, a bug to fix. A
+  probe, a helper's piece, a specialist's assignment and a review round live on the
+  effort's record.
+
+**`oats.engineering-expert`**: five skills.
+- new `/orchestrate-agents`: from `/send-a-helper`, with the tree, the specialist and the
+  brief templates (`references/briefs.md`, `references/probes.md`).
+- new `/hand-off-and-ask`: `/hand-off`, `/ask-a-person`, `/findings-and-blocks` and
+  `/across-people` (`references/across-people.md`), and handing a whole effort over.
+- `/coordinate-developers` takes in `/verify-developer-work`
+  (`references/verification.md`, `references/start-point.md`).
+- `/land-on-agreement` takes in `/find-the-maintainer`
+  (`references/find-the-maintainer.md`) and loses "Retire what's finished", now in
+  `/wait-and-retire`.
+- `/plan-and-spec` gains sizing the tree and the effort's record.
+
+**`oats.build`**: three skills.
+- new `/build-in-the-repository`: the repository's own rules first; `/worktrees`; from
+  `/execution-strategy`, one author for a change and its tests and the workflow opt-in;
+  from `/prove-it-works`, the proof and the evidence for every claim; from
+  `/diagnose-before-fixing`, three failed fixes then stop; from `/design-while-writing`, a
+  rename in a commit of its own; from `/maintain-dev-docs`, docs in the same change.
+- removed, not restated: `/test-first`, `/diagnose-before-fixing`,
+  `/design-while-writing`, `/execution-strategy`, `/prove-it-works`, `/maintain-dev-docs`,
+  `/worktrees`.
+- `/run-the-review-loop` (`references/model-and-history.md`) and `/work-the-reviews`:
+  rewritten; the checkpoint and the finish moved to `/wait-and-retire`.
+
+**`oats.developer`**: its briefing only. `/understand-the-spec` is folded into it.
+
+**`oats.code-review`**: the briefing in the new order; the reviewer retires itself;
+`/adversarial-review` section 5 changed and section 6, "A delta", added.
+
+**`oats.maintainer`**: six skills.
+- new `/keep-the-lane`: `/maintainer-intake`, `/keep-it-clean` and what remains of
+  `/cross-review-peer` (`references/state.md`, `references/roadmap.md`,
+  `references/lanes-and-peers.md`).
+- new `/plan-and-ship-release`: `/plan-release` and `/ship-release`
+  (`references/verify-release.md`).
+- `/pr-review`: the green light's five checks and its verdict; the four gates in
+  `references/no-lead-pr.md`; the merge in `references/reviewed-delivery.md`.
+- `/launch-work`: the `Seat:` line; its checkpoint and retirement moved to
+  `/wait-and-retire`.
+
+**`oats.dispatcher`**: the briefing in the new order; a lead's task opens with its seat; a
+maintainer is found by its name.
+
+**`oats.landing-rules`**: a shorter briefing, with the house rules, and two skills every
+coordinating soul now has.
+- new `/landing-rules-detail`: the definitions (CI green, what opens a PR, what carries to
+  a new head, the green light, the model floor) and, in `references/more-rules.md`, who
+  builds, the loop's cap, the docs fix, a PR with no lead, the records.
+- new `/wait-and-retire`: the checkpoint (`references/checkpoint.md`), what finished means
+  per seat, the done line, retiring yourself, and the parent's sweep.
+
+**Adapt markers**: 25 are 21. A copy's earlier answers go here:
+
+| The marker in template-v3.1.3 | Now |
+|---|---|
+| The hosts, in the expert's, the developer's and the maintainer's briefings | once, in the landing rules' house rules |
+| The quality floor's hooks, in the expert's and the developer's briefings | once, in `/build-in-the-repository` |
+| "Which checks does the forge require on the default branch?" | `/landing-rules-detail` |
+| "Who gives the green light to open a PR at the verified head?" | `/landing-rules-detail`, as "What must hold before a PR opens, beyond the verification of whoever specified the work?" |
+| "May a change land with no fresh review (a typo, a broken link)?" | `/landing-rules-detail`, `references/more-rules.md` |
+| "Where does the organisation require a maintainer's read, ..." | the landing rules, as "... a maintainer's green light on a PR, ..." |
+| "Where are the effort records, the lane map and holds kept?" | the landing rules, as "Where are the effort records and holds kept?" |
+| "Which specialist souls can a lead call as helpers, ..." | `/orchestrate-agents`, as "Which expert souls can lead an area as a specialist, ..." |
+| "How many probes may a lead run in parallel for one decision?" | `/orchestrate-agents`, `references/probes.md` |
+| "How many standing specialists may a lead keep at once?" | gone |
+| "What does a maintainer do in this organisation, ..." | `/land-on-agreement`, `references/find-the-maintainer.md` |
+| "How many agents may a developer's workflow run without asking its person?" | `/build-in-the-repository` |
+| "Which harnesses and models does this organisation have for model diversity?" | `/run-the-review-loop`, `references/model-and-history.md` |
+
+The other markers are where they were.
+
+**Docs**
+- `README.md`, `ADAPTING.md` (principles, "How the texts are composed", the green light as
+  an option, a shorter small-projects variant, taking up this release whole) and
+  `docs/how-the-work-flows.md` (a large effort with specialists, a lane that asks for its
+  maintainer's green light, every instance is retired) follow the texts.
+- `THIRD-PARTY-NOTICES.md` lists the three adapted rules that remain, and the quality
+  floor.
+
 ## template-v3.1.3 - 2026-11-12
 
 A patch release: a floor for a child's model, and a cap on a name's length. The texts asked
