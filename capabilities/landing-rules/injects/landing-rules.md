@@ -37,8 +37,9 @@ it, started when first needed. Why: a maintainer holds what a lead wouldn't, and
 only for it.
 
 Where a lane does ask for it, "green light" means only that maintainer's verdict at an
-exact head, `GREEN LIGHT at <head>` or `RETURN at <head>`, by message: on direction,
-contracts, coherence, scope and evidence, never a second code review.
+exact head, by message: `GREEN LIGHT at <head>`, `RETURN at <head>` with its findings, or
+`ESCALATE`, a direction question gone to whoever decides it, which you wait on. It
+judges direction, contracts, coherence, scope and evidence, never a second code review.
 
 **One-way doors kept for people.**
 <!-- adapt: Which acts must a person approve, beyond a release's contents? -->

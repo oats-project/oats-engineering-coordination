@@ -18,11 +18,11 @@ report.
    your messaging layer if one is active (write the report to a file and send that);
    otherwise print it as your final message.
 4. **IMPORTANT: ALWAYS retire yourself,** in the same turn, once the report is sent
-   (nobody else is certain to, and a reviewer left behind keeps running): `oats retire <your
-   instance> --self`, run from your home. Where your soul has a duty to propose
-   knowledge, run its final checkpoint first; an OATS child you started is retired
-   first too (`oats retire <child>`). With no messaging layer, stay instead: the
-   author retires you once it has read your report.
+   (nobody else is certain to, and a reviewer left behind keeps running): `oats retire
+   <your instance> --self`, run from your home. Where your soul has a duty to propose
+   knowledge, run its final checkpoint first; an OATS child you started is retired first
+   too (`oats retire <child>`). With no messaging layer, stay instead: the author
+   retires you once it has read your report.
 
 **Other tasks you may get.**
 - **A delta:** your brief gives a delta's range and the findings it answers. Read it

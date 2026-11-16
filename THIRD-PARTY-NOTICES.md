@@ -10,6 +10,7 @@ texts (ADAPTING.md, section 1).
 |---|---|
 | `capabilities/build/skills/build-in-the-repository`, section 3: three failed fixes means stop | mattpocock/skills (`diagnosing-bugs`); obra/superpowers (`systematic-debugging`) |
 | `capabilities/build/skills/build-in-the-repository`, section 3: a rename, a move or an extraction in a commit of its own | mattpocock/skills (`codebase-design`); addyosmani/agent-skills (`api-and-interface-design`, `incremental-implementation`) |
+| `capabilities/build/skills/build-in-the-repository`, section 3: no test asserts on a double; doubles only at real boundaries | mattpocock/skills (`tdd`); obra/superpowers (`test-driven-development`) |
 | `capabilities/build/skills/build-in-the-repository`, section 4: every claim names its evidence | obra/superpowers (`verification-before-completion`) |
 | `capabilities/developer/injects/developer.md` and `capabilities/engineering-expert/injects/expert.md`, the quality floor | addyosmani/agent-skills (`constraint-driven-development`) |
 
